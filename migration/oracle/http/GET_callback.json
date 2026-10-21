@@ -1,0 +1,113 @@
+{
+  "route": "GET /callback(.:format)",
+  "captured_at": "2026-10-21T13:22:08.954Z",
+  "base_url": "http://127.0.0.1:3000",
+  "cases": [
+    {
+      "case": "anonymous_no_params",
+      "actor": "anon",
+      "request": {
+        "method": "GET",
+        "path": "/callback",
+        "headers": {}
+      },
+      "response": {
+        "status": 302,
+        "duration_ms": 142,
+        "headers": {
+          "location": "http://127.0.0.1:3000/admin/sign_in",
+          "content-type": "text/html; charset=utf-8",
+          "cache-control": "no-cache",
+          "x-request-id": "3577b3f4-5826-4c8b-9313-b8d4bcfad170",
+          "vary": "Origin",
+          "content-length": "0",
+          "set-cookie": [
+            "_open_banking_rails_session=<redacted>; path=/; httponly; samesite=lax"
+          ]
+        },
+        "body_sample": ""
+      }
+    },
+    {
+      "case": "bank_error_param",
+      "actor": "main(session)",
+      "request": {
+        "method": "GET",
+        "path": "/callback?error=access_denied",
+        "headers": {}
+      },
+      "response": {
+        "status": 302,
+        "duration_ms": 145,
+        "headers": {
+          "x-frame-options": "SAMEORIGIN",
+          "x-content-type-options": "nosniff",
+          "location": "http://127.0.0.1:3000/admin/bank_connections",
+          "content-type": "text/html; charset=utf-8",
+          "cache-control": "no-cache",
+          "x-request-id": "ea9eeb51-4304-4caa-aa1a-12a4556ddd7d",
+          "vary": "Origin",
+          "content-length": "0",
+          "set-cookie": [
+            "_open_banking_rails_session=<redacted>; path=/; httponly; samesite=lax"
+          ]
+        },
+        "body_sample": ""
+      }
+    },
+    {
+      "case": "invalid_state",
+      "actor": "main(session)",
+      "request": {
+        "method": "GET",
+        "path": "/callback?state=garbage&code=abc",
+        "headers": {}
+      },
+      "response": {
+        "status": 302,
+        "duration_ms": 145,
+        "headers": {
+          "x-frame-options": "SAMEORIGIN",
+          "x-content-type-options": "nosniff",
+          "location": "http://127.0.0.1:3000/admin/bank_connections",
+          "content-type": "text/html; charset=utf-8",
+          "cache-control": "no-cache",
+          "x-request-id": "dd4d91fe-18f8-466f-b9d5-754fc06298bb",
+          "vary": "Origin",
+          "content-length": "0",
+          "set-cookie": [
+            "_open_banking_rails_session=<redacted>; path=/; httponly; samesite=lax"
+          ]
+        },
+        "body_sample": ""
+      }
+    },
+    {
+      "case": "missing_state",
+      "actor": "main(session)",
+      "request": {
+        "method": "GET",
+        "path": "/callback?code=abc",
+        "headers": {}
+      },
+      "response": {
+        "status": 302,
+        "duration_ms": 138,
+        "headers": {
+          "x-frame-options": "SAMEORIGIN",
+          "x-content-type-options": "nosniff",
+          "location": "http://127.0.0.1:3000/admin/bank_connections",
+          "content-type": "text/html; charset=utf-8",
+          "cache-control": "no-cache",
+          "x-request-id": "0ada2039-3850-48de-8dc1-e8b8d2134048",
+          "vary": "Origin",
+          "content-length": "0",
+          "set-cookie": [
+            "_open_banking_rails_session=<redacted>; path=/; httponly; samesite=lax"
+          ]
+        },
+        "body_sample": ""
+      }
+    }
+  ]
+}

@@ -1,0 +1,72 @@
+{
+  "route": "DELETE /api/:version/bank_connections/:id(.json)",
+  "captured_at": "2026-10-21T13:26:17.364Z",
+  "base_url": "http://127.0.0.1:3000",
+  "cases": [
+    {
+      "case": "default",
+      "actor": "main(token)",
+      "note": "destroys main tenant's 1st connection (PKO) - last call of the run",
+      "request": {
+        "method": "DELETE",
+        "path": "/api/v1/bank_connections/1",
+        "headers": {
+          "authorization": "Bearer obrl_oracle_main_t…"
+        }
+      },
+      "response": {
+        "status": 200,
+        "duration_ms": 229,
+        "headers": {
+          "content-type": "application/json",
+          "cache-control": "max-age=0, private, must-revalidate",
+          "x-request-id": "a2a41dae-68cb-41b9-b19b-fa545c846d42",
+          "vary": "Origin",
+          "content-length": "394"
+        },
+        "body_sample": {
+          "id": 1,
+          "bank_name": "PKO BP",
+          "bank_slug": "pko_bp",
+          "bank_country": "PL",
+          "psu_type": "personal",
+          "status": "closed",
+          "authorized_at": "2026-10-21T13:21:22.000Z",
+          "valid_until": "2026-11-20T13:21:55.000Z",
+          "last_refreshed_at": "2026-10-21T13:24:03.968Z",
+          "last_synced_at": "2026-10-21T13:24:01.342Z",
+          "access_balances": true,
+          "access_transactions": true,
+          "replaces_id": null,
+          "tpp_credential_id": 1,
+          "last_error": null
+        }
+      }
+    },
+    {
+      "case": "other_tenant_id",
+      "actor": "main(token)",
+      "request": {
+        "method": "DELETE",
+        "path": "/api/v1/bank_connections/3",
+        "headers": {
+          "authorization": "Bearer obrl_oracle_main_t…"
+        }
+      },
+      "response": {
+        "status": 404,
+        "duration_ms": 165,
+        "headers": {
+          "content-type": "application/json",
+          "cache-control": "no-cache",
+          "x-request-id": "562e6f2b-3e0e-4655-99da-375746e08578",
+          "vary": "Origin",
+          "content-length": "99"
+        },
+        "body_sample": {
+          "message": "Couldn't find BankConnection with 'id'=3 [WHERE \"tpp_credentials\".\"user_id\" = $1]"
+        }
+      }
+    }
+  ]
+}

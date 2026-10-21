@@ -1,0 +1,63 @@
+{
+  "route": "DELETE /admin/sign_out(.:format)",
+  "captured_at": "2026-10-21T13:22:08.812Z",
+  "base_url": "http://127.0.0.1:3000",
+  "cases": [
+    {
+      "case": "not_signed_in",
+      "actor": "anon",
+      "request": {
+        "method": "DELETE",
+        "path": "/admin/sign_out",
+        "headers": {},
+        "body": {
+          "authenticity_token": "<redacted>"
+        }
+      },
+      "response": {
+        "status": 401,
+        "duration_ms": 110,
+        "headers": {
+          "x-frame-options": "SAMEORIGIN",
+          "x-content-type-options": "nosniff",
+          "content-type": "*/*",
+          "cache-control": "no-cache",
+          "x-request-id": "cb254d70-f900-443a-be72-8f3e959520b7",
+          "vary": "Origin",
+          "content-length": "0",
+          "set-cookie": [
+            "_open_banking_rails_session=<redacted>; path=/; httponly; samesite=lax"
+          ]
+        },
+        "body_sample": ""
+      }
+    },
+    {
+      "case": "signed_in",
+      "actor": "other(session)",
+      "request": {
+        "method": "DELETE",
+        "path": "/admin/sign_out",
+        "headers": {},
+        "body": {
+          "authenticity_token": "<redacted>"
+        }
+      },
+      "response": {
+        "status": 204,
+        "duration_ms": 399,
+        "headers": {
+          "x-frame-options": "SAMEORIGIN",
+          "x-content-type-options": "nosniff",
+          "cache-control": "no-cache",
+          "x-request-id": "571d326f-4fe8-4f1d-a5d7-02adc95d07e0",
+          "vary": "Origin",
+          "set-cookie": [
+            "_open_banking_rails_session=<redacted>; path=/; httponly; samesite=lax"
+          ]
+        },
+        "body_sample": ""
+      }
+    }
+  ]
+}

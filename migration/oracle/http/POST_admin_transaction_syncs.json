@@ -1,0 +1,71 @@
+{
+  "route": "POST /admin/transaction_syncs(.:format)",
+  "captured_at": "2026-10-21T13:23:58.631Z",
+  "base_url": "http://127.0.0.1:3000",
+  "cases": [
+    {
+      "case": "default",
+      "actor": "main(session)",
+      "request": {
+        "method": "POST",
+        "path": "/admin/transaction_syncs",
+        "headers": {},
+        "body": {
+          "authenticity_token": "<redacted>",
+          "bank_connection_id": "1",
+          "date_from": "2026-07-13",
+          "date_to": "2026-10-21"
+        }
+      },
+      "response": {
+        "status": 302,
+        "duration_ms": 192,
+        "headers": {
+          "x-frame-options": "SAMEORIGIN",
+          "x-content-type-options": "nosniff",
+          "location": "http://127.0.0.1:3000/admin/transaction_syncs/12",
+          "content-type": "text/html; charset=utf-8",
+          "cache-control": "no-cache",
+          "x-request-id": "c4e0f61b-4dd7-48c6-a195-215be3d553c0",
+          "vary": "Origin",
+          "content-length": "0",
+          "set-cookie": [
+            "_open_banking_rails_session=<redacted>; path=/; httponly; samesite=lax"
+          ]
+        },
+        "body_sample": ""
+      }
+    },
+    {
+      "case": "missing_connection",
+      "actor": "main(session)",
+      "request": {
+        "method": "POST",
+        "path": "/admin/transaction_syncs",
+        "headers": {},
+        "body": {
+          "authenticity_token": "<redacted>",
+          "bank_connection_id": ""
+        }
+      },
+      "response": {
+        "status": 302,
+        "duration_ms": 166,
+        "headers": {
+          "x-frame-options": "SAMEORIGIN",
+          "x-content-type-options": "nosniff",
+          "location": "http://127.0.0.1:3000/admin/transaction_syncs/13",
+          "content-type": "text/html; charset=utf-8",
+          "cache-control": "no-cache",
+          "x-request-id": "c1e6736a-9d38-4e6f-8bff-03fd542a23c4",
+          "vary": "Origin",
+          "content-length": "0",
+          "set-cookie": [
+            "_open_banking_rails_session=<redacted>; path=/; httponly; samesite=lax"
+          ]
+        },
+        "body_sample": ""
+      }
+    }
+  ]
+}

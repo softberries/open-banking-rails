@@ -1,0 +1,95 @@
+{
+  "route": "GET /api/:version/categories/:id(.json)",
+  "captured_at": "2026-10-21T13:22:31.206Z",
+  "base_url": "http://127.0.0.1:3000",
+  "cases": [
+    {
+      "case": "default",
+      "actor": "main(token)",
+      "request": {
+        "method": "GET",
+        "path": "/api/v1/categories/1",
+        "headers": {
+          "authorization": "Bearer obrl_oracle_main_t…"
+        }
+      },
+      "response": {
+        "status": 200,
+        "duration_ms": 181,
+        "headers": {
+          "content-type": "application/json",
+          "cache-control": "max-age=0, private, must-revalidate",
+          "x-request-id": "3dc4a340-9481-4b55-be4c-f72d22f3da59",
+          "vary": "Origin",
+          "content-length": "176"
+        },
+        "body_sample": {
+          "id": 1,
+          "name": "Jedzenie",
+          "slug": "food",
+          "path": "food",
+          "kind": "expense",
+          "color": "emerald",
+          "icon": "utensils",
+          "essential": false,
+          "position": 0,
+          "archived_at": null,
+          "parent_path": null
+        }
+      }
+    },
+    {
+      "case": "other_tenant_id",
+      "actor": "main(token)",
+      "request": {
+        "method": "GET",
+        "path": "/api/v1/categories/119",
+        "headers": {
+          "authorization": "Bearer obrl_oracle_main_t…"
+        }
+      },
+      "response": {
+        "status": 404,
+        "duration_ms": 180,
+        "headers": {
+          "content-type": "application/json",
+          "cache-control": "no-cache",
+          "x-request-id": "09a010f4-ef54-44aa-bc8d-fdddb22a3659",
+          "vary": "Origin",
+          "content-length": "90"
+        },
+        "body_sample": {
+          "message": "Couldn't find Category with 'id'=119 [WHERE \"categories\".\"user_id\" = $1]"
+        }
+      }
+    },
+    {
+      "case": "non_integer_id",
+      "actor": "main(token)",
+      "request": {
+        "method": "GET",
+        "path": "/api/v1/categories/abc",
+        "headers": {
+          "authorization": "Bearer obrl_oracle_main_t…"
+        }
+      },
+      "response": {
+        "status": 404,
+        "duration_ms": 411,
+        "headers": {
+          "content-type": "text/html; charset=UTF-8",
+          "x-request-id": "173cb904-5da4-4ed5-8e69-013967dba89f",
+          "vary": "Origin",
+          "content-length": "185355"
+        },
+        "body_sample": {
+          "html_title": "Action Controller: Exception caught",
+          "h1": "Routing Error",
+          "flash": [],
+          "length": 185355,
+          "head": "<!DOCTYPE html> <html lang=\"en\"> <head> <meta charset=\"utf-8\" /> <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"> <meta name=\"turbo-visit-control\" content=\"reload\"> <title>Action Controller: Exception caught</title> <style> body { background-color: #FAFAFA; color: #333; color-scheme: light dark; supported-color-schemes: light dark; margin: 0px; } body, p, ol, ul, td { font-family: helvetica, verdana, arial, sans-serif; font-size: 13px; line-height: 18px; } pre { font-size: 11px; white-space: pre-wrap; } pre.box { border: 1px solid #EEE; padding: 10px; margin: 0px; width: 958px; } header { color: #F0F0F0; background: #C00; padding: 0.5em 1.5em; } header button { appearance: none; background-color: hsl(0 0% 0% / 0.2); border: 0; border-radius: 14px; color: white; float: right; font-weight: 500; height: 28px; padding-inline: 14px; margin: 0.35em 0; } header button:active { background-color: hsl(0 0% 0% / 0.25); } h1 { overflow-wrap: break-word; margin: 0.2em 0; line-height: 1.1em; font-size: 2em; } h2 { color: #C00; line-height: 25px; } code.traces { font-size: 11px; } .trace-container { margin-top: 10px; } code.traces .trace { display: flex; align-items: center; gap: 2px; } .edit-icon { width: 16px; height: 16px; display: flex; font-size: 13px; align-items: center; justify-content: center; text-decoration: none; } .edit-icon:hover { scale: 1.05; } .response-heading, .request-heading { margin-top: 30px; } .exception-message { padding: 8px 0; } .exception-mess…[truncated 166905 chars]"
+        }
+      }
+    }
+  ]
+}

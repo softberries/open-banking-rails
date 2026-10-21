@@ -1,0 +1,62 @@
+{
+  "route": "GET /api/:version/llm_enrichments(.json)",
+  "captured_at": "2026-10-21T13:22:35.381Z",
+  "base_url": "http://127.0.0.1:3000",
+  "cases": [
+    {
+      "case": "default",
+      "actor": "main(token)",
+      "request": {
+        "method": "GET",
+        "path": "/api/v1/llm_enrichments",
+        "headers": {
+          "authorization": "Bearer obrl_oracle_main_t…"
+        }
+      },
+      "response": {
+        "status": 200,
+        "duration_ms": 174,
+        "headers": {
+          "content-type": "application/json",
+          "cache-control": "max-age=0, private, must-revalidate",
+          "x-request-id": "398241d8-3ebb-47b4-ab8c-463a4d0d86b5",
+          "vary": "Origin",
+          "content-length": "441"
+        },
+        "body_sample": {
+          "data": [
+            {
+              "id": 6,
+              "kind": "llm_enrichment",
+              "status": "succeeded",
+              "trigger": "manual",
+              "params": {
+                "limit": 5
+              },
+              "summary": {
+                "batches": [],
+                "skipped": 0,
+                "auto_applied": 0,
+                "total_groups": 0,
+                "pending_review": 0
+              },
+              "error": null,
+              "scheduled_for": null,
+              "started_at": "2026-10-21T13:22:29.833Z",
+              "finished_at": "2026-10-21T13:22:30.334Z",
+              "subject_type": "User",
+              "subject_id": 1,
+              "created_at": "2026-10-21T13:22:27.526Z"
+            }
+          ],
+          "pagination": {
+            "page": 1,
+            "limit": 10,
+            "count": 1,
+            "pages": 1
+          }
+        }
+      }
+    }
+  ]
+}

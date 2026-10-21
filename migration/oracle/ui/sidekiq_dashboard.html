@@ -1,0 +1,403 @@
+<!DOCTYPE html><html dir="ltr"><head>
+    <title>[DEVELOPMENT] Sidekiq</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+    <link href="/sidekiq/stylesheets/bootstrap.css" media="screen" rel="stylesheet" type="text/css" nonce="">
+    
+
+    <link href="/sidekiq/stylesheets/application.css" media="screen" rel="stylesheet" type="text/css" nonce="">
+    <link href="/sidekiq/stylesheets/application-dark.css" media="screen and (prefers-color-scheme: dark)" rel="stylesheet" type="text/css" nonce="">
+    
+
+    <link rel="apple-touch-icon" href="/sidekiq/images/apple-touch-icon.png">
+    <link rel="shortcut icon" type="image/ico" href="/sidekiq/images/favicon.ico">
+    <script type="text/javascript" src="/sidekiq/javascripts/application.js" nonce=""></script>
+    <meta name="google" content="notranslate">
+    
+  </head>
+  <body class="admin" data-locale="en">
+    <div class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header" data-navbar="static">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="navbar-menu" data-target="#navbar-menu">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <div class="navbar-toggle collapsed navbar-livereload">
+        
+
+        
+      </div>
+      <a class="navbar-brand" href="/sidekiq/">
+        Sidekiq
+        <span class="status">
+  <i class="status-sprite status-idle"></i>
+  idle
+</span>
+
+      </a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="navbar-menu">
+      <ul class="nav navbar-nav" data-navbar="static">
+        
+          
+            <li class="active">
+            <a href="/sidekiq/">Dashboard</a>
+            </li>
+          
+        
+          
+            <li class="">
+            <a href="/sidekiq/busy">Busy</a>
+            </li>
+          
+        
+          
+            <li class="">
+            <a href="/sidekiq/queues">Queues</a>
+            </li>
+          
+        
+          
+            <li class="">
+            <a href="/sidekiq/retries">Retries</a>
+            </li>
+          
+        
+          
+            <li class="">
+            <a href="/sidekiq/scheduled">Scheduled</a>
+            </li>
+          
+        
+          
+            <li class="">
+            <a href="/sidekiq/morgue">Dead</a>
+            </li>
+          
+        
+          
+            <li class="">
+            <a href="/sidekiq/metrics">Metrics</a>
+            </li>
+          
+        
+
+        
+
+        <li class="navbar-livereload">
+          <div class="poll-wrapper">
+            
+
+            
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+    <div id="page">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12 summary_bar">
+            <ul class="list-unstyled summary row">
+  <li class="processed col-sm-1">
+    <span id="txtProcessed" class="count" data-nwp="">53</span>
+    <span class="desc">Processed</span>
+  </li>
+  <li class="failed col-sm-1">
+    <span id="txtFailed" class="count" data-nwp="">3</span>
+    <span class="desc">Failed</span>
+  </li>
+  <li class="busy col-sm-1">
+    <a href="/sidekiq/busy">
+      <span id="txtBusy" class="count" data-nwp="">0</span>
+      <span class="desc">Busy</span>
+    </a>
+  </li>
+  <li class="enqueued col-sm-1">
+    <a href="/sidekiq/queues">
+      <span id="txtEnqueued" class="count" data-nwp="">0</span>
+      <span class="desc">Enqueued</span>
+    </a>
+  </li>
+  <li class="retries col-sm-1">
+    <a href="/sidekiq/retries">
+      <span id="txtRetries" class="count" data-nwp="">1</span>
+      <span class="desc">Retries</span>
+    </a>
+  </li>
+  <li class="scheduled col-sm-1">
+    <a href="/sidekiq/scheduled">
+      <span id="txtScheduled" class="count" data-nwp="">0</span>
+      <span class="desc">Scheduled</span>
+    </a>
+  </li>
+  <li class="dead col-sm-1">
+    <a href="/sidekiq/morgue">
+      <span id="txtDead" class="count" data-nwp="">0</span>
+      <span class="desc">Dead</span>
+    </a>
+  </li>
+</ul>
+
+          </div>
+
+          <div class="col-sm-12">
+            <script type="text/javascript" src="/sidekiq/javascripts/dashboard.js" nonce=""></script>
+<div class="dashboard clearfix">
+  <h3>
+    Dashboard
+    <span id="beacon" class="beacon">
+      <span class="ring"></span>
+      <span class="dot"></span>
+    </span>
+  </h3>
+  <div class="interval-slider ltr">
+    <span class="interval-slider-label">Polling interval:</span>
+    <span id="sldr-text" class="current-interval">5 s</span>
+    <br>
+    <input id="sldr" aria-label="Polling interval milliseconds" type="range" min="2000" max="20000" step="1000" value="5000" style="">
+  </div>
+</div>
+
+<div class="row chart">
+  <span id="sr-last-dashboard-update-template" hidden="hidden">Latest poll: Processed: PROCESSED_COUNT. Failed: FAILED_COUNT.</span>
+  <span id="sr-last-dashboard-update" class="sr-only" role="status"></span>
+
+  <canvas id="realtime-chart" width="1170" height="292" style="display: block; box-sizing: border-box; height: 292px; width: 1170px;">
+    {"processedLabel":"Processed","failedLabel":"Failed","labels":["","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",""],"processed":[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],"failed":[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],"updateUrl":"/sidekiq/stats"}
+  </canvas>
+
+  <!-- start with a space in the legend so the height doesn't change when we add content dynamically -->
+  <div id="realtime-legend">&nbsp;</div>
+</div>
+
+<div class="row header">
+   <div class="col-sm-4 pull-left flip">
+     <h3>History</h3>
+   </div>
+ </div>
+ <div class="row chart">
+   <div>
+    <a href="/sidekiq/?days=7" class="history-graph ">1 week</a>
+    <a href="/sidekiq/" class="history-graph active">1 month</a>
+    <a href="/sidekiq/?days=90" class="history-graph ">3 months</a>
+    <a href="/sidekiq/?days=180" class="history-graph ">6 months</a>
+  </div>
+
+  <canvas id="history-chart" width="1170" height="292" style="display: block; box-sizing: border-box; height: 292px; width: 1170px;">
+    {"processedLabel":"Processed","failedLabel":"Failed","processed":[["2026-09-22",0],["2026-09-23",0],["2026-09-24",0],["2026-09-25",0],["2026-09-26",0],["2026-09-27",0],["2026-09-28",0],["2026-09-29",0],["2026-09-30",0],["2026-10-01",0],["2026-10-02",0],["2026-10-03",0],["2026-10-04",0],["2026-10-05",0],["2026-10-06",0],["2026-10-07",0],["2026-10-08",0],["2026-10-09",0],["2026-10-10",0],["2026-10-11",0],["2026-10-12",0],["2026-10-13",0],["2026-10-14",0],["2026-10-15",0],["2026-10-16",0],["2026-10-17",0],["2026-10-18",0],["2026-10-19",0],["2026-10-20",0],["2026-10-21",53]],"failed":[["2026-09-22",0],["2026-09-23",0],["2026-09-24",0],["2026-09-25",0],["2026-09-26",0],["2026-09-27",0],["2026-09-28",0],["2026-09-29",0],["2026-09-30",0],["2026-10-01",0],["2026-10-02",0],["2026-10-03",0],["2026-10-04",0],["2026-10-05",0],["2026-10-06",0],["2026-10-07",0],["2026-10-08",0],["2026-10-09",0],["2026-10-10",0],["2026-10-11",0],["2026-10-12",0],["2026-10-13",0],["2026-10-14",0],["2026-10-15",0],["2026-10-16",0],["2026-10-17",0],["2026-10-18",0],["2026-10-19",0],["2026-10-20",0],["2026-10-21",3]]}
+  </canvas>
+</div>
+
+<br>
+<div class="row header">
+  <div class="col-sm-4 pull-left flip">
+    <h3>Redis</h3>
+  </div>
+</div>
+<div class="stats-wrapper">
+  <div class="stats-container">
+    
+      <div class="stat">
+        <h3 id="redis_version">7.4.2</h3>
+        <p>Version</p>
+      </div>
+    
+
+    
+      <div class="stat">
+        <h3 id="uptime_in_days">0</h3>
+        <p>Uptime (days)</p>
+      </div>
+    
+
+    
+      <div class="stat">
+        <h3 id="connected_clients">10</h3>
+        <p>Connections</p>
+      </div>
+    
+
+    
+      <div class="stat">
+        <h3 id="used_memory_human">2.02M</h3>
+        <p>Memory Usage</p>
+      </div>
+    
+
+    
+      <div class="stat">
+        <h3 id="used_memory_peak_human">2.11M</h3>
+        <p>Peak Memory Usage</p>
+      </div>
+    
+  </div>
+</div>
+
+<script type="text/javascript" src="/sidekiq/javascripts/chart.min.js" nonce=""></script>
+<script type="text/javascript" src="/sidekiq/javascripts/chartjs-plugin-annotation.min.js" nonce=""></script>
+<script type="text/javascript" src="/sidekiq/javascripts/base-charts.js" nonce=""></script>
+<script type="text/javascript" src="/sidekiq/javascripts/dashboard-charts.js" nonce=""></script>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="navbar navbar-fixed-bottom navbar-inverse ltr">
+  <div class="navbar-inner">
+    <div class="container text-center">
+        <ul class="nav">
+          <li>
+            <p class="navbar-text product-version">Sidekiq v7.3.10</p>
+          </li>
+          <li>
+            <p class="navbar-text redis-url" title="redis://127.0.0.1:6379">redis://127.0.0.1:6379</p>
+          </li>
+          <li>
+            <p id="serverUtcTime" class="navbar-text server-utc-time">13:25:54 UTC</p>
+          </li>
+          <li>
+            <p class="navbar-text"><a rel="help" href="https://github.com/sidekiq/sidekiq/wiki">docs</a></p>
+          </li>
+          <li>
+            <form id="locale-form" class="form-inline" action="/sidekiq/change_locale" method="post">
+              <input type="hidden" name="authenticity_token" value="ozIYbzs4U2OFyNl33fsJTz9AB8geY0Vdbaesw4J5mcTrOJKbQTyvxVGzckqyNZhnwBikOo1rdU21lc3EQtLOYw==" style="">
+              <select id="locale-select" class="form-control" aria-label="Language" name="locale">
+                
+                  
+                    <option value="ar">ar</option>
+                  
+                
+                  
+                    <option value="cs">cs</option>
+                  
+                
+                  
+                    <option value="da">da</option>
+                  
+                
+                  
+                    <option value="de">de</option>
+                  
+                
+                  
+                    <option value="el">el</option>
+                  
+                
+                  
+                    <option selected="" value="en">en</option>
+                  
+                
+                  
+                    <option value="es">es</option>
+                  
+                
+                  
+                    <option value="fa">fa</option>
+                  
+                
+                  
+                    <option value="fr">fr</option>
+                  
+                
+                  
+                    <option value="gd">gd</option>
+                  
+                
+                  
+                    <option value="he">he</option>
+                  
+                
+                  
+                    <option value="hi">hi</option>
+                  
+                
+                  
+                    <option value="it">it</option>
+                  
+                
+                  
+                    <option value="ja">ja</option>
+                  
+                
+                  
+                    <option value="ko">ko</option>
+                  
+                
+                  
+                    <option value="lt">lt</option>
+                  
+                
+                  
+                    <option value="nb">nb</option>
+                  
+                
+                  
+                    <option value="nl">nl</option>
+                  
+                
+                  
+                    <option value="pl">pl</option>
+                  
+                
+                  
+                    <option value="pt-br">pt-br</option>
+                  
+                
+                  
+                    <option value="pt">pt</option>
+                  
+                
+                  
+                    <option value="ru">ru</option>
+                  
+                
+                  
+                    <option value="sv">sv</option>
+                  
+                
+                  
+                    <option value="ta">ta</option>
+                  
+                
+                  
+                    <option value="tr">tr</option>
+                  
+                
+                  
+                    <option value="uk">uk</option>
+                  
+                
+                  
+                    <option value="ur">ur</option>
+                  
+                
+                  
+                    <option value="vi">vi</option>
+                  
+                
+                  
+                    <option value="zh-cn">zh-cn</option>
+                  
+                
+                  
+                    <option value="zh-tw">zh-tw</option>
+                  
+                
+              </select>
+            </form>
+          </li>
+        </ul>
+    </div>
+  </div>
+</div>
+
+  
+
+</body></html>

@@ -1,0 +1,161 @@
+{
+  "route": "POST /api/:version/bank_transactions/:bank_transaction_id/classification(.json)",
+  "captured_at": "2026-10-21T13:22:48.008Z",
+  "base_url": "http://127.0.0.1:3000",
+  "cases": [
+    {
+      "case": "default",
+      "actor": "main(token)",
+      "request": {
+        "method": "POST",
+        "path": "/api/v1/bank_transactions/1/classification",
+        "headers": {
+          "authorization": "Bearer obrl_oracle_main_t…",
+          "content-type": "application/json"
+        },
+        "body": {
+          "mode": "only_this",
+          "merchant_id": 58,
+          "category_id": 238
+        }
+      },
+      "response": {
+        "status": 201,
+        "duration_ms": 274,
+        "headers": {
+          "content-type": "application/json",
+          "cache-control": "max-age=0, private, must-revalidate",
+          "x-request-id": "b0fd5183-febb-401c-8866-9694529bf2fa",
+          "vary": "Origin",
+          "content-length": "1185"
+        },
+        "body_sample": {
+          "id": 26,
+          "merchant_id": 58,
+          "category_id": 238,
+          "merchant_rule_id": null,
+          "source": "manual",
+          "category_overridden": true,
+          "confidence": null,
+          "model": null,
+          "enriched_at": "2026-10-21T13:22:47.929Z",
+          "merchant": {
+            "id": 58,
+            "name": "Oracle API Merchant",
+            "slug": "oracle_api_merchant",
+            "kind": "company",
+            "source": "user",
+            "logo_url": null,
+            "notes": "edited",
+            "default_category_id": 238,
+            "confidence": null,
+            "model": null,
+            "approved_at": "2026-10-21T13:22:40.414Z",
+            "archived_at": null,
+            "default_category": {
+              "id": 238,
+              "name": "Oracle API Category Renamed",
+              "slug": "oracle_api_category",
+              "path": "food.oracle_api_category",
+              "kind": "expense",
+              "color": "#ff0000",
+              "icon": null,
+              "essential": false,
+              "position": 0,
+              "archived_at": null,
+              "parent_path": "food"
+            }
+          },
+          "category": {
+            "id": 238,
+            "name": "Oracle API Category Renamed",
+            "slug": "oracle_api_category",
+            "path": "food.oracle_api_category",
+            "kind": "expense",
+            "color": "#ff0000",
+            "icon": null,
+            "essential": false,
+            "position": 0,
+            "archived_at": null,
+            "parent_path": "food"
+          },
+          "effective_category": {
+            "id": 238,
+            "name": "Oracle API Category Renamed",
+            "slug": "oracle_api_category",
+            "path": "food.oracle_api_category",
+            "kind": "expense",
+            "color": "#ff0000",
+            "icon": null,
+            "essential": false,
+            "position": 0,
+            "archived_at": null,
+            "parent_path": "food"
+          }
+        }
+      }
+    },
+    {
+      "case": "create_rule_missing_pattern",
+      "actor": "main(token)",
+      "request": {
+        "method": "POST",
+        "path": "/api/v1/bank_transactions/1/classification",
+        "headers": {
+          "authorization": "Bearer obrl_oracle_main_t…",
+          "content-type": "application/json"
+        },
+        "body": {
+          "mode": "create_rule",
+          "merchant_id": 58
+        }
+      },
+      "response": {
+        "status": 422,
+        "duration_ms": 184,
+        "headers": {
+          "content-type": "application/json",
+          "cache-control": "no-cache",
+          "x-request-id": "67073cc3-202b-40fa-a56b-618a314572fe",
+          "vary": "Origin",
+          "content-length": "28"
+        },
+        "body_sample": {
+          "message": "Pick a pattern"
+        }
+      }
+    },
+    {
+      "case": "invalid_mode",
+      "actor": "main(token)",
+      "request": {
+        "method": "POST",
+        "path": "/api/v1/bank_transactions/1/classification",
+        "headers": {
+          "authorization": "Bearer obrl_oracle_main_t…",
+          "content-type": "application/json"
+        },
+        "body": {
+          "mode": "everything"
+        }
+      },
+      "response": {
+        "status": 400,
+        "duration_ms": 136,
+        "headers": {
+          "content-type": "application/json",
+          "cache-control": "no-cache",
+          "x-request-id": "f64ca5bb-2bc4-4cff-9c08-dbd3bf80cbe4",
+          "vary": "Origin",
+          "content-length": "80"
+        },
+        "body_sample": {
+          "message": "Invalid parameters.",
+          "details": [
+            "mode does not have a valid value"
+          ]
+        }
+      }
+    }
+  ]
+}

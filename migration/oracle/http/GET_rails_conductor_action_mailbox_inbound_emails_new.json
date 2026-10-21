@@ -1,0 +1,39 @@
+{
+  "route": "GET /rails/conductor/action_mailbox/inbound_emails/new(.:format)",
+  "captured_at": "2026-10-21T13:22:11.966Z",
+  "base_url": "http://127.0.0.1:3000",
+  "cases": [
+    {
+      "case": "default",
+      "actor": "anon",
+      "request": {
+        "method": "GET",
+        "path": "/rails/conductor/action_mailbox/inbound_emails/new",
+        "headers": {}
+      },
+      "response": {
+        "status": 200,
+        "duration_ms": 176,
+        "headers": {
+          "x-frame-options": "SAMEORIGIN",
+          "x-content-type-options": "nosniff",
+          "content-type": "text/html; charset=utf-8",
+          "vary": "Accept, Origin",
+          "cache-control": "max-age=0, private, must-revalidate",
+          "x-request-id": "86efc7a8-93d1-4d2e-93f4-ab2053cfb189",
+          "content-length": "2407",
+          "set-cookie": [
+            "_open_banking_rails_session=<redacted>; path=/; httponly; samesite=lax"
+          ]
+        },
+        "body_sample": {
+          "html_title": "Rails Conductor: Deliver new inbound email",
+          "h1": "Deliver new inbound email",
+          "flash": [],
+          "length": 2407,
+          "head": "<!-- BEGIN /workspace/ruby-service-investigator/bundle/ruby/3.4.0/gems/actionmailbox-8.1.3/app/views/layouts/rails/conductor.html.erb --><html> <head> <title>Rails Conductor: Deliver new inbound email</title> </head> <body> <!-- BEGIN /workspace/ruby-service-investigator/bundle/ruby/3.4.0/gems/actionmailbox-8.1.3/app/views/rails/conductor/action_mailbox/inbound_emails/new.html.erb --> <h1>Deliver new inbound email</h1> <form enctype=\"multipart/form-data\" action=\"/rails/conductor/action_mailbox/inbound_emails\" accept-charset=\"UTF-8\" method=\"post\"><input type=\"hidden\" name=\"authenticity_token\" value=\"ZnZC5e9LvdkEPLlJdnwYC8RIUUB8IoCytOv0cKCGGnXszPcHXn2OzPrxKiK6lsOCwP_lUw7dG8DaHdx2atxMmg\" /> <div> <label for=\"mail_from\">From</label><br> <input type=\"text\" name=\"mail[from]\" id=\"mail_from\" /> </div> <div> <label for=\"mail_to\">To</label><br> <input type=\"text\" name=\"mail[to]\" id=\"mail_to\" /> </div> <div> <label for=\"mail_cc\">CC</label><br> <input type=\"text\" name=\"mail[cc]\" id=\"mail_cc\" /> </div> <div> <label for=\"mail_bcc\">BCC</label><br> <input type=\"text\" name=\"mail[bcc]\" id=\"mail_bcc\" /> </div> <div> <label for=\"mail_x_original_to\">X-Original-To</label><br> <input type=\"text\" name=\"mail[x_original_to]\" id=\"mail_x_original_to\" /> </div> <div> <label for=\"mail_in_reply_to\">In-Reply-To</label><br> <input type=\"text\" name=\"mail[in_reply_to]\" id=\"mail_in_reply_to\" /> </div> <div> <label for=\"mail_subject\">Subject</label><br> <input type=\"text\" name=\"mail[subject]\" id=\"mail_subject\" /…[truncated 785 chars]"
+        }
+      }
+    }
+  ]
+}

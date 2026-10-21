@@ -1,0 +1,57 @@
+{
+  "route": "GET /api/:version/docs(.:format)",
+  "captured_at": "2026-10-21T13:22:09.632Z",
+  "base_url": "http://127.0.0.1:3000",
+  "cases": [
+    {
+      "case": "default",
+      "actor": "anon",
+      "request": {
+        "method": "GET",
+        "path": "/api/v1/docs",
+        "headers": {}
+      },
+      "response": {
+        "status": 302,
+        "duration_ms": 143,
+        "headers": {
+          "location": "http://127.0.0.1:3000/admin/sign_in",
+          "content-type": "text/html; charset=utf-8",
+          "cache-control": "no-cache",
+          "x-request-id": "e1c99296-2e9d-4fd8-a948-5764f8c054c5",
+          "vary": "Origin",
+          "content-length": "0",
+          "set-cookie": [
+            "_open_banking_rails_session=<redacted>; path=/; httponly; samesite=lax"
+          ]
+        },
+        "body_sample": ""
+      }
+    },
+    {
+      "case": "unknown_version",
+      "actor": "anon",
+      "request": {
+        "method": "GET",
+        "path": "/api/v9/docs",
+        "headers": {}
+      },
+      "response": {
+        "status": 302,
+        "duration_ms": 130,
+        "headers": {
+          "location": "http://127.0.0.1:3000/admin/sign_in",
+          "content-type": "text/html; charset=utf-8",
+          "cache-control": "no-cache",
+          "x-request-id": "5dda14cc-0eae-41ee-86ce-af6e5ed4d064",
+          "vary": "Origin",
+          "content-length": "0",
+          "set-cookie": [
+            "_open_banking_rails_session=<redacted>; path=/; httponly; samesite=lax"
+          ]
+        },
+        "body_sample": ""
+      }
+    }
+  ]
+}

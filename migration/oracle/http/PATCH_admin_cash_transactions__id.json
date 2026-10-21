@@ -1,0 +1,38 @@
+{
+  "route": "PATCH /admin/cash_transactions/:id(.:format)",
+  "captured_at": "2026-10-21T13:23:55.716Z",
+  "base_url": "http://127.0.0.1:3000",
+  "cases": [
+    {
+      "case": "default",
+      "actor": "main(session)",
+      "request": {
+        "method": "PATCH",
+        "path": "/admin/cash_transactions/28",
+        "headers": {},
+        "body": {
+          "authenticity_token": "<redacted>",
+          "cash_transaction[title]": "Oracle UI cash edited"
+        }
+      },
+      "response": {
+        "status": 302,
+        "duration_ms": 249,
+        "headers": {
+          "x-frame-options": "SAMEORIGIN",
+          "x-content-type-options": "nosniff",
+          "location": "http://127.0.0.1:3000/admin/cash_transactions",
+          "content-type": "text/html; charset=utf-8",
+          "cache-control": "no-cache",
+          "x-request-id": "c48877db-5e07-4582-a571-008597a71703",
+          "vary": "Origin",
+          "content-length": "0",
+          "set-cookie": [
+            "_open_banking_rails_session=<redacted>; path=/; httponly; samesite=lax"
+          ]
+        },
+        "body_sample": ""
+      }
+    }
+  ]
+}

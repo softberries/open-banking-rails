@@ -1,0 +1,40 @@
+{
+  "route": "PATCH /admin/bank_transactions/:bank_transaction_id/enrichment(.:format)",
+  "captured_at": "2026-10-21T13:23:57.525Z",
+  "base_url": "http://127.0.0.1:3000",
+  "cases": [
+    {
+      "case": "default",
+      "actor": "main(session)",
+      "request": {
+        "method": "PATCH",
+        "path": "/admin/bank_transactions/1/enrichment",
+        "headers": {},
+        "body": {
+          "authenticity_token": "<redacted>",
+          "enrichment[mode]": "only_this",
+          "enrichment[merchant_id]": "1",
+          "enrichment[category_id]": "1"
+        }
+      },
+      "response": {
+        "status": 302,
+        "duration_ms": 214,
+        "headers": {
+          "x-frame-options": "SAMEORIGIN",
+          "x-content-type-options": "nosniff",
+          "location": "http://127.0.0.1:3000/admin/bank_transactions/1",
+          "content-type": "text/html; charset=utf-8",
+          "cache-control": "no-cache",
+          "x-request-id": "8b0ff5a7-c3bb-4634-941d-88afff26817d",
+          "vary": "Origin",
+          "content-length": "0",
+          "set-cookie": [
+            "_open_banking_rails_session=<redacted>; path=/; httponly; samesite=lax"
+          ]
+        },
+        "body_sample": ""
+      }
+    }
+  ]
+}

@@ -1,0 +1,807 @@
+[
+  {
+    "class": "Mcp::Tools::Analytics::CashFlow",
+    "name": "analytics.cash_flow",
+    "description": "Spend + income totals and a date-bucketed series for the requested period. Defaults to month-to-date.",
+    "input_schema": {
+      "properties": {
+        "from": {
+          "type": "string",
+          "format": "date"
+        },
+        "to": {
+          "type": "string",
+          "format": "date"
+        },
+        "bucket": {
+          "type": "string",
+          "enum": [
+            "day",
+            "week",
+            "month"
+          ]
+        },
+        "currency": {
+          "type": "string"
+        },
+        "account_ids": {
+          "type": "array",
+          "items": {
+            "type": "integer"
+          }
+        },
+        "under_path": {
+          "type": "string",
+          "description": "ltree prefix"
+        }
+      },
+      "type": "object"
+    },
+    "file": "lib/mcp/tools/analytics/cash_flow.rb"
+  },
+  {
+    "class": "Mcp::Tools::Analytics::Spend",
+    "name": "analytics.spend",
+    "description": "Spend breakdown by category path with previous-period delta. depth=1 → top-level, depth=2 → mid-level, omit for leaf rows.",
+    "input_schema": {
+      "properties": {
+        "from": {
+          "type": "string",
+          "format": "date"
+        },
+        "to": {
+          "type": "string",
+          "format": "date"
+        },
+        "currency": {
+          "type": "string"
+        },
+        "account_ids": {
+          "type": "array",
+          "items": {
+            "type": "integer"
+          }
+        },
+        "under_path": {
+          "type": "string"
+        },
+        "depth": {
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "file": "lib/mcp/tools/analytics/spend.rb"
+  },
+  {
+    "class": "Mcp::Tools::Analytics::TopMerchants",
+    "name": "analytics.top_merchants",
+    "description": "Top spend merchants for the period.",
+    "input_schema": {
+      "properties": {
+        "from": {
+          "type": "string",
+          "format": "date"
+        },
+        "to": {
+          "type": "string",
+          "format": "date"
+        },
+        "currency": {
+          "type": "string"
+        },
+        "account_ids": {
+          "type": "array",
+          "items": {
+            "type": "integer"
+          }
+        },
+        "under_path": {
+          "type": "string"
+        },
+        "limit": {
+          "type": "integer",
+          "description": "Default 10, max 50"
+        }
+      },
+      "type": "object"
+    },
+    "file": "lib/mcp/tools/analytics/top_merchants.rb"
+  },
+  {
+    "class": "Mcp::Tools::BankAccounts::List",
+    "name": "bank_accounts.list",
+    "description": "List the user's bank accounts (synced from AISP) and cash wallets (manual=true).",
+    "input_schema": {
+      "properties": {
+        "manual": {
+          "type": "boolean",
+          "description": "true → only cash wallets, false → only synced. Omit for both."
+        }
+      },
+      "type": "object"
+    },
+    "file": "lib/mcp/tools/bank_accounts/list.rb"
+  },
+  {
+    "class": "Mcp::Tools::BankAccounts::RefreshBalances",
+    "name": "bank_accounts.refresh_balances",
+    "description": "Pull fresh balances from the AISP provider. Live API call.",
+    "input_schema": {
+      "properties": {
+        "id": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "id"
+      ],
+      "type": "object"
+    },
+    "file": "lib/mcp/tools/bank_accounts/refresh_balances.rb"
+  },
+  {
+    "class": "Mcp::Tools::BankAccounts::RefreshDetails",
+    "name": "bank_accounts.refresh_details",
+    "description": "Pull fresh account-info from the AISP provider (name, holder, product). Live API call.",
+    "input_schema": {
+      "properties": {
+        "id": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "id"
+      ],
+      "type": "object"
+    },
+    "file": "lib/mcp/tools/bank_accounts/refresh_details.rb"
+  },
+  {
+    "class": "Mcp::Tools::BankConnections::List",
+    "name": "bank_connections.list",
+    "description": "List the user's bank connections with status + validity.",
+    "input_schema": {
+      "properties": {
+        "status": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "file": "lib/mcp/tools/bank_connections/list.rb"
+  },
+  {
+    "class": "Mcp::Tools::BankConnections::Refresh",
+    "name": "bank_connections.refresh",
+    "description": "Pull current status + validity for a bank connection from the provider.",
+    "input_schema": {
+      "properties": {
+        "id": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "id"
+      ],
+      "type": "object"
+    },
+    "file": "lib/mcp/tools/bank_connections/refresh.rb"
+  },
+  {
+    "class": "Mcp::Tools::Cash::CreateTransaction",
+    "name": "cash.create_transaction",
+    "description": "Record a manual cash transaction (income or expense) for the current user.",
+    "input_schema": {
+      "properties": {
+        "amount": {
+          "type": "string",
+          "description": "Decimal amount, e.g. '12.50'"
+        },
+        "currency": {
+          "type": "string",
+          "description": "ISO-4217, defaults to PLN"
+        },
+        "direction": {
+          "type": "string",
+          "enum": [
+            "debit",
+            "credit"
+          ],
+          "description": "Defaults to debit (expense)"
+        },
+        "booking_date": {
+          "type": "string",
+          "format": "date"
+        },
+        "transaction_date": {
+          "type": "string",
+          "format": "date"
+        },
+        "title": {
+          "type": "string"
+        },
+        "note": {
+          "type": "string"
+        },
+        "counterparty_name": {
+          "type": "string"
+        },
+        "merchant_id": {
+          "type": "integer"
+        },
+        "category_id": {
+          "type": "integer"
+        },
+        "payment_method": {
+          "type": "string",
+          "description": "cash / card / blik_p2p / transfer / other"
+        }
+      },
+      "required": [
+        "amount"
+      ],
+      "type": "object"
+    },
+    "file": "lib/mcp/tools/cash/create_transaction.rb"
+  },
+  {
+    "class": "Mcp::Tools::Cash::DeleteTransaction",
+    "name": "cash.delete_transaction",
+    "description": "Delete a manual cash transaction. Auto-generated rows (e.g. ATM linker) cannot be deleted here.",
+    "input_schema": {
+      "properties": {
+        "id": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "id"
+      ],
+      "type": "object"
+    },
+    "file": "lib/mcp/tools/cash/delete_transaction.rb"
+  },
+  {
+    "class": "Mcp::Tools::Cash::UpdateTransaction",
+    "name": "cash.update_transaction",
+    "description": "Update fields on an existing manual cash transaction. Currency is locked - delete and recreate to change it.",
+    "input_schema": {
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "amount": {
+          "type": "string",
+          "description": "Decimal, e.g. '12.50'. Omit to keep"
+        },
+        "direction": {
+          "type": "string",
+          "enum": [
+            "debit",
+            "credit"
+          ]
+        },
+        "booking_date": {
+          "type": "string",
+          "format": "date"
+        },
+        "transaction_date": {
+          "type": "string",
+          "format": "date"
+        },
+        "title": {
+          "type": "string",
+          "description": "Empty string clears"
+        },
+        "note": {
+          "type": "string",
+          "description": "Empty string clears"
+        },
+        "counterparty_name": {
+          "type": "string",
+          "description": "Empty string clears"
+        },
+        "merchant_id": {
+          "type": "integer"
+        },
+        "category_id": {
+          "type": "integer"
+        },
+        "payment_method": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id"
+      ],
+      "type": "object"
+    },
+    "file": "lib/mcp/tools/cash/update_transaction.rb"
+  },
+  {
+    "class": "Mcp::Tools::Categories::Archive",
+    "name": "categories.archive",
+    "description": "Archive a category - kept in storage but hidden from active lists.",
+    "input_schema": {
+      "properties": {
+        "id": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "id"
+      ],
+      "type": "object"
+    },
+    "file": "lib/mcp/tools/categories/archive.rb"
+  },
+  {
+    "class": "Mcp::Tools::Categories::Create",
+    "name": "categories.create",
+    "description": "Create a new category. parent_path is the ltree path of the parent ('food.cooking' etc.); omit for top-level.",
+    "input_schema": {
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "slug": {
+          "type": "string",
+          "description": "Auto-generated when omitted"
+        },
+        "kind": {
+          "type": "string",
+          "enum": [
+            "expense",
+            "income",
+            "transfer",
+            "savings",
+            "ignored"
+          ]
+        },
+        "color": {
+          "type": "string"
+        },
+        "icon": {
+          "type": "string"
+        },
+        "position": {
+          "type": "integer"
+        },
+        "essential": {
+          "type": "boolean"
+        },
+        "parent_path": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "name"
+      ],
+      "type": "object"
+    },
+    "file": "lib/mcp/tools/categories/create.rb"
+  },
+  {
+    "class": "Mcp::Tools::Categories::List",
+    "name": "categories.list",
+    "description": "List the user's categories. Hierarchy is encoded in `path` (ltree dot-separated).",
+    "input_schema": {
+      "properties": {
+        "include_archived": {
+          "type": "boolean",
+          "description": "Default false"
+        }
+      },
+      "type": "object"
+    },
+    "file": "lib/mcp/tools/categories/list.rb"
+  },
+  {
+    "class": "Mcp::Tools::Categories::Unarchive",
+    "name": "categories.unarchive",
+    "description": "Restore a previously archived category.",
+    "input_schema": {
+      "properties": {
+        "id": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "id"
+      ],
+      "type": "object"
+    },
+    "file": "lib/mcp/tools/categories/unarchive.rb"
+  },
+  {
+    "class": "Mcp::Tools::Categories::Update",
+    "name": "categories.update",
+    "description": "Update / move a category. Changing parent_path rewrites paths of all descendants atomically.",
+    "input_schema": {
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "slug": {
+          "type": "string"
+        },
+        "kind": {
+          "type": "string",
+          "enum": [
+            "expense",
+            "income",
+            "transfer",
+            "savings",
+            "ignored"
+          ]
+        },
+        "color": {
+          "type": "string"
+        },
+        "icon": {
+          "type": "string"
+        },
+        "position": {
+          "type": "integer"
+        },
+        "essential": {
+          "type": "boolean"
+        },
+        "parent_path": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id"
+      ],
+      "type": "object"
+    },
+    "file": "lib/mcp/tools/categories/update.rb"
+  },
+  {
+    "class": "Mcp::Tools::Merchants::Approve",
+    "name": "merchants.approve",
+    "description": "Approve an LLM-suggested merchant. Enables its disabled rules and rebuilds enrichment for the user.",
+    "input_schema": {
+      "properties": {
+        "id": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "id"
+      ],
+      "type": "object"
+    },
+    "file": "lib/mcp/tools/merchants/approve.rb"
+  },
+  {
+    "class": "Mcp::Tools::Merchants::Archive",
+    "name": "merchants.archive",
+    "description": "Archive a merchant - keeps history visible, hides from active selectors.",
+    "input_schema": {
+      "properties": {
+        "id": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "id"
+      ],
+      "type": "object"
+    },
+    "file": "lib/mcp/tools/merchants/archive.rb"
+  },
+  {
+    "class": "Mcp::Tools::Merchants::Create",
+    "name": "merchants.create",
+    "description": "Create a user-source merchant. Slug auto-generated when omitted.",
+    "input_schema": {
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "slug": {
+          "type": "string"
+        },
+        "kind": {
+          "type": "string",
+          "enum": [
+            "company",
+            "person",
+            "unknown"
+          ]
+        },
+        "default_category_id": {
+          "type": "integer"
+        },
+        "logo_url": {
+          "type": "string"
+        },
+        "notes": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "name"
+      ],
+      "type": "object"
+    },
+    "file": "lib/mcp/tools/merchants/create.rb"
+  },
+  {
+    "class": "Mcp::Tools::Merchants::List",
+    "name": "merchants.list",
+    "description": "List the user's merchants. Default: active only, name ASC, max 100 rows.",
+    "input_schema": {
+      "properties": {
+        "q": {
+          "type": "string",
+          "description": "Name ILIKE %q%"
+        },
+        "source": {
+          "type": "string",
+          "enum": [
+            "user",
+            "llm",
+            "seed",
+            "system"
+          ]
+        },
+        "category_id": {
+          "type": "integer"
+        },
+        "include_archived": {
+          "type": "boolean"
+        },
+        "limit": {
+          "type": "integer",
+          "description": "1-200, default 50"
+        }
+      },
+      "type": "object"
+    },
+    "file": "lib/mcp/tools/merchants/list.rb"
+  },
+  {
+    "class": "Mcp::Tools::Merchants::Unarchive",
+    "name": "merchants.unarchive",
+    "description": "Restore a previously archived merchant.",
+    "input_schema": {
+      "properties": {
+        "id": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "id"
+      ],
+      "type": "object"
+    },
+    "file": "lib/mcp/tools/merchants/unarchive.rb"
+  },
+  {
+    "class": "Mcp::Tools::Merchants::Update",
+    "name": "merchants.update",
+    "description": "Update editable fields of a merchant.",
+    "input_schema": {
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "slug": {
+          "type": "string"
+        },
+        "kind": {
+          "type": "string",
+          "enum": [
+            "company",
+            "person",
+            "unknown"
+          ]
+        },
+        "default_category_id": {
+          "type": "integer"
+        },
+        "logo_url": {
+          "type": "string"
+        },
+        "notes": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id"
+      ],
+      "type": "object"
+    },
+    "file": "lib/mcp/tools/merchants/update.rb"
+  },
+  {
+    "class": "Mcp::Tools::Operations::QueueLlmEnrichment",
+    "name": "llm_enrichments.create",
+    "description": "Queue an LLM enrichment run. The user must have an LLM provider configured in Preferences.",
+    "input_schema": {
+      "properties": {
+        "limit": {
+          "type": "integer",
+          "description": "Max distinct title groups to send to the LLM"
+        }
+      },
+      "type": "object"
+    },
+    "file": "lib/mcp/tools/operations/queue_llm_enrichment.rb"
+  },
+  {
+    "class": "Mcp::Tools::Operations::QueueTransactionSync",
+    "name": "transaction_syncs.create",
+    "description": "Queue a background transaction sync. Subject = a single bank connection (when bank_connection_id is given) or all of the user's active connections.",
+    "input_schema": {
+      "properties": {
+        "bank_connection_id": {
+          "type": "integer"
+        },
+        "date_from": {
+          "type": "string",
+          "format": "date"
+        },
+        "date_to": {
+          "type": "string",
+          "format": "date"
+        }
+      },
+      "type": "object"
+    },
+    "file": "lib/mcp/tools/operations/queue_transaction_sync.rb"
+  },
+  {
+    "class": "Mcp::Tools::Transactions::Classify",
+    "name": "transactions.classify",
+    "description": "Apply a merchant + category to a bank transaction.\nmode=only_this writes the override on this row only.\nmode=all_for_merchant sets merchant.default_category - all rows for the merchant inherit.\nmode=create_rule creates a user-source MerchantRule (rule_field/rule_kind/rule_pattern required) and rebuilds enrichment.",
+    "input_schema": {
+      "properties": {
+        "bank_transaction_id": {
+          "type": "integer"
+        },
+        "mode": {
+          "type": "string",
+          "enum": [
+            "only_this",
+            "all_for_merchant",
+            "create_rule"
+          ]
+        },
+        "merchant_id": {
+          "type": "integer"
+        },
+        "category_id": {
+          "type": "integer"
+        },
+        "rule_field": {
+          "type": "string",
+          "enum": [
+            "title",
+            "counterparty_name",
+            "counterparty_iban"
+          ]
+        },
+        "rule_kind": {
+          "type": "string",
+          "enum": [
+            "contains",
+            "equals",
+            "regex",
+            "starts_with",
+            "ends_with"
+          ]
+        },
+        "rule_pattern": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "bank_transaction_id",
+        "mode"
+      ],
+      "type": "object"
+    },
+    "file": "lib/mcp/tools/transactions/classify.rb"
+  },
+  {
+    "class": "Mcp::Tools::Transactions::Get",
+    "name": "transactions.get",
+    "description": "Fetch a single ledger entry by source type + id.",
+    "input_schema": {
+      "properties": {
+        "source_type": {
+          "type": "string",
+          "enum": [
+            "BankTransaction",
+            "ManualTransaction"
+          ]
+        },
+        "source_id": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "source_type",
+        "source_id"
+      ],
+      "type": "object"
+    },
+    "file": "lib/mcp/tools/transactions/get.rb"
+  },
+  {
+    "class": "Mcp::Tools::Transactions::List",
+    "name": "transactions.list",
+    "description": "List ledger entries (bank + manual) with filters. Returns at most `limit` rows (default 25, max 200).",
+    "input_schema": {
+      "properties": {
+        "from": {
+          "type": "string",
+          "format": "date",
+          "description": "Booking date >="
+        },
+        "to": {
+          "type": "string",
+          "format": "date",
+          "description": "Booking date <="
+        },
+        "direction": {
+          "type": "string",
+          "enum": [
+            "credit",
+            "debit"
+          ]
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "booked",
+            "pending"
+          ]
+        },
+        "account_id": {
+          "type": "integer"
+        },
+        "merchant_id": {
+          "type": "integer"
+        },
+        "category_id": {
+          "type": "integer"
+        },
+        "category_path": {
+          "type": "string",
+          "description": "ltree prefix; matches descendants"
+        },
+        "payment_method": {
+          "type": "string"
+        },
+        "currency": {
+          "type": "string"
+        },
+        "source_type": {
+          "type": "string",
+          "enum": [
+            "BankTransaction",
+            "ManualTransaction"
+          ]
+        },
+        "limit": {
+          "type": "integer",
+          "description": "1-200, default 25"
+        }
+      },
+      "type": "object"
+    },
+    "file": "lib/mcp/tools/transactions/list.rb"
+  }
+]

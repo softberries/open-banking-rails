@@ -1,0 +1,182 @@
+{
+  "route": "GET /api/:version/bank_accounts(.json)",
+  "captured_at": "2026-10-21T13:22:33.146Z",
+  "base_url": "http://127.0.0.1:3000",
+  "cases": [
+    {
+      "case": "default",
+      "actor": "main(token)",
+      "request": {
+        "method": "GET",
+        "path": "/api/v1/bank_accounts",
+        "headers": {
+          "authorization": "Bearer obrl_oracle_main_t…"
+        }
+      },
+      "response": {
+        "status": 200,
+        "duration_ms": 193,
+        "headers": {
+          "content-type": "application/json",
+          "cache-control": "max-age=0, private, must-revalidate",
+          "x-request-id": "1d840bc9-f7ee-42d6-87a6-5320a1c12f6f",
+          "vary": "Origin",
+          "content-length": "1963"
+        },
+        "body_sample": {
+          "data": [
+            {
+              "id": 1,
+              "uid": "fake-account-fake-session-1-1",
+              "name": "MACIEJ TEST",
+              "iban": "PL61109010140000071219812874",
+              "bban": null,
+              "currency": "PLN",
+              "status": "active",
+              "manual": false,
+              "product": "Konto Osobiste",
+              "cash_account_type": "CACC",
+              "details": "Konto Osobiste",
+              "details_fetched_at": "2026-10-21T13:22:26.753Z",
+              "balances_synced_at": "2026-10-21T13:22:26.469Z",
+              "transactions_synced_at": "2026-10-21T13:22:29.962Z",
+              "balances": [
+                {
+                  "name": null,
+                  "type": "ITAV",
+                  "amount_cents": 1234567,
+                  "currency": "PLN",
+                  "reference_date": "2026-10-21",
+                  "last_change_at": null
+                }
+              ]
+            },
+            {
+              "id": 2,
+              "uid": "fake-account-fake-session-1-2",
+              "name": "MACIEJ TEST",
+              "iban": "PL61109010140000071219812875",
+              "bban": null,
+              "currency": "PLN",
+              "status": "active",
+              "manual": false,
+              "product": "Konto Oszczędnościowe",
+              "cash_account_type": "CACC",
+              "details": "Konto Oszczędnościowe",
+              "details_fetched_at": null,
+              "balances_synced_at": null,
+              "transactions_synced_at": "2026-10-21T13:22:30.292Z",
+              "balances": []
+            },
+            {
+              "id": 3,
+              "uid": "fake-account-fake-session-2-1",
+              "name": "Maciej Test",
+              "iban": "LT123456789012345678",
+              "bban": null,
+              "currency": "EUR",
+              "status": "active",
+              "manual": false,
+              "product": "EUR Pocket",
+              "cash_account_type": "CACC",
+              "details": "EUR Pocket",
+              "details_fetched_at": null,
+              "balances_synced_at": null,
+              "transactions_synced_at": "2026-10-21T13:21:27.579Z",
+              "balances": []
+            },
+            {
+              "id": 4,
+              "uid": "fake-account-fake-session-2-2",
+              "name": "Maciej Test",
+              "iban": "LT123456789012345678",
+              "bban": null,
+              "currency": "USD",
+              "status": "active",
+              "manual": false,
+              "product": "USD Pocket",
+              "cash_account_type": "CACC",
+              "details": "USD Pocket",
+              "details_fetched_at": null,
+              "balances_synced_at": null,
+              "transactions_synced_at": "2026-10-21T13:21:27.622Z",
+              "balances": []
+            },
+            {
+              "id": 5,
+              "uid": "cash_1_pln",
+              "name": "Cash wallet (PLN)",
+              "iban": null,
+              "bban": null,
+              "currency": "PLN",
+              "status": "active",
+              "manual": true,
+              "product": null,
+              "cash_account_type": "CASH",
+              "details": null,
+              "details_fetched_at": null,
+              "balances_synced_at": null,
+              "transactions_synced_at": null,
+              "balances": []
+            }
+          ],
+          "pagination": {
+            "page": 1,
+            "limit": 10,
+            "count": 5,
+            "pages": 1
+          }
+        }
+      }
+    },
+    {
+      "case": "manual_only",
+      "actor": "main(token)",
+      "request": {
+        "method": "GET",
+        "path": "/api/v1/bank_accounts?manual=true",
+        "headers": {
+          "authorization": "Bearer obrl_oracle_main_t…"
+        }
+      },
+      "response": {
+        "status": 200,
+        "duration_ms": 181,
+        "headers": {
+          "content-type": "application/json",
+          "cache-control": "max-age=0, private, must-revalidate",
+          "x-request-id": "db8fa39b-d06c-4865-95d5-a09863a54840",
+          "vary": "Origin",
+          "content-length": "346"
+        },
+        "body_sample": {
+          "data": [
+            {
+              "id": 5,
+              "uid": "cash_1_pln",
+              "name": "Cash wallet (PLN)",
+              "iban": null,
+              "bban": null,
+              "currency": "PLN",
+              "status": "active",
+              "manual": true,
+              "product": null,
+              "cash_account_type": "CASH",
+              "details": null,
+              "details_fetched_at": null,
+              "balances_synced_at": null,
+              "transactions_synced_at": null,
+              "balances": []
+            }
+          ],
+          "pagination": {
+            "page": 1,
+            "limit": 10,
+            "count": 1,
+            "pages": 1
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,121 @@
+{
+  "route": "GET /api/:version/transaction_syncs(.json)",
+  "captured_at": "2026-10-21T13:22:35.007Z",
+  "base_url": "http://127.0.0.1:3000",
+  "cases": [
+    {
+      "case": "default",
+      "actor": "main(token)",
+      "request": {
+        "method": "GET",
+        "path": "/api/v1/transaction_syncs",
+        "headers": {
+          "authorization": "Bearer obrl_oracle_main_t…"
+        }
+      },
+      "response": {
+        "status": 200,
+        "duration_ms": 212,
+        "headers": {
+          "content-type": "application/json",
+          "cache-control": "max-age=0, private, must-revalidate",
+          "x-request-id": "0c0b61e4-2e4b-4af5-b3cd-30501156ffff",
+          "vary": "Origin",
+          "content-length": "1539"
+        },
+        "body_sample": {
+          "data": [
+            {
+              "id": 5,
+              "kind": "transaction_sync",
+              "status": "succeeded",
+              "trigger": "manual",
+              "params": {},
+              "summary": {
+                "accounts": [
+                  {
+                    "bank": "PKO BP",
+                    "iban": "PL61109010140000071219812874",
+                    "status": "succeeded",
+                    "date_to": "2026-10-21",
+                    "skipped": 0,
+                    "updated": 0,
+                    "inserted": 0,
+                    "date_from": "2026-10-14",
+                    "truncated": false,
+                    "pages_fetched": 1,
+                    "bank_account_id": 1
+                  },
+                  {
+                    "bank": "PKO BP",
+                    "iban": "PL61109010140000071219812875",
+                    "status": "succeeded",
+                    "date_to": "2026-10-21",
+                    "skipped": 0,
+                    "updated": 0,
+                    "inserted": 0,
+                    "date_from": "2026-10-14",
+                    "truncated": false,
+                    "pages_fetched": 1,
+                    "bank_account_id": 2
+                  }
+                ]
+              },
+              "error": null,
+              "scheduled_for": null,
+              "started_at": "2026-10-21T13:22:28.930Z",
+              "finished_at": "2026-10-21T13:22:30.494Z",
+              "subject_type": "BankConnection",
+              "subject_id": 1,
+              "created_at": "2026-10-21T13:22:27.285Z"
+            },
+            {
+              "id": 2,
+              "kind": "transaction_sync",
+              "status": "succeeded",
+              "trigger": "manual",
+              "params": {
+                "connection_id": 2
+              },
+              "summary": {
+                "synced_at": "2026-10-21T15:21:27.710+02:00"
+              },
+              "error": null,
+              "scheduled_for": null,
+              "started_at": "2026-10-21T13:21:26.849Z",
+              "finished_at": "2026-10-21T13:21:27.710Z",
+              "subject_type": "BankConnection",
+              "subject_id": 2,
+              "created_at": "2026-10-21T13:21:26.850Z"
+            },
+            {
+              "id": 1,
+              "kind": "transaction_sync",
+              "status": "succeeded",
+              "trigger": "manual",
+              "params": {
+                "connection_id": 1
+              },
+              "summary": {
+                "synced_at": "2026-10-21T15:21:26.838+02:00"
+              },
+              "error": null,
+              "scheduled_for": null,
+              "started_at": "2026-10-21T13:21:22.887Z",
+              "finished_at": "2026-10-21T13:21:26.838Z",
+              "subject_type": "BankConnection",
+              "subject_id": 1,
+              "created_at": "2026-10-21T13:21:22.951Z"
+            }
+          ],
+          "pagination": {
+            "page": 1,
+            "limit": 10,
+            "count": 3,
+            "pages": 1
+          }
+        }
+      }
+    }
+  ]
+}

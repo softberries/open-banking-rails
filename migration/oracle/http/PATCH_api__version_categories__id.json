@@ -1,0 +1,108 @@
+{
+  "route": "PATCH /api/:version/categories/:id(.json)",
+  "captured_at": "2026-10-21T13:22:38.350Z",
+  "base_url": "http://127.0.0.1:3000",
+  "cases": [
+    {
+      "case": "default",
+      "actor": "main(token)",
+      "request": {
+        "method": "PATCH",
+        "path": "/api/v1/categories/238",
+        "headers": {
+          "authorization": "Bearer obrl_oracle_main_t…",
+          "content-type": "application/json"
+        },
+        "body": {
+          "name": "Oracle API Category Renamed",
+          "color": "#ff0000"
+        }
+      },
+      "response": {
+        "status": 200,
+        "duration_ms": 228,
+        "headers": {
+          "content-type": "application/json",
+          "cache-control": "max-age=0, private, must-revalidate",
+          "x-request-id": "78eb68f7-780d-4871-9207-1cf289a9df20",
+          "vary": "Origin",
+          "content-length": "228"
+        },
+        "body_sample": {
+          "id": 238,
+          "name": "Oracle API Category Renamed",
+          "slug": "oracle_api_category",
+          "path": "food.oracle_api_category",
+          "kind": "expense",
+          "color": "#ff0000",
+          "icon": null,
+          "essential": false,
+          "position": 0,
+          "archived_at": null,
+          "parent_path": "food"
+        }
+      }
+    },
+    {
+      "case": "invalid_kind",
+      "actor": "main(token)",
+      "request": {
+        "method": "PATCH",
+        "path": "/api/v1/categories/238",
+        "headers": {
+          "authorization": "Bearer obrl_oracle_main_t…",
+          "content-type": "application/json"
+        },
+        "body": {
+          "kind": "luxury"
+        }
+      },
+      "response": {
+        "status": 400,
+        "duration_ms": 140,
+        "headers": {
+          "content-type": "application/json",
+          "cache-control": "no-cache",
+          "x-request-id": "db0d9f0d-042d-4b25-b215-7983fbe14c25",
+          "vary": "Origin",
+          "content-length": "80"
+        },
+        "body_sample": {
+          "message": "Invalid parameters.",
+          "details": [
+            "kind does not have a valid value"
+          ]
+        }
+      }
+    },
+    {
+      "case": "other_tenant_id",
+      "actor": "main(token)",
+      "request": {
+        "method": "PATCH",
+        "path": "/api/v1/categories/119",
+        "headers": {
+          "authorization": "Bearer obrl_oracle_main_t…",
+          "content-type": "application/json"
+        },
+        "body": {
+          "name": "pwned"
+        }
+      },
+      "response": {
+        "status": 404,
+        "duration_ms": 170,
+        "headers": {
+          "content-type": "application/json",
+          "cache-control": "no-cache",
+          "x-request-id": "dc78bfe0-6314-4fc1-8eb0-d7be5bcdc8a7",
+          "vary": "Origin",
+          "content-length": "90"
+        },
+        "body_sample": {
+          "message": "Couldn't find Category with 'id'=119 [WHERE \"categories\".\"user_id\" = $1]"
+        }
+      }
+    }
+  ]
+}

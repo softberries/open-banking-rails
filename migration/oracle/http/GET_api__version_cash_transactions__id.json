@@ -1,0 +1,93 @@
+{
+  "route": "GET /api/:version/cash_transactions/:id(.json)",
+  "captured_at": "2026-10-21T13:22:29.710Z",
+  "base_url": "http://127.0.0.1:3000",
+  "cases": [
+    {
+      "case": "default",
+      "actor": "main(token)",
+      "request": {
+        "method": "GET",
+        "path": "/api/v1/cash_transactions/7",
+        "headers": {
+          "authorization": "Bearer obrl_oracle_main_t…"
+        }
+      },
+      "response": {
+        "status": 200,
+        "duration_ms": 181,
+        "headers": {
+          "content-type": "application/json",
+          "cache-control": "max-age=0, private, must-revalidate",
+          "x-request-id": "75c00bd2-0120-4e02-b5e1-670c41e9c1fc",
+          "vary": "Origin",
+          "content-length": "716"
+        },
+        "body_sample": {
+          "id": 7,
+          "bank_account_id": 5,
+          "amount": {
+            "cents": 500,
+            "currency": "PLN"
+          },
+          "signed_amount": {
+            "cents": -500,
+            "currency": "PLN"
+          },
+          "direction": "debit",
+          "status": "booked",
+          "booking_date": "2026-06-21",
+          "transaction_date": null,
+          "title": "Coffee at office",
+          "note": null,
+          "counterparty_name": null,
+          "counterparty_kind": "unknown",
+          "payment_method": "cash",
+          "source": "manual",
+          "linked_bank_transaction_id": null,
+          "enrichment": {
+            "id": 7,
+            "merchant_id": null,
+            "category_id": null,
+            "merchant_rule_id": null,
+            "source": "manual",
+            "category_overridden": false,
+            "confidence": null,
+            "model": null,
+            "enriched_at": "2026-10-21T13:21:28.608Z",
+            "merchant": null,
+            "category": null,
+            "effective_category": null
+          },
+          "created_at": "2026-10-21T13:21:28.588Z",
+          "updated_at": "2026-10-21T13:21:28.588Z"
+        }
+      }
+    },
+    {
+      "case": "other_tenant_id",
+      "actor": "main(token)",
+      "request": {
+        "method": "GET",
+        "path": "/api/v1/cash_transactions/19",
+        "headers": {
+          "authorization": "Bearer obrl_oracle_main_t…"
+        }
+      },
+      "response": {
+        "status": 404,
+        "duration_ms": 200,
+        "headers": {
+          "content-type": "application/json",
+          "cache-control": "no-cache",
+          "x-request-id": "c731f6a9-481b-4273-9f1f-641e41964ccc",
+          "vary": "Origin",
+          "content-length": "147"
+        },
+        "body_sample": {
+          "message": "Couldn't find ManualTransaction with 'id'=19 [WHERE \"bank_accounts\".\"manual_owner_id\" = $1 AND \"bank_accounts\".\"manual\" = $2]"
+        }
+      }
+    }
+  ]
+}

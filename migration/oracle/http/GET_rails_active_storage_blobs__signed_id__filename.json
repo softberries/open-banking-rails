@@ -1,0 +1,30 @@
+{
+  "route": "GET /rails/active_storage/blobs/:signed_id/*filename(.:format)",
+  "captured_at": "2026-10-21T13:22:15.376Z",
+  "base_url": "http://127.0.0.1:3000",
+  "cases": [
+    {
+      "case": "bogus_signed_id",
+      "actor": "anon",
+      "request": {
+        "method": "GET",
+        "path": "/rails/active_storage/blobs/bogus/x.png",
+        "headers": {}
+      },
+      "response": {
+        "status": 404,
+        "duration_ms": 118,
+        "headers": {
+          "x-frame-options": "SAMEORIGIN",
+          "x-content-type-options": "nosniff",
+          "content-type": "text/html",
+          "cache-control": "no-cache",
+          "x-request-id": "b633c995-f1de-4ec1-adb1-05bac9f9ca53",
+          "vary": "Origin",
+          "content-length": "0"
+        },
+        "body_sample": ""
+      }
+    }
+  ]
+}

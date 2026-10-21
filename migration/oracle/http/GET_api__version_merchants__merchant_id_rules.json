@@ -1,0 +1,45 @@
+{
+  "route": "GET /api/:version/merchants/:merchant_id/rules(.json)",
+  "captured_at": "2026-10-21T13:22:32.952Z",
+  "base_url": "http://127.0.0.1:3000",
+  "cases": [
+    {
+      "case": "default",
+      "actor": "main(token)",
+      "request": {
+        "method": "GET",
+        "path": "/api/v1/merchants/1/rules",
+        "headers": {
+          "authorization": "Bearer obrl_oracle_main_t…"
+        }
+      },
+      "response": {
+        "status": 200,
+        "duration_ms": 176,
+        "headers": {
+          "content-type": "application/json",
+          "cache-control": "max-age=0, private, must-revalidate",
+          "x-request-id": "2c72e349-dacf-4782-ad1f-b9e3f21bc207",
+          "vary": "Origin",
+          "content-length": "201"
+        },
+        "body_sample": [
+          {
+            "id": 1,
+            "merchant_id": 1,
+            "field": "title",
+            "kind": "contains",
+            "pattern": "BIEDRONKA",
+            "case_sensitive": false,
+            "priority": 0,
+            "enabled": true,
+            "source": "system",
+            "confidence": null,
+            "model": null,
+            "approved_at": null
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "route": "PATCH /api/:version/merchants/:merchant_id/rules/:id(.json)",
+  "captured_at": "2026-10-21T13:22:46.489Z",
+  "base_url": "http://127.0.0.1:3000",
+  "cases": [
+    {
+      "case": "default",
+      "actor": "main(token)",
+      "request": {
+        "method": "PATCH",
+        "path": "/api/v1/merchants/58/rules/67",
+        "headers": {
+          "authorization": "Bearer obrl_oracle_main_t…",
+          "content-type": "application/json"
+        },
+        "body": {
+          "priority": 5,
+          "enabled": false
+        }
+      },
+      "response": {
+        "status": 200,
+        "duration_ms": 1968,
+        "headers": {
+          "content-type": "application/json",
+          "cache-control": "max-age=0, private, must-revalidate",
+          "x-request-id": "e5660e4c-e74b-4b35-8462-6c8179e09aa3",
+          "vary": "Origin",
+          "content-length": "224"
+        },
+        "body_sample": {
+          "id": 67,
+          "merchant_id": 58,
+          "field": "title",
+          "kind": "contains",
+          "pattern": "ORACLE SHOP",
+          "case_sensitive": false,
+          "priority": 5,
+          "enabled": false,
+          "source": "user",
+          "confidence": null,
+          "model": null,
+          "approved_at": "2026-10-21T13:22:42.441Z"
+        }
+      }
+    }
+  ]
+}

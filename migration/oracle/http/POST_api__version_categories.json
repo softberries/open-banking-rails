@@ -1,0 +1,114 @@
+{
+  "route": "POST /api/:version/categories(.json)",
+  "captured_at": "2026-10-21T13:22:37.783Z",
+  "base_url": "http://127.0.0.1:3000",
+  "cases": [
+    {
+      "case": "default",
+      "actor": "main(token)",
+      "request": {
+        "method": "POST",
+        "path": "/api/v1/categories",
+        "headers": {
+          "authorization": "Bearer obrl_oracle_main_t…",
+          "content-type": "application/json"
+        },
+        "body": {
+          "name": "Oracle API Category",
+          "kind": "expense",
+          "parent_path": "food"
+        }
+      },
+      "response": {
+        "status": 201,
+        "duration_ms": 213,
+        "headers": {
+          "content-type": "application/json",
+          "cache-control": "max-age=0, private, must-revalidate",
+          "x-request-id": "4f3d0282-d939-4c18-8356-28de7e373410",
+          "vary": "Origin",
+          "content-length": "215"
+        },
+        "body_sample": {
+          "id": 238,
+          "name": "Oracle API Category",
+          "slug": "oracle_api_category",
+          "path": "food.oracle_api_category",
+          "kind": "expense",
+          "color": null,
+          "icon": null,
+          "essential": false,
+          "position": 0,
+          "archived_at": null,
+          "parent_path": "food"
+        }
+      }
+    },
+    {
+      "case": "missing_name",
+      "actor": "main(token)",
+      "request": {
+        "method": "POST",
+        "path": "/api/v1/categories",
+        "headers": {
+          "authorization": "Bearer obrl_oracle_main_t…",
+          "content-type": "application/json"
+        },
+        "body": {
+          "kind": "expense"
+        }
+      },
+      "response": {
+        "status": 400,
+        "duration_ms": 134,
+        "headers": {
+          "content-type": "application/json",
+          "cache-control": "no-cache",
+          "x-request-id": "41437c22-32e0-4268-8ab7-34cb50e43ece",
+          "vary": "Origin",
+          "content-length": "63"
+        },
+        "body_sample": {
+          "message": "Invalid parameters.",
+          "details": [
+            "name is missing"
+          ]
+        }
+      }
+    },
+    {
+      "case": "duplicate_slug",
+      "actor": "main(token)",
+      "request": {
+        "method": "POST",
+        "path": "/api/v1/categories",
+        "headers": {
+          "authorization": "Bearer obrl_oracle_main_t…",
+          "content-type": "application/json"
+        },
+        "body": {
+          "name": "Food",
+          "slug": "food"
+        }
+      },
+      "response": {
+        "status": 422,
+        "duration_ms": 205,
+        "headers": {
+          "content-type": "application/json",
+          "cache-control": "no-cache",
+          "x-request-id": "7fccf0c0-b0ee-4df7-ab98-40fec1594744",
+          "vary": "Origin",
+          "content-length": "142"
+        },
+        "body_sample": {
+          "message": "Slug has already been taken, Path has already been taken",
+          "details": [
+            "Slug has already been taken",
+            "Path has already been taken"
+          ]
+        }
+      }
+    }
+  ]
+}

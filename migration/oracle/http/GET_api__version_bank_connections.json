@@ -1,0 +1,139 @@
+{
+  "route": "GET /api/:version/bank_connections(.json)",
+  "captured_at": "2026-10-21T13:22:33.792Z",
+  "base_url": "http://127.0.0.1:3000",
+  "cases": [
+    {
+      "case": "default",
+      "actor": "main(token)",
+      "request": {
+        "method": "GET",
+        "path": "/api/v1/bank_connections",
+        "headers": {
+          "authorization": "Bearer obrl_oracle_main_t…"
+        }
+      },
+      "response": {
+        "status": 200,
+        "duration_ms": 219,
+        "headers": {
+          "content-type": "application/json",
+          "cache-control": "max-age=0, private, must-revalidate",
+          "x-request-id": "1970ff14-831f-48fd-8ca2-1f0163e8c05d",
+          "vary": "Origin",
+          "content-length": "849"
+        },
+        "body_sample": {
+          "data": [
+            {
+              "id": 1,
+              "bank_name": "PKO BP",
+              "bank_slug": "pko_bp",
+              "bank_country": "PL",
+              "psu_type": "personal",
+              "status": "authorized",
+              "authorized_at": "2026-10-21T13:21:22.000Z",
+              "valid_until": "2026-11-20T13:21:55.000Z",
+              "last_refreshed_at": "2026-10-21T13:22:27.058Z",
+              "last_synced_at": "2026-10-21T13:22:30.441Z",
+              "access_balances": true,
+              "access_transactions": true,
+              "replaces_id": null,
+              "tpp_credential_id": 1,
+              "last_error": null
+            },
+            {
+              "id": 2,
+              "bank_name": "Revolut LT",
+              "bank_slug": "revolut_lt",
+              "bank_country": "LT",
+              "psu_type": "personal",
+              "status": "authorized",
+              "authorized_at": "2026-10-21T13:21:22.000Z",
+              "valid_until": "2027-01-19T14:21:22.000Z",
+              "last_refreshed_at": null,
+              "last_synced_at": "2026-10-21T13:21:27.647Z",
+              "access_balances": true,
+              "access_transactions": true,
+              "replaces_id": null,
+              "tpp_credential_id": 2,
+              "last_error": null
+            }
+          ],
+          "pagination": {
+            "page": 1,
+            "limit": 10,
+            "count": 2,
+            "pages": 1
+          }
+        }
+      }
+    },
+    {
+      "case": "status_filter_authorized",
+      "actor": "main(token)",
+      "request": {
+        "method": "GET",
+        "path": "/api/v1/bank_connections?status=authorized",
+        "headers": {
+          "authorization": "Bearer obrl_oracle_main_t…"
+        }
+      },
+      "response": {
+        "status": 200,
+        "duration_ms": 220,
+        "headers": {
+          "content-type": "application/json",
+          "cache-control": "max-age=0, private, must-revalidate",
+          "x-request-id": "b43eb2da-27a5-4924-bceb-8b163d3ce507",
+          "vary": "Origin",
+          "content-length": "849"
+        },
+        "body_sample": {
+          "data": [
+            {
+              "id": 1,
+              "bank_name": "PKO BP",
+              "bank_slug": "pko_bp",
+              "bank_country": "PL",
+              "psu_type": "personal",
+              "status": "authorized",
+              "authorized_at": "2026-10-21T13:21:22.000Z",
+              "valid_until": "2026-11-20T13:21:55.000Z",
+              "last_refreshed_at": "2026-10-21T13:24:03.968Z",
+              "last_synced_at": "2026-10-21T13:24:01.342Z",
+              "access_balances": true,
+              "access_transactions": true,
+              "replaces_id": null,
+              "tpp_credential_id": 1,
+              "last_error": null
+            },
+            {
+              "id": 2,
+              "bank_name": "Revolut LT",
+              "bank_slug": "revolut_lt",
+              "bank_country": "LT",
+              "psu_type": "personal",
+              "status": "authorized",
+              "authorized_at": "2026-10-21T13:21:22.000Z",
+              "valid_until": "2027-01-19T14:21:22.000Z",
+              "last_refreshed_at": null,
+              "last_synced_at": "2026-10-21T13:24:00.967Z",
+              "access_balances": true,
+              "access_transactions": true,
+              "replaces_id": null,
+              "tpp_credential_id": 2,
+              "last_error": null
+            }
+          ],
+          "pagination": {
+            "page": 1,
+            "limit": 10,
+            "count": 2,
+            "pages": 1
+          }
+        }
+      }
+    }
+  ]
+}

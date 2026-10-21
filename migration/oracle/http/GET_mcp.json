@@ -1,0 +1,35 @@
+{
+  "route": "GET /mcp(.:format)",
+  "captured_at": "2026-10-21T13:22:19.575Z",
+  "base_url": "http://127.0.0.1:3000",
+  "cases": [
+    {
+      "case": "default",
+      "actor": "main(token)",
+      "request": {
+        "method": "GET",
+        "path": "/mcp",
+        "headers": {
+          "accept": "application/json, text/event-stream",
+          "authorization": "Bearer obrl_oracle_main_t…"
+        }
+      },
+      "response": {
+        "status": 405,
+        "duration_ms": 1881,
+        "headers": {
+          "x-frame-options": "SAMEORIGIN",
+          "x-content-type-options": "nosniff",
+          "content-type": "application/json",
+          "cache-control": "no-cache",
+          "x-request-id": "b627e67d-c146-42cc-92f9-a96973fbd8ec",
+          "vary": "Origin",
+          "content-length": "30"
+        },
+        "body_sample": {
+          "error": "Method not allowed"
+        }
+      }
+    }
+  ]
+}

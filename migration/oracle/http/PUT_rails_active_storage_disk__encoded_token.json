@@ -1,0 +1,31 @@
+{
+  "route": "PUT /rails/active_storage/disk/:encoded_token(.:format)",
+  "captured_at": "2026-10-21T13:22:16.010Z",
+  "base_url": "http://127.0.0.1:3000",
+  "cases": [
+    {
+      "case": "bogus_token",
+      "actor": "anon",
+      "request": {
+        "method": "PUT",
+        "path": "/rails/active_storage/disk/bogus",
+        "headers": {},
+        "body": "x"
+      },
+      "response": {
+        "status": 404,
+        "duration_ms": 121,
+        "headers": {
+          "x-frame-options": "SAMEORIGIN",
+          "x-content-type-options": "nosniff",
+          "content-type": "text/html",
+          "cache-control": "no-cache",
+          "x-request-id": "e38f1155-c485-4e13-bbe8-5b3183381fe6",
+          "vary": "Origin",
+          "content-length": "0"
+        },
+        "body_sample": ""
+      }
+    }
+  ]
+}

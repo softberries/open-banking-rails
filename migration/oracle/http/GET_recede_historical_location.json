@@ -1,0 +1,30 @@
+{
+  "route": "GET /recede_historical_location(.:format)",
+  "captured_at": "2026-10-21T13:22:09.234Z",
+  "base_url": "http://127.0.0.1:3000",
+  "cases": [
+    {
+      "case": "default",
+      "actor": "anon",
+      "request": {
+        "method": "GET",
+        "path": "/recede_historical_location",
+        "headers": {}
+      },
+      "response": {
+        "status": 200,
+        "duration_ms": 165,
+        "headers": {
+          "x-frame-options": "SAMEORIGIN",
+          "x-content-type-options": "nosniff",
+          "content-type": "text/html; charset=utf-8",
+          "vary": "Accept, Origin",
+          "cache-control": "max-age=0, private, must-revalidate",
+          "x-request-id": "c3d851cd-f772-427b-be05-890d1bb5a3ef",
+          "content-length": "13"
+        },
+        "body_sample": "Going back…"
+      }
+    }
+  ]
+}

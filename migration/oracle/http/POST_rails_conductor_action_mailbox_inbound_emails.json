@@ -1,0 +1,36 @@
+{
+  "route": "POST /rails/conductor/action_mailbox/inbound_emails(.:format)",
+  "captured_at": "2026-10-21T13:22:13.032Z",
+  "base_url": "http://127.0.0.1:3000",
+  "cases": [
+    {
+      "case": "no_csrf",
+      "actor": "anon",
+      "request": {
+        "method": "POST",
+        "path": "/rails/conductor/action_mailbox/inbound_emails",
+        "headers": {},
+        "body": {
+          "x": "1"
+        }
+      },
+      "response": {
+        "status": 422,
+        "duration_ms": 694,
+        "headers": {
+          "content-type": "text/html; charset=UTF-8",
+          "x-request-id": "4be545f6-ef04-4e89-945a-c08c8afae9b9",
+          "vary": "Origin",
+          "content-length": "200734"
+        },
+        "body_sample": {
+          "html_title": "Action Controller: Exception caught",
+          "h1": "ActionController::InvalidAuthenticityToken\n      in Rails::Conductor::ActionMailbox::InboundEmailsController#create",
+          "flash": [],
+          "length": 200734,
+          "head": "<!DOCTYPE html> <html lang=\"en\"> <head> <meta charset=\"utf-8\" /> <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"> <meta name=\"turbo-visit-control\" content=\"reload\"> <title>Action Controller: Exception caught</title> <style> body { background-color: #FAFAFA; color: #333; color-scheme: light dark; supported-color-schemes: light dark; margin: 0px; } body, p, ol, ul, td { font-family: helvetica, verdana, arial, sans-serif; font-size: 13px; line-height: 18px; } pre { font-size: 11px; white-space: pre-wrap; } pre.box { border: 1px solid #EEE; padding: 10px; margin: 0px; width: 958px; } header { color: #F0F0F0; background: #C00; padding: 0.5em 1.5em; } header button { appearance: none; background-color: hsl(0 0% 0% / 0.2); border: 0; border-radius: 14px; color: white; float: right; font-weight: 500; height: 28px; padding-inline: 14px; margin: 0.35em 0; } header button:active { background-color: hsl(0 0% 0% / 0.25); } h1 { overflow-wrap: break-word; margin: 0.2em 0; line-height: 1.1em; font-size: 2em; } h2 { color: #C00; line-height: 25px; } code.traces { font-size: 11px; } .trace-container { margin-top: 10px; } code.traces .trace { display: flex; align-items: center; gap: 2px; } .edit-icon { width: 16px; height: 16px; display: flex; font-size: 13px; align-items: center; justify-content: center; text-decoration: none; } .edit-icon:hover { scale: 1.05; } .response-heading, .request-heading { margin-top: 30px; } .exception-message { padding: 8px 0; } .exception-mess…[truncated 166643 chars]"
+        }
+      }
+    }
+  ]
+}

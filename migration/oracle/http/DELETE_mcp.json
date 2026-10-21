@@ -1,0 +1,35 @@
+{
+  "route": "DELETE /mcp(.:format)",
+  "captured_at": "2026-10-21T13:22:19.713Z",
+  "base_url": "http://127.0.0.1:3000",
+  "cases": [
+    {
+      "case": "default",
+      "actor": "main(token)",
+      "request": {
+        "method": "DELETE",
+        "path": "/mcp",
+        "headers": {
+          "accept": "application/json, text/event-stream",
+          "authorization": "Bearer obrl_oracle_main_t…"
+        }
+      },
+      "response": {
+        "status": 200,
+        "duration_ms": 137,
+        "headers": {
+          "x-frame-options": "SAMEORIGIN",
+          "x-content-type-options": "nosniff",
+          "content-type": "application/json",
+          "cache-control": "max-age=0, private, must-revalidate",
+          "x-request-id": "56369368-3e88-449d-89b8-ef0f32df62b1",
+          "vary": "Origin",
+          "content-length": "16"
+        },
+        "body_sample": {
+          "success": true
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "route": "GET /admin/styleguide(.:format)",
+  "captured_at": "2026-10-21T13:23:02.758Z",
+  "base_url": "http://127.0.0.1:3000",
+  "cases": [
+    {
+      "case": "default",
+      "actor": "main(session)",
+      "request": {
+        "method": "GET",
+        "path": "/admin/styleguide",
+        "headers": {}
+      },
+      "response": {
+        "status": 200,
+        "duration_ms": 1642,
+        "headers": {
+          "x-frame-options": "SAMEORIGIN",
+          "x-content-type-options": "nosniff",
+          "content-type": "text/html; charset=utf-8",
+          "vary": "Accept, Origin",
+          "cache-control": "max-age=0, private, must-revalidate",
+          "x-request-id": "0f5d660f-8d2c-4898-95d6-d4d28848f908",
+          "content-length": "266055",
+          "set-cookie": [
+            "_open_banking_rails_session=<redacted>; path=/; httponly; samesite=lax"
+          ]
+        },
+        "body_sample": {
+          "html_title": "Styleguide · Open BankingTitle only · Open BankingWith subtitle · Open BankingWith back link · Open BankingWith actions · Open BankingWith media slot · Open Banking",
+          "h1": "Styleguide",
+          "flash": [],
+          "length": 265734,
+          "head": "<!-- BEGIN app/views/layouts/admin.html.erb --><!DOCTYPE html> <html lang=\"en\" class=\"\"> <head> <meta charset=\"UTF-8\"> <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"> <title>Styleguide · Open BankingTitle only · Open BankingWith subtitle · Open BankingWith back link · Open BankingWith actions · Open BankingWith media slot · Open Banking</title> <meta name=\"csrf-param\" content=\"authenticity_token\" /> <meta name=\"csrf-token\" content=\"BfdAMafqGTymG22PSA8JQvv8RAkeuZV5oK7li0zKl4ASpcZJpi5YiL1V0QJySy1qg8TJAeJWWFrs-ACTmzuxgQ\" /> <script> (function () { if (localStorage.getItem(\"sidebar-collapsed\") === \"true\") { document.documentElement.classList.add(\"sidebar-collapsed\"); } })(); </script> <link rel=\"icon\" href=\"/icon.svg?v=3\" type=\"image/svg+xml\"> <link rel=\"apple-touch-icon\" href=\"/icon.png\"> <link rel=\"preconnect\" href=\"https://fonts.googleapis.com\"> <link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin> <link href=\"https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap\" rel=\"stylesheet\"> <link rel=\"stylesheet\" href=\"/assets/tailwind-e94f0c0a.css\" data-turbo-track=\"reload\" /> <script type=\"importmap\" data-turbo-track=\"reload\">{ \"imports\": { \"application\": \"/assets/application-bfcdf840.js\", \"@hotwired/turbo-rails\": \"/assets/turbo.min-9fd88cd5.js\", \"@hotwired/stimulus\": \"/assets/stimulus.min-4b1e420e.js\", \"@hotwired/stimulus-loading\": \"/assets/stimulus-loading-1fc53fe7.js\", \"chart.js\": \"https://cdn.jsdelivr.net/np…[truncated 247159 chars]"
+        }
+      }
+    }
+  ]
+}

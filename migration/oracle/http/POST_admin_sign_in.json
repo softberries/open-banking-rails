@@ -1,0 +1,106 @@
+{
+  "route": "POST /admin/sign_in(.:format)",
+  "captured_at": "2026-10-21T13:22:05.194Z",
+  "base_url": "http://127.0.0.1:3000",
+  "cases": [
+    {
+      "case": "wrong_password",
+      "actor": "anon",
+      "request": {
+        "method": "POST",
+        "path": "/admin/sign_in",
+        "headers": {},
+        "body": {
+          "authenticity_token": "<redacted>",
+          "user[email]": "maciek@example.com",
+          "user[password]": "<redacted>"
+        }
+      },
+      "response": {
+        "status": 422,
+        "duration_ms": 968,
+        "headers": {
+          "x-frame-options": "SAMEORIGIN",
+          "x-content-type-options": "nosniff",
+          "content-type": "text/html; charset=utf-8",
+          "vary": "Accept, Origin",
+          "cache-control": "no-cache",
+          "x-request-id": "66a9b5d4-0975-4789-8e18-039c917d1700",
+          "content-length": "12454",
+          "set-cookie": [
+            "_open_banking_rails_session=<redacted>; path=/; httponly; samesite=lax"
+          ]
+        },
+        "body_sample": {
+          "html_title": "Sign in",
+          "h1": "Sign in to your account",
+          "flash": [],
+          "length": 12438,
+          "head": "<!-- BEGIN app/views/layouts/admin_auth.html.erb --><!DOCTYPE html> <html lang=\"en\"> <head> <meta charset=\"UTF-8\"> <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"> <title>Sign in</title> <meta name=\"csrf-param\" content=\"authenticity_token\" /> <meta name=\"csrf-token\" content=\"Eppx81EsfwOWm4xhLHtmitePzKc7UrJGKpdXxXfMmLKxOiTQVSK7aZ6N1iE6LLVUPVLvonv4XZ6Se4XcC0staw\" /> <link rel=\"icon\" href=\"/icon.svg?v=3\" type=\"image/svg+xml\"> <link rel=\"apple-touch-icon\" href=\"/icon.png\"> <link rel=\"preconnect\" href=\"https://fonts.googleapis.com\"> <link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin> <link href=\"https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap\" rel=\"stylesheet\"> <link rel=\"stylesheet\" href=\"/assets/tailwind-e94f0c0a.css\" data-turbo-track=\"reload\" /> <script type=\"importmap\" data-turbo-track=\"reload\">{ \"imports\": { \"application\": \"/assets/application-bfcdf840.js\", \"@hotwired/turbo-rails\": \"/assets/turbo.min-9fd88cd5.js\", \"@hotwired/stimulus\": \"/assets/stimulus.min-4b1e420e.js\", \"@hotwired/stimulus-loading\": \"/assets/stimulus-loading-1fc53fe7.js\", \"chart.js\": \"https://cdn.jsdelivr.net/npm/chart.js@4.5.1/+esm\", \"chartjs-plugin-datalabels\": \"https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/+esm\", \"controllers/ajax_select_controller\": \"/assets/controllers/ajax_select_controller-9f440917.js\", \"controllers/application\": \"/assets/controllers/application-3affb389.js\", \"controllers/bulk_select_control…[truncated 10270 chars]"
+        }
+      }
+    },
+    {
+      "case": "missing_csrf_token",
+      "actor": "anon",
+      "request": {
+        "method": "POST",
+        "path": "/admin/sign_in",
+        "headers": {},
+        "body": {
+          "user[email]": "maciek@example.com",
+          "user[password]": "<redacted>"
+        }
+      },
+      "response": {
+        "status": 422,
+        "duration_ms": 876,
+        "headers": {
+          "content-type": "text/html; charset=UTF-8",
+          "x-request-id": "431855ef-87e0-4480-8b95-ed8f66ee182a",
+          "vary": "Origin",
+          "content-length": "204278"
+        },
+        "body_sample": {
+          "html_title": "Action Controller: Exception caught",
+          "h1": "ActionController::InvalidAuthenticityToken\n      in Admin::SessionsController#create",
+          "flash": [],
+          "length": 204278,
+          "head": "<!DOCTYPE html> <html lang=\"en\"> <head> <meta charset=\"utf-8\" /> <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"> <meta name=\"turbo-visit-control\" content=\"reload\"> <title>Action Controller: Exception caught</title> <style> body { background-color: #FAFAFA; color: #333; color-scheme: light dark; supported-color-schemes: light dark; margin: 0px; } body, p, ol, ul, td { font-family: helvetica, verdana, arial, sans-serif; font-size: 13px; line-height: 18px; } pre { font-size: 11px; white-space: pre-wrap; } pre.box { border: 1px solid #EEE; padding: 10px; margin: 0px; width: 958px; } header { color: #F0F0F0; background: #C00; padding: 0.5em 1.5em; } header button { appearance: none; background-color: hsl(0 0% 0% / 0.2); border: 0; border-radius: 14px; color: white; float: right; font-weight: 500; height: 28px; padding-inline: 14px; margin: 0.35em 0; } header button:active { background-color: hsl(0 0% 0% / 0.25); } h1 { overflow-wrap: break-word; margin: 0.2em 0; line-height: 1.1em; font-size: 2em; } h2 { color: #C00; line-height: 25px; } code.traces { font-size: 11px; } .trace-container { margin-top: 10px; } code.traces .trace { display: flex; align-items: center; gap: 2px; } .edit-icon { width: 16px; height: 16px; display: flex; font-size: 13px; align-items: center; justify-content: center; text-decoration: none; } .edit-icon:hover { scale: 1.05; } .response-heading, .request-heading { margin-top: 30px; } .exception-message { padding: 8px 0; } .exception-mess…[truncated 169538 chars]"
+        }
+      }
+    },
+    {
+      "case": "valid_credentials",
+      "actor": "anon",
+      "request": {
+        "method": "POST",
+        "path": "/admin/sign_in",
+        "headers": {},
+        "body": {
+          "authenticity_token": "<redacted>",
+          "user[email]": "other@example.com",
+          "user[password]": "<redacted>"
+        }
+      },
+      "response": {
+        "status": 303,
+        "duration_ms": 443,
+        "headers": {
+          "x-frame-options": "SAMEORIGIN",
+          "x-content-type-options": "nosniff",
+          "location": "http://127.0.0.1:3000/api/v9/docs",
+          "content-type": "text/html; charset=utf-8",
+          "cache-control": "no-cache",
+          "x-request-id": "6e4ab9d3-e196-4e42-b49d-ee3243d97865",
+          "vary": "Origin",
+          "content-length": "0",
+          "set-cookie": [
+            "_open_banking_rails_session=<redacted>; path=/; httponly; samesite=lax"
+          ]
+        },
+        "body_sample": ""
+      }
+    }
+  ]
+}

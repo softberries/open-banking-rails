@@ -1,0 +1,117 @@
+{
+  "route": "POST /api/:version/merchants/:merchant_id/rules(.json)",
+  "captured_at": "2026-10-21T13:22:44.223Z",
+  "base_url": "http://127.0.0.1:3000",
+  "cases": [
+    {
+      "case": "default",
+      "actor": "main(token)",
+      "request": {
+        "method": "POST",
+        "path": "/api/v1/merchants/58/rules",
+        "headers": {
+          "authorization": "Bearer obrl_oracle_main_t…",
+          "content-type": "application/json"
+        },
+        "body": {
+          "kind": "contains",
+          "field": "title",
+          "pattern": "ORACLE SHOP"
+        }
+      },
+      "response": {
+        "status": 201,
+        "duration_ms": 1959,
+        "headers": {
+          "content-type": "application/json",
+          "cache-control": "max-age=0, private, must-revalidate",
+          "x-request-id": "fc3d89bc-85e0-4e3c-a50f-2c8e3948edd1",
+          "vary": "Origin",
+          "content-length": "223"
+        },
+        "body_sample": {
+          "id": 67,
+          "merchant_id": 58,
+          "field": "title",
+          "kind": "contains",
+          "pattern": "ORACLE SHOP",
+          "case_sensitive": false,
+          "priority": 0,
+          "enabled": true,
+          "source": "user",
+          "confidence": null,
+          "model": null,
+          "approved_at": "2026-10-21T13:22:42.441Z"
+        }
+      }
+    },
+    {
+      "case": "invalid_regex",
+      "actor": "main(token)",
+      "request": {
+        "method": "POST",
+        "path": "/api/v1/merchants/58/rules",
+        "headers": {
+          "authorization": "Bearer obrl_oracle_main_t…",
+          "content-type": "application/json"
+        },
+        "body": {
+          "kind": "regex",
+          "field": "title",
+          "pattern": "(["
+        }
+      },
+      "response": {
+        "status": 422,
+        "duration_ms": 167,
+        "headers": {
+          "content-type": "application/json",
+          "cache-control": "no-cache",
+          "x-request-id": "6df1545e-db4b-448a-81df-9a62d466b610",
+          "vary": "Origin",
+          "content-length": "155"
+        },
+        "body_sample": {
+          "message": "Pattern is not a valid regex: premature end of char-class: /([/",
+          "details": [
+            "Pattern is not a valid regex: premature end of char-class: /([/"
+          ]
+        }
+      }
+    },
+    {
+      "case": "missing_required",
+      "actor": "main(token)",
+      "request": {
+        "method": "POST",
+        "path": "/api/v1/merchants/58/rules",
+        "headers": {
+          "authorization": "Bearer obrl_oracle_main_t…",
+          "content-type": "application/json"
+        },
+        "body": {
+          "kind": "contains"
+        }
+      },
+      "response": {
+        "status": 400,
+        "duration_ms": 131,
+        "headers": {
+          "content-type": "application/json",
+          "cache-control": "no-cache",
+          "x-request-id": "06af9b01-8939-4ece-9af6-09194d8a2346",
+          "vary": "Origin",
+          "content-length": "121"
+        },
+        "body_sample": {
+          "message": "Invalid parameters.",
+          "details": [
+            "field is missing",
+            "field does not have a valid value",
+            "pattern is missing"
+          ]
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "route": "DELETE /api/:version/merchants/:merchant_id/rules/:id(.json)",
+  "captured_at": "2026-10-21T13:22:54.363Z",
+  "base_url": "http://127.0.0.1:3000",
+  "cases": [
+    {
+      "case": "default",
+      "actor": "main(token)",
+      "request": {
+        "method": "DELETE",
+        "path": "/api/v1/merchants/58/rules/67",
+        "headers": {
+          "authorization": "Bearer obrl_oracle_main_t…"
+        }
+      },
+      "response": {
+        "status": 204,
+        "duration_ms": 2318,
+        "headers": {
+          "cache-control": "no-cache",
+          "x-request-id": "05c82d7c-beb8-4716-9865-146be1378d88",
+          "vary": "Origin"
+        },
+        "body_sample": ""
+      }
+    }
+  ]
+}

@@ -1,0 +1,6559 @@
+[
+  {
+    "name": "ActionMailbox::InboundEmail",
+    "file": "/workspace/ruby-service-investigator/bundle/ruby/3.4.0/gems/actionmailbox-8.1.3/app/models/action_mailbox/inbound_email.rb",
+    "app_model": false,
+    "table": "action_mailbox_inbound_emails",
+    "table_exists": false,
+    "primary_key": "id",
+    "sti": null,
+    "columns": [],
+    "associations": [
+      {
+        "macro": "has_one",
+        "name": "raw_email_attachment",
+        "class_name": "ActiveStorage::Attachment",
+        "options": {
+          "class_name": "ActiveStorage::Attachment",
+          "as": "record",
+          "inverse_of": "record",
+          "dependent": "destroy",
+          "strict_loading": "false"
+        }
+      },
+      {
+        "macro": "has_one",
+        "name": "raw_email_blob",
+        "class_name": "ActiveStorage::Blob",
+        "options": {
+          "through": "raw_email_attachment",
+          "class_name": "ActiveStorage::Blob",
+          "source": "blob",
+          "strict_loading": "false"
+        }
+      }
+    ],
+    "validations": [],
+    "callbacks": [
+      {
+        "kind": "validation",
+        "phase": "before",
+        "filter": "normalize_changed_in_place_attributes",
+        "if": []
+      },
+      {
+        "kind": "save",
+        "phase": "after",
+        "filter": "proc@/workspace/ruby-service-investigator/bundle/ruby/3.4.0/gems/activestorage-8.1.3/lib/active_storage/attached/model.rb:142",
+        "if": [
+          "#<ActiveSupport::Callbacks::Conditionals::Value:0x000078b10f018090>"
+        ]
+      },
+      {
+        "kind": "create",
+        "phase": "after",
+        "filter": "autosave_associated_records_for_raw_email_blob",
+        "if": [
+          "#<ActiveSupport::Callbacks::Conditionals::Value:0x000078b10f01a7c8>"
+        ]
+      },
+      {
+        "kind": "create",
+        "phase": "after",
+        "filter": "autosave_associated_records_for_raw_email_attachment",
+        "if": [
+          "#<ActiveSupport::Callbacks::Conditionals::Value:0x000078b10f01f778>"
+        ]
+      },
+      {
+        "kind": "update",
+        "phase": "after",
+        "filter": "autosave_associated_records_for_raw_email_blob",
+        "if": [
+          "#<ActiveSupport::Callbacks::Conditionals::Value:0x000078b10f0197d8>"
+        ]
+      },
+      {
+        "kind": "update",
+        "phase": "after",
+        "filter": "autosave_associated_records_for_raw_email_attachment",
+        "if": [
+          "#<ActiveSupport::Callbacks::Conditionals::Value:0x000078b10f01e0f8>"
+        ]
+      },
+      {
+        "kind": "destroy",
+        "phase": "before",
+        "filter": "proc@/workspace/ruby-service-investigator/bundle/ruby/3.4.0/gems/activerecord-8.1.3/lib/active_record/associations/builder/association.rb:153",
+        "if": []
+      },
+      {
+        "kind": "commit",
+        "phase": "after",
+        "filter": "proc@/workspace/ruby-service-investigator/bundle/ruby/3.4.0/gems/activestorage-8.1.3/lib/active_storage/attached/model.rb:144",
+        "if": [
+          "proc",
+          "proc"
+        ]
+      },
+      {
+        "kind": "commit",
+        "phase": "after",
+        "filter": "incinerate_later",
+        "if": [
+          "proc",
+          "proc",
+          "proc"
+        ]
+      },
+      {
+        "kind": "commit",
+        "phase": "after",
+        "filter": "route_later",
+        "if": [
+          "proc",
+          "proc",
+          "pending?"
+        ]
+      }
+    ],
+    "enums": {
+      "status": {
+        "pending": 0,
+        "processing": 1,
+        "delivered": 2,
+        "failed": 3,
+        "bounced": 4
+      }
+    },
+    "scopes": [],
+    "encrypted_attributes": [],
+    "monetized": {},
+    "has_paper_trail": false,
+    "ransackable_attributes": null,
+    "ransackable_associations": null,
+    "class_methods_defined": [],
+    "constants": []
+  },
+  {
+    "name": "ActionText::EncryptedRichText",
+    "file": "/workspace/ruby-service-investigator/bundle/ruby/3.4.0/gems/actiontext-8.1.3/app/models/action_text/encrypted_rich_text.rb",
+    "app_model": false,
+    "table": "action_text_rich_texts",
+    "table_exists": false,
+    "primary_key": "id",
+    "sti": "ActionText::RichText",
+    "columns": [],
+    "associations": [
+      {
+        "macro": "belongs_to",
+        "name": "record",
+        "class_name": "Record",
+        "options": {
+          "polymorphic": "true",
+          "touch": "true"
+        }
+      },
+      {
+        "macro": "has_many",
+        "name": "embeds_attachments",
+        "class_name": "ActiveStorage::Attachment",
+        "options": {
+          "as": "record",
+          "class_name": "ActiveStorage::Attachment",
+          "inverse_of": "record",
+          "dependent": "destroy",
+          "strict_loading": "false"
+        }
+      },
+      {
+        "macro": "has_many",
+        "name": "embeds_blobs",
+        "class_name": "ActiveStorage::Blob",
+        "options": {
+          "through": "embeds_attachments",
+          "class_name": "ActiveStorage::Blob",
+          "source": "blob",
+          "strict_loading": "false"
+        }
+      }
+    ],
+    "validations": [
+      {
+        "kind": "presence",
+        "attributes": [
+          "record"
+        ],
+        "options": {
+          "message": "required",
+          "if": "proc"
+        }
+      }
+    ],
+    "callbacks": [
+      {
+        "kind": "validation",
+        "phase": "after",
+        "filter": "_ensure_no_duplicate_errors",
+        "if": []
+      },
+      {
+        "kind": "validation",
+        "phase": "before",
+        "filter": "normalize_changed_in_place_attributes",
+        "if": []
+      },
+      {
+        "kind": "validation",
+        "phase": "before",
+        "filter": "proc@/workspace/ruby-service-investigator/bundle/ruby/3.4.0/gems/actiontext-8.1.3/app/models/action_text/rich_text.rb:57",
+        "if": []
+      },
+      {
+        "kind": "save",
+        "phase": "after",
+        "filter": "proc@/workspace/ruby-service-investigator/bundle/ruby/3.4.0/gems/activestorage-8.1.3/lib/active_storage/attached/model.rb:246",
+        "if": [
+          "#<ActiveSupport::Callbacks::Conditionals::Value:0x000078b10e5bf288>"
+        ]
+      },
+      {
+        "kind": "save",
+        "phase": "before",
+        "filter": "autosave_associated_records_for_record",
+        "if": []
+      },
+      {
+        "kind": "save",
+        "phase": "around",
+        "filter": "around_save_collection_association",
+        "if": []
+      },
+      {
+        "kind": "create",
+        "phase": "after",
+        "filter": "autosave_associated_records_for_embeds_blobs",
+        "if": [
+          "#<ActiveSupport::Callbacks::Conditionals::Value:0x000078b10e571bf0>"
+        ]
+      },
+      {
+        "kind": "create",
+        "phase": "after",
+        "filter": "autosave_associated_records_for_embeds_attachments",
+        "if": [
+          "#<ActiveSupport::Callbacks::Conditionals::Value:0x000078b10e576ba0>"
+        ]
+      },
+      {
+        "kind": "create",
+        "phase": "after",
+        "filter": "proc@/workspace/ruby-service-investigator/bundle/ruby/3.4.0/gems/activerecord-8.1.3/lib/active_record/associations/builder/belongs_to.rb:85",
+        "if": [
+          "saved_changes?",
+          "#<ActiveSupport::Callbacks::Conditionals::Value:0x000078b10e550590>"
+        ]
+      },
+      {
+        "kind": "update",
+        "phase": "after",
+        "filter": "autosave_associated_records_for_embeds_blobs",
+        "if": [
+          "#<ActiveSupport::Callbacks::Conditionals::Value:0x000078b10e5713f8>"
+        ]
+      },
+      {
+        "kind": "update",
+        "phase": "after",
+        "filter": "autosave_associated_records_for_embeds_attachments",
+        "if": [
+          "#<ActiveSupport::Callbacks::Conditionals::Value:0x000078b10e5763f8>"
+        ]
+      },
+      {
+        "kind": "update",
+        "phase": "after",
+        "filter": "proc@/workspace/ruby-service-investigator/bundle/ruby/3.4.0/gems/activerecord-8.1.3/lib/active_record/associations/builder/belongs_to.rb:85",
+        "if": [
+          "saved_changes?",
+          "#<ActiveSupport::Callbacks::Conditionals::Value:0x000078b10e57f890>"
+        ]
+      },
+      {
+        "kind": "destroy",
+        "phase": "after",
+        "filter": "proc@/workspace/ruby-service-investigator/bundle/ruby/3.4.0/gems/activerecord-8.1.3/lib/active_record/associations/builder/belongs_to.rb:85",
+        "if": [
+          "#<ActiveSupport::Callbacks::Conditionals::Value:0x000078b10e57e4e0>"
+        ]
+      },
+      {
+        "kind": "destroy",
+        "phase": "before",
+        "filter": "proc@/workspace/ruby-service-investigator/bundle/ruby/3.4.0/gems/activerecord-8.1.3/lib/active_record/associations/builder/association.rb:153",
+        "if": []
+      },
+      {
+        "kind": "commit",
+        "phase": "after",
+        "filter": "proc@/workspace/ruby-service-investigator/bundle/ruby/3.4.0/gems/activestorage-8.1.3/lib/active_storage/attached/model.rb:248",
+        "if": [
+          "proc",
+          "proc"
+        ]
+      },
+      {
+        "kind": "touch",
+        "phase": "after",
+        "filter": "proc@/workspace/ruby-service-investigator/bundle/ruby/3.4.0/gems/activerecord-8.1.3/lib/active_record/associations/builder/belongs_to.rb:85",
+        "if": [
+          "#<ActiveSupport::Callbacks::Conditionals::Value:0x000078b10e57d900>"
+        ]
+      }
+    ],
+    "enums": {},
+    "scopes": [],
+    "encrypted_attributes": [
+      "body"
+    ],
+    "monetized": {},
+    "has_paper_trail": false,
+    "ransackable_attributes": null,
+    "ransackable_associations": null,
+    "class_methods_defined": [],
+    "constants": []
+  },
+  {
+    "name": "ActionText::RichText",
+    "file": "/workspace/ruby-service-investigator/bundle/ruby/3.4.0/gems/actiontext-8.1.3/app/models/action_text/rich_text.rb",
+    "app_model": false,
+    "table": "action_text_rich_texts",
+    "table_exists": false,
+    "primary_key": "id",
+    "sti": null,
+    "columns": [],
+    "associations": [
+      {
+        "macro": "belongs_to",
+        "name": "record",
+        "class_name": "Record",
+        "options": {
+          "polymorphic": "true",
+          "touch": "true"
+        }
+      },
+      {
+        "macro": "has_many",
+        "name": "embeds_attachments",
+        "class_name": "ActiveStorage::Attachment",
+        "options": {
+          "as": "record",
+          "class_name": "ActiveStorage::Attachment",
+          "inverse_of": "record",
+          "dependent": "destroy",
+          "strict_loading": "false"
+        }
+      },
+      {
+        "macro": "has_many",
+        "name": "embeds_blobs",
+        "class_name": "ActiveStorage::Blob",
+        "options": {
+          "through": "embeds_attachments",
+          "class_name": "ActiveStorage::Blob",
+          "source": "blob",
+          "strict_loading": "false"
+        }
+      }
+    ],
+    "validations": [
+      {
+        "kind": "presence",
+        "attributes": [
+          "record"
+        ],
+        "options": {
+          "message": "required",
+          "if": "proc"
+        }
+      }
+    ],
+    "callbacks": [
+      {
+        "kind": "validation",
+        "phase": "after",
+        "filter": "_ensure_no_duplicate_errors",
+        "if": []
+      },
+      {
+        "kind": "validation",
+        "phase": "before",
+        "filter": "normalize_changed_in_place_attributes",
+        "if": []
+      },
+      {
+        "kind": "validation",
+        "phase": "before",
+        "filter": "proc@/workspace/ruby-service-investigator/bundle/ruby/3.4.0/gems/actiontext-8.1.3/app/models/action_text/rich_text.rb:57",
+        "if": []
+      },
+      {
+        "kind": "save",
+        "phase": "after",
+        "filter": "proc@/workspace/ruby-service-investigator/bundle/ruby/3.4.0/gems/activestorage-8.1.3/lib/active_storage/attached/model.rb:246",
+        "if": [
+          "#<ActiveSupport::Callbacks::Conditionals::Value:0x000078b10e5bf288>"
+        ]
+      },
+      {
+        "kind": "save",
+        "phase": "before",
+        "filter": "autosave_associated_records_for_record",
+        "if": []
+      },
+      {
+        "kind": "save",
+        "phase": "around",
+        "filter": "around_save_collection_association",
+        "if": []
+      },
+      {
+        "kind": "create",
+        "phase": "after",
+        "filter": "autosave_associated_records_for_embeds_blobs",
+        "if": [
+          "#<ActiveSupport::Callbacks::Conditionals::Value:0x000078b10e571bf0>"
+        ]
+      },
+      {
+        "kind": "create",
+        "phase": "after",
+        "filter": "autosave_associated_records_for_embeds_attachments",
+        "if": [
+          "#<ActiveSupport::Callbacks::Conditionals::Value:0x000078b10e576ba0>"
+        ]
+      },
+      {
+        "kind": "create",
+        "phase": "after",
+        "filter": "proc@/workspace/ruby-service-investigator/bundle/ruby/3.4.0/gems/activerecord-8.1.3/lib/active_record/associations/builder/belongs_to.rb:85",
+        "if": [
+          "saved_changes?",
+          "#<ActiveSupport::Callbacks::Conditionals::Value:0x000078b10e550590>"
+        ]
+      },
+      {
+        "kind": "update",
+        "phase": "after",
+        "filter": "autosave_associated_records_for_embeds_blobs",
+        "if": [
+          "#<ActiveSupport::Callbacks::Conditionals::Value:0x000078b10e5713f8>"
+        ]
+      },
+      {
+        "kind": "update",
+        "phase": "after",
+        "filter": "autosave_associated_records_for_embeds_attachments",
+        "if": [
+          "#<ActiveSupport::Callbacks::Conditionals::Value:0x000078b10e5763f8>"
+        ]
+      },
+      {
+        "kind": "update",
+        "phase": "after",
+        "filter": "proc@/workspace/ruby-service-investigator/bundle/ruby/3.4.0/gems/activerecord-8.1.3/lib/active_record/associations/builder/belongs_to.rb:85",
+        "if": [
+          "saved_changes?",
+          "#<ActiveSupport::Callbacks::Conditionals::Value:0x000078b10e57f890>"
+        ]
+      },
+      {
+        "kind": "destroy",
+        "phase": "after",
+        "filter": "proc@/workspace/ruby-service-investigator/bundle/ruby/3.4.0/gems/activerecord-8.1.3/lib/active_record/associations/builder/belongs_to.rb:85",
+        "if": [
+          "#<ActiveSupport::Callbacks::Conditionals::Value:0x000078b10e57e4e0>"
+        ]
+      },
+      {
+        "kind": "destroy",
+        "phase": "before",
+        "filter": "proc@/workspace/ruby-service-investigator/bundle/ruby/3.4.0/gems/activerecord-8.1.3/lib/active_record/associations/builder/association.rb:153",
+        "if": []
+      },
+      {
+        "kind": "commit",
+        "phase": "after",
+        "filter": "proc@/workspace/ruby-service-investigator/bundle/ruby/3.4.0/gems/activestorage-8.1.3/lib/active_storage/attached/model.rb:248",
+        "if": [
+          "proc",
+          "proc"
+        ]
+      },
+      {
+        "kind": "touch",
+        "phase": "after",
+        "filter": "proc@/workspace/ruby-service-investigator/bundle/ruby/3.4.0/gems/activerecord-8.1.3/lib/active_record/associations/builder/belongs_to.rb:85",
+        "if": [
+          "#<ActiveSupport::Callbacks::Conditionals::Value:0x000078b10e57d900>"
+        ]
+      }
+    ],
+    "enums": {},
+    "scopes": [],
+    "encrypted_attributes": [],
+    "monetized": {},
+    "has_paper_trail": false,
+    "ransackable_attributes": null,
+    "ransackable_associations": null,
+    "class_methods_defined": [],
+    "constants": []
+  },
+  {
+    "name": "ActiveStorage::Attachment",
+    "file": "/workspace/ruby-service-investigator/bundle/ruby/3.4.0/gems/activestorage-8.1.3/app/models/active_storage/attachment.rb",
+    "app_model": false,
+    "table": "active_storage_attachments",
+    "table_exists": false,
+    "primary_key": "id",
+    "sti": null,
+    "columns": [],
+    "associations": [
+      {
+        "macro": "belongs_to",
+        "name": "record",
+        "class_name": "Record",
+        "options": {
+          "polymorphic": "true",
+          "touch": "true"
+        }
+      },
+      {
+        "macro": "belongs_to",
+        "name": "blob",
+        "class_name": "ActiveStorage::Blob",
+        "options": {
+          "class_name": "ActiveStorage::Blob",
+          "autosave": "true",
+          "inverse_of": "attachments"
+        }
+      }
+    ],
+    "validations": [
+      {
+        "kind": "presence",
+        "attributes": [
+          "record"
+        ],
+        "options": {
+          "message": "required",
+          "if": "proc"
+        }
+      },
+      {
+        "kind": "presence",
+        "attributes": [
+          "blob"
+        ],
+        "options": {
+          "message": "required",
+          "if": "proc"
+        }
+      }
+    ],
+    "callbacks": [
+      {
+        "kind": "validation",
+        "phase": "after",
+        "filter": "_ensure_no_duplicate_errors",
+        "if": []
+      },
+      {
+        "kind": "validation",
+        "phase": "before",
+        "filter": "normalize_changed_in_place_attributes",
+        "if": []
+      },
+      {
+        "kind": "save",
+        "phase": "before",
+        "filter": "autosave_associated_records_for_record",
+        "if": []
+      },
+      {
+        "kind": "save",
+        "phase": "before",
+        "filter": "autosave_associated_records_for_blob",
+        "if": []
+      },
+      {
+        "kind": "create",
+        "phase": "after",
+        "filter": "proc@/workspace/ruby-service-investigator/bundle/ruby/3.4.0/gems/activerecord-8.1.3/lib/active_record/associations/builder/belongs_to.rb:85",
+        "if": [
+          "saved_changes?",
+          "#<ActiveSupport::Callbacks::Conditionals::Value:0x000078b10e8eb178>"
+        ]
+      },
+      {
+        "kind": "update",
+        "phase": "after",
+        "filter": "proc@/workspace/ruby-service-investigator/bundle/ruby/3.4.0/gems/activerecord-8.1.3/lib/active_record/associations/builder/belongs_to.rb:85",
+        "if": [
+          "saved_changes?",
+          "#<ActiveSupport::Callbacks::Conditionals::Value:0x000078b10e8e8a40>"
+        ]
+      },
+      {
+        "kind": "destroy",
+        "phase": "after",
+        "filter": "proc@/workspace/ruby-service-investigator/bundle/ruby/3.4.0/gems/activerecord-8.1.3/lib/active_record/associations/builder/belongs_to.rb:85",
+        "if": [
+          "#<ActiveSupport::Callbacks::Conditionals::Value:0x000078b10e8e7348>"
+        ]
+      },
+      {
+        "kind": "commit",
+        "phase": "after",
+        "filter": "purge_dependent_blob_later",
+        "if": [
+          "proc",
+          "proc"
+        ]
+      },
+      {
+        "kind": "commit",
+        "phase": "after",
+        "filter": "transform_variants_later",
+        "if": [
+          "proc",
+          "proc"
+        ]
+      },
+      {
+        "kind": "commit",
+        "phase": "after",
+        "filter": "analyze_blob_later",
+        "if": [
+          "proc",
+          "proc"
+        ]
+      },
+      {
+        "kind": "commit",
+        "phase": "after",
+        "filter": "mirror_blob_later",
+        "if": [
+          "proc",
+          "proc"
+        ]
+      },
+      {
+        "kind": "touch",
+        "phase": "after",
+        "filter": "proc@/workspace/ruby-service-investigator/bundle/ruby/3.4.0/gems/activerecord-8.1.3/lib/active_record/associations/builder/belongs_to.rb:85",
+        "if": [
+          "#<ActiveSupport::Callbacks::Conditionals::Value:0x000078b10e8e49e0>"
+        ]
+      }
+    ],
+    "enums": {},
+    "scopes": [
+      "with_all_variant_records"
+    ],
+    "encrypted_attributes": [],
+    "monetized": {},
+    "has_paper_trail": false,
+    "ransackable_attributes": null,
+    "ransackable_associations": null,
+    "class_methods_defined": [],
+    "constants": []
+  },
+  {
+    "name": "ActiveStorage::Blob",
+    "file": "/workspace/ruby-service-investigator/bundle/ruby/3.4.0/gems/activestorage-8.1.3/app/models/active_storage/blob.rb",
+    "app_model": false,
+    "table": "active_storage_blobs",
+    "table_exists": false,
+    "primary_key": "id",
+    "sti": null,
+    "columns": [],
+    "associations": [
+      {
+        "macro": "has_many",
+        "name": "attachments",
+        "class_name": "Attachment",
+        "options": {
+          "autosave": "false"
+        }
+      },
+      {
+        "macro": "has_many",
+        "name": "variant_records",
+        "class_name": "ActiveStorage::VariantRecord",
+        "options": {
+          "class_name": "ActiveStorage::VariantRecord",
+          "dependent": "false"
+        }
+      },
+      {
+        "macro": "has_one",
+        "name": "preview_image_attachment",
+        "class_name": "ActiveStorage::Attachment",
+        "options": {
+          "class_name": "ActiveStorage::Attachment",
+          "as": "record",
+          "inverse_of": "record",
+          "dependent": "destroy",
+          "strict_loading": "false"
+        }
+      },
+      {
+        "macro": "has_one",
+        "name": "preview_image_blob",
+        "class_name": "ActiveStorage::Blob",
+        "options": {
+          "through": "preview_image_attachment",
+          "class_name": "ActiveStorage::Blob",
+          "source": "blob",
+          "strict_loading": "false"
+        }
+      }
+    ],
+    "validations": [
+      {
+        "kind": "presence",
+        "attributes": [
+          "service_name"
+        ],
+        "options": {}
+      },
+      {
+        "kind": "presence",
+        "attributes": [
+          "checksum"
+        ],
+        "options": {
+          "unless": "composed"
+        }
+      }
+    ],
+    "callbacks": [
+      {
+        "kind": "validation",
+        "phase": "after",
+        "filter": "_ensure_no_duplicate_errors",
+        "if": []
+      },
+      {
+        "kind": "validation",
+        "phase": "before",
+        "filter": "normalize_changed_in_place_attributes",
+        "if": []
+      },
+      {
+        "kind": "save",
+        "phase": "after",
+        "filter": "proc@/workspace/ruby-service-investigator/bundle/ruby/3.4.0/gems/activestorage-8.1.3/lib/active_storage/attached/model.rb:142",
+        "if": [
+          "#<ActiveSupport::Callbacks::Conditionals::Value:0x000078b10e811c70>"
+        ]
+      },
+      {
+        "kind": "save",
+        "phase": "around",
+        "filter": "around_save_collection_association",
+        "if": []
+      },
+      {
+        "kind": "create",
+        "phase": "after",
+        "filter": "autosave_associated_records_for_preview_image_blob",
+        "if": [
+          "#<ActiveSupport::Callbacks::Conditionals::Value:0x000078b10e8166a8>"
+        ]
+      },
+      {
+        "kind": "create",
+        "phase": "after",
+        "filter": "autosave_associated_records_for_preview_image_attachment",
+        "if": [
+          "#<ActiveSupport::Callbacks::Conditionals::Value:0x000078b10e81aa78>"
+        ]
+      },
+      {
+        "kind": "create",
+        "phase": "after",
+        "filter": "autosave_associated_records_for_variant_records",
+        "if": [
+          "#<ActiveSupport::Callbacks::Conditionals::Value:0x000078b10e7ed1b8>"
+        ]
+      },
+      {
+        "kind": "create",
+        "phase": "after",
+        "filter": "autosave_associated_records_for_attachments",
+        "if": [
+          "#<ActiveSupport::Callbacks::Conditionals::Value:0x000078b10e71b258>"
+        ]
+      },
+      {
+        "kind": "update",
+        "phase": "after",
+        "filter": "autosave_associated_records_for_preview_image_blob",
+        "if": [
+          "#<ActiveSupport::Callbacks::Conditionals::Value:0x000078b10e813570>"
+        ]
+      },
+      {
+        "kind": "update",
+        "phase": "after",
+        "filter": "autosave_associated_records_for_preview_image_attachment",
+        "if": [
+          "#<ActiveSupport::Callbacks::Conditionals::Value:0x000078b10e819f88>"
+        ]
+      },
+      {
+        "kind": "update",
+        "phase": "after",
+        "filter": "autosave_associated_records_for_variant_records",
+        "if": [
+          "#<ActiveSupport::Callbacks::Conditionals::Value:0x000078b10e7ec2e0>"
+        ]
+      },
+      {
+        "kind": "update",
+        "phase": "after",
+        "filter": "touch_attachments",
+        "if": [
+          "#<ActiveSupport::Callbacks::Conditionals::Value:0x000078b10e718620>"
+        ]
+      },
+      {
+        "kind": "update",
+        "phase": "after",
+        "filter": "autosave_associated_records_for_attachments",
+        "if": [
+          "#<ActiveSupport::Callbacks::Conditionals::Value:0x000078b10e71aad8>"
+        ]
+      },
+      {
+        "kind": "destroy",
+        "phase": "before",
+        "filter": "proc@/workspace/ruby-service-investigator/bundle/ruby/3.4.0/gems/activestorage-8.1.3/app/models/active_storage/blob.rb:56",
+        "if": []
+      },
+      {
+        "kind": "destroy",
+        "phase": "before",
+        "filter": "proc@/workspace/ruby-service-investigator/bundle/ruby/3.4.0/gems/activestorage-8.1.3/app/models/active_storage/blob/representable.rb:10",
+        "if": []
+      },
+      {
+        "kind": "destroy",
+        "phase": "before",
+        "filter": "proc@/workspace/ruby-service-investigator/bundle/ruby/3.4.0/gems/activerecord-8.1.3/lib/active_record/associations/builder/association.rb:153",
+        "if": []
+      },
+      {
+        "kind": "commit",
+        "phase": "after",
+        "filter": "proc@/workspace/ruby-service-investigator/bundle/ruby/3.4.0/gems/activestorage-8.1.3/lib/active_storage/attached/model.rb:144",
+        "if": [
+          "proc",
+          "proc"
+        ]
+      },
+      {
+        "kind": "commit",
+        "phase": "after",
+        "filter": "update_service_metadata",
+        "if": [
+          "proc",
+          "proc",
+          "proc"
+        ]
+      },
+      {
+        "kind": "initialize",
+        "phase": "after",
+        "filter": "proc@/workspace/ruby-service-investigator/bundle/ruby/3.4.0/gems/activestorage-8.1.3/app/models/active_storage/blob.rb:48",
+        "if": [
+          "#<ActiveSupport::Callbacks::Conditionals::Value:0x000078b10e718cd8>"
+        ]
+      },
+      {
+        "kind": "initialize",
+        "phase": "after",
+        "filter": "proc@/workspace/ruby-service-investigator/bundle/ruby/3.4.0/gems/activerecord-8.1.3/lib/active_record/secure_token.rb:54",
+        "if": []
+      }
+    ],
+    "enums": {},
+    "scopes": [
+      "unattached"
+    ],
+    "encrypted_attributes": [],
+    "monetized": {},
+    "has_paper_trail": false,
+    "ransackable_attributes": null,
+    "ransackable_associations": null,
+    "class_methods_defined": [],
+    "constants": [
+      "MINIMUM_TOKEN_LENGTH",
+      "PROTECTED_METADATA"
+    ]
+  },
+  {
+    "name": "ActiveStorage::VariantRecord",
+    "file": "/workspace/ruby-service-investigator/bundle/ruby/3.4.0/gems/activestorage-8.1.3/app/models/active_storage/variant_record.rb",
+    "app_model": false,
+    "table": "active_storage_variant_records",
+    "table_exists": false,
+    "primary_key": "id",
+    "sti": null,
+    "columns": [],
+    "associations": [
+      {
+        "macro": "belongs_to",
+        "name": "blob",
+        "class_name": "Blob",
+        "options": {}
+      },
+      {
+        "macro": "has_one",
+        "name": "image_attachment",
+        "class_name": "ActiveStorage::Attachment",
+        "options": {
+          "class_name": "ActiveStorage::Attachment",
+          "as": "record",
+          "inverse_of": "record",
+          "dependent": "destroy",
+          "strict_loading": "false"
+        }
+      },
+      {
+        "macro": "has_one",
+        "name": "image_blob",
+        "class_name": "ActiveStorage::Blob",
+        "options": {
+          "through": "image_attachment",
+          "class_name": "ActiveStorage::Blob",
+          "source": "blob",
+          "strict_loading": "false"
+        }
+      }
+    ],
+    "validations": [
+      {
+        "kind": "presence",
+        "attributes": [
+          "blob"
+        ],
+        "options": {
+          "message": "required",
+          "if": "proc"
+        }
+      }
+    ],
+    "callbacks": [
+      {
+        "kind": "validation",
+        "phase": "before",
+        "filter": "normalize_changed_in_place_attributes",
+        "if": []
+      },
+      {
+        "kind": "save",
+        "phase": "after",
+        "filter": "proc@/workspace/ruby-service-investigator/bundle/ruby/3.4.0/gems/activestorage-8.1.3/lib/active_storage/attached/model.rb:142",
+        "if": [
+          "#<ActiveSupport::Callbacks::Conditionals::Value:0x000078b10e7ec1a0>"
+        ]
+      },
+      {
+        "kind": "save",
+        "phase": "before",
+        "filter": "autosave_associated_records_for_blob",
+        "if": []
+      },
+      {
+        "kind": "create",
+        "phase": "after",
+        "filter": "autosave_associated_records_for_image_blob",
+        "if": [
+          "#<ActiveSupport::Callbacks::Conditionals::Value:0x000078b10e7d0f68>"
+        ]
+      },
+      {
+        "kind": "create",
+        "phase": "after",
+        "filter": "autosave_associated_records_for_image_attachment",
+        "if": [
+          "#<ActiveSupport::Callbacks::Conditionals::Value:0x000078b10e7d3b28>"
+        ]
+      },
+      {
+        "kind": "update",
+        "phase": "after",
+        "filter": "autosave_associated_records_for_image_blob",
+        "if": [
+          "#<ActiveSupport::Callbacks::Conditionals::Value:0x000078b10e7eee28>"
+        ]
+      },
+      {
+        "kind": "update",
+        "phase": "after",
+        "filter": "autosave_associated_records_for_image_attachment",
+        "if": [
+          "#<ActiveSupport::Callbacks::Conditionals::Value:0x000078b10e7d32b8>"
+        ]
+      },
+      {
+        "kind": "destroy",
+        "phase": "before",
+        "filter": "proc@/workspace/ruby-service-investigator/bundle/ruby/3.4.0/gems/activerecord-8.1.3/lib/active_record/associations/builder/association.rb:153",
+        "if": []
+      },
+      {
+        "kind": "commit",
+        "phase": "after",
+        "filter": "proc@/workspace/ruby-service-investigator/bundle/ruby/3.4.0/gems/activestorage-8.1.3/lib/active_storage/attached/model.rb:144",
+        "if": [
+          "proc",
+          "proc"
+        ]
+      }
+    ],
+    "enums": {},
+    "scopes": [],
+    "encrypted_attributes": [],
+    "monetized": {},
+    "has_paper_trail": false,
+    "ransackable_attributes": null,
+    "ransackable_associations": null,
+    "class_methods_defined": [],
+    "constants": []
+  },
+  {
+    "name": "BankAccount",
+    "file": "app/models/bank_account.rb",
+    "app_model": true,
+    "table": "bank_accounts",
+    "table_exists": true,
+    "primary_key": "id",
+    "sti": null,
+    "columns": [
+      {
+        "name": "id",
+        "type": "bigint",
+        "null": false,
+        "default": null
+      },
+      {
+        "name": "account_servicer",
+        "type": "jsonb",
+        "null": true,
+        "default": null
+      },
+      {
+        "name": "all_account_ids",
+        "type": "jsonb",
+        "null": false,
+        "default": "[]"
+      },
+      {
+        "name": "balances_synced_at",
+        "type": "timestamp(6) without time zone",
+        "null": true,
+        "default": null
+      },
+      {
+        "name": "bban",
+        "type": "character varying",
+        "null": true,
+        "default": null
+      },
+      {
+        "name": "cash_account_type",
+        "type": "character varying",
+        "null": true,
+        "default": null
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp(6) without time zone",
+        "null": false,
+        "default": null
+      },
+      {
+        "name": "currency",
+        "type": "character varying",
+        "null": true,
+        "default": null
+      },
+      {
+        "name": "current_bank_connection_id",
+        "type": "bigint",
+        "null": true,
+        "default": null
+      },
+      {
+        "name": "details",
+        "type": "character varying",
+        "null": true,
+        "default": null
+      },
+      {
+        "name": "details_fetched_at",
+        "type": "timestamp(6) without time zone",
+        "null": true,
+        "default": null
+      },
+      {
+        "name": "iban",
+        "type": "character varying",
+        "null": true,
+        "default": null
+      },
+      {
+        "name": "manual",
+        "type": "boolean",
+        "null": false,
+        "default": false
+      },
+      {
+        "name": "manual_owner_id",
+        "type": "bigint",
+        "null": true,
+        "default": null
+      },
+      {
+        "name": "name",
+        "type": "character varying",
+        "null": true,
+        "default": null
+      },
+      {
+        "name": "product",
+        "type": "character varying",
+        "null": true,
+        "default": null
+      },
+      {
+        "name": "raw_account_resource",
+        "type": "jsonb",
+        "null": true,
+        "default": null
+      },
+      {
+        "name": "raw_balances",
+        "type": "text",
+        "null": true,
+        "default": null
+      },
+      {
+        "name": "raw_details",
+        "type": "jsonb",
+        "null": true,
+        "default": null
+      },
+      {
+        "name": "status",
+        "type": "character varying",
+        "null": false,
+        "default": "active"
+      },
+      {
+        "name": "tpp_credential_id",
+        "type": "bigint",
+        "null": true,
+        "default": null
+      },
+      {
+        "name": "transactions_synced_at",
+        "type": "timestamp(6) without time zone",
+        "null": true,
+        "default": null
+      },
+      {
+        "name": "uid",
+        "type": "character varying",
+        "null": false,
+        "default": null
+      },
+      {
+        "name": "updated_at",
+        "type": "timestamp(6) without time zone",
+        "null": false,
+        "default": null
+      },
+      {
+        "name": "usage",
+        "type": "character varying",
+        "null": true,
+        "default": null
+      }
+    ],
+    "associations": [
+      {
+        "macro": "belongs_to",
+        "name": "tpp_credential",
+        "class_name": "TppCredential",
+        "options": {
+          "optional": "true"
+        }
+      },
+      {
+        "macro": "belongs_to",
+        "name": "manual_owner",
+        "class_name": "User",
+        "options": {
+          "class_name": "User",
+          "optional": "true"
+        }
+      },
+      {
+        "macro": "belongs_to",
+        "name": "current_bank_connection",
+        "class_name": "BankConnection",
+        "options": {
+          "class_name": "BankConnection",
+          "optional": "true"
+        }
+      },
+      {
+        "macro": "has_one",
+        "name": "synced_user",
+        "class_name": "User",
+        "options": {
+          "through": "tpp_credential",
+          "source": "user"
+        }
+      },
+      {
+        "macro": "has_many",
+        "name": "bank_transactions",
+        "class_name": "BankTransaction",
+        "options": {
+          "dependent": "destroy"
+        }
+      },
+      {
+        "macro": "has_many",
+        "name": "manual_transactions",
+        "class_name": "ManualTransaction",
+        "options": {
+          "dependent": "destroy"
+        }
+      },
+      {
+        "macro": "has_many",
+        "name": "versions",
+        "class_name": "PaperTrail::Version",
+        "options": {
+          "class_name": "PaperTrail::Version",
+          "as": "item"
+        }
+      }
+    ],
+    "validations": [
+      {
+        "kind": "presence",
+        "attributes": [
+          "uid"
+        ],
+        "options": {}
+      },
+      {
+        "kind": "uniqueness",
+        "attributes": [
+          "uid"
+        ],
+        "options": {}
+      },
+      {
+        "kind": "presence",
+        "attributes": [
+          "status"
+        ],
+        "options": {}
+      },
+      {
+        "kind": "inclusion",
+        "attributes": [
+          "status"
+        ],
+        "options": {
+          "in": "[\"active\", \"inactive\", \"revoked\"]"
+        }
+      },
+      {
+        "kind": "inclusion",
+        "attributes": [
+          "cash_account_type"
+        ],
+        "options": {
+          "allow_blank": "true",
+          "in": "[\"CACC\", \"CARD\", \"CASH\", \"LOAN\", \"OTHR\", \"SVGS\"]"
+        }
+      }
+    ],
+    "callbacks": [
+      {
+        "kind": "validation",
+        "phase": "after",
+        "filter": "_ensure_no_duplicate_errors",
+        "if": []
+      },
+      {
+        "kind": "validation",
+        "phase": "before",
+        "filter": "normalize_changed_in_place_attributes",
+        "if": []
+      },
+      {
+        "kind": "save",
+        "phase": "before",
+        "filter": "autosave_associated_records_for_tpp_credential",
+        "if": []
+      },
+      {
+        "kind": "save",
+        "phase": "before",
+        "filter": "autosave_associated_records_for_manual_owner",
+        "if": []
+      },
+      {
+        "kind": "save",
+        "phase": "before",
+        "filter": "autosave_associated_records_for_current_bank_connection",
+        "if": []
+      },
+      {
+        "kind": "save",
+        "phase": "around",
+        "filter": "around_save_collection_association",
+        "if": []
+      },
+      {
+        "kind": "save",
+        "phase": "before",
+        "filter": "proc@/workspace/ruby-service-investigator/bundle/ruby/3.4.0/gems/paper_trail-17.0.0/lib/paper_trail/model_config.rb:65",
+        "if": []
+      },
+      {
+        "kind": "create",
+        "phase": "after",
+        "filter": "proc@/workspace/ruby-service-investigator/bundle/ruby/3.4.0/gems/paper_trail-17.0.0/lib/paper_trail/model_config.rb:40",
+        "if": [
+          "#<ActiveSupport::Callbacks::Conditionals::Value:0x000078b10dd06510>"
+        ]
+      },
+      {
+        "kind": "create",
+        "phase": "after",
+        "filter": "autosave_associated_records_for_versions",
+        "if": [
+          "#<ActiveSupport::Callbacks::Conditionals::Value:0x000078b10dd07c58>"
+        ]
+      },
+      {
+        "kind": "create",
+        "phase": "after",
+        "filter": "autosave_associated_records_for_manual_transactions",
+        "if": [
+          "#<ActiveSupport::Callbacks::Conditionals::Value:0x000078b10ddc0190>"
+        ]
+      },
+      {
+        "kind": "create",
+        "phase": "after",
+        "filter": "autosave_associated_records_for_bank_transactions",
+        "if": [
+          "#<ActiveSupport::Callbacks::Conditionals::Value:0x000078b10ddc27d8>"
+        ]
+      },
+      {
+        "kind": "create",
+        "phase": "after",
+        "filter": "autosave_associated_records_for_synced_user",
+        "if": [
+          "#<ActiveSupport::Callbacks::Conditionals::Value:0x000078b10ddc61f8>"
+        ]
+      },
+      {
+        "kind": "update",
+        "phase": "after",
+        "filter": "proc@/workspace/ruby-service-investigator/bundle/ruby/3.4.0/gems/paper_trail-17.0.0/lib/paper_trail/model_config.rb:77",
+        "if": [
+          "#<ActiveSupport::Callbacks::Conditionals::Value:0x000078b10dd05728>"
+        ]
+      },
+      {
+        "kind": "update",
+        "phase": "after",
+        "filter": "proc@/workspace/ruby-service-investigator/bundle/ruby/3.4.0/gems/paper_trail-17.0.0/lib/paper_trail/model_config.rb:68",
+        "if": [
+          "#<ActiveSupport::Callbacks::Conditionals::Value:0x000078b10dd05c00>"
+        ]
+      },
+      {
+        "kind": "update",
+        "phase": "after",
+        "filter": "autosave_associated_records_for_versions",
+        "if": [
+          "#<ActiveSupport::Callbacks::Conditionals::Value:0x000078b10dd077d0>"
+        ]
+      },
+      {
+        "kind": "update",
+        "phase": "after",
+        "filter": "autosave_associated_records_for_manual_transactions",
+        "if": [
+          "#<ActiveSupport::Callbacks::Conditionals::Value:0x000078b10dd0fca0>"
+        ]
+      },
+      {
+        "kind": "update",
+        "phase": "after",
+        "filter": "autosave_associated_records_for_bank_transactions",
+        "if": [
+          "#<ActiveSupport::Callbacks::Conditionals::Value:0x000078b10ddc2350>"
+        ]
+      },
+      {
+        "kind": "update",
+        "phase": "after",
+        "filter": "autosave_associated_records_for_synced_user",
+        "if": [
+          "#<ActiveSupport::Callbacks::Conditionals::Value:0x000078b10ddc5be0>"
+        ]
+      },
+      {
+        "kind": "destroy",
+        "phase": "before",
+        "filter": "proc@/workspace/ruby-service-investigator/bundle/ruby/3.4.0/gems/activerecord-8.1.3/lib/active_record/associations/builder/association.rb:153",
+        "if": []
+      },
+      {
+        "kind": "destroy",
+        "phase": "before",
+        "filter": "proc@/workspace/ruby-service-investigator/bundle/ruby/3.4.0/gems/activerecord-8.1.3/lib/active_record/associations/builder/association.rb:153",
+        "if": []
+      },
+      {
+        "kind": "destroy",
+        "phase": "before",
+        "filter": "proc@/workspace/ruby-service-investigator/bundle/ruby/3.4.0/gems/paper_trail-17.0.0/lib/paper_trail/model_config.rb:53",
+        "if": []
+      },
+      {
+        "kind": "rollback",
+        "phase": "after",
+        "filter": "proc@/workspace/ruby-service-investigator/bundle/ruby/3.4.0/gems/paper_trail-17.0.0/lib/paper_trail/model_config.rb:114",
+        "if": []
+      },
+      {
+        "kind": "touch",
+        "phase": "after",
+        "filter": "proc@/workspace/ruby-service-investigator/bundle/ruby/3.4.0/gems/paper_trail-17.0.0/lib/paper_trail/model_config.rb:94",
+        "if": [
+          "#<ActiveSupport::Callbacks::Conditionals::Value:0x000078b10dd04da0>"
+        ]
+      }
+    ],
+    "enums": {},
+    "scopes": [
+      "active",
+      "synced",
+      "wallets"
+    ],
+    "encrypted_attributes": [
+      "raw_balances"
+    ],
+    "monetized": {},
+    "has_paper_trail": true,
+    "ransackable_attributes": [
+      "id",
+      "uid",
+      "iban",
+      "bban",
+      "currency",
+      "name",
+      "product",
+      "details",
+      "cash_account_type",
+      "usage",
+      "status",
+      "manual",
+      "details_fetched_at",
+      "balances_synced_at",
+      "transactions_synced_at",
+      "tpp_credential_id",
+      "manual_owner_id",
+      "current_bank_connection_id",
+      "created_at",
+      "updated_at"
+    ],
+    "ransackable_associations": [
+      "tpp_credential",
+      "current_bank_connection",
+      "manual_owner"
+    ],
+    "class_methods_defined": [
+      "ransackable_attributes",
+      "ransackable_associations",
+      "bban_from"
+    ],
+    "constants": [
+      "STATUSES",
+      "CASH_ACCOUNT_TYPES"
+    ]
+  },
+  {
+    "name": "BankConnection",
+    "file": "app/models/bank_connection.rb",
+    "app_model": true,
+    "table": "bank_connections",
+    "table_exists": true,
+    "primary_key": "id",
+    "sti": null,
+    "columns": [
+      {
+        "name": "id",
+        "type": "bigint",
+        "null": false,
+        "default": null
+      },
+      {
+        "name": "access_balances",
+        "type": "boolean",
+        "null": false,
+        "default": true
+      },
+      {
+        "name": "access_transactions",
+        "type": "boolean",
+        "null": false,
+        "default": true
+      },
+      {
+        "name": "authorized_at",
+        "type": "timestamp(6) without time zone",
+        "null": true,
+        "default": null
+      },
+      {
+        "name": "bank_country",
+        "type": "character varying",
+        "null": true,
+        "default": "PL"
+      },
+      {
+        "name": "bank_name",
+        "type": "character varying",
+        "null": true,
+        "default": null
+      },
+      {
+        "name": "bank_slug",
+        "type": "character varying",
+        "null": false,
+        "default": null
+      },
+      {
+        "name": "closed_at",
+        "type": "timestamp(6) without time zone",
+        "null": true,
+        "default": null
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp(6) without time zone",
+        "null": false,
+        "default": null
+      },
+      {
+        "name": "last_error",
+        "type": "text",
+        "null": true,
+        "default": null
+      },
+      {
+        "name": "last_refreshed_at",
+        "type": "timestamp(6) without time zone",
+        "null": true,
+        "default": null
+      },
+      {
+        "name": "last_synced_at",
+        "type": "timestamp(6) without time zone",
+        "null": true,
+        "default": null
+      },
+      {
+        "name": "psu_id_hash",
+        "type": "text",
+        "null": true,
+        "default": null
+      },
+      {
+        "name": "psu_type",
+        "type": "character varying",
+        "null": true,
+        "default": "personal"
+      },
+      {
+        "name": "raw_session_payload",
+        "type": "text",
+        "null": true,
+        "default": null
+      },
+      {
+        "name": "replaces_id",
+        "type": "bigint",
+        "null": true,
+        "default": null
+      },
+      {
+        "name": "session_id",
+        "type": "text",
+        "null": true,
+        "default": null
+      },
+      {
+        "name": "status",
+        "type": "character varying",
+        "null": false,
+        "default": "pending"
+      },
+      {
+        "name": "tpp_credential_id",
+        "type": "bigint",
+        "null": false,
+        "default": null
+      },
+      {
+        "name": "updated_at",
+        "type": "timestamp(6) without time zone",
+        "null": false,
+        "default": null
+      },
+      {
+        "name": "valid_until",
+        "type": "timestamp(6) without time zone",
+        "null": true,
+        "default": null
+      }
+    ],
+    "associations": [
+      {
+        "macro": "belongs_to",
+        "name": "tpp_credential",
+        "class_name": "TppCredential",
+        "options": {}
+      },
+      {
+        "macro": "belongs_to",
+        "name": "replaces",
+        "class_name": "BankConnection",
+        "options": {
+          "class_name": "BankConnection",
+          "optional": "true"
+        }
+      },
+      {
+        "macro": "has_one",
+        "name": "user",
+        "class_name": "User",
+        "options": {
+          "through": "tpp_credential"
+        }
+      },
+      {
+        "macro": "has_many",
+        "name": "current_bank_accounts",
+        "class_name": "BankAccount",
+        "options": {
+          "class_name": "BankAccount",
+          "foreign_key": "current_bank_connection_id",
+          "dependent": "nullify",
+          "inverse_of": "current_bank_connection"
+        }
+      },
+      {
+        "macro": "has_one",
+        "name": "sync_schedule",
+        "class_name": "SyncSchedule",
+        "options": {
+          "dependent": "destroy"
+        }
+      },
+      {
+        "macro": "has_many",
+        "name": "versions",
+        "class_name": "PaperTrail::Version",
+        "options": {
+          "class_name": "PaperTrail::Version",
+          "as": "item"
+        }
+      }
+    ],
+    "validations": [
+      {
+        "kind": "presence",
+        "attributes": [
+          "tpp_credential"
+        ],
+        "options": {
+          "message": "required",
+          "if": "proc"
+        }
+      },
+      {
+        "kind": "presence",
+        "attributes": [
+          "bank_slug"
+        ],
+        "options": {}
+      },
+      {
+        "kind": "presence",
+        "attributes": [
+          "status"
+        ],
+        "options": {}
+      },
+      {
+        "kind": "inclusion",
+        "attributes": [
+          "status"
+        ],
+        "options": {
+          "in": "[\"pending\", \"authorized\", \"expired\", \"revoked\", \"replaced\", \"error\", \"closed\"]"
+        }
+      },
+      {
+        "kind": "inclusion",
+        "attributes": [
+          "psu_type"
+        ],
+        "options": {
+          "allow_blank": "true",
+          "in": "[\"personal\", \"business\"]"
+        }
+      }
+    ],
+    "callbacks": [
+      {
+        "kind": "validation",
+        "phase": "after",
+        "filter": "_ensure_no_duplicate_errors",
+        "if": []
+      },
+      {
+        "kind": "validation",
+        "phase": "before",
+        "filter": "normalize_changed_in_place_attributes",
+        "if": []
+      },
+      {
+        "kind": "save",
+        "phase": "before",
+        "filter": "autosave_associated_records_for_tpp_credential",
+        "if": []
+      },
+      {
+        "kind": "save",
+        "phase": "before",
+        "filter": "autosave_associated_records_for_replaces",
+        "if": []
+      },
+      {
+        "kind": "save",
+        "phase": "around",
+        "filter": "around_save_collection_association",
+        "if": []
+      },
+      {
+        "kind": "save",
+        "phase": "before",
+        "filter": "proc@/workspace/ruby-service-investigator/bundle/ruby/3.4.0/gems/paper_trail-17.0.0/lib/paper_trail/model_config.rb:65",
+        "if": []
+      },
+      {
+        "kind": "create",
+        "phase": "after",
+        "filter": "proc@/workspace/ruby-service-investigator/bundle/ruby/3.4.0/gems/paper_trail-17.0.0/lib/paper_trail/model_config.rb:40",
+        "if": [
+          "#<ActiveSupport::Callbacks::Conditionals::Value:0x000078b10dd30658>"
+        ]
+      },
+      {
+        "kind": "create",
+        "phase": "after",
+        "filter": "autosave_associated_records_for_versions",
+        "if": [
+          "#<ActiveSupport::Callbacks::Conditionals::Value:0x000078b10dd31b98>"
+        ]
+      },
+      {
+        "kind": "create",
+        "phase": "after",
+        "filter": "autosave_associated_records_for_sync_schedule",
+        "if": [
+          "#<ActiveSupport::Callbacks::Conditionals::Value:0x000078b10dd393e8>"
+        ]
+      },
+      {
+        "kind": "create",
+        "phase": "after",
+        "filter": "autosave_associated_records_for_current_bank_accounts",
+        "if": [
+          "#<ActiveSupport::Callbacks::Conditionals::Value:0x000078b10dd3b468>"
+        ]
+      },
+      {
+        "kind": "create",
+        "phase": "after",
+        "filter": "autosave_associated_records_for_user",
+        "if": [
+          "#<ActiveSupport::Callbacks::Conditionals::Value:0x000078b10dd3cd18>"
+        ]
+      },
+      {
+        "kind": "update",
+        "phase": "after",
+        "filter": "proc@/workspace/ruby-service-investigator/bundle/ruby/3.4.0/gems/paper_trail-17.0.0/lib/paper_trail/model_config.rb:77",
+        "if": [
+          "#<ActiveSupport::Callbacks::Conditionals::Value:0x000078b10db8f538>"
+        ]
+      },
+      {
+        "kind": "update",
+        "phase": "after",
+        "filter": "proc@/workspace/ruby-service-investigator/bundle/ruby/3.4.0/gems/paper_trail-17.0.0/lib/paper_trail/model_config.rb:68",
+        "if": [
+          "#<ActiveSupport::Callbacks::Conditionals::Value:0x000078b10db8fb50>"
+        ]
+      },
+      {
+        "kind": "update",
+        "phase": "after",
+        "filter": "autosave_associated_records_for_versions",
+        "if": [
+          "#<ActiveSupport::Callbacks::Conditionals::Value:0x000078b10dd31710>"
+        ]
+      },
+      {
+        "kind": "update",
+        "phase": "after",
+        "filter": "autosave_associated_records_for_sync_schedule",
+        "if": [
+          "#<ActiveSupport::Callbacks::Conditionals::Value:0x000078b10dd38f60>"
+        ]
+      },
+      {
+        "kind": "update",
+        "phase": "after",
+        "filter": "autosave_associated_records_for_current_bank_accounts",
+        "if": [
+          "#<ActiveSupport::Callbacks::Conditionals::Value:0x000078b10dd3afe0>"
+        ]
+      },
+      {
+        "kind": "update",
+        "phase": "after",
+        "filter": "autosave_associated_records_for_user",
+        "if": [
+          "#<ActiveSupport::Callbacks::Conditionals::Value:0x000078b10dd3c818>"
+        ]
+      },
+      {
+        "kind": "destroy",
+        "phase": "before",
+        "filter": "proc@/workspace/ruby-service-investigator/bundle/ruby/3.4.0/gems/activerecord-8.1.3/lib/active_record/associations/builder/association.rb:153",
+        "if": []
+      },
+      {
+        "kind": "destroy",
+        "phase": "before",
+        "filter": "proc@/workspace/ruby-service-investigator/bundle/ruby/3.4.0/gems/activerecord-8.1.3/lib/active_record/associations/builder/association.rb:153",
+        "if": []
+      },
+      {
+        "kind": "destroy",
+        "phase": "before",
+        "filter": "proc@/workspace/ruby-service-investigator/bundle/ruby/3.4.0/gems/paper_trail-17.0.0/lib/paper_trail/model_config.rb:53",
+        "if": []
+      },
+      {
+        "kind": "rollback",
+        "phase": "after",
+        "filter": "proc@/workspace/ruby-service-investigator/bundle/ruby/3.4.0/gems/paper_trail-17.0.0/lib/paper_trail/model_config.rb:114",
+        "if": []
+      },
+      {
+        "kind": "touch",
+        "phase": "after",
+        "filter": "proc@/workspace/ruby-service-investigator/bundle/ruby/3.4.0/gems/paper_trail-17.0.0/lib/paper_trail/model_config.rb:94",
+        "if": [
+          "#<ActiveSupport::Callbacks::Conditionals::Value:0x000078b10db8e9f8>"
+        ]
+      }
+    ],
+    "enums": {},
+    "scopes": [
+      "active",
+      "inactive",
+      "for_bank",
+      "for_user",
+      "expiring_within",
+      "expired"
+    ],
+    "encrypted_attributes": [
+      "session_id",
+      "psu_id_hash",
+      "raw_session_payload"
+    ],
+    "monetized": {},
+    "has_paper_trail": true,
+    "ransackable_attributes": [
+      "id",
+      "bank_slug",
+      "bank_country",
+      "bank_name",
+      "status",
+      "psu_type",
+      "valid_until",
+      "authorized_at",
+      "last_refreshed_at",
+      "last_synced_at",
+      "closed_at",
+      "access_balances",
+      "access_transactions",
+      "tpp_credential_id",
+      "replaces_id",
+      "created_at",
+      "updated_at"
+    ],
+    "ransackable_associations": [
+      "tpp_credential",
+      "replaces"
+    ],
+    "class_methods_defined": [
+      "ransackable_attributes",
+      "ransackable_associations"
+    ],
+    "constants": [
+      "STATUSES",
+      "PSU_TYPES"
+    ]
+  },
+  {
+    "name": "BankTransaction",
+    "file": "app/models/bank_transaction.rb",
+    "app_model": true,
+    "table": "bank_transactions",
+    "table_exists": true,
+    "primary_key": "id",
+    "sti": null,
+    "columns": [
+      {
+        "name": "id",
+        "type": "bigint",
+        "null": false,
+        "default": null
+      },
+      {
+        "name": "amount_cents",
+        "type": "bigint",
+        "null": false,
+        "default": null
+      },
+      {
+        "name": "bank_account_id",
+        "type": "bigint",
+        "null": false,
+        "default": null
+      },
+      {
+        "name": "bank_transaction_code",
+        "type": "character varying",
+        "null": true,
+        "default": null
+      },
+      {
+        "name": "booking_date",
+        "type": "date",
+        "null": false,
+        "default": null
+      },
+      {
+        "name": "counterparty_iban",
+        "type": "character varying",
+        "null": true,
+        "default": null
+      },
+      {
+        "name": "counterparty_kind",
+        "type": "character varying",
+        "null": false,
+        "default": "unknown"
+      },
+      {
+        "name": "counterparty_name",
+        "type": "character varying",
+        "null": true,
+        "default": null
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp(6) without time zone",
+        "null": false,
+        "default": null
+      },
+      {
+        "name": "currency",
+        "type": "character varying(3)",
+        "null": false,
+        "default": null
+      },
+      {
+        "name": "direction",
+        "type": "character varying",
+        "null": false,
+        "default": null
+      },
+      {
+        "name": "external_id",
+        "type": "character varying",
+        "null": false,
+        "default": null
+      },
+      {
+        "name": "fetched_at",
+        "type": "timestamp(6) without time zone",
+        "null": false,
+        "default": null
+      },
+      {
+        "name": "payment_method",
+        "type": "character varying",
+        "null": true,
+        "default": null
+      },
+      {
+        "name": "raw_payload",
+        "type": "text",
+        "null": false,
+        "default": null
+      },
+      {
+        "name": "status",
+        "type": "character varying",
+        "null": false,
+        "default": "booked"
+      },
+      {
+        "name": "title",
+        "type": "text",
+        "null": true,
+        "default": null
+      },
+      {
+        "name": "transaction_date",
+        "type": "date",
+        "null": true,
+        "default": null
+      },
+      {
+        "name": "type_hint",
+        "type": "character varying",
+        "null": true,
+        "default": null
+      },
+      {
+        "name": "updated_at",
+        "type": "timestamp(6) without time zone",
+        "null": false,
+        "default": null
+      },
+      {
+        "name": "value_date",
+        "type": "date",
+        "null": true,
+        "default": null
+      }
+    ],
+    "associations": [
+      {
+        "macro": "has_one",
+        "name": "enrichment",
+        "class_name": "TransactionEnrichment",
+        "options": {
+          "as": "enrichable",
+          "class_name": "TransactionEnrichment",
+          "dependent": "destroy"
+        }
+      },
+      {
+        "macro": "belongs_to",
+        "name": "bank_account",
+        "class_name": "BankAccount",
+        "options": {}
+      },
+      {
+        "macro": "has_one",
+        "name": "tpp_credential",
+        "class_name": "TppCredential",
+        "options": {
+          "through": "bank_account"
+        }
+      },
+      {
+        "macro": "has_one",
+        "name": "user",
+        "class_name": "User",
+        "options": {
+          "through": "tpp_credential"
+        }
+      }
+    ],
+    "validations": [
+      {
+        "kind": "presence",
+        "attributes": [
+          "bank_account"
+        ],
+        "options": {
+          "message": "required",
+          "if": "proc"
+        }
+      },
+      {
+        "kind": "numericality",
+        "attributes": [
+          "amount_cents"
+        ],
+        "options": {
+          "allow_nil": ""
+        }
+      },
+      {
+        "kind": "presence",
+        "attributes": [
+          "booking_date",
+          "amount_cents",
+          "currency"
+        ],
+        "options": {}
+      },
+      {
+        "kind": "money",
+        "attributes": [
+          "amount"
+        ],
+        "options": {
+          "allow_nil": ""
+        }
+      },
+      {
+        "kind": "presence",
+        "attributes": [
+          "external_id"
+        ],
+        "options": {}
+      },
+      {
+        "kind": "uniqueness",
+        "attributes": [
+          "external_id"
+        ],
+        "options": {
+          "scope": "bank_account_id"
+        }
+      },
+      {
+        "kind": "inclusion",
+        "attributes": [
+          "currency"
+        ],
+        "options": {
+          "in": "[\"USD\", \"EUR\", \"GBP\", \"AUD\", \"CAD\", \"JPY\", \"BYR\", \"SLL\", \"SOS\", \"SRD\", \"SSP\", \"STD\", \"STN\", \"SVC\", \"SYP\", \"SZL\", \"THB\", \"TJS\", \"TMT\", \"TND\", \"TOP\", \"TRY\", \"TTD\", \"TWD\", \"TZS\", \"UAH\", \"UGX\", \"UYU\", \"NOK\", \"NPR\", \"NZD\", \"OMR\", \"PAB\", \"PEN\", \"PGK\", \"PHP\", \"PKR\", \"PLN\", \"PYG\", \"QAR\", \"RON\", \"RSD\", \"RUB\", \"RWF\", \"SAR\", \"SBD\", \"SCR\", \"SDG\", \"SEK\", \"SGD\", \"SHP\", \"SKK\", \"SLE\", \"ZWG\", \"BCH\", \"BTC\", \"JEP\", \"GGP\", \"IMP\", \"XFU\", \"GBX\", \"CNH\", \"USDC\", \"EEK\", \"GHS\", \"HRK\", \"LTL\", \"LVL\", \"MRO\", \"MTL\", \"TMM\", \"JPY\", \"ZWD\", \"ZWL\", \"ZWN\", \"ZWR\", \"VEF\", \"UZS\", \"VES\", \"VND\", \"VUV\", \"WST\", \"XAF\", \"XAG\", \"XAU\", \"XBA\", \"XBB\", \"XBC\", \"XBD\", \"XCD\", \"XCG\", \"XDR\", \"XOF\", \"XPD\", \"XPF\", \"XPT\", \"XTS\", \"YER\", \"ZAR\", \"ZMK\", \"ZMW\", \"CDF\", \"CHF\", \"CLF\", \"CLP\", \"CNY\", \"COP\", \"CRC\", \"CUC\", \"CUP\", \"CVE\", \"CZK\", \"DJF\", \"DKK\", \"DOP\", \"DZD\", \"EGP\", \"ERN\", \"ETB\", \"FJD\", \"FKP\", \"GEL\", \"GHS\", \"GIP\", \"KZT\", \"AED\", \"AFN\", \"ALL\", \"AMD\", \"ANG\", \"AOA\", \"ARS\", \"AWG\", \"AZN\", \"BAM\", \"BBD\", \"BDT\", \"BGN\", \"BHD\", \"BIF\", \"BMD\", \"BND\", \"BOB\", \"BRL\", \"BSD\", \"BTN\", \"BWP\", \"BYN\", \"BZD\", \"LAK\", \"LBP\", \"LKR\", \"LRD\", \"LSL\", \"LYD\", \"MAD\", \"MDL\", \"MGA\", \"MKD\", \"MMK\", \"MNT\", \"MOP\", \"MRU\", \"MUR\", \"MVR\", \"MWK\", \"MXN\", \"MYR\", \"MZN\", \"NAD\", \"NGN\", \"NIO\", \"GMD\", \"GNF\", \"GTQ\", \"GYD\", \"HKD\", \"HNL\", \"HTG\", \"HUF\", \"IDR\", \"ILS\", \"INR\", \"IQD\", \"IRR\", \"ISK\", \"JMD\", \"JOD\", \"KES\", \"KGS\", \"KHR\", \"KMF\", \"KPW\", \"KRW\", \"KWD\", \"KYD\"]"
+        }
+      },
+      {
+        "kind": "inclusion",
+        "attributes": [
+          "direction"
+        ],
+        "options": {
+          "in": "[\"credit\", \"debit\"]"
+        }
+      },
+      {
+        "kind": "inclusion",
+        "attributes": [
+          "status"
+        ],
+        "options": {
+          "in": "[\"booked\", \"pending\"]"
+        }
+      },
+      {
+        "kind": "inclusion",
+        "attributes": [
+          "payment_method"
+        ],
+        "options": {
+          "allow_nil": "true",
+          "in": "[\"card\", \"card_authorization\", \"blik_pos\", \"blik_p2p\", \"blik_atm\", \"transfer\", \"internal_transfer\", \"topup\", \"fee\", \"other\"]"
+        }
+      },
+      {
+        "kind": "inclusion",
+        "attributes": [
+          "counterparty_kind"
+        ],
+        "options": {
+          "in": "[\"self\", \"external\", \"unknown\"]"
+        }
+      }
+    ],
+    "callbacks": [
+      {
+        "kind": "validation",
+        "phase": "before",
+        "filter": "normalize_changed_in_place_attributes",
+        "if": []
+      },
+      {
+        "kind": "save",
+        "phase": "after",
+        "filter": "proc@/workspace/ruby-service-investigator/bundle/ruby/3.4.0/gems/money-rails-3.0.0/lib/money-rails/active_record/monetizable.rb:158",
+        "if": [
+          "#<ActiveSupport::Callbacks::Conditionals::Value:0x000078b10dcab048>"
+        ]
+      },
+      {
+        "kind": "save",
+        "phase": "before",
+        "filter": "autosave_associated_records_for_bank_account",
+        "if": []
+      },
+      {
+        "kind": "create",
+        "phase": "after",
+        "filter": "autosave_associated_records_for_user",
+        "if": [
+          "#<ActiveSupport::Callbacks::Conditionals::Value:0x000078b10dcaea68>"
+        ]
+      },
+      {
+        "kind": "create",
+        "phase": "after",
+        "filter": "autosave_associated_records_for_tpp_credential",
+        "if": [
+          "#<ActiveSupport::Callbacks::Conditionals::Value:0x000078b10dcafda0>"
+        ]
+      },
+      {
+        "kind": "create",
+        "phase": "after",
+        "filter": "autosave_associated_records_for_enrichment",
+        "if": [
+          "#<ActiveSupport::Callbacks::Conditionals::Value:0x000078b10db842c8>"
+        ]
+      },
+      {
+        "kind": "update",
+        "phase": "after",
+        "filter": "autosave_associated_records_for_user",
+        "if": [
+          "#<ActiveSupport::Callbacks::Conditionals::Value:0x000078b10dcae590>"
+        ]
+      },
+      {
+        "kind": "update",
+        "phase": "after",
+        "filter": "autosave_associated_records_for_tpp_credential",
+        "if": [
+          "#<ActiveSupport::Callbacks::Conditionals::Value:0x000078b10dcaf788>"
+        ]
+      },
+      {
+        "kind": "update",
+        "phase": "after",
+        "filter": "autosave_associated_records_for_enrichment",
+        "if": [
+          "#<ActiveSupport::Callbacks::Conditionals::Value:0x000078b10db83c10>"
+        ]
+      },
+      {
+        "kind": "destroy",
+        "phase": "before",
+        "filter": "proc@/workspace/ruby-service-investigator/bundle/ruby/3.4.0/gems/activerecord-8.1.3/lib/active_record/associations/builder/association.rb:153",
+        "if": []
+      }
+    ],
+    "enums": {},
+    "scopes": [
+      "booked",
+      "pending",
+      "credits",
+      "debits",
+      "in_range",
+      "for_user",
+      "without_enrichment"
+    ],
+    "encrypted_attributes": [
+      "raw_payload"
+    ],
+    "monetized": {
+      "amount": "amount_cents"
+    },
+    "has_paper_trail": false,
+    "ransackable_attributes": [
+      "id",
+      "external_id",
+      "booking_date",
+      "value_date",
+      "transaction_date",
+      "amount_cents",
+      "currency",
+      "direction",
+      "status",
+      "title",
+      "type_hint",
+      "counterparty_name",
+      "counterparty_iban",
+      "counterparty_kind",
+      "payment_method",
+      "bank_transaction_code",
+      "bank_account_id",
+      "created_at",
+      "updated_at"
+    ],
+    "ransackable_associations": [
+      "bank_account",
+      "enrichment"
+    ],
+    "class_methods_defined": [
+      "ransackable_attributes",
+      "ransackable_associations"
+    ],
+    "constants": [
+      "DIRECTIONS",
+      "STATUSES",
+      "PAYMENT_METHODS",
+      "COUNTERPARTY_KINDS"
+    ]
+  },
+  {
+    "name": "Category",
+    "file": "app/models/category.rb",
+    "app_model": true,
+    "table": "categories",
+    "table_exists": true,
+    "primary_key": "id",
+    "sti": null,
+    "columns": [
+      {
+        "name": "id",
+        "type": "bigint",
+        "null": false,
+        "default": null
+      },
+      {
+        "name": "archived_at",
+        "type": "timestamp(6) without time zone",
+        "null": true,
+        "default": null
+      },
+      {
+        "name": "color",
+        "type": "character varying",
+        "null": true,
+        "default": null
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp(6) without time zone",
+        "null": false,
+        "default": null
+      },
+      {
+        "name": "essential",
+        "type": "boolean",
+        "null": false,
+        "default": false
+      },
+      {
+        "name": "icon",
+        "type": "character varying",
+        "null": true,
+        "default": null
+      },
+      {
+        "name": "kind",
+        "type": "character varying",
+        "null": false,
+        "default": "expense"
+      },
+      {
+        "name": "name",
+        "type": "character varying",
+        "null": false,
+        "default": null
+      },
+      {
+        "name": "path",
+        "type": "ltree",
+        "null": true,
+        "default": null
+      },
+      {
+        "name": "position",
+        "type": "integer",
+        "null": false,
+        "default": 0
+      },
+      {
+        "name": "slug",
+        "type": "character varying",
+        "null": false,
+        "default": null
+      },
+      {
+        "name": "updated_at",
+        "type": "timestamp(6) without time zone",
+        "null": false,
+        "default": null
+      },
+      {
+        "name": "user_id",
+        "type": "bigint",
+        "null": false,
+        "default": null
+      }
+    ],
+    "associations": [
+      {
+        "macro": "belongs_to",
+        "name": "user",
+        "class_name": "User",
+        "options": {}
+      },
+      {
+        "macro": "has_many",
+        "name": "merchants",
+        "class_name": "Merchant",
+        "options": {
+          "foreign_key": "default_category_id",
+          "dependent": "nullify"
+        }
+      },
+      {
+        "macro": "has_many",
+        "name": "transaction_enrichments",
+        "class_name": "TransactionEnrichment",
+        "options": {
+          "dependent": "nullify"
+        }
+      }
+    ],
+    "validations": [
+      {
+        "kind": "presence",
+        "attributes": [
+          "user"
+        ],
+        "options": {
+          "message": "required",
+          "if": "proc"
+        }
+      },
+      {
+        "kind": "presence",
+        "attributes": [
+          "name"
+        ],
+        "options": {}
+      },
+      {
+        "kind": "presence",
+        "attributes": [
+          "slug"
+        ],
+        "options": {}
+      },
+      {
+        "kind": "uniqueness",
+        "attributes": [
+          "slug"
+        ],
+        "options": {
+          "scope": "user_id"
+        }
+      },
+      {
+        "kind": "format",
+        "attributes": [
+          "slug"
+        ],
+        "options": {
+          "with": "(?-mix:\\A[a-z0-9_\\-]+\\z)",
+          "message": "must be lowercase letters, digits, underscores, dashes"
+        }
+      },
+      {
+        "kind": "inclusion",
+        "attributes": [
+          "kind"
+        ],
+        "options": {
+          "in": "[\"expense\", \"income\", \"transfer\", \"savings\", \"ignored\"]"
+        }
+      },
+      {
+        "kind": "presence",
+        "attributes": [
+          "path"
+        ],
+        "options": {}
+      },
+      {
+        "kind": "format",
+        "attributes": [
+          "path"
+        ],
+        "options": {
+          "with": "(?-mix:\\A[a-z0-9_]+(\\.[a-z0-9_]+)*\\z)",
+          "message": "must be lowercase letters, digits, underscores, dot-separated"
+        }
+      },
+      {
+        "kind": "uniqueness",
+        "attributes": [
+          "path"
+        ],
+        "options": {
+          "if": "path_ltree_compatible?",
+          "scope": "user_id"
+        }
+      }
+    ],
+    "callbacks": [
+      {
+        "kind": "validation",
+        "phase": "after",
+        "filter": "_ensure_no_duplicate_errors",
+        "if": []
+      },
+      {
+        "kind": "validation",
+        "phase": "before",
+        "filter": "normalize_changed_in_place_attributes",
+        "if": []
+      },
+      {
+        "kind": "validation",
+        "phase": "before",
+        "filter": "ensure_path_ends_with_slug",
+        "if": []
+      },
+      {
+        "kind": "save",
+        "phase": "before",
+        "filter": "autosave_associated_records_for_user",
+        "if": []
+      },
+      {
+        "kind": "save",
+        "phase": "around",
+        "filter": "around_save_collection_association",
+        "if": []
+      },
+      {
+        "kind": "create",
+        "phase": "after",
+        "filter": "autosave_associated_records_for_transaction_enrichments",
+        "if": [
+          "#<ActiveSupport::Callbacks::Conditionals::Value:0x000078b10dad8ef0>"
+        ]
+      },
+      {
+        "kind": "create",
+        "phase": "after",
+        "filter": "autosave_associated_records_for_merchants",
+        "if": [
+          "#<ActiveSupport::Callbacks::Conditionals::Value:0x000078b10dadc230>"
+        ]
+      },
+      {
+        "kind": "update",
+        "phase": "after",
+        "filter": "autosave_associated_records_for_transaction_enrichments",
+        "if": [
+          "#<ActiveSupport::Callbacks::Conditionals::Value:0x000078b10dad86d0>"
+        ]
+      },
+      {
+        "kind": "update",
+        "phase": "after",
+        "filter": "autosave_associated_records_for_merchants",
+        "if": [
+          "#<ActiveSupport::Callbacks::Conditionals::Value:0x000078b10dadb998>"
+        ]
+      },
+      {
+        "kind": "destroy",
+        "phase": "before",
+        "filter": "proc@/workspace/ruby-service-investigator/bundle/ruby/3.4.0/gems/activerecord-8.1.3/lib/active_record/associations/builder/association.rb:153",
+        "if": []
+      },
+      {
+        "kind": "destroy",
+        "phase": "before",
+        "filter": "proc@/workspace/ruby-service-investigator/bundle/ruby/3.4.0/gems/activerecord-8.1.3/lib/active_record/associations/builder/association.rb:153",
+        "if": []
+      }
+    ],
+    "enums": {},
+    "scopes": [
+      "active",
+      "archived",
+      "ordered",
+      "for_user",
+      "essential",
+      "roots",
+      "under_path"
+    ],
+    "encrypted_attributes": [],
+    "monetized": {},
+    "has_paper_trail": false,
+    "ransackable_attributes": [
+      "id",
+      "name",
+      "slug",
+      "kind",
+      "essential",
+      "archived_at",
+      "created_at",
+      "updated_at",
+      "path"
+    ],
+    "ransackable_associations": [
+      "merchants",
+      "transaction_enrichments"
+    ],
+    "class_methods_defined": [
+      "ransackable_attributes",
+      "ransackable_associations"
+    ],
+    "constants": [
+      "KINDS",
+      "SEPARATOR",
+      "LTREE_PATH_FORMAT"
+    ]
+  },
+  {
+    "name": "Gutentag::Tag",
+    "file": "/workspace/ruby-service-investigator/bundle/ruby/3.4.0/gems/gutentag-3.0.1/app/models/gutentag/tag.rb",
+    "app_model": false,
+    "table": "gutentag_tags",
+    "table_exists": true,
+    "primary_key": "id",
+    "sti": null,
+    "columns": [
+      {
+        "name": "id",
+        "type": "bigint",
+        "null": false,
+        "default": null
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp(6) without time zone",
+        "null": false,
+        "default": null
+      },
+      {
+        "name": "name",
+        "type": "character varying",
+        "null": false,
+        "default": null
+      },
+      {
+        "name": "taggings_count",
+        "type": "integer",
+        "null": false,
+        "default": 0
+      },
+      {
+        "name": "updated_at",
+        "type": "timestamp(6) without time zone",
+        "null": false,
+        "default": null
+      }
+    ],
+    "associations": [
+      {
+        "macro": "has_many",
+        "name": "taggings",
+        "class_name": "Gutentag::Tagging",
+        "options": {
+          "class_name": "Gutentag::Tagging",
+          "dependent": "destroy"
+        }
+      }
+    ],
+    "validations": [
+      {
+        "kind": "presence",
+        "attributes": [
+          "name"
+        ],
+        "options": {}
+      },
+      {
+        "kind": "uniqueness",
+        "attributes": [
+          "name"
+        ],
+        "options": {
+          "case_sensitive": "false"
+        }
+      }
+    ],
+    "callbacks": [
+      {
+        "kind": "validation",
+        "phase": "after",
+        "filter": "_ensure_no_duplicate_errors",
+        "if": []
+      },
+      {
+        "kind": "validation",
+        "phase": "before",
+        "filter": "normalize_changed_in_place_attributes",
+        "if": []
+      },
+      {
+        "kind": "save",
+        "phase": "around",
+        "filter": "around_save_collection_association",
+        "if": []
+      },
+      {
+        "kind": "create",
+        "phase": "after",
+        "filter": "autosave_associated_records_for_taggings",
+        "if": [
+          "#<ActiveSupport::Callbacks::Conditionals::Value:0x000078b10dcdd7a0>"
+        ]
+      },
+      {
+        "kind": "update",
+        "phase": "after",
+        "filter": "autosave_associated_records_for_taggings",
+        "if": [
+          "#<ActiveSupport::Callbacks::Conditionals::Value:0x000078b10dcdd2a0>"
+        ]
+      },
+      {
+        "kind": "destroy",
+        "phase": "before",
+        "filter": "proc@/workspace/ruby-service-investigator/bundle/ruby/3.4.0/gems/activerecord-8.1.3/lib/active_record/associations/builder/association.rb:153",
+        "if": []
+      }
+    ],
+    "enums": {},
+    "scopes": [
+      "by_weight"
+    ],
+    "encrypted_attributes": [],
+    "monetized": {},
+    "has_paper_trail": false,
+    "ransackable_attributes": null,
+    "ransackable_associations": null,
+    "class_methods_defined": [
+      "find_by_name",
+      "find_or_create",
+      "names_for_scope"
+    ],
+    "constants": []
+  },
+  {
+    "name": "Gutentag::Tagging",
+    "file": "/workspace/ruby-service-investigator/bundle/ruby/3.4.0/gems/gutentag-3.0.1/app/models/gutentag/tagging.rb",
+    "app_model": false,
+    "table": "gutentag_taggings",
+    "table_exists": true,
+    "primary_key": "id",
+    "sti": null,
+    "columns": [
+      {
+        "name": "id",
+        "type": "bigint",
+        "null": false,
+        "default": null
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp(6) without time zone",
+        "null": false,
+        "default": null
+      },
+      {
+        "name": "tag_id",
+        "type": "bigint",
+        "null": false,
+        "default": null
+      },
+      {
+        "name": "taggable_id",
+        "type": "bigint",
+        "null": false,
+        "default": null
+      },
+      {
+        "name": "taggable_type",
+        "type": "character varying",
+        "null": false,
+        "default": null
+      },
+      {
+        "name": "updated_at",
+        "type": "timestamp(6) without time zone",
+        "null": false,
+        "default": null
+      }
+    ],
+    "associations": [
+      {
+        "macro": "belongs_to",
+        "name": "taggable",
+        "class_name": "Taggable",
+        "options": {
+          "polymorphic": "true"
+        }
+      },
+      {
+        "macro": "belongs_to",
+        "name": "tag",
+        "class_name": "Gutentag::Tag",
+        "options": {
+          "class_name": "Gutentag::Tag",
+          "counter_cache": "{active: true, column: nil}"
+        }
+      }
+    ],
+    "validations": [
+      {
+        "kind": "presence",
+        "attributes": [
+          "taggable"
+        ],
+        "options": {
+          "message": "required",
+          "if": "proc"
+        }
+      },
+      {
+        "kind": "presence",
+        "attributes": [
+          "taggable"
+        ],
+        "options": {}
+      },
+      {
+        "kind": "presence",
+        "attributes": [
+          "tag"
+        ],
+        "options": {
+          "message": "required",
+          "if": "proc"
+        }
+      },
+      {
+        "kind": "presence",
+        "attributes": [
+          "tag"
+        ],
+        "options": {}
+      },
+      {
+        "kind": "uniqueness",
+        "attributes": [
+          "tag_id"
+        ],
+        "options": {
+          "scope": "[:taggable_id, :taggable_type]"
+        }
+      }
+    ],
+    "callbacks": [
+      {
+        "kind": "validation",
+        "phase": "before",
+        "filter": "normalize_changed_in_place_attributes",
+        "if": []
+      },
+      {
+        "kind": "save",
+        "phase": "before",
+        "filter": "autosave_associated_records_for_taggable",
+        "if": []
+      },
+      {
+        "kind": "save",
+        "phase": "before",
+        "filter": "autosave_associated_records_for_tag",
+        "if": []
+      },
+      {
+        "kind": "update",
+        "phase": "after",
+        "filter": "proc@/workspace/ruby-service-investigator/bundle/ruby/3.4.0/gems/activerecord-8.1.3/lib/active_record/associations/builder/belongs_to.rb:31",
+        "if": [
+          "#<ActiveSupport::Callbacks::Conditionals::Value:0x000078b10e175628>"
+        ]
+      }
+    ],
+    "enums": {},
+    "scopes": [],
+    "encrypted_attributes": [],
+    "monetized": {},
+    "has_paper_trail": false,
+    "ransackable_attributes": null,
+    "ransackable_associations": null,
+    "class_methods_defined": [],
+    "constants": []
+  },
+  {
+    "name": "LedgerEntry",
+    "file": "app/models/ledger_entry.rb",
+    "app_model": true,
+    "table": "ledger_entries",
+    "table_exists": true,
+    "primary_key": null,
+    "sti": null,
+    "columns": [
+      {
+        "name": "source_type",
+        "type": "text",
+        "null": true,
+        "default": null
+      },
+      {
+        "name": "source_id",
+        "type": "bigint",
+        "null": true,
+        "default": null
+      },
+      {
+        "name": "bank_account_id",
+        "type": "bigint",
+        "null": true,
+        "default": null
+      },
+      {
+        "name": "amount_cents",
+        "type": "bigint",
+        "null": true,
+        "default": null
+      },
+      {
+        "name": "currency",
+        "type": "character varying(3)",
+        "null": true,
+        "default": null
+      },
+      {
+        "name": "direction",
+        "type": "character varying",
+        "null": true,
+        "default": null
+      },
+      {
+        "name": "signed_amount_cents",
+        "type": "bigint",
+        "null": true,
+        "default": null
+      },
+      {
+        "name": "status",
+        "type": "character varying",
+        "null": true,
+        "default": null
+      },
+      {
+        "name": "booking_date",
+        "type": "date",
+        "null": true,
+        "default": null
+      },
+      {
+        "name": "transaction_date",
+        "type": "date",
+        "null": true,
+        "default": null
+      },
+      {
+        "name": "payment_method",
+        "type": "character varying",
+        "null": true,
+        "default": null
+      },
+      {
+        "name": "title",
+        "type": "text",
+        "null": true,
+        "default": null
+      },
+      {
+        "name": "counterparty_name",
+        "type": "character varying",
+        "null": true,
+        "default": null
+      },
+      {
+        "name": "counterparty_kind",
+        "type": "character varying",
+        "null": true,
+        "default": null
+      },
+      {
+        "name": "enrichment_id",
+        "type": "bigint",
+        "null": true,
+        "default": null
+      },
+      {
+        "name": "merchant_id",
+        "type": "bigint",
+        "null": true,
+        "default": null
+      },
+      {
+        "name": "effective_category_id",
+        "type": "bigint",
+        "null": true,
+        "default": null
+      },
+      {
+        "name": "category_path",
+        "type": "ltree",
+        "null": true,
+        "default": null
+      },
+      {
+        "name": "essential",
+        "type": "boolean",
+        "null": true,
+        "default": null
+      },
+      {
+        "name": "enrichment_source",
+        "type": "character varying",
+        "null": true,
+        "default": null
+      }
+    ],
+    "associations": [
+      {
+        "macro": "belongs_to",
+        "name": "bank_account",
+        "class_name": "BankAccount",
+        "options": {}
+      },
+      {
+        "macro": "belongs_to",
+        "name": "merchant",
+        "class_name": "Merchant",
+        "options": {
+          "optional": "true"
+        }
+      },
+      {
+        "macro": "belongs_to",
+        "name": "effective_category",
+        "class_name": "Category",
+        "options": {
+          "class_name": "Category",
+          "foreign_key": "effective_category_id",
+          "optional": "true"
+        }
+      }
+    ],
+    "validations": [
+      {
+        "kind": "numericality",
+        "attributes": [
+          "amount_cents"
+        ],
+        "options": {
+          "allow_nil": ""
+        }
+      },
+      {
+        "kind": "money",
+        "attributes": [
+          "amount"
+        ],
+        "options": {
+          "allow_nil": ""
+        }
+      },
+      {
+        "kind": "numericality",
+        "attributes": [
+          "signed_amount_cents"
+        ],
+        "options": {
+          "allow_nil": ""
+        }
+      },
+      {
+        "kind": "money",
+        "attributes": [
+          "signed_amount"
+        ],
+        "options": {
+          "allow_nil": ""
+        }
+      },
+      {
+        "kind": "presence",
+        "attributes": [
+          "bank_account"
+        ],
+        "options": {
+          "message": "required",
+          "if": "proc"
+        }
+      }
+    ],
+    "callbacks": [
+      {
+        "kind": "validation",
+        "phase": "before",
+        "filter": "normalize_changed_in_place_attributes",
+        "if": []
+      },
+      {
+        "kind": "save",
+        "phase": "after",
+        "filter": "proc@/workspace/ruby-service-investigator/bundle/ruby/3.4.0/gems/money-rails-3.0.0/lib/money-rails/active_record/monetizable.rb:158",
+        "if": [
+          "#<ActiveSupport::Callbacks::Conditionals::Value:0x000078b10db15670>"
+        ]
+      },
+      {
+        "kind": "save",
+        "phase": "after",
+        "filter": "proc@/workspace/ruby-service-investigator/bundle/ruby/3.4.0/gems/money-rails-3.0.0/lib/money-rails/active_record/monetizable.rb:158",
+        "if": [
+          "#<ActiveSupport::Callbacks::Conditionals::Value:0x000078b10db179e8>"
+        ]
+      },
+      {
+        "kind": "save",
+        "phase": "before",
+        "filter": "autosave_associated_records_for_bank_account",
+        "if": []
+      },
+      {
+        "kind": "save",
+        "phase": "before",
+        "filter": "autosave_associated_records_for_merchant",
+        "if": []
+      },
+      {
+        "kind": "save",
+        "phase": "before",
+        "filter": "autosave_associated_records_for_effective_category",
+        "if": []
+      }
+    ],
+    "enums": {},
+    "scopes": [
+      "booked",
+      "pending",
+      "credits",
+      "debits",
+      "in_range",
+      "to_self",
+      "with_external_counterparty",
+      "under_path",
+      "essential",
+      "discretionary",
+      "spend",
+      "income",
+      "transfers",
+      "savings",
+      "for_user"
+    ],
+    "encrypted_attributes": [],
+    "monetized": {
+      "amount": "amount_cents",
+      "signed_amount": "signed_amount_cents"
+    },
+    "has_paper_trail": false,
+    "ransackable_attributes": null,
+    "ransackable_associations": null,
+    "class_methods_defined": [],
+    "constants": []
+  },
+  {
+    "name": "LlmSetting",
+    "file": "app/models/llm_setting.rb",
+    "app_model": true,
+    "table": "llm_settings",
+    "table_exists": true,
+    "primary_key": "id",
+    "sti": null,
+    "columns": [
+      {
+        "name": "id",
+        "type": "bigint",
+        "null": false,
+        "default": null
+      },
+      {
+        "name": "api_key",
+        "type": "text",
+        "null": false,
+        "default": null
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp(6) without time zone",
+        "null": false,
+        "default": null
+      },
+      {
+        "name": "last_test_error",
+        "type": "text",
+        "null": true,
+        "default": null
+      },
+      {
+        "name": "last_tested_at",
+        "type": "timestamp(6) without time zone",
+        "null": true,
+        "default": null
+      },
+      {
+        "name": "model",
+        "type": "character varying",
+        "null": true,
+        "default": null
+      },
+      {
+        "name": "provider",
+        "type": "character varying",
+        "null": false,
+        "default": null
+      },
+      {
+        "name": "updated_at",
+        "type": "timestamp(6) without time zone",
+        "null": false,
+        "default": null
+      },
+      {
+        "name": "user_id",
+        "type": "bigint",
+        "null": false,
+        "default": null
+      }
+    ],
+    "associations": [
+      {
+        "macro": "belongs_to",
+        "name": "user",
+        "class_name": "User",
+        "options": {}
+      }
+    ],
+    "validations": [
+      {
+        "kind": "presence",
+        "attributes": [
+          "user"
+        ],
+        "options": {
+          "message": "required",
+          "if": "proc"
+        }
+      },
+      {
+        "kind": "presence",
+        "attributes": [
+          "provider"
+        ],
+        "options": {}
+      },
+      {
+        "kind": "inclusion",
+        "attributes": [
+          "provider"
+        ],
+        "options": {
+          "in": "proc"
+        }
+      },
+      {
+        "kind": "presence",
+        "attributes": [
+          "api_key"
+        ],
+        "options": {}
+      }
+    ],
+    "callbacks": [
+      {
+        "kind": "validation",
+        "phase": "before",
+        "filter": "normalize_changed_in_place_attributes",
+        "if": []
+      },
+      {
+        "kind": "validation",
+        "phase": "before",
+        "filter": "assign_default_model",
+        "if": []
+      },
+      {
+        "kind": "save",
+        "phase": "before",
+        "filter": "autosave_associated_records_for_user",
+        "if": []
+      }
+    ],
+    "enums": {},
+    "scopes": [],
+    "encrypted_attributes": [
+      "api_key"
+    ],
+    "monetized": {},
+    "has_paper_trail": false,
+    "ransackable_attributes": null,
+    "ransackable_associations": null,
+    "class_methods_defined": [],
+    "constants": []
+  },
+  {
+    "name": "ManualTransaction",
+    "file": "app/models/manual_transaction.rb",
+    "app_model": true,
+    "table": "manual_transactions",
+    "table_exists": true,
+    "primary_key": "id",
+    "sti": null,
+    "columns": [
+      {
+        "name": "id",
+        "type": "bigint",
+        "null": false,
+        "default": null
+      },
+      {
+        "name": "amount_cents",
+        "type": "bigint",
+        "null": false,
+        "default": null
+      },
+      {
+        "name": "bank_account_id",
+        "type": "bigint",
+        "null": false,
+        "default": null
+      },
+      {
+        "name": "booking_date",
+        "type": "date",
+        "null": false,
+        "default": null
+      },
+      {
+        "name": "counterparty_kind",
+        "type": "character varying",
+        "null": false,
+        "default": "unknown"
+      },
+      {
+        "name": "counterparty_name",
+        "type": "character varying",
+        "null": true,
+        "default": null
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp(6) without time zone",
+        "null": false,
+        "default": null
+      },
+      {
+        "name": "created_by_user_id",
+        "type": "bigint",
+        "null": false,
+        "default": null
+      },
+      {
+        "name": "currency",
+        "type": "character varying(3)",
+        "null": false,
+        "default": null
+      },
+      {
+        "name": "direction",
+        "type": "character varying",
+        "null": false,
+        "default": null
+      },
+      {
+        "name": "linked_bank_transaction_id",
+        "type": "bigint",
+        "null": true,
+        "default": null
+      },
+      {
+        "name": "note",
+        "type": "text",
+        "null": true,
+        "default": null
+      },
+      {
+        "name": "payment_method",
+        "type": "character varying",
+        "null": true,
+        "default": null
+      },
+      {
+        "name": "source",
+        "type": "character varying",
+        "null": false,
+        "default": "manual"
+      },
+      {
+        "name": "status",
+        "type": "character varying",
+        "null": false,
+        "default": "booked"
+      },
+      {
+        "name": "title",
+        "type": "text",
+        "null": true,
+        "default": null
+      },
+      {
+        "name": "transaction_date",
+        "type": "date",
+        "null": true,
+        "default": null
+      },
+      {
+        "name": "updated_at",
+        "type": "timestamp(6) without time zone",
+        "null": false,
+        "default": null
+      }
+    ],
+    "associations": [
+      {
+        "macro": "has_one",
+        "name": "enrichment",
+        "class_name": "TransactionEnrichment",
+        "options": {
+          "as": "enrichable",
+          "class_name": "TransactionEnrichment",
+          "dependent": "destroy"
+        }
+      },
+      {
+        "macro": "belongs_to",
+        "name": "bank_account",
+        "class_name": "BankAccount",
+        "options": {}
+      },
+      {
+        "macro": "belongs_to",
+        "name": "linked_bank_transaction",
+        "class_name": "BankTransaction",
+        "options": {
+          "class_name": "BankTransaction",
+          "optional": "true"
+        }
+      },
+      {
+        "macro": "belongs_to",
+        "name": "created_by_user",
+        "class_name": "User",
+        "options": {
+          "class_name": "User"
+        }
+      },
+      {
+        "macro": "has_many",
+        "name": "versions",
+        "class_name": "PaperTrail::Version",
+        "options": {
+          "class_name": "PaperTrail::Version",
+          "as": "item"
+        }
+      }
+    ],
+    "validations": [
+      {
+        "kind": "presence",
+        "attributes": [
+          "bank_account"
+        ],
+        "options": {
+          "message": "required",
+          "if": "proc"
+        }
+      },
+      {
+        "kind": "presence",
+        "attributes": [
+          "created_by_user"
+        ],
+        "options": {
+          "message": "required",
+          "if": "proc"
+        }
+      },
+      {
+        "kind": "numericality",
+        "attributes": [
+          "amount_cents"
+        ],
+        "options": {
+          "allow_nil": ""
+        }
+      },
+      {
+        "kind": "presence",
+        "attributes": [
+          "amount_cents",
+          "currency",
+          "booking_date"
+        ],
+        "options": {}
+      },
+      {
+        "kind": "numericality",
+        "attributes": [
+          "amount_cents"
+        ],
+        "options": {
+          "greater_than": "0"
+        }
+      },
+      {
+        "kind": "money",
+        "attributes": [
+          "amount"
+        ],
+        "options": {
+          "allow_nil": ""
+        }
+      },
+      {
+        "kind": "inclusion",
+        "attributes": [
+          "currency"
+        ],
+        "options": {
+          "in": "[\"USD\", \"EUR\", \"GBP\", \"AUD\", \"CAD\", \"JPY\", \"BYR\", \"SLL\", \"SOS\", \"SRD\", \"SSP\", \"STD\", \"STN\", \"SVC\", \"SYP\", \"SZL\", \"THB\", \"TJS\", \"TMT\", \"TND\", \"TOP\", \"TRY\", \"TTD\", \"TWD\", \"TZS\", \"UAH\", \"UGX\", \"UYU\", \"NOK\", \"NPR\", \"NZD\", \"OMR\", \"PAB\", \"PEN\", \"PGK\", \"PHP\", \"PKR\", \"PLN\", \"PYG\", \"QAR\", \"RON\", \"RSD\", \"RUB\", \"RWF\", \"SAR\", \"SBD\", \"SCR\", \"SDG\", \"SEK\", \"SGD\", \"SHP\", \"SKK\", \"SLE\", \"ZWG\", \"BCH\", \"BTC\", \"JEP\", \"GGP\", \"IMP\", \"XFU\", \"GBX\", \"CNH\", \"USDC\", \"EEK\", \"GHS\", \"HRK\", \"LTL\", \"LVL\", \"MRO\", \"MTL\", \"TMM\", \"JPY\", \"ZWD\", \"ZWL\", \"ZWN\", \"ZWR\", \"VEF\", \"UZS\", \"VES\", \"VND\", \"VUV\", \"WST\", \"XAF\", \"XAG\", \"XAU\", \"XBA\", \"XBB\", \"XBC\", \"XBD\", \"XCD\", \"XCG\", \"XDR\", \"XOF\", \"XPD\", \"XPF\", \"XPT\", \"XTS\", \"YER\", \"ZAR\", \"ZMK\", \"ZMW\", \"CDF\", \"CHF\", \"CLF\", \"CLP\", \"CNY\", \"COP\", \"CRC\", \"CUC\", \"CUP\", \"CVE\", \"CZK\", \"DJF\", \"DKK\", \"DOP\", \"DZD\", \"EGP\", \"ERN\", \"ETB\", \"FJD\", \"FKP\", \"GEL\", \"GHS\", \"GIP\", \"KZT\", \"AED\", \"AFN\", \"ALL\", \"AMD\", \"ANG\", \"AOA\", \"ARS\", \"AWG\", \"AZN\", \"BAM\", \"BBD\", \"BDT\", \"BGN\", \"BHD\", \"BIF\", \"BMD\", \"BND\", \"BOB\", \"BRL\", \"BSD\", \"BTN\", \"BWP\", \"BYN\", \"BZD\", \"LAK\", \"LBP\", \"LKR\", \"LRD\", \"LSL\", \"LYD\", \"MAD\", \"MDL\", \"MGA\", \"MKD\", \"MMK\", \"MNT\", \"MOP\", \"MRU\", \"MUR\", \"MVR\", \"MWK\", \"MXN\", \"MYR\", \"MZN\", \"NAD\", \"NGN\", \"NIO\", \"GMD\", \"GNF\", \"GTQ\", \"GYD\", \"HKD\", \"HNL\", \"HTG\", \"HUF\", \"IDR\", \"ILS\", \"INR\", \"IQD\", \"IRR\", \"ISK\", \"JMD\", \"JOD\", \"KES\", \"KGS\", \"KHR\", \"KMF\", \"KPW\", \"KRW\", \"KWD\", \"KYD\"]"
+        }
+      },
+      {
+        "kind": "inclusion",
+        "attributes": [
+          "direction"
+        ],
+        "options": {
+          "in": "[\"credit\", \"debit\"]"
+        }
+      },
+      {
+        "kind": "inclusion",
+        "attributes": [
+          "status"
+        ],
+        "options": {
+          "in": "[\"booked\", \"pending\"]"
+        }
+      },
+      {
+        "kind": "inclusion",
+        "attributes": [
+          "payment_method"
+        ],
+        "options": {
+          "allow_nil": "true",
+          "in": "[\"cash\", \"cash_atm_topup\", \"cash_deposit\", \"cash_fx_conversion\", \"cash_adjustment\"]"
+        }
+      },
+      {
+        "kind": "inclusion",
+        "attributes": [
+          "source"
+        ],
+        "options": {
+          "in": "[\"manual\", \"atm_link\", \"csv_import\", \"recurring\"]"
+        }
+      },
+      {
+        "kind": "inclusion",
+        "attributes": [
+          "counterparty_kind"
+        ],
+        "options": {
+          "in": "[\"self\", \"external\", \"unknown\"]"
+        }
+      }
+    ],
+    "callbacks": [
+      {
+        "kind": "validation",
+        "phase": "after",
+        "filter": "_ensure_no_duplicate_errors",
+        "if": []
+      },
+      {
+        "kind": "validation",
+        "phase": "before",
+        "filter": "normalize_changed_in_place_attributes",
+        "if": []
+      },
+      {
+        "kind": "save",
+        "phase": "after",
+        "filter": "proc@/workspace/ruby-service-investigator/bundle/ruby/3.4.0/gems/money-rails-3.0.0/lib/money-rails/active_record/monetizable.rb:158",
+        "if": [
+          "#<ActiveSupport::Callbacks::Conditionals::Value:0x000078b10da772e0>"
+        ]
+      },
+      {
+        "kind": "save",
+        "phase": "before",
+        "filter": "autosave_associated_records_for_bank_account",
+        "if": []
+      },
+      {
+        "kind": "save",
+        "phase": "before",
+        "filter": "autosave_associated_records_for_linked_bank_transaction",
+        "if": []
+      },
+      {
+        "kind": "save",
+        "phase": "before",
+        "filter": "autosave_associated_records_for_created_by_user",
+        "if": []
+      },
+      {
+        "kind": "save",
+        "phase": "around",
+        "filter": "around_save_collection_association",
+        "if": []
+      },
+      {
+        "kind": "save",
+        "phase": "before",
+        "filter": "proc@/workspace/ruby-service-investigator/bundle/ruby/3.4.0/gems/paper_trail-17.0.0/lib/paper_trail/model_config.rb:65",
+        "if": []
+      },
+      {
+        "kind": "create",
+        "phase": "after",
+        "filter": "proc@/workspace/ruby-service-investigator/bundle/ruby/3.4.0/gems/paper_trail-17.0.0/lib/paper_trail/model_config.rb:40",
+        "if": [
+          "#<ActiveSupport::Callbacks::Conditionals::Value:0x000078b10da09920>"
+        ]
+      },
+      {
+        "kind": "create",
+        "phase": "after",
+        "filter": "autosave_associated_records_for_versions",
+        "if": [
+          "#<ActiveSupport::Callbacks::Conditionals::Value:0x000078b10da0b220>"
+        ]
+      },
+      {
+        "kind": "create",
+        "phase": "after",
+        "filter": "autosave_associated_records_for_enrichment",
+        "if": [
+          "#<ActiveSupport::Callbacks::Conditionals::Value:0x000078b10da7ed10>"
+        ]
+      },
+      {
+        "kind": "update",
+        "phase": "after",
+        "filter": "proc@/workspace/ruby-service-investigator/bundle/ruby/3.4.0/gems/paper_trail-17.0.0/lib/paper_trail/model_config.rb:77",
+        "if": [
+          "#<ActiveSupport::Callbacks::Conditionals::Value:0x000078b10da08368>"
+        ]
+      },
+      {
+        "kind": "update",
+        "phase": "after",
+        "filter": "proc@/workspace/ruby-service-investigator/bundle/ruby/3.4.0/gems/paper_trail-17.0.0/lib/paper_trail/model_config.rb:68",
+        "if": [
+          "#<ActiveSupport::Callbacks::Conditionals::Value:0x000078b10da08ea8>"
+        ]
+      },
+      {
+        "kind": "update",
+        "phase": "after",
+        "filter": "autosave_associated_records_for_versions",
+        "if": [
+          "#<ActiveSupport::Callbacks::Conditionals::Value:0x000078b10da0ad70>"
+        ]
+      },
+      {
+        "kind": "update",
+        "phase": "after",
+        "filter": "autosave_associated_records_for_enrichment",
+        "if": [
+          "#<ActiveSupport::Callbacks::Conditionals::Value:0x000078b10da7e6f8>"
+        ]
+      },
+      {
+        "kind": "destroy",
+        "phase": "before",
+        "filter": "proc@/workspace/ruby-service-investigator/bundle/ruby/3.4.0/gems/activerecord-8.1.3/lib/active_record/associations/builder/association.rb:153",
+        "if": []
+      },
+      {
+        "kind": "destroy",
+        "phase": "before",
+        "filter": "proc@/workspace/ruby-service-investigator/bundle/ruby/3.4.0/gems/paper_trail-17.0.0/lib/paper_trail/model_config.rb:53",
+        "if": []
+      },
+      {
+        "kind": "rollback",
+        "phase": "after",
+        "filter": "proc@/workspace/ruby-service-investigator/bundle/ruby/3.4.0/gems/paper_trail-17.0.0/lib/paper_trail/model_config.rb:114",
+        "if": []
+      },
+      {
+        "kind": "touch",
+        "phase": "after",
+        "filter": "proc@/workspace/ruby-service-investigator/bundle/ruby/3.4.0/gems/paper_trail-17.0.0/lib/paper_trail/model_config.rb:94",
+        "if": [
+          "#<ActiveSupport::Callbacks::Conditionals::Value:0x000078b10da07940>"
+        ]
+      }
+    ],
+    "enums": {},
+    "scopes": [
+      "booked",
+      "pending",
+      "credits",
+      "debits",
+      "in_range",
+      "for_user",
+      "without_enrichment"
+    ],
+    "encrypted_attributes": [],
+    "monetized": {
+      "amount": "amount_cents"
+    },
+    "has_paper_trail": true,
+    "ransackable_attributes": [
+      "id",
+      "booking_date",
+      "transaction_date",
+      "amount_cents",
+      "currency",
+      "direction",
+      "status",
+      "title",
+      "counterparty_name",
+      "counterparty_kind",
+      "payment_method",
+      "source",
+      "bank_account_id",
+      "linked_bank_transaction_id",
+      "created_at",
+      "updated_at"
+    ],
+    "ransackable_associations": [
+      "bank_account",
+      "enrichment",
+      "linked_bank_transaction"
+    ],
+    "class_methods_defined": [
+      "ransackable_attributes",
+      "ransackable_associations"
+    ],
+    "constants": [
+      "DIRECTIONS",
+      "STATUSES",
+      "PAYMENT_METHODS",
+      "COUNTERPARTY_KINDS",
+      "SOURCES"
+    ]
+  },
+  {
+    "name": "Merchant",
+    "file": "app/models/merchant.rb",
+    "app_model": true,
+    "table": "merchants",
+    "table_exists": true,
+    "primary_key": "id",
+    "sti": null,
+    "columns": [
+      {
+        "name": "id",
+        "type": "bigint",
+        "null": false,
+        "default": null
+      },
+      {
+        "name": "approved_at",
+        "type": "timestamp(6) without time zone",
+        "null": true,
+        "default": null
+      },
+      {
+        "name": "approved_by_id",
+        "type": "bigint",
+        "null": true,
+        "default": null
+      },
+      {
+        "name": "archived_at",
+        "type": "timestamp(6) without time zone",
+        "null": true,
+        "default": null
+      },
+      {
+        "name": "confidence",
+        "type": "numeric(4,3)",
+        "null": true,
+        "default": null
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp(6) without time zone",
+        "null": false,
+        "default": null
+      },
+      {
+        "name": "default_category_id",
+        "type": "bigint",
+        "null": true,
+        "default": null
+      },
+      {
+        "name": "kind",
+        "type": "character varying",
+        "null": true,
+        "default": null
+      },
+      {
+        "name": "logo_url",
+        "type": "character varying",
+        "null": true,
+        "default": null
+      },
+      {
+        "name": "model",
+        "type": "character varying",
+        "null": true,
+        "default": null
+      },
+      {
+        "name": "name",
+        "type": "character varying",
+        "null": false,
+        "default": null
+      },
+      {
+        "name": "notes",
+        "type": "text",
+        "null": true,
+        "default": null
+      },
+      {
+        "name": "slug",
+        "type": "character varying",
+        "null": false,
+        "default": null
+      },
+      {
+        "name": "source",
+        "type": "character varying",
+        "null": false,
+        "default": null
+      },
+      {
+        "name": "updated_at",
+        "type": "timestamp(6) without time zone",
+        "null": false,
+        "default": null
+      },
+      {
+        "name": "user_id",
+        "type": "bigint",
+        "null": false,
+        "default": null
+      }
+    ],
+    "associations": [
+      {
+        "macro": "belongs_to",
+        "name": "user",
+        "class_name": "User",
+        "options": {}
+      },
+      {
+        "macro": "belongs_to",
+        "name": "default_category",
+        "class_name": "Category",
+        "options": {
+          "class_name": "Category",
+          "optional": "true"
+        }
+      },
+      {
+        "macro": "belongs_to",
+        "name": "approved_by",
+        "class_name": "User",
+        "options": {
+          "class_name": "User",
+          "optional": "true"
+        }
+      },
+      {
+        "macro": "has_many",
+        "name": "merchant_rules",
+        "class_name": "MerchantRule",
+        "options": {
+          "dependent": "destroy"
+        }
+      },
+      {
+        "macro": "has_many",
+        "name": "transaction_enrichments",
+        "class_name": "TransactionEnrichment",
+        "options": {
+          "dependent": "nullify"
+        }
+      }
+    ],
+    "validations": [
+      {
+        "kind": "presence",
+        "attributes": [
+          "user"
+        ],
+        "options": {
+          "message": "required",
+          "if": "proc"
+        }
+      },
+      {
+        "kind": "presence",
+        "attributes": [
+          "name"
+        ],
+        "options": {}
+      },
+      {
+        "kind": "presence",
+        "attributes": [
+          "slug"
+        ],
+        "options": {}
+      },
+      {
+        "kind": "uniqueness",
+        "attributes": [
+          "slug"
+        ],
+        "options": {
+          "scope": "user_id"
+        }
+      },
+      {
+        "kind": "format",
+        "attributes": [
+          "slug"
+        ],
+        "options": {
+          "with": "(?-mix:\\A[a-z0-9_\\-]+\\z)"
+        }
+      },
+      {
+        "kind": "inclusion",
+        "attributes": [
+          "source"
+        ],
+        "options": {
+          "in": "[\"system\", \"user\", \"llm\"]"
+        }
+      },
+      {
+        "kind": "inclusion",
+        "attributes": [
+          "kind"
+        ],
+        "options": {
+          "allow_nil": "true",
+          "in": "[\"company\", \"person\", \"charity\", \"government\", \"platform\", \"other\"]"
+        }
+      },
+      {
+        "kind": "numericality",
+        "attributes": [
+          "confidence"
+        ],
+        "options": {
+          "allow_nil": "true",
+          "in": "0.0..1.0"
+        }
+      }
+    ],
+    "callbacks": [
+      {
+        "kind": "validation",
+        "phase": "after",
+        "filter": "_ensure_no_duplicate_errors",
+        "if": []
+      },
+      {
+        "kind": "validation",
+        "phase": "before",
+        "filter": "normalize_changed_in_place_attributes",
+        "if": []
+      },
+      {
+        "kind": "validation",
+        "phase": "before",
+        "filter": "generate_slug",
+        "if": []
+      },
+      {
+        "kind": "save",
+        "phase": "before",
+        "filter": "autosave_associated_records_for_user",
+        "if": []
+      },
+      {
+        "kind": "save",
+        "phase": "before",
+        "filter": "autosave_associated_records_for_default_category",
+        "if": []
+      },
+      {
+        "kind": "save",
+        "phase": "before",
+        "filter": "autosave_associated_records_for_approved_by",
+        "if": []
+      },
+      {
+        "kind": "save",
+        "phase": "around",
+        "filter": "around_save_collection_association",
+        "if": []
+      },
+      {
+        "kind": "create",
+        "phase": "after",
+        "filter": "autosave_associated_records_for_transaction_enrichments",
+        "if": [
+          "#<ActiveSupport::Callbacks::Conditionals::Value:0x000078b10da2c3d0>"
+        ]
+      },
+      {
+        "kind": "create",
+        "phase": "after",
+        "filter": "autosave_associated_records_for_merchant_rules",
+        "if": [
+          "#<ActiveSupport::Callbacks::Conditionals::Value:0x000078b10da2e8b0>"
+        ]
+      },
+      {
+        "kind": "update",
+        "phase": "after",
+        "filter": "autosave_associated_records_for_transaction_enrichments",
+        "if": [
+          "#<ActiveSupport::Callbacks::Conditionals::Value:0x000078b10da2bf48>"
+        ]
+      },
+      {
+        "kind": "update",
+        "phase": "after",
+        "filter": "autosave_associated_records_for_merchant_rules",
+        "if": [
+          "#<ActiveSupport::Callbacks::Conditionals::Value:0x000078b10da2e3b0>"
+        ]
+      },
+      {
+        "kind": "destroy",
+        "phase": "before",
+        "filter": "proc@/workspace/ruby-service-investigator/bundle/ruby/3.4.0/gems/activerecord-8.1.3/lib/active_record/associations/builder/association.rb:153",
+        "if": []
+      },
+      {
+        "kind": "destroy",
+        "phase": "before",
+        "filter": "proc@/workspace/ruby-service-investigator/bundle/ruby/3.4.0/gems/activerecord-8.1.3/lib/active_record/associations/builder/association.rb:153",
+        "if": []
+      }
+    ],
+    "enums": {},
+    "scopes": [
+      "active",
+      "archived",
+      "approved",
+      "pending",
+      "for_user"
+    ],
+    "encrypted_attributes": [],
+    "monetized": {},
+    "has_paper_trail": false,
+    "ransackable_attributes": [
+      "id",
+      "name",
+      "slug",
+      "kind",
+      "source"
+    ],
+    "ransackable_associations": [
+      "default_category"
+    ],
+    "class_methods_defined": [
+      "ransackable_attributes",
+      "ransackable_associations"
+    ],
+    "constants": [
+      "SOURCES",
+      "KINDS"
+    ]
+  },
+  {
+    "name": "MerchantRule",
+    "file": "app/models/merchant_rule.rb",
+    "app_model": true,
+    "table": "merchant_rules",
+    "table_exists": true,
+    "primary_key": "id",
+    "sti": null,
+    "columns": [
+      {
+        "name": "id",
+        "type": "bigint",
+        "null": false,
+        "default": null
+      },
+      {
+        "name": "approved_at",
+        "type": "timestamp(6) without time zone",
+        "null": true,
+        "default": null
+      },
+      {
+        "name": "approved_by_id",
+        "type": "bigint",
+        "null": true,
+        "default": null
+      },
+      {
+        "name": "case_sensitive",
+        "type": "boolean",
+        "null": false,
+        "default": false
+      },
+      {
+        "name": "confidence",
+        "type": "numeric(4,3)",
+        "null": true,
+        "default": null
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp(6) without time zone",
+        "null": false,
+        "default": null
+      },
+      {
+        "name": "enabled",
+        "type": "boolean",
+        "null": false,
+        "default": true
+      },
+      {
+        "name": "field",
+        "type": "character varying",
+        "null": false,
+        "default": null
+      },
+      {
+        "name": "kind",
+        "type": "character varying",
+        "null": false,
+        "default": null
+      },
+      {
+        "name": "merchant_id",
+        "type": "bigint",
+        "null": false,
+        "default": null
+      },
+      {
+        "name": "model",
+        "type": "character varying",
+        "null": true,
+        "default": null
+      },
+      {
+        "name": "pattern",
+        "type": "character varying",
+        "null": false,
+        "default": null
+      },
+      {
+        "name": "priority",
+        "type": "integer",
+        "null": false,
+        "default": 0
+      },
+      {
+        "name": "source",
+        "type": "character varying",
+        "null": false,
+        "default": null
+      },
+      {
+        "name": "updated_at",
+        "type": "timestamp(6) without time zone",
+        "null": false,
+        "default": null
+      },
+      {
+        "name": "user_id",
+        "type": "bigint",
+        "null": false,
+        "default": null
+      }
+    ],
+    "associations": [
+      {
+        "macro": "belongs_to",
+        "name": "user",
+        "class_name": "User",
+        "options": {}
+      },
+      {
+        "macro": "belongs_to",
+        "name": "merchant",
+        "class_name": "Merchant",
+        "options": {}
+      },
+      {
+        "macro": "belongs_to",
+        "name": "approved_by",
+        "class_name": "User",
+        "options": {
+          "class_name": "User",
+          "optional": "true"
+        }
+      },
+      {
+        "macro": "has_many",
+        "name": "transaction_enrichments",
+        "class_name": "TransactionEnrichment",
+        "options": {
+          "dependent": "nullify"
+        }
+      }
+    ],
+    "validations": [
+      {
+        "kind": "presence",
+        "attributes": [
+          "user"
+        ],
+        "options": {
+          "message": "required",
+          "if": "proc"
+        }
+      },
+      {
+        "kind": "presence",
+        "attributes": [
+          "merchant"
+        ],
+        "options": {
+          "message": "required",
+          "if": "proc"
+        }
+      },
+      {
+        "kind": "inclusion",
+        "attributes": [
+          "kind"
+        ],
+        "options": {
+          "in": "[\"contains\", \"regex\", \"exact\", \"prefix\", \"iban\"]"
+        }
+      },
+      {
+        "kind": "inclusion",
+        "attributes": [
+          "field"
+        ],
+        "options": {
+          "in": "[\"title\", \"counterparty_name\", \"counterparty_iban\", \"payment_method\"]"
+        }
+      },
+      {
+        "kind": "inclusion",
+        "attributes": [
+          "source"
+        ],
+        "options": {
+          "in": "[\"system\", \"user\", \"llm\"]"
+        }
+      },
+      {
+        "kind": "presence",
+        "attributes": [
+          "pattern"
+        ],
+        "options": {}
+      },
+      {
+        "kind": "numericality",
+        "attributes": [
+          "confidence"
+        ],
+        "options": {
+          "allow_nil": "true",
+          "in": "0.0..1.0"
+        }
+      }
+    ],
+    "callbacks": [
+      {
+        "kind": "validation",
+        "phase": "after",
+        "filter": "_ensure_no_duplicate_errors",
+        "if": []
+      },
+      {
+        "kind": "validation",
+        "phase": "before",
+        "filter": "normalize_changed_in_place_attributes",
+        "if": []
+      },
+      {
+        "kind": "save",
+        "phase": "before",
+        "filter": "autosave_associated_records_for_user",
+        "if": []
+      },
+      {
+        "kind": "save",
+        "phase": "before",
+        "filter": "autosave_associated_records_for_merchant",
+        "if": []
+      },
+      {
+        "kind": "save",
+        "phase": "before",
+        "filter": "autosave_associated_records_for_approved_by",
+        "if": []
+      },
+      {
+        "kind": "save",
+        "phase": "around",
+        "filter": "around_save_collection_association",
+        "if": []
+      },
+      {
+        "kind": "create",
+        "phase": "after",
+        "filter": "autosave_associated_records_for_transaction_enrichments",
+        "if": [
+          "#<ActiveSupport::Callbacks::Conditionals::Value:0x000078b10d9af920>"
+        ]
+      },
+      {
+        "kind": "update",
+        "phase": "after",
+        "filter": "autosave_associated_records_for_transaction_enrichments",
+        "if": [
+          "#<ActiveSupport::Callbacks::Conditionals::Value:0x000078b10d9af420>"
+        ]
+      },
+      {
+        "kind": "destroy",
+        "phase": "before",
+        "filter": "proc@/workspace/ruby-service-investigator/bundle/ruby/3.4.0/gems/activerecord-8.1.3/lib/active_record/associations/builder/association.rb:153",
+        "if": []
+      }
+    ],
+    "enums": {},
+    "scopes": [
+      "enabled",
+      "disabled",
+      "for_field",
+      "for_user"
+    ],
+    "encrypted_attributes": [],
+    "monetized": {},
+    "has_paper_trail": false,
+    "ransackable_attributes": null,
+    "ransackable_associations": null,
+    "class_methods_defined": [],
+    "constants": [
+      "KINDS",
+      "FIELDS",
+      "SOURCES",
+      "SOURCE_RANK"
+    ]
+  },
+  {
+    "name": "OperationRun",
+    "file": "app/models/operation_run.rb",
+    "app_model": true,
+    "table": "operation_runs",
+    "table_exists": true,
+    "primary_key": "id",
+    "sti": null,
+    "columns": [
+      {
+        "name": "id",
+        "type": "bigint",
+        "null": false,
+        "default": null
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp(6) without time zone",
+        "null": false,
+        "default": null
+      },
+      {
+        "name": "error",
+        "type": "text",
+        "null": true,
+        "default": null
+      },
+      {
+        "name": "finished_at",
+        "type": "timestamp(6) without time zone",
+        "null": true,
+        "default": null
+      },
+      {
+        "name": "kind",
+        "type": "character varying",
+        "null": false,
+        "default": null
+      },
+      {
+        "name": "params",
+        "type": "jsonb",
+        "null": false,
+        "default": "{}"
+      },
+      {
+        "name": "scheduled_for",
+        "type": "timestamp(6) without time zone",
+        "null": true,
+        "default": null
+      },
+      {
+        "name": "started_at",
+        "type": "timestamp(6) without time zone",
+        "null": true,
+        "default": null
+      },
+      {
+        "name": "status",
+        "type": "character varying",
+        "null": false,
+        "default": "queued"
+      },
+      {
+        "name": "subject_id",
+        "type": "bigint",
+        "null": true,
+        "default": null
+      },
+      {
+        "name": "subject_type",
+        "type": "character varying",
+        "null": true,
+        "default": null
+      },
+      {
+        "name": "summary",
+        "type": "jsonb",
+        "null": false,
+        "default": "{}"
+      },
+      {
+        "name": "trigger",
+        "type": "character varying",
+        "null": false,
+        "default": "manual"
+      },
+      {
+        "name": "triggered_by_user_id",
+        "type": "bigint",
+        "null": false,
+        "default": null
+      },
+      {
+        "name": "updated_at",
+        "type": "timestamp(6) without time zone",
+        "null": false,
+        "default": null
+      }
+    ],
+    "associations": [
+      {
+        "macro": "belongs_to",
+        "name": "subject",
+        "class_name": "Subject",
+        "options": {
+          "polymorphic": "true",
+          "optional": "true"
+        }
+      },
+      {
+        "macro": "belongs_to",
+        "name": "triggered_by_user",
+        "class_name": "User",
+        "options": {
+          "class_name": "User"
+        }
+      }
+    ],
+    "validations": [
+      {
+        "kind": "presence",
+        "attributes": [
+          "triggered_by_user"
+        ],
+        "options": {
+          "message": "required",
+          "if": "proc"
+        }
+      },
+      {
+        "kind": "presence",
+        "attributes": [
+          "kind"
+        ],
+        "options": {}
+      },
+      {
+        "kind": "inclusion",
+        "attributes": [
+          "kind"
+        ],
+        "options": {
+          "in": "[\"transaction_sync\", \"balance_refresh\", \"connection_refresh\", \"account_details_refresh\", \"llm_enrichment\", \"llm_connection_test\", \"data_export\", \"data_import\"]"
+        }
+      },
+      {
+        "kind": "presence",
+        "attributes": [
+          "status"
+        ],
+        "options": {}
+      },
+      {
+        "kind": "inclusion",
+        "attributes": [
+          "status"
+        ],
+        "options": {
+          "in": "[\"queued\", \"running\", \"succeeded\", \"partial\", \"failed\"]"
+        }
+      },
+      {
+        "kind": "presence",
+        "attributes": [
+          "trigger"
+        ],
+        "options": {}
+      },
+      {
+        "kind": "inclusion",
+        "attributes": [
+          "trigger"
+        ],
+        "options": {
+          "in": "[\"manual\", \"scheduled\"]"
+        }
+      }
+    ],
+    "callbacks": [
+      {
+        "kind": "validation",
+        "phase": "before",
+        "filter": "normalize_changed_in_place_attributes",
+        "if": []
+      },
+      {
+        "kind": "save",
+        "phase": "before",
+        "filter": "autosave_associated_records_for_subject",
+        "if": []
+      },
+      {
+        "kind": "save",
+        "phase": "before",
+        "filter": "autosave_associated_records_for_triggered_by_user",
+        "if": []
+      },
+      {
+        "kind": "commit",
+        "phase": "after",
+        "filter": "broadcast_progress",
+        "if": [
+          "proc",
+          "proc",
+          "proc"
+        ]
+      }
+    ],
+    "enums": {},
+    "scopes": [
+      "recent",
+      "running",
+      "queued",
+      "terminal",
+      "of_kind",
+      "triggered_by"
+    ],
+    "encrypted_attributes": [],
+    "monetized": {},
+    "has_paper_trail": false,
+    "ransackable_attributes": [
+      "id",
+      "kind",
+      "status",
+      "trigger",
+      "subject_type",
+      "subject_id",
+      "triggered_by_user_id",
+      "started_at",
+      "finished_at",
+      "created_at",
+      "updated_at"
+    ],
+    "ransackable_associations": [
+      "subject",
+      "triggered_by_user"
+    ],
+    "class_methods_defined": [
+      "ransackable_attributes",
+      "ransackable_associations"
+    ],
+    "constants": [
+      "KINDS",
+      "STATUSES",
+      "TRIGGERS",
+      "TERMINAL_STATUSES",
+      "STREAMED_KINDS"
+    ]
+  },
+  {
+    "name": "PaperTrail::Version",
+    "file": "/workspace/ruby-service-investigator/bundle/ruby/3.4.0/gems/paper_trail-17.0.0/lib/paper_trail/frameworks/active_record/models/paper_trail/version.rb",
+    "app_model": false,
+    "table": "versions",
+    "table_exists": true,
+    "primary_key": "id",
+    "sti": null,
+    "columns": [
+      {
+        "name": "id",
+        "type": "bigint",
+        "null": false,
+        "default": null
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp(6) without time zone",
+        "null": true,
+        "default": null
+      },
+      {
+        "name": "event",
+        "type": "character varying",
+        "null": false,
+        "default": null
+      },
+      {
+        "name": "item_id",
+        "type": "bigint",
+        "null": false,
+        "default": null
+      },
+      {
+        "name": "item_type",
+        "type": "character varying",
+        "null": false,
+        "default": null
+      },
+      {
+        "name": "object",
+        "type": "text",
+        "null": true,
+        "default": null
+      },
+      {
+        "name": "object_changes",
+        "type": "text",
+        "null": true,
+        "default": null
+      },
+      {
+        "name": "whodunnit",
+        "type": "character varying",
+        "null": true,
+        "default": null
+      }
+    ],
+    "associations": [
+      {
+        "macro": "belongs_to",
+        "name": "item",
+        "class_name": "Item",
+        "options": {
+          "polymorphic": "true",
+          "optional": "true",
+          "inverse_of": "false"
+        }
+      }
+    ],
+    "validations": [
+      {
+        "kind": "presence",
+        "attributes": [
+          "event"
+        ],
+        "options": {}
+      }
+    ],
+    "callbacks": [
+      {
+        "kind": "validation",
+        "phase": "before",
+        "filter": "normalize_changed_in_place_attributes",
+        "if": []
+      },
+      {
+        "kind": "save",
+        "phase": "before",
+        "filter": "autosave_associated_records_for_item",
+        "if": []
+      },
+      {
+        "kind": "create",
+        "phase": "after",
+        "filter": "enforce_version_limit!",
+        "if": [
+          "#<ActiveSupport::Callbacks::Conditionals::Value:0x000078b10e6bde00>"
+        ]
+      }
+    ],
+    "enums": {},
+    "scopes": [],
+    "encrypted_attributes": [],
+    "monetized": {},
+    "has_paper_trail": false,
+    "ransackable_attributes": [
+      "created_at",
+      "event",
+      "id",
+      "item_id",
+      "item_type",
+      "object",
+      "object_changes",
+      "whodunnit"
+    ],
+    "ransackable_associations": [],
+    "class_methods_defined": [],
+    "constants": []
+  },
+  {
+    "name": "PersonalAccessToken",
+    "file": "app/models/personal_access_token.rb",
+    "app_model": true,
+    "table": "personal_access_tokens",
+    "table_exists": true,
+    "primary_key": "id",
+    "sti": null,
+    "columns": [
+      {
+        "name": "id",
+        "type": "bigint",
+        "null": false,
+        "default": null
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp(6) without time zone",
+        "null": false,
+        "default": null
+      },
+      {
+        "name": "last_four",
+        "type": "character varying(4)",
+        "null": false,
+        "default": null
+      },
+      {
+        "name": "last_used_at",
+        "type": "timestamp(6) without time zone",
+        "null": true,
+        "default": null
+      },
+      {
+        "name": "name",
+        "type": "character varying",
+        "null": false,
+        "default": null
+      },
+      {
+        "name": "revoked_at",
+        "type": "timestamp(6) without time zone",
+        "null": true,
+        "default": null
+      },
+      {
+        "name": "token_digest",
+        "type": "character varying",
+        "null": false,
+        "default": null
+      },
+      {
+        "name": "updated_at",
+        "type": "timestamp(6) without time zone",
+        "null": false,
+        "default": null
+      },
+      {
+        "name": "user_id",
+        "type": "bigint",
+        "null": false,
+        "default": null
+      }
+    ],
+    "associations": [
+      {
+        "macro": "belongs_to",
+        "name": "user",
+        "class_name": "User",
+        "options": {}
+      }
+    ],
+    "validations": [
+      {
+        "kind": "presence",
+        "attributes": [
+          "user"
+        ],
+        "options": {
+          "message": "required",
+          "if": "proc"
+        }
+      },
+      {
+        "kind": "presence",
+        "attributes": [
+          "name"
+        ],
+        "options": {}
+      },
+      {
+        "kind": "length",
+        "attributes": [
+          "name"
+        ],
+        "options": {
+          "minimum": "1",
+          "maximum": "50"
+        }
+      },
+      {
+        "kind": "uniqueness",
+        "attributes": [
+          "name"
+        ],
+        "options": {
+          "scope": "user_id",
+          "case_sensitive": "false"
+        }
+      },
+      {
+        "kind": "presence",
+        "attributes": [
+          "token_digest"
+        ],
+        "options": {}
+      },
+      {
+        "kind": "uniqueness",
+        "attributes": [
+          "token_digest"
+        ],
+        "options": {}
+      },
+      {
+        "kind": "presence",
+        "attributes": [
+          "last_four"
+        ],
+        "options": {}
+      },
+      {
+        "kind": "length",
+        "attributes": [
+          "last_four"
+        ],
+        "options": {
+          "is": "4"
+        }
+      }
+    ],
+    "callbacks": [
+      {
+        "kind": "validation",
+        "phase": "before",
+        "filter": "normalize_changed_in_place_attributes",
+        "if": []
+      },
+      {
+        "kind": "save",
+        "phase": "before",
+        "filter": "autosave_associated_records_for_user",
+        "if": []
+      }
+    ],
+    "enums": {},
+    "scopes": [
+      "active",
+      "revoked"
+    ],
+    "encrypted_attributes": [],
+    "monetized": {},
+    "has_paper_trail": false,
+    "ransackable_attributes": null,
+    "ransackable_associations": null,
+    "class_methods_defined": [
+      "digest_for"
+    ],
+    "constants": [
+      "PREFIX",
+      "RAW_BYTES",
+      "NAME_RANGE"
+    ]
+  },
+  {
+    "name": "SyncSchedule",
+    "file": "app/models/sync_schedule.rb",
+    "app_model": true,
+    "table": "sync_schedules",
+    "table_exists": true,
+    "primary_key": "id",
+    "sti": null,
+    "columns": [
+      {
+        "name": "id",
+        "type": "bigint",
+        "null": false,
+        "default": null
+      },
+      {
+        "name": "bank_connection_id",
+        "type": "bigint",
+        "null": false,
+        "default": null
+      },
+      {
+        "name": "cadence",
+        "type": "character varying",
+        "null": false,
+        "default": "daily"
+      },
+      {
+        "name": "consecutive_failures",
+        "type": "integer",
+        "null": false,
+        "default": 0
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp(6) without time zone",
+        "null": false,
+        "default": null
+      },
+      {
+        "name": "enabled",
+        "type": "boolean",
+        "null": false,
+        "default": false
+      },
+      {
+        "name": "last_dispatched_at",
+        "type": "timestamp(6) without time zone",
+        "null": true,
+        "default": null
+      },
+      {
+        "name": "next_run_at",
+        "type": "timestamp(6) without time zone",
+        "null": true,
+        "default": null
+      },
+      {
+        "name": "paused_until",
+        "type": "timestamp(6) without time zone",
+        "null": true,
+        "default": null
+      },
+      {
+        "name": "preferred_hour",
+        "type": "integer",
+        "null": false,
+        "default": 8
+      },
+      {
+        "name": "updated_at",
+        "type": "timestamp(6) without time zone",
+        "null": false,
+        "default": null
+      }
+    ],
+    "associations": [
+      {
+        "macro": "belongs_to",
+        "name": "bank_connection",
+        "class_name": "BankConnection",
+        "options": {}
+      }
+    ],
+    "validations": [
+      {
+        "kind": "presence",
+        "attributes": [
+          "bank_connection"
+        ],
+        "options": {
+          "message": "required",
+          "if": "proc"
+        }
+      },
+      {
+        "kind": "presence",
+        "attributes": [
+          "cadence"
+        ],
+        "options": {}
+      },
+      {
+        "kind": "inclusion",
+        "attributes": [
+          "cadence"
+        ],
+        "options": {
+          "in": "[\"daily\", \"every_2_days\", \"weekly\"]"
+        }
+      },
+      {
+        "kind": "presence",
+        "attributes": [
+          "preferred_hour"
+        ],
+        "options": {}
+      },
+      {
+        "kind": "numericality",
+        "attributes": [
+          "preferred_hour"
+        ],
+        "options": {
+          "only_integer": "true",
+          "in": "0..23"
+        }
+      },
+      {
+        "kind": "numericality",
+        "attributes": [
+          "consecutive_failures"
+        ],
+        "options": {
+          "only_integer": "true",
+          "greater_than_or_equal_to": "0"
+        }
+      }
+    ],
+    "callbacks": [
+      {
+        "kind": "validation",
+        "phase": "before",
+        "filter": "normalize_changed_in_place_attributes",
+        "if": []
+      },
+      {
+        "kind": "save",
+        "phase": "before",
+        "filter": "autosave_associated_records_for_bank_connection",
+        "if": []
+      }
+    ],
+    "enums": {},
+    "scopes": [
+      "due"
+    ],
+    "encrypted_attributes": [],
+    "monetized": {},
+    "has_paper_trail": false,
+    "ransackable_attributes": null,
+    "ransackable_associations": null,
+    "class_methods_defined": [],
+    "constants": [
+      "CADENCES",
+      "FAILURE_THRESHOLD"
+    ]
+  },
+  {
+    "name": "TppCredential",
+    "file": "app/models/tpp_credential.rb",
+    "app_model": true,
+    "table": "tpp_credentials",
+    "table_exists": true,
+    "primary_key": "id",
+    "sti": null,
+    "columns": [
+      {
+        "name": "id",
+        "type": "bigint",
+        "null": false,
+        "default": null
+      },
+      {
+        "name": "application_id",
+        "type": "text",
+        "null": true,
+        "default": null
+      },
+      {
+        "name": "cert_expires_at",
+        "type": "timestamp(6) without time zone",
+        "null": true,
+        "default": null
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp(6) without time zone",
+        "null": false,
+        "default": null
+      },
+      {
+        "name": "environment",
+        "type": "character varying",
+        "null": true,
+        "default": null
+      },
+      {
+        "name": "last_verification_error",
+        "type": "text",
+        "null": true,
+        "default": null
+      },
+      {
+        "name": "last_verified_at",
+        "type": "timestamp(6) without time zone",
+        "null": true,
+        "default": null
+      },
+      {
+        "name": "metadata",
+        "type": "jsonb",
+        "null": false,
+        "default": "{}"
+      },
+      {
+        "name": "name",
+        "type": "character varying",
+        "null": false,
+        "default": null
+      },
+      {
+        "name": "primary",
+        "type": "boolean",
+        "null": false,
+        "default": false
+      },
+      {
+        "name": "private_key_pem",
+        "type": "text",
+        "null": true,
+        "default": null
+      },
+      {
+        "name": "provider",
+        "type": "character varying",
+        "null": false,
+        "default": "enable_banking"
+      },
+      {
+        "name": "public_cert_pem",
+        "type": "text",
+        "null": true,
+        "default": null
+      },
+      {
+        "name": "redirect_url",
+        "type": "character varying",
+        "null": true,
+        "default": null
+      },
+      {
+        "name": "status",
+        "type": "character varying",
+        "null": false,
+        "default": "pending"
+      },
+      {
+        "name": "updated_at",
+        "type": "timestamp(6) without time zone",
+        "null": false,
+        "default": null
+      },
+      {
+        "name": "user_id",
+        "type": "bigint",
+        "null": false,
+        "default": null
+      }
+    ],
+    "associations": [
+      {
+        "macro": "belongs_to",
+        "name": "user",
+        "class_name": "User",
+        "options": {}
+      },
+      {
+        "macro": "has_many",
+        "name": "bank_connections",
+        "class_name": "BankConnection",
+        "options": {
+          "dependent": "restrict_with_error"
+        }
+      },
+      {
+        "macro": "has_many",
+        "name": "bank_accounts",
+        "class_name": "BankAccount",
+        "options": {
+          "dependent": "restrict_with_error"
+        }
+      },
+      {
+        "macro": "has_many",
+        "name": "versions",
+        "class_name": "PaperTrail::Version",
+        "options": {
+          "class_name": "PaperTrail::Version",
+          "as": "item"
+        }
+      }
+    ],
+    "validations": [
+      {
+        "kind": "presence",
+        "attributes": [
+          "user"
+        ],
+        "options": {
+          "message": "required",
+          "if": "proc"
+        }
+      },
+      {
+        "kind": "presence",
+        "attributes": [
+          "name"
+        ],
+        "options": {}
+      },
+      {
+        "kind": "presence",
+        "attributes": [
+          "provider"
+        ],
+        "options": {}
+      },
+      {
+        "kind": "inclusion",
+        "attributes": [
+          "provider"
+        ],
+        "options": {
+          "in": "[\"enable_banking\"]"
+        }
+      },
+      {
+        "kind": "presence",
+        "attributes": [
+          "status"
+        ],
+        "options": {}
+      },
+      {
+        "kind": "inclusion",
+        "attributes": [
+          "status"
+        ],
+        "options": {
+          "in": "[\"pending\", \"active\", \"error\"]"
+        }
+      },
+      {
+        "kind": "inclusion",
+        "attributes": [
+          "environment"
+        ],
+        "options": {
+          "allow_blank": "true",
+          "in": "[\"PRODUCTION\", \"SANDBOX\"]"
+        }
+      },
+      {
+        "kind": "presence",
+        "attributes": [
+          "application_id"
+        ],
+        "options": {}
+      },
+      {
+        "kind": "presence",
+        "attributes": [
+          "private_key_pem"
+        ],
+        "options": {}
+      },
+      {
+        "kind": "presence",
+        "attributes": [
+          "redirect_url"
+        ],
+        "options": {}
+      }
+    ],
+    "callbacks": [
+      {
+        "kind": "validation",
+        "phase": "after",
+        "filter": "_ensure_no_duplicate_errors",
+        "if": []
+      },
+      {
+        "kind": "validation",
+        "phase": "before",
+        "filter": "normalize_changed_in_place_attributes",
+        "if": []
+      },
+      {
+        "kind": "save",
+        "phase": "before",
+        "filter": "autosave_associated_records_for_user",
+        "if": []
+      },
+      {
+        "kind": "save",
+        "phase": "before",
+        "filter": "extract_cert_metadata",
+        "if": []
+      },
+      {
+        "kind": "save",
+        "phase": "around",
+        "filter": "around_save_collection_association",
+        "if": []
+      },
+      {
+        "kind": "save",
+        "phase": "before",
+        "filter": "proc@/workspace/ruby-service-investigator/bundle/ruby/3.4.0/gems/paper_trail-17.0.0/lib/paper_trail/model_config.rb:65",
+        "if": []
+      },
+      {
+        "kind": "create",
+        "phase": "after",
+        "filter": "proc@/workspace/ruby-service-investigator/bundle/ruby/3.4.0/gems/paper_trail-17.0.0/lib/paper_trail/model_config.rb:40",
+        "if": [
+          "#<ActiveSupport::Callbacks::Conditionals::Value:0x000078b10d7a7b00>"
+        ]
+      },
+      {
+        "kind": "create",
+        "phase": "after",
+        "filter": "autosave_associated_records_for_versions",
+        "if": [
+          "#<ActiveSupport::Callbacks::Conditionals::Value:0x000078b10d7a9040>"
+        ]
+      },
+      {
+        "kind": "create",
+        "phase": "after",
+        "filter": "autosave_associated_records_for_bank_accounts",
+        "if": [
+          "#<ActiveSupport::Callbacks::Conditionals::Value:0x000078b10d7823a0>"
+        ]
+      },
+      {
+        "kind": "create",
+        "phase": "after",
+        "filter": "autosave_associated_records_for_bank_connections",
+        "if": [
+          "#<ActiveSupport::Callbacks::Conditionals::Value:0x000078b10d7845b0>"
+        ]
+      },
+      {
+        "kind": "update",
+        "phase": "after",
+        "filter": "proc@/workspace/ruby-service-investigator/bundle/ruby/3.4.0/gems/paper_trail-17.0.0/lib/paper_trail/model_config.rb:77",
+        "if": [
+          "#<ActiveSupport::Callbacks::Conditionals::Value:0x000078b10d7a6de0>"
+        ]
+      },
+      {
+        "kind": "update",
+        "phase": "after",
+        "filter": "proc@/workspace/ruby-service-investigator/bundle/ruby/3.4.0/gems/paper_trail-17.0.0/lib/paper_trail/model_config.rb:68",
+        "if": [
+          "#<ActiveSupport::Callbacks::Conditionals::Value:0x000078b10d7a7290>"
+        ]
+      },
+      {
+        "kind": "update",
+        "phase": "after",
+        "filter": "autosave_associated_records_for_versions",
+        "if": [
+          "#<ActiveSupport::Callbacks::Conditionals::Value:0x000078b10d7a8bb8>"
+        ]
+      },
+      {
+        "kind": "update",
+        "phase": "after",
+        "filter": "autosave_associated_records_for_bank_accounts",
+        "if": [
+          "#<ActiveSupport::Callbacks::Conditionals::Value:0x000078b10d781f18>"
+        ]
+      },
+      {
+        "kind": "update",
+        "phase": "after",
+        "filter": "autosave_associated_records_for_bank_connections",
+        "if": [
+          "#<ActiveSupport::Callbacks::Conditionals::Value:0x000078b10d784060>"
+        ]
+      },
+      {
+        "kind": "destroy",
+        "phase": "before",
+        "filter": "proc@/workspace/ruby-service-investigator/bundle/ruby/3.4.0/gems/activerecord-8.1.3/lib/active_record/associations/builder/association.rb:153",
+        "if": []
+      },
+      {
+        "kind": "destroy",
+        "phase": "before",
+        "filter": "proc@/workspace/ruby-service-investigator/bundle/ruby/3.4.0/gems/activerecord-8.1.3/lib/active_record/associations/builder/association.rb:153",
+        "if": []
+      },
+      {
+        "kind": "destroy",
+        "phase": "before",
+        "filter": "proc@/workspace/ruby-service-investigator/bundle/ruby/3.4.0/gems/paper_trail-17.0.0/lib/paper_trail/model_config.rb:53",
+        "if": []
+      },
+      {
+        "kind": "rollback",
+        "phase": "after",
+        "filter": "proc@/workspace/ruby-service-investigator/bundle/ruby/3.4.0/gems/paper_trail-17.0.0/lib/paper_trail/model_config.rb:114",
+        "if": []
+      },
+      {
+        "kind": "touch",
+        "phase": "after",
+        "filter": "proc@/workspace/ruby-service-investigator/bundle/ruby/3.4.0/gems/paper_trail-17.0.0/lib/paper_trail/model_config.rb:94",
+        "if": [
+          "#<ActiveSupport::Callbacks::Conditionals::Value:0x000078b10d7a64f8>"
+        ]
+      }
+    ],
+    "enums": {},
+    "scopes": [
+      "primary_for"
+    ],
+    "encrypted_attributes": [
+      "application_id",
+      "private_key_pem"
+    ],
+    "monetized": {},
+    "has_paper_trail": true,
+    "ransackable_attributes": [
+      "id",
+      "name",
+      "provider",
+      "environment",
+      "status",
+      "primary",
+      "redirect_url",
+      "cert_expires_at",
+      "last_verified_at",
+      "user_id",
+      "created_at",
+      "updated_at"
+    ],
+    "ransackable_associations": [
+      "user",
+      "bank_connections"
+    ],
+    "class_methods_defined": [
+      "ransackable_attributes",
+      "ransackable_associations"
+    ],
+    "constants": [
+      "PROVIDERS",
+      "ENVIRONMENTS",
+      "STATUSES"
+    ]
+  },
+  {
+    "name": "TransactionEnrichment",
+    "file": "app/models/transaction_enrichment.rb",
+    "app_model": true,
+    "table": "transaction_enrichments",
+    "table_exists": true,
+    "primary_key": "id",
+    "sti": null,
+    "columns": [
+      {
+        "name": "id",
+        "type": "bigint",
+        "null": false,
+        "default": null
+      },
+      {
+        "name": "category_id",
+        "type": "bigint",
+        "null": true,
+        "default": null
+      },
+      {
+        "name": "category_overridden",
+        "type": "boolean",
+        "null": false,
+        "default": false
+      },
+      {
+        "name": "confidence",
+        "type": "numeric(4,3)",
+        "null": true,
+        "default": null
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp(6) without time zone",
+        "null": false,
+        "default": null
+      },
+      {
+        "name": "enrichable_id",
+        "type": "bigint",
+        "null": false,
+        "default": null
+      },
+      {
+        "name": "enrichable_type",
+        "type": "character varying",
+        "null": false,
+        "default": null
+      },
+      {
+        "name": "enriched_at",
+        "type": "timestamp(6) without time zone",
+        "null": true,
+        "default": null
+      },
+      {
+        "name": "merchant_id",
+        "type": "bigint",
+        "null": true,
+        "default": null
+      },
+      {
+        "name": "merchant_rule_id",
+        "type": "bigint",
+        "null": true,
+        "default": null
+      },
+      {
+        "name": "model",
+        "type": "character varying",
+        "null": true,
+        "default": null
+      },
+      {
+        "name": "notes",
+        "type": "text",
+        "null": true,
+        "default": null
+      },
+      {
+        "name": "source",
+        "type": "character varying",
+        "null": false,
+        "default": null
+      },
+      {
+        "name": "updated_at",
+        "type": "timestamp(6) without time zone",
+        "null": false,
+        "default": null
+      }
+    ],
+    "associations": [
+      {
+        "macro": "has_many",
+        "name": "taggings",
+        "class_name": "Gutentag::Tagging",
+        "options": {
+          "class_name": "Gutentag::Tagging",
+          "as": "taggable",
+          "dependent": "destroy"
+        }
+      },
+      {
+        "macro": "has_many",
+        "name": "tags",
+        "class_name": "Gutentag::Tag",
+        "options": {
+          "class_name": "Gutentag::Tag",
+          "through": "taggings"
+        }
+      },
+      {
+        "macro": "belongs_to",
+        "name": "enrichable",
+        "class_name": "Enrichable",
+        "options": {
+          "polymorphic": "true"
+        }
+      },
+      {
+        "macro": "belongs_to",
+        "name": "merchant",
+        "class_name": "Merchant",
+        "options": {
+          "optional": "true"
+        }
+      },
+      {
+        "macro": "belongs_to",
+        "name": "category",
+        "class_name": "Category",
+        "options": {
+          "optional": "true"
+        }
+      },
+      {
+        "macro": "belongs_to",
+        "name": "merchant_rule",
+        "class_name": "MerchantRule",
+        "options": {
+          "optional": "true"
+        }
+      }
+    ],
+    "validations": [
+      {
+        "kind": "presence",
+        "attributes": [
+          "enrichable"
+        ],
+        "options": {
+          "message": "required",
+          "if": "proc"
+        }
+      },
+      {
+        "kind": "inclusion",
+        "attributes": [
+          "source"
+        ],
+        "options": {
+          "in": "[\"unmatched\", \"system_rule\", \"user_rule\", \"llm_rule\", \"llm_pending\", \"manual\", \"system_fallback\"]"
+        }
+      },
+      {
+        "kind": "numericality",
+        "attributes": [
+          "confidence"
+        ],
+        "options": {
+          "allow_nil": "true",
+          "in": "0.0..1.0"
+        }
+      }
+    ],
+    "callbacks": [
+      {
+        "kind": "validation",
+        "phase": "after",
+        "filter": "_ensure_no_duplicate_errors",
+        "if": []
+      },
+      {
+        "kind": "validation",
+        "phase": "before",
+        "filter": "normalize_changed_in_place_attributes",
+        "if": []
+      },
+      {
+        "kind": "save",
+        "phase": "after",
+        "filter": "persist_tags",
+        "if": [
+          "#<ActiveSupport::Callbacks::Conditionals::Value:0x000078b10d73da70>"
+        ]
+      },
+      {
+        "kind": "save",
+        "phase": "around",
+        "filter": "around_save_collection_association",
+        "if": []
+      },
+      {
+        "kind": "save",
+        "phase": "before",
+        "filter": "autosave_associated_records_for_enrichable",
+        "if": []
+      },
+      {
+        "kind": "save",
+        "phase": "before",
+        "filter": "autosave_associated_records_for_merchant",
+        "if": []
+      },
+      {
+        "kind": "save",
+        "phase": "before",
+        "filter": "autosave_associated_records_for_category",
+        "if": []
+      },
+      {
+        "kind": "save",
+        "phase": "before",
+        "filter": "autosave_associated_records_for_merchant_rule",
+        "if": []
+      },
+      {
+        "kind": "create",
+        "phase": "after",
+        "filter": "autosave_associated_records_for_tags",
+        "if": [
+          "#<ActiveSupport::Callbacks::Conditionals::Value:0x000078b10d73ec90>"
+        ]
+      },
+      {
+        "kind": "create",
+        "phase": "after",
+        "filter": "autosave_associated_records_for_taggings",
+        "if": [
+          "#<ActiveSupport::Callbacks::Conditionals::Value:0x000078b10d7a0e18>"
+        ]
+      },
+      {
+        "kind": "update",
+        "phase": "after",
+        "filter": "autosave_associated_records_for_tags",
+        "if": [
+          "#<ActiveSupport::Callbacks::Conditionals::Value:0x000078b10d73e808>"
+        ]
+      },
+      {
+        "kind": "update",
+        "phase": "after",
+        "filter": "autosave_associated_records_for_taggings",
+        "if": [
+          "#<ActiveSupport::Callbacks::Conditionals::Value:0x000078b10d7a0918>"
+        ]
+      },
+      {
+        "kind": "destroy",
+        "phase": "before",
+        "filter": "proc@/workspace/ruby-service-investigator/bundle/ruby/3.4.0/gems/activerecord-8.1.3/lib/active_record/associations/builder/association.rb:153",
+        "if": []
+      },
+      {
+        "kind": "commit",
+        "phase": "after",
+        "filter": "reset_tag_names",
+        "if": [
+          "proc",
+          "proc"
+        ]
+      }
+    ],
+    "enums": {},
+    "scopes": [
+      "rebuildable",
+      "unmatched",
+      "pending",
+      "merchantless",
+      "for_user"
+    ],
+    "encrypted_attributes": [],
+    "monetized": {},
+    "has_paper_trail": false,
+    "ransackable_attributes": [
+      "id",
+      "source",
+      "merchant_id",
+      "category_id"
+    ],
+    "ransackable_associations": [
+      "merchant",
+      "category",
+      "tags"
+    ],
+    "class_methods_defined": [
+      "ransackable_attributes",
+      "ransackable_associations"
+    ],
+    "constants": [
+      "SOURCES"
+    ]
+  },
+  {
+    "name": "User",
+    "file": "app/models/user.rb",
+    "app_model": true,
+    "table": "users",
+    "table_exists": true,
+    "primary_key": "id",
+    "sti": null,
+    "columns": [
+      {
+        "name": "id",
+        "type": "bigint",
+        "null": false,
+        "default": null
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp(6) without time zone",
+        "null": false,
+        "default": null
+      },
+      {
+        "name": "email",
+        "type": "character varying",
+        "null": false,
+        "default": ""
+      },
+      {
+        "name": "encrypted_password",
+        "type": "character varying",
+        "null": false,
+        "default": ""
+      },
+      {
+        "name": "name",
+        "type": "character varying",
+        "null": true,
+        "default": null
+      },
+      {
+        "name": "remember_created_at",
+        "type": "timestamp(6) without time zone",
+        "null": true,
+        "default": null
+      },
+      {
+        "name": "reset_password_sent_at",
+        "type": "timestamp(6) without time zone",
+        "null": true,
+        "default": null
+      },
+      {
+        "name": "reset_password_token",
+        "type": "character varying",
+        "null": true,
+        "default": null
+      },
+      {
+        "name": "reveal_hidden_categories",
+        "type": "boolean",
+        "null": false,
+        "default": false
+      },
+      {
+        "name": "track_cash",
+        "type": "boolean",
+        "null": false,
+        "default": false
+      },
+      {
+        "name": "updated_at",
+        "type": "timestamp(6) without time zone",
+        "null": false,
+        "default": null
+      }
+    ],
+    "associations": [
+      {
+        "macro": "has_many",
+        "name": "tpp_credentials",
+        "class_name": "TppCredential",
+        "options": {
+          "dependent": "destroy"
+        }
+      },
+      {
+        "macro": "has_many",
+        "name": "bank_connections",
+        "class_name": "BankConnection",
+        "options": {
+          "through": "tpp_credentials"
+        }
+      },
+      {
+        "macro": "has_many",
+        "name": "bank_accounts",
+        "class_name": "BankAccount",
+        "options": {
+          "through": "tpp_credentials"
+        }
+      },
+      {
+        "macro": "has_many",
+        "name": "cash_wallets",
+        "class_name": "BankAccount",
+        "options": {
+          "class_name": "BankAccount",
+          "foreign_key": "manual_owner_id",
+          "dependent": "destroy"
+        }
+      },
+      {
+        "macro": "has_many",
+        "name": "manual_transactions",
+        "class_name": "ManualTransaction",
+        "options": {
+          "through": "cash_wallets"
+        }
+      },
+      {
+        "macro": "has_many",
+        "name": "user_hidden_categories",
+        "class_name": "UserHiddenCategory",
+        "options": {
+          "dependent": "destroy"
+        }
+      },
+      {
+        "macro": "has_many",
+        "name": "hidden_categories",
+        "class_name": "Category",
+        "options": {
+          "through": "user_hidden_categories",
+          "source": "category"
+        }
+      },
+      {
+        "macro": "has_many",
+        "name": "categories",
+        "class_name": "Category",
+        "options": {
+          "dependent": "destroy"
+        }
+      },
+      {
+        "macro": "has_many",
+        "name": "merchants",
+        "class_name": "Merchant",
+        "options": {
+          "dependent": "destroy"
+        }
+      },
+      {
+        "macro": "has_many",
+        "name": "merchant_rules",
+        "class_name": "MerchantRule",
+        "options": {
+          "dependent": "destroy"
+        }
+      },
+      {
+        "macro": "has_one",
+        "name": "llm_setting",
+        "class_name": "LlmSetting",
+        "options": {
+          "dependent": "destroy"
+        }
+      },
+      {
+        "macro": "has_many",
+        "name": "personal_access_tokens",
+        "class_name": "PersonalAccessToken",
+        "options": {
+          "dependent": "destroy"
+        }
+      },
+      {
+        "macro": "has_many",
+        "name": "operation_runs",
+        "class_name": "OperationRun",
+        "options": {
+          "foreign_key": "triggered_by_user_id",
+          "dependent": "destroy"
+        }
+      }
+    ],
+    "validations": [
+      {
+        "kind": "presence",
+        "attributes": [
+          "email"
+        ],
+        "options": {
+          "if": "email_required?"
+        }
+      },
+      {
+        "kind": "uniqueness",
+        "attributes": [
+          "email"
+        ],
+        "options": {
+          "allow_blank": "true",
+          "case_sensitive": "true",
+          "if": "devise_will_save_change_to_email?"
+        }
+      },
+      {
+        "kind": "format",
+        "attributes": [
+          "email"
+        ],
+        "options": {
+          "with": "(?-mix:\\A[^@\\s]+@[^@\\s]+\\z)",
+          "allow_blank": "true",
+          "if": "devise_will_save_change_to_email?"
+        }
+      },
+      {
+        "kind": "presence",
+        "attributes": [
+          "password"
+        ],
+        "options": {
+          "if": "password_required?"
+        }
+      },
+      {
+        "kind": "confirmation",
+        "attributes": [
+          "password"
+        ],
+        "options": {
+          "case_sensitive": "true",
+          "if": "password_required?"
+        }
+      },
+      {
+        "kind": "length",
+        "attributes": [
+          "password"
+        ],
+        "options": {
+          "minimum": "proc",
+          "maximum": "proc",
+          "allow_blank": "true"
+        }
+      },
+      {
+        "kind": "presence",
+        "attributes": [
+          "name"
+        ],
+        "options": {}
+      }
+    ],
+    "callbacks": [
+      {
+        "kind": "validation",
+        "phase": "after",
+        "filter": "_ensure_no_duplicate_errors",
+        "if": []
+      },
+      {
+        "kind": "validation",
+        "phase": "before",
+        "filter": "normalize_changed_in_place_attributes",
+        "if": []
+      },
+      {
+        "kind": "validation",
+        "phase": "before",
+        "filter": "downcase_keys",
+        "if": []
+      },
+      {
+        "kind": "validation",
+        "phase": "before",
+        "filter": "strip_whitespace",
+        "if": []
+      },
+      {
+        "kind": "save",
+        "phase": "around",
+        "filter": "around_save_collection_association",
+        "if": []
+      },
+      {
+        "kind": "create",
+        "phase": "after",
+        "filter": "autosave_associated_records_for_operation_runs",
+        "if": [
+          "#<ActiveSupport::Callbacks::Conditionals::Value:0x000078b10d6fc200>"
+        ]
+      },
+      {
+        "kind": "create",
+        "phase": "after",
+        "filter": "autosave_associated_records_for_personal_access_tokens",
+        "if": [
+          "#<ActiveSupport::Callbacks::Conditionals::Value:0x000078b10d6fe2d0>"
+        ]
+      },
+      {
+        "kind": "create",
+        "phase": "after",
+        "filter": "autosave_associated_records_for_llm_setting",
+        "if": [
+          "#<ActiveSupport::Callbacks::Conditionals::Value:0x000078b10d6ffab8>"
+        ]
+      },
+      {
+        "kind": "create",
+        "phase": "after",
+        "filter": "autosave_associated_records_for_merchant_rules",
+        "if": [
+          "#<ActiveSupport::Callbacks::Conditionals::Value:0x000078b10d6d17f8>"
+        ]
+      },
+      {
+        "kind": "create",
+        "phase": "after",
+        "filter": "autosave_associated_records_for_merchants",
+        "if": [
+          "#<ActiveSupport::Callbacks::Conditionals::Value:0x000078b10d6d37b0>"
+        ]
+      },
+      {
+        "kind": "create",
+        "phase": "after",
+        "filter": "autosave_associated_records_for_categories",
+        "if": [
+          "#<ActiveSupport::Callbacks::Conditionals::Value:0x000078b10d6d5830>"
+        ]
+      },
+      {
+        "kind": "create",
+        "phase": "after",
+        "filter": "autosave_associated_records_for_hidden_categories",
+        "if": [
+          "#<ActiveSupport::Callbacks::Conditionals::Value:0x000078b10d6d7978>"
+        ]
+      },
+      {
+        "kind": "create",
+        "phase": "after",
+        "filter": "autosave_associated_records_for_user_hidden_categories",
+        "if": [
+          "#<ActiveSupport::Callbacks::Conditionals::Value:0x000078b10d6d96b0>"
+        ]
+      },
+      {
+        "kind": "create",
+        "phase": "after",
+        "filter": "autosave_associated_records_for_manual_transactions",
+        "if": [
+          "#<ActiveSupport::Callbacks::Conditionals::Value:0x000078b10d6db640>"
+        ]
+      },
+      {
+        "kind": "create",
+        "phase": "after",
+        "filter": "autosave_associated_records_for_cash_wallets",
+        "if": [
+          "#<ActiveSupport::Callbacks::Conditionals::Value:0x000078b10d6dd2b0>"
+        ]
+      },
+      {
+        "kind": "create",
+        "phase": "after",
+        "filter": "autosave_associated_records_for_bank_accounts",
+        "if": [
+          "#<ActiveSupport::Callbacks::Conditionals::Value:0x000078b10d6df380>"
+        ]
+      },
+      {
+        "kind": "create",
+        "phase": "after",
+        "filter": "autosave_associated_records_for_bank_connections",
+        "if": [
+          "#<ActiveSupport::Callbacks::Conditionals::Value:0x000078b10d741008>"
+        ]
+      },
+      {
+        "kind": "create",
+        "phase": "after",
+        "filter": "autosave_associated_records_for_tpp_credentials",
+        "if": [
+          "#<ActiveSupport::Callbacks::Conditionals::Value:0x000078b10d742f20>"
+        ]
+      },
+      {
+        "kind": "update",
+        "phase": "after",
+        "filter": "autosave_associated_records_for_operation_runs",
+        "if": [
+          "#<ActiveSupport::Callbacks::Conditionals::Value:0x000078b10d6fbd50>"
+        ]
+      },
+      {
+        "kind": "update",
+        "phase": "after",
+        "filter": "autosave_associated_records_for_personal_access_tokens",
+        "if": [
+          "#<ActiveSupport::Callbacks::Conditionals::Value:0x000078b10d6fde20>"
+        ]
+      },
+      {
+        "kind": "update",
+        "phase": "after",
+        "filter": "autosave_associated_records_for_llm_setting",
+        "if": [
+          "#<ActiveSupport::Callbacks::Conditionals::Value:0x000078b10d6ff608>"
+        ]
+      },
+      {
+        "kind": "update",
+        "phase": "after",
+        "filter": "autosave_associated_records_for_merchant_rules",
+        "if": [
+          "#<ActiveSupport::Callbacks::Conditionals::Value:0x000078b10d6d1348>"
+        ]
+      },
+      {
+        "kind": "update",
+        "phase": "after",
+        "filter": "autosave_associated_records_for_merchants",
+        "if": [
+          "#<ActiveSupport::Callbacks::Conditionals::Value:0x000078b10d6d3300>"
+        ]
+      },
+      {
+        "kind": "update",
+        "phase": "after",
+        "filter": "autosave_associated_records_for_categories",
+        "if": [
+          "#<ActiveSupport::Callbacks::Conditionals::Value:0x000078b10d6d5380>"
+        ]
+      },
+      {
+        "kind": "update",
+        "phase": "after",
+        "filter": "autosave_associated_records_for_hidden_categories",
+        "if": [
+          "#<ActiveSupport::Callbacks::Conditionals::Value:0x000078b10d6d74c8>"
+        ]
+      },
+      {
+        "kind": "update",
+        "phase": "after",
+        "filter": "autosave_associated_records_for_user_hidden_categories",
+        "if": [
+          "#<ActiveSupport::Callbacks::Conditionals::Value:0x000078b10d6d9200>"
+        ]
+      },
+      {
+        "kind": "update",
+        "phase": "after",
+        "filter": "autosave_associated_records_for_manual_transactions",
+        "if": [
+          "#<ActiveSupport::Callbacks::Conditionals::Value:0x000078b10d6db190>"
+        ]
+      },
+      {
+        "kind": "update",
+        "phase": "after",
+        "filter": "autosave_associated_records_for_cash_wallets",
+        "if": [
+          "#<ActiveSupport::Callbacks::Conditionals::Value:0x000078b10d6dce28>"
+        ]
+      },
+      {
+        "kind": "update",
+        "phase": "after",
+        "filter": "autosave_associated_records_for_bank_accounts",
+        "if": [
+          "#<ActiveSupport::Callbacks::Conditionals::Value:0x000078b10d6deef8>"
+        ]
+      },
+      {
+        "kind": "update",
+        "phase": "after",
+        "filter": "autosave_associated_records_for_bank_connections",
+        "if": [
+          "#<ActiveSupport::Callbacks::Conditionals::Value:0x000078b10d740b80>"
+        ]
+      },
+      {
+        "kind": "update",
+        "phase": "after",
+        "filter": "autosave_associated_records_for_tpp_credentials",
+        "if": [
+          "#<ActiveSupport::Callbacks::Conditionals::Value:0x000078b10d742a48>"
+        ]
+      },
+      {
+        "kind": "update",
+        "phase": "after",
+        "filter": "send_password_change_notification",
+        "if": [
+          "send_password_change_notification?",
+          "#<ActiveSupport::Callbacks::Conditionals::Value:0x000078b10d74dc40>"
+        ]
+      },
+      {
+        "kind": "update",
+        "phase": "after",
+        "filter": "send_email_changed_notification",
+        "if": [
+          "send_email_changed_notification?",
+          "#<ActiveSupport::Callbacks::Conditionals::Value:0x000078b10d74e190>"
+        ]
+      },
+      {
+        "kind": "update",
+        "phase": "before",
+        "filter": "clear_reset_password_token",
+        "if": [
+          "clear_reset_password_token?"
+        ]
+      },
+      {
+        "kind": "destroy",
+        "phase": "before",
+        "filter": "proc@/workspace/ruby-service-investigator/bundle/ruby/3.4.0/gems/activerecord-8.1.3/lib/active_record/associations/builder/association.rb:153",
+        "if": []
+      },
+      {
+        "kind": "destroy",
+        "phase": "before",
+        "filter": "proc@/workspace/ruby-service-investigator/bundle/ruby/3.4.0/gems/activerecord-8.1.3/lib/active_record/associations/builder/association.rb:153",
+        "if": []
+      },
+      {
+        "kind": "destroy",
+        "phase": "before",
+        "filter": "proc@/workspace/ruby-service-investigator/bundle/ruby/3.4.0/gems/activerecord-8.1.3/lib/active_record/associations/builder/association.rb:153",
+        "if": []
+      },
+      {
+        "kind": "destroy",
+        "phase": "before",
+        "filter": "proc@/workspace/ruby-service-investigator/bundle/ruby/3.4.0/gems/activerecord-8.1.3/lib/active_record/associations/builder/association.rb:153",
+        "if": []
+      },
+      {
+        "kind": "destroy",
+        "phase": "before",
+        "filter": "proc@/workspace/ruby-service-investigator/bundle/ruby/3.4.0/gems/activerecord-8.1.3/lib/active_record/associations/builder/association.rb:153",
+        "if": []
+      },
+      {
+        "kind": "destroy",
+        "phase": "before",
+        "filter": "proc@/workspace/ruby-service-investigator/bundle/ruby/3.4.0/gems/activerecord-8.1.3/lib/active_record/associations/builder/association.rb:153",
+        "if": []
+      },
+      {
+        "kind": "destroy",
+        "phase": "before",
+        "filter": "proc@/workspace/ruby-service-investigator/bundle/ruby/3.4.0/gems/activerecord-8.1.3/lib/active_record/associations/builder/association.rb:153",
+        "if": []
+      },
+      {
+        "kind": "destroy",
+        "phase": "before",
+        "filter": "proc@/workspace/ruby-service-investigator/bundle/ruby/3.4.0/gems/activerecord-8.1.3/lib/active_record/associations/builder/association.rb:153",
+        "if": []
+      },
+      {
+        "kind": "destroy",
+        "phase": "before",
+        "filter": "proc@/workspace/ruby-service-investigator/bundle/ruby/3.4.0/gems/activerecord-8.1.3/lib/active_record/associations/builder/association.rb:153",
+        "if": []
+      }
+    ],
+    "enums": {},
+    "scopes": [],
+    "encrypted_attributes": [],
+    "monetized": {},
+    "has_paper_trail": false,
+    "ransackable_attributes": null,
+    "ransackable_associations": null,
+    "class_methods_defined": [],
+    "constants": []
+  },
+  {
+    "name": "UserHiddenCategory",
+    "file": "app/models/user_hidden_category.rb",
+    "app_model": true,
+    "table": "user_hidden_categories",
+    "table_exists": true,
+    "primary_key": "id",
+    "sti": null,
+    "columns": [
+      {
+        "name": "id",
+        "type": "bigint",
+        "null": false,
+        "default": null
+      },
+      {
+        "name": "category_id",
+        "type": "bigint",
+        "null": false,
+        "default": null
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp(6) without time zone",
+        "null": false,
+        "default": null
+      },
+      {
+        "name": "updated_at",
+        "type": "timestamp(6) without time zone",
+        "null": false,
+        "default": null
+      },
+      {
+        "name": "user_id",
+        "type": "bigint",
+        "null": false,
+        "default": null
+      }
+    ],
+    "associations": [
+      {
+        "macro": "belongs_to",
+        "name": "user",
+        "class_name": "User",
+        "options": {}
+      },
+      {
+        "macro": "belongs_to",
+        "name": "category",
+        "class_name": "Category",
+        "options": {}
+      }
+    ],
+    "validations": [
+      {
+        "kind": "presence",
+        "attributes": [
+          "user"
+        ],
+        "options": {
+          "message": "required",
+          "if": "proc"
+        }
+      },
+      {
+        "kind": "presence",
+        "attributes": [
+          "category"
+        ],
+        "options": {
+          "message": "required",
+          "if": "proc"
+        }
+      },
+      {
+        "kind": "uniqueness",
+        "attributes": [
+          "category_id"
+        ],
+        "options": {
+          "scope": "user_id"
+        }
+      }
+    ],
+    "callbacks": [
+      {
+        "kind": "validation",
+        "phase": "before",
+        "filter": "normalize_changed_in_place_attributes",
+        "if": []
+      },
+      {
+        "kind": "save",
+        "phase": "before",
+        "filter": "autosave_associated_records_for_user",
+        "if": []
+      },
+      {
+        "kind": "save",
+        "phase": "before",
+        "filter": "autosave_associated_records_for_category",
+        "if": []
+      }
+    ],
+    "enums": {},
+    "scopes": [],
+    "encrypted_attributes": [],
+    "monetized": {},
+    "has_paper_trail": false,
+    "ransackable_attributes": null,
+    "ransackable_associations": null,
+    "class_methods_defined": [],
+    "constants": []
+  }
+]

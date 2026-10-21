@@ -1,0 +1,73 @@
+{
+  "route": "POST /admin/merchants/:merchant_id/merchant_rules(.:format)",
+  "captured_at": "2026-10-21T13:23:49.809Z",
+  "base_url": "http://127.0.0.1:3000",
+  "cases": [
+    {
+      "case": "default",
+      "actor": "main(session)",
+      "request": {
+        "method": "POST",
+        "path": "/admin/merchants/60/merchant_rules",
+        "headers": {},
+        "body": {
+          "authenticity_token": "<redacted>",
+          "merchant_rule[kind]": "contains",
+          "merchant_rule[field]": "title",
+          "merchant_rule[pattern]": "ORACLE UI SHOP"
+        }
+      },
+      "response": {
+        "status": 302,
+        "duration_ms": 2471,
+        "headers": {
+          "x-frame-options": "SAMEORIGIN",
+          "x-content-type-options": "nosniff",
+          "location": "http://127.0.0.1:3000/admin/merchants/60",
+          "content-type": "text/html; charset=utf-8",
+          "cache-control": "no-cache",
+          "x-request-id": "33579b43-e2c5-4b2f-bf4a-847ba4fdb2c4",
+          "vary": "Origin",
+          "content-length": "0",
+          "set-cookie": [
+            "_open_banking_rails_session=<redacted>; path=/; httponly; samesite=lax"
+          ]
+        },
+        "body_sample": ""
+      }
+    },
+    {
+      "case": "invalid_regex",
+      "actor": "main(session)",
+      "request": {
+        "method": "POST",
+        "path": "/admin/merchants/60/merchant_rules",
+        "headers": {},
+        "body": {
+          "authenticity_token": "<redacted>",
+          "merchant_rule[kind]": "regex",
+          "merchant_rule[field]": "title",
+          "merchant_rule[pattern]": "(["
+        }
+      },
+      "response": {
+        "status": 302,
+        "duration_ms": 156,
+        "headers": {
+          "x-frame-options": "SAMEORIGIN",
+          "x-content-type-options": "nosniff",
+          "location": "http://127.0.0.1:3000/admin/merchants/60",
+          "content-type": "text/html; charset=utf-8",
+          "cache-control": "no-cache",
+          "x-request-id": "2ec4132b-d65c-47aa-899b-93aae96a5435",
+          "vary": "Origin",
+          "content-length": "0",
+          "set-cookie": [
+            "_open_banking_rails_session=<redacted>; path=/; httponly; samesite=lax"
+          ]
+        },
+        "body_sample": ""
+      }
+    }
+  ]
+}

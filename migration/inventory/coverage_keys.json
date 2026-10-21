@@ -1,0 +1,3206 @@
+{
+ "routes": {
+  "GET /admin/sign_in": {
+   "anchor": "route-get-admin-sign-in",
+   "doc": "30-http-api.md",
+   "controller": "",
+   "dev_only": false
+  },
+  "POST /admin/sign_in": {
+   "anchor": "route-post-admin-sign-in",
+   "doc": "30-http-api.md",
+   "controller": "",
+   "dev_only": false
+  },
+  "DELETE /admin/sign_out": {
+   "anchor": "route-delete-admin-sign-out",
+   "doc": "30-http-api.md",
+   "controller": "",
+   "dev_only": false
+  },
+  "GET /admin/password/new": {
+   "anchor": "route-get-admin-password-new",
+   "doc": "30-http-api.md",
+   "controller": "",
+   "dev_only": false
+  },
+  "GET /admin/password/edit": {
+   "anchor": "route-get-admin-password-edit",
+   "doc": "30-http-api.md",
+   "controller": "",
+   "dev_only": false
+  },
+  "PATCH /admin/password": {
+   "anchor": "route-patch-admin-password",
+   "doc": "30-http-api.md",
+   "controller": "",
+   "dev_only": false
+  },
+  "PUT /admin/password": {
+   "anchor": "route-put-admin-password",
+   "doc": "30-http-api.md",
+   "controller": "",
+   "dev_only": false
+  },
+  "POST /admin/password": {
+   "anchor": "route-post-admin-password",
+   "doc": "30-http-api.md",
+   "controller": "",
+   "dev_only": false
+  },
+  "MOUNT /sidekiq": {
+   "anchor": "route-mount-sidekiq",
+   "doc": "30-http-api.md",
+   "controller": ""
+  },
+  "GET /setup": {
+   "anchor": "route-get-setup",
+   "doc": "30-http-api.md",
+   "controller": "",
+   "dev_only": false
+  },
+  "POST /setup": {
+   "anchor": "route-post-setup",
+   "doc": "30-http-api.md",
+   "controller": "",
+   "dev_only": false
+  },
+  "GET /up": {
+   "anchor": "route-get-up",
+   "doc": "30-http-api.md",
+   "controller": "",
+   "dev_only": false
+  },
+  "GET /callback": {
+   "anchor": "route-get-callback",
+   "doc": "30-http-api.md",
+   "controller": "",
+   "dev_only": false
+  },
+  "GET /api/:version/docs": {
+   "anchor": "route-get-api-version-docs",
+   "doc": "30-http-api.md",
+   "controller": "",
+   "dev_only": false
+  },
+  "GET /mcp": {
+   "anchor": "route-get-mcp",
+   "doc": "30-http-api.md",
+   "controller": "",
+   "dev_only": false
+  },
+  "POST /mcp": {
+   "anchor": "route-post-mcp",
+   "doc": "30-http-api.md",
+   "controller": "",
+   "dev_only": false
+  },
+  "DELETE /mcp": {
+   "anchor": "route-delete-mcp",
+   "doc": "30-http-api.md",
+   "controller": "",
+   "dev_only": false
+  },
+  "MOUNT /": {
+   "anchor": "route-mount-",
+   "doc": "30-http-api.md",
+   "controller": ""
+  },
+  "GET /admin/debug": {
+   "anchor": "route-get-admin-debug",
+   "doc": "30-http-api.md",
+   "controller": "",
+   "dev_only": true
+  },
+  "GET /admin/debug/runtime_error": {
+   "anchor": "route-get-admin-debug-runtime-error",
+   "doc": "30-http-api.md",
+   "controller": "",
+   "dev_only": true
+  },
+  "GET /admin/debug/zero_division": {
+   "anchor": "route-get-admin-debug-zero-division",
+   "doc": "30-http-api.md",
+   "controller": "",
+   "dev_only": true
+  },
+  "GET /admin/debug/argument_error": {
+   "anchor": "route-get-admin-debug-argument-error",
+   "doc": "30-http-api.md",
+   "controller": "",
+   "dev_only": true
+  },
+  "GET /admin/debug/nested_error": {
+   "anchor": "route-get-admin-debug-nested-error",
+   "doc": "30-http-api.md",
+   "controller": "",
+   "dev_only": true
+  },
+  "POST /admin/debug/enqueue_failing_job": {
+   "anchor": "route-post-admin-debug-enqueue-failing-job",
+   "doc": "30-http-api.md",
+   "controller": "",
+   "dev_only": true
+  },
+  "GET /admin": {
+   "anchor": "route-get-admin",
+   "doc": "30-http-api.md",
+   "controller": "",
+   "dev_only": false
+  },
+  "GET /admin/styleguide": {
+   "anchor": "route-get-admin-styleguide",
+   "doc": "30-http-api.md",
+   "controller": "",
+   "dev_only": false
+  },
+  "POST /admin/onboarding/seed_taxonomy": {
+   "anchor": "route-post-admin-onboarding-seed-taxonomy",
+   "doc": "30-http-api.md",
+   "controller": "",
+   "dev_only": false
+  },
+  "GET /admin/versions": {
+   "anchor": "route-get-admin-versions",
+   "doc": "30-http-api.md",
+   "controller": "",
+   "dev_only": false
+  },
+  "GET /admin/versions/:id": {
+   "anchor": "route-get-admin-versions-id",
+   "doc": "30-http-api.md",
+   "controller": "",
+   "dev_only": false
+  },
+  "PATCH /admin/bank_transactions/:bank_transaction_id/enrichment": {
+   "anchor": "route-patch-admin-bank-transactions-bank-transaction-id-enrichment",
+   "doc": "30-http-api.md",
+   "controller": "",
+   "dev_only": false
+  },
+  "PUT /admin/bank_transactions/:bank_transaction_id/enrichment": {
+   "anchor": "route-put-admin-bank-transactions-bank-transaction-id-enrichment",
+   "doc": "30-http-api.md",
+   "controller": "",
+   "dev_only": false
+  },
+  "GET /admin/bank_transactions": {
+   "anchor": "route-get-admin-bank-transactions",
+   "doc": "30-http-api.md",
+   "controller": "",
+   "dev_only": false
+  },
+  "GET /admin/bank_transactions/:id": {
+   "anchor": "route-get-admin-bank-transactions-id",
+   "doc": "30-http-api.md",
+   "controller": "",
+   "dev_only": false
+  },
+  "GET /admin/cash_transactions": {
+   "anchor": "route-get-admin-cash-transactions",
+   "doc": "30-http-api.md",
+   "controller": "",
+   "dev_only": false
+  },
+  "POST /admin/cash_transactions": {
+   "anchor": "route-post-admin-cash-transactions",
+   "doc": "30-http-api.md",
+   "controller": "",
+   "dev_only": false
+  },
+  "GET /admin/cash_transactions/new": {
+   "anchor": "route-get-admin-cash-transactions-new",
+   "doc": "30-http-api.md",
+   "controller": "",
+   "dev_only": false
+  },
+  "GET /admin/cash_transactions/:id/edit": {
+   "anchor": "route-get-admin-cash-transactions-id-edit",
+   "doc": "30-http-api.md",
+   "controller": "",
+   "dev_only": false
+  },
+  "GET /admin/cash_transactions/:id": {
+   "anchor": "route-get-admin-cash-transactions-id",
+   "doc": "30-http-api.md",
+   "controller": "",
+   "dev_only": false
+  },
+  "PATCH /admin/cash_transactions/:id": {
+   "anchor": "route-patch-admin-cash-transactions-id",
+   "doc": "30-http-api.md",
+   "controller": "",
+   "dev_only": false
+  },
+  "PUT /admin/cash_transactions/:id": {
+   "anchor": "route-put-admin-cash-transactions-id",
+   "doc": "30-http-api.md",
+   "controller": "",
+   "dev_only": false
+  },
+  "DELETE /admin/cash_transactions/:id": {
+   "anchor": "route-delete-admin-cash-transactions-id",
+   "doc": "30-http-api.md",
+   "controller": "",
+   "dev_only": false
+  },
+  "POST /admin/categories/:id/archive": {
+   "anchor": "route-post-admin-categories-id-archive",
+   "doc": "30-http-api.md",
+   "controller": "",
+   "dev_only": false
+  },
+  "POST /admin/categories/:id/unarchive": {
+   "anchor": "route-post-admin-categories-id-unarchive",
+   "doc": "30-http-api.md",
+   "controller": "",
+   "dev_only": false
+  },
+  "GET /admin/categories": {
+   "anchor": "route-get-admin-categories",
+   "doc": "30-http-api.md",
+   "controller": "",
+   "dev_only": false
+  },
+  "POST /admin/categories": {
+   "anchor": "route-post-admin-categories",
+   "doc": "30-http-api.md",
+   "controller": "",
+   "dev_only": false
+  },
+  "GET /admin/categories/new": {
+   "anchor": "route-get-admin-categories-new",
+   "doc": "30-http-api.md",
+   "controller": "",
+   "dev_only": false
+  },
+  "GET /admin/categories/:id/edit": {
+   "anchor": "route-get-admin-categories-id-edit",
+   "doc": "30-http-api.md",
+   "controller": "",
+   "dev_only": false
+  },
+  "PATCH /admin/categories/:id": {
+   "anchor": "route-patch-admin-categories-id",
+   "doc": "30-http-api.md",
+   "controller": "",
+   "dev_only": false
+  },
+  "PUT /admin/categories/:id": {
+   "anchor": "route-put-admin-categories-id",
+   "doc": "30-http-api.md",
+   "controller": "",
+   "dev_only": false
+  },
+  "DELETE /admin/categories/:id": {
+   "anchor": "route-delete-admin-categories-id",
+   "doc": "30-http-api.md",
+   "controller": "",
+   "dev_only": false
+  },
+  "POST /admin/merchants/:id/archive": {
+   "anchor": "route-post-admin-merchants-id-archive",
+   "doc": "30-http-api.md",
+   "controller": "",
+   "dev_only": false
+  },
+  "POST /admin/merchants/:id/unarchive": {
+   "anchor": "route-post-admin-merchants-id-unarchive",
+   "doc": "30-http-api.md",
+   "controller": "",
+   "dev_only": false
+  },
+  "POST /admin/merchants/:id/approve": {
+   "anchor": "route-post-admin-merchants-id-approve",
+   "doc": "30-http-api.md",
+   "controller": "",
+   "dev_only": false
+  },
+  "POST /admin/merchants/:merchant_id/merchant_rules": {
+   "anchor": "route-post-admin-merchants-merchant-id-merchant-rules",
+   "doc": "30-http-api.md",
+   "controller": "",
+   "dev_only": false
+  },
+  "PATCH /admin/merchants/:merchant_id/merchant_rules/:id": {
+   "anchor": "route-patch-admin-merchants-merchant-id-merchant-rules-id",
+   "doc": "30-http-api.md",
+   "controller": "",
+   "dev_only": false
+  },
+  "PUT /admin/merchants/:merchant_id/merchant_rules/:id": {
+   "anchor": "route-put-admin-merchants-merchant-id-merchant-rules-id",
+   "doc": "30-http-api.md",
+   "controller": "",
+   "dev_only": false
+  },
+  "DELETE /admin/merchants/:merchant_id/merchant_rules/:id": {
+   "anchor": "route-delete-admin-merchants-merchant-id-merchant-rules-id",
+   "doc": "30-http-api.md",
+   "controller": "",
+   "dev_only": false
+  },
+  "GET /admin/merchants": {
+   "anchor": "route-get-admin-merchants",
+   "doc": "30-http-api.md",
+   "controller": "",
+   "dev_only": false
+  },
+  "POST /admin/merchants": {
+   "anchor": "route-post-admin-merchants",
+   "doc": "30-http-api.md",
+   "controller": "",
+   "dev_only": false
+  },
+  "GET /admin/merchants/new": {
+   "anchor": "route-get-admin-merchants-new",
+   "doc": "30-http-api.md",
+   "controller": "",
+   "dev_only": false
+  },
+  "GET /admin/merchants/:id/edit": {
+   "anchor": "route-get-admin-merchants-id-edit",
+   "doc": "30-http-api.md",
+   "controller": "",
+   "dev_only": false
+  },
+  "GET /admin/merchants/:id": {
+   "anchor": "route-get-admin-merchants-id",
+   "doc": "30-http-api.md",
+   "controller": "",
+   "dev_only": false
+  },
+  "PATCH /admin/merchants/:id": {
+   "anchor": "route-patch-admin-merchants-id",
+   "doc": "30-http-api.md",
+   "controller": "",
+   "dev_only": false
+  },
+  "PUT /admin/merchants/:id": {
+   "anchor": "route-put-admin-merchants-id",
+   "doc": "30-http-api.md",
+   "controller": "",
+   "dev_only": false
+  },
+  "DELETE /admin/merchants/:id": {
+   "anchor": "route-delete-admin-merchants-id",
+   "doc": "30-http-api.md",
+   "controller": "",
+   "dev_only": false
+  },
+  "GET /admin/llm_enrichments": {
+   "anchor": "route-get-admin-llm-enrichments",
+   "doc": "30-http-api.md",
+   "controller": "",
+   "dev_only": false
+  },
+  "POST /admin/llm_enrichments": {
+   "anchor": "route-post-admin-llm-enrichments",
+   "doc": "30-http-api.md",
+   "controller": "",
+   "dev_only": false
+  },
+  "GET /admin/llm_enrichments/:id": {
+   "anchor": "route-get-admin-llm-enrichments-id",
+   "doc": "30-http-api.md",
+   "controller": "",
+   "dev_only": false
+  },
+  "GET /admin/analytics": {
+   "anchor": "route-get-admin-analytics",
+   "doc": "30-http-api.md",
+   "controller": "",
+   "dev_only": false
+  },
+  "GET /admin/analytics/categories/:slug": {
+   "anchor": "route-get-admin-analytics-categories-slug",
+   "doc": "30-http-api.md",
+   "controller": "",
+   "dev_only": false
+  },
+  "GET /admin/analytics/merchants/:slug": {
+   "anchor": "route-get-admin-analytics-merchants-slug",
+   "doc": "30-http-api.md",
+   "controller": "",
+   "dev_only": false
+  },
+  "GET /admin/matching_engine": {
+   "anchor": "route-get-admin-matching-engine",
+   "doc": "30-http-api.md",
+   "controller": "",
+   "dev_only": false
+  },
+  "GET /admin/transaction_syncs": {
+   "anchor": "route-get-admin-transaction-syncs",
+   "doc": "30-http-api.md",
+   "controller": "",
+   "dev_only": false
+  },
+  "POST /admin/transaction_syncs": {
+   "anchor": "route-post-admin-transaction-syncs",
+   "doc": "30-http-api.md",
+   "controller": "",
+   "dev_only": false
+  },
+  "GET /admin/transaction_syncs/new": {
+   "anchor": "route-get-admin-transaction-syncs-new",
+   "doc": "30-http-api.md",
+   "controller": "",
+   "dev_only": false
+  },
+  "GET /admin/transaction_syncs/:id": {
+   "anchor": "route-get-admin-transaction-syncs-id",
+   "doc": "30-http-api.md",
+   "controller": "",
+   "dev_only": false
+  },
+  "POST /admin/tpp_credentials/:id/test_connection": {
+   "anchor": "route-post-admin-tpp-credentials-id-test-connection",
+   "doc": "30-http-api.md",
+   "controller": "",
+   "dev_only": false
+  },
+  "POST /admin/tpp_credentials/:id/make_primary": {
+   "anchor": "route-post-admin-tpp-credentials-id-make-primary",
+   "doc": "30-http-api.md",
+   "controller": "",
+   "dev_only": false
+  },
+  "GET /admin/tpp_credentials": {
+   "anchor": "route-get-admin-tpp-credentials",
+   "doc": "30-http-api.md",
+   "controller": "",
+   "dev_only": false
+  },
+  "POST /admin/tpp_credentials": {
+   "anchor": "route-post-admin-tpp-credentials",
+   "doc": "30-http-api.md",
+   "controller": "",
+   "dev_only": false
+  },
+  "GET /admin/tpp_credentials/new": {
+   "anchor": "route-get-admin-tpp-credentials-new",
+   "doc": "30-http-api.md",
+   "controller": "",
+   "dev_only": false
+  },
+  "GET /admin/tpp_credentials/:id/edit": {
+   "anchor": "route-get-admin-tpp-credentials-id-edit",
+   "doc": "30-http-api.md",
+   "controller": "",
+   "dev_only": false
+  },
+  "GET /admin/tpp_credentials/:id": {
+   "anchor": "route-get-admin-tpp-credentials-id",
+   "doc": "30-http-api.md",
+   "controller": "",
+   "dev_only": false
+  },
+  "PATCH /admin/tpp_credentials/:id": {
+   "anchor": "route-patch-admin-tpp-credentials-id",
+   "doc": "30-http-api.md",
+   "controller": "",
+   "dev_only": false
+  },
+  "PUT /admin/tpp_credentials/:id": {
+   "anchor": "route-put-admin-tpp-credentials-id",
+   "doc": "30-http-api.md",
+   "controller": "",
+   "dev_only": false
+  },
+  "DELETE /admin/tpp_credentials/:id": {
+   "anchor": "route-delete-admin-tpp-credentials-id",
+   "doc": "30-http-api.md",
+   "controller": "",
+   "dev_only": false
+  },
+  "POST /admin/bank_connections/:id/refresh": {
+   "anchor": "route-post-admin-bank-connections-id-refresh",
+   "doc": "30-http-api.md",
+   "controller": "",
+   "dev_only": false
+  },
+  "POST /admin/bank_connections/:id/reauth": {
+   "anchor": "route-post-admin-bank-connections-id-reauth",
+   "doc": "30-http-api.md",
+   "controller": "",
+   "dev_only": false
+  },
+  "GET /admin/bank_connections/:bank_connection_id/sync_schedule/edit": {
+   "anchor": "route-get-admin-bank-connections-bank-connection-id-sync-schedule-edit",
+   "doc": "30-http-api.md",
+   "controller": "",
+   "dev_only": false
+  },
+  "PATCH /admin/bank_connections/:bank_connection_id/sync_schedule": {
+   "anchor": "route-patch-admin-bank-connections-bank-connection-id-sync-schedule",
+   "doc": "30-http-api.md",
+   "controller": "",
+   "dev_only": false
+  },
+  "PUT /admin/bank_connections/:bank_connection_id/sync_schedule": {
+   "anchor": "route-put-admin-bank-connections-bank-connection-id-sync-schedule",
+   "doc": "30-http-api.md",
+   "controller": "",
+   "dev_only": false
+  },
+  "GET /admin/bank_connections": {
+   "anchor": "route-get-admin-bank-connections",
+   "doc": "30-http-api.md",
+   "controller": "",
+   "dev_only": false
+  },
+  "POST /admin/bank_connections": {
+   "anchor": "route-post-admin-bank-connections",
+   "doc": "30-http-api.md",
+   "controller": "",
+   "dev_only": false
+  },
+  "GET /admin/bank_connections/new": {
+   "anchor": "route-get-admin-bank-connections-new",
+   "doc": "30-http-api.md",
+   "controller": "",
+   "dev_only": false
+  },
+  "GET /admin/bank_connections/:id/edit": {
+   "anchor": "route-get-admin-bank-connections-id-edit",
+   "doc": "30-http-api.md",
+   "controller": "",
+   "dev_only": false
+  },
+  "GET /admin/bank_connections/:id": {
+   "anchor": "route-get-admin-bank-connections-id",
+   "doc": "30-http-api.md",
+   "controller": "",
+   "dev_only": false
+  },
+  "PATCH /admin/bank_connections/:id": {
+   "anchor": "route-patch-admin-bank-connections-id",
+   "doc": "30-http-api.md",
+   "controller": "",
+   "dev_only": false
+  },
+  "PUT /admin/bank_connections/:id": {
+   "anchor": "route-put-admin-bank-connections-id",
+   "doc": "30-http-api.md",
+   "controller": "",
+   "dev_only": false
+  },
+  "DELETE /admin/bank_connections/:id": {
+   "anchor": "route-delete-admin-bank-connections-id",
+   "doc": "30-http-api.md",
+   "controller": "",
+   "dev_only": false
+  },
+  "POST /admin/bank_accounts/:id/refresh_details": {
+   "anchor": "route-post-admin-bank-accounts-id-refresh-details",
+   "doc": "30-http-api.md",
+   "controller": "",
+   "dev_only": false
+  },
+  "POST /admin/bank_accounts/:id/refresh_balances": {
+   "anchor": "route-post-admin-bank-accounts-id-refresh-balances",
+   "doc": "30-http-api.md",
+   "controller": "",
+   "dev_only": false
+  },
+  "GET /admin/bank_accounts": {
+   "anchor": "route-get-admin-bank-accounts",
+   "doc": "30-http-api.md",
+   "controller": "",
+   "dev_only": false
+  },
+  "GET /admin/bank_accounts/:id": {
+   "anchor": "route-get-admin-bank-accounts-id",
+   "doc": "30-http-api.md",
+   "controller": "",
+   "dev_only": false
+  },
+  "GET /admin/settings": {
+   "anchor": "route-get-admin-settings",
+   "doc": "30-http-api.md",
+   "controller": "",
+   "dev_only": false
+  },
+  "GET /admin/settings/preferences": {
+   "anchor": "route-get-admin-settings-preferences",
+   "doc": "30-http-api.md",
+   "controller": "",
+   "dev_only": false
+  },
+  "GET /admin/settings/preferences/profile": {
+   "anchor": "route-get-admin-settings-preferences-profile",
+   "doc": "30-http-api.md",
+   "controller": "",
+   "dev_only": false
+  },
+  "PATCH /admin/settings/preferences/profile": {
+   "anchor": "route-patch-admin-settings-preferences-profile",
+   "doc": "30-http-api.md",
+   "controller": "",
+   "dev_only": false
+  },
+  "PATCH /admin/settings/preferences/password": {
+   "anchor": "route-patch-admin-settings-preferences-password",
+   "doc": "30-http-api.md",
+   "controller": "",
+   "dev_only": false
+  },
+  "GET /admin/settings/preferences/app": {
+   "anchor": "route-get-admin-settings-preferences-app",
+   "doc": "30-http-api.md",
+   "controller": "",
+   "dev_only": false
+  },
+  "PATCH /admin/settings/preferences/app": {
+   "anchor": "route-patch-admin-settings-preferences-app",
+   "doc": "30-http-api.md",
+   "controller": "",
+   "dev_only": false
+  },
+  "GET /admin/settings/preferences/llm": {
+   "anchor": "route-get-admin-settings-preferences-llm",
+   "doc": "30-http-api.md",
+   "controller": "",
+   "dev_only": false
+  },
+  "PATCH /admin/settings/preferences/llm": {
+   "anchor": "route-patch-admin-settings-preferences-llm",
+   "doc": "30-http-api.md",
+   "controller": "",
+   "dev_only": false
+  },
+  "POST /admin/settings/preferences/llm/test": {
+   "anchor": "route-post-admin-settings-preferences-llm-test",
+   "doc": "30-http-api.md",
+   "controller": "",
+   "dev_only": false
+  },
+  "GET /admin/settings/preferences/data_exchange": {
+   "anchor": "route-get-admin-settings-preferences-data-exchange",
+   "doc": "30-http-api.md",
+   "controller": "",
+   "dev_only": false
+  },
+  "POST /admin/settings/preferences/data_exchange/export": {
+   "anchor": "route-post-admin-settings-preferences-data-exchange-export",
+   "doc": "30-http-api.md",
+   "controller": "",
+   "dev_only": false
+  },
+  "POST /admin/settings/preferences/data_exchange/import": {
+   "anchor": "route-post-admin-settings-preferences-data-exchange-import",
+   "doc": "30-http-api.md",
+   "controller": "",
+   "dev_only": false
+  },
+  "GET /admin/settings/preferences/api_tokens": {
+   "anchor": "route-get-admin-settings-preferences-api-tokens",
+   "doc": "30-http-api.md",
+   "controller": "",
+   "dev_only": false
+  },
+  "POST /admin/settings/preferences/api_tokens": {
+   "anchor": "route-post-admin-settings-preferences-api-tokens",
+   "doc": "30-http-api.md",
+   "controller": "",
+   "dev_only": false
+  },
+  "DELETE /admin/settings/preferences/api_tokens/:id": {
+   "anchor": "route-delete-admin-settings-preferences-api-tokens-id",
+   "doc": "30-http-api.md",
+   "controller": "",
+   "dev_only": false
+  },
+  "GET /": {
+   "anchor": "route-get-root",
+   "doc": "30-http-api.md",
+   "controller": "",
+   "dev_only": false
+  },
+  "GET /recede_historical_location": {
+   "anchor": "route-get-recede-historical-location",
+   "doc": "30-http-api.md",
+   "controller": "",
+   "dev_only": false
+  },
+  "GET /resume_historical_location": {
+   "anchor": "route-get-resume-historical-location",
+   "doc": "30-http-api.md",
+   "controller": "",
+   "dev_only": false
+  },
+  "GET /refresh_historical_location": {
+   "anchor": "route-get-refresh-historical-location",
+   "doc": "30-http-api.md",
+   "controller": "",
+   "dev_only": false
+  },
+  "POST /rails/action_mailbox/postmark/inbound_emails": {
+   "anchor": "route-post-rails-action-mailbox-postmark-inbound-emails",
+   "doc": "30-http-api.md",
+   "controller": "",
+   "dev_only": false
+  },
+  "POST /rails/action_mailbox/relay/inbound_emails": {
+   "anchor": "route-post-rails-action-mailbox-relay-inbound-emails",
+   "doc": "30-http-api.md",
+   "controller": "",
+   "dev_only": false
+  },
+  "POST /rails/action_mailbox/sendgrid/inbound_emails": {
+   "anchor": "route-post-rails-action-mailbox-sendgrid-inbound-emails",
+   "doc": "30-http-api.md",
+   "controller": "",
+   "dev_only": false
+  },
+  "GET /rails/action_mailbox/mandrill/inbound_emails": {
+   "anchor": "route-get-rails-action-mailbox-mandrill-inbound-emails",
+   "doc": "30-http-api.md",
+   "controller": "",
+   "dev_only": false
+  },
+  "POST /rails/action_mailbox/mandrill/inbound_emails": {
+   "anchor": "route-post-rails-action-mailbox-mandrill-inbound-emails",
+   "doc": "30-http-api.md",
+   "controller": "",
+   "dev_only": false
+  },
+  "POST /rails/action_mailbox/mailgun/inbound_emails/mime": {
+   "anchor": "route-post-rails-action-mailbox-mailgun-inbound-emails-mime",
+   "doc": "30-http-api.md",
+   "controller": "",
+   "dev_only": false
+  },
+  "GET /rails/conductor/action_mailbox/inbound_emails": {
+   "anchor": "route-get-rails-conductor-action-mailbox-inbound-emails",
+   "doc": "30-http-api.md",
+   "controller": "",
+   "dev_only": false
+  },
+  "POST /rails/conductor/action_mailbox/inbound_emails": {
+   "anchor": "route-post-rails-conductor-action-mailbox-inbound-emails",
+   "doc": "30-http-api.md",
+   "controller": "",
+   "dev_only": false
+  },
+  "GET /rails/conductor/action_mailbox/inbound_emails/new": {
+   "anchor": "route-get-rails-conductor-action-mailbox-inbound-emails-new",
+   "doc": "30-http-api.md",
+   "controller": "",
+   "dev_only": false
+  },
+  "GET /rails/conductor/action_mailbox/inbound_emails/:id": {
+   "anchor": "route-get-rails-conductor-action-mailbox-inbound-emails-id",
+   "doc": "30-http-api.md",
+   "controller": "",
+   "dev_only": false
+  },
+  "GET /rails/conductor/action_mailbox/inbound_emails/sources/new": {
+   "anchor": "route-get-rails-conductor-action-mailbox-inbound-emails-sources-new",
+   "doc": "30-http-api.md",
+   "controller": "",
+   "dev_only": false
+  },
+  "POST /rails/conductor/action_mailbox/inbound_emails/sources": {
+   "anchor": "route-post-rails-conductor-action-mailbox-inbound-emails-sources",
+   "doc": "30-http-api.md",
+   "controller": "",
+   "dev_only": false
+  },
+  "POST /rails/conductor/action_mailbox/:inbound_email_id/reroute": {
+   "anchor": "route-post-rails-conductor-action-mailbox-inbound-email-id-reroute",
+   "doc": "30-http-api.md",
+   "controller": "",
+   "dev_only": false
+  },
+  "POST /rails/conductor/action_mailbox/:inbound_email_id/incinerate": {
+   "anchor": "route-post-rails-conductor-action-mailbox-inbound-email-id-incinerate",
+   "doc": "30-http-api.md",
+   "controller": "",
+   "dev_only": false
+  },
+  "GET /rails/active_storage/blobs/redirect/:signed_id/*filename": {
+   "anchor": "route-get-rails-active-storage-blobs-redirect-signed-id-filename",
+   "doc": "30-http-api.md",
+   "controller": "",
+   "dev_only": false
+  },
+  "GET /rails/active_storage/blobs/proxy/:signed_id/*filename": {
+   "anchor": "route-get-rails-active-storage-blobs-proxy-signed-id-filename",
+   "doc": "30-http-api.md",
+   "controller": "",
+   "dev_only": false
+  },
+  "GET /rails/active_storage/blobs/:signed_id/*filename": {
+   "anchor": "route-get-rails-active-storage-blobs-signed-id-filename",
+   "doc": "30-http-api.md",
+   "controller": "",
+   "dev_only": false
+  },
+  "GET /rails/active_storage/representations/redirect/:signed_blob_id/:variation_key/*filename": {
+   "anchor": "route-get-rails-active-storage-representations-redirect-signed-blob-id-variation-key-filename",
+   "doc": "30-http-api.md",
+   "controller": "",
+   "dev_only": false
+  },
+  "GET /rails/active_storage/representations/proxy/:signed_blob_id/:variation_key/*filename": {
+   "anchor": "route-get-rails-active-storage-representations-proxy-signed-blob-id-variation-key-filename",
+   "doc": "30-http-api.md",
+   "controller": "",
+   "dev_only": false
+  },
+  "GET /rails/active_storage/representations/:signed_blob_id/:variation_key/*filename": {
+   "anchor": "route-get-rails-active-storage-representations-signed-blob-id-variation-key-filename",
+   "doc": "30-http-api.md",
+   "controller": "",
+   "dev_only": false
+  },
+  "GET /rails/active_storage/disk/:encoded_key/*filename": {
+   "anchor": "route-get-rails-active-storage-disk-encoded-key-filename",
+   "doc": "30-http-api.md",
+   "controller": "",
+   "dev_only": false
+  },
+  "PUT /rails/active_storage/disk/:encoded_token": {
+   "anchor": "route-put-rails-active-storage-disk-encoded-token",
+   "doc": "30-http-api.md",
+   "controller": "",
+   "dev_only": false
+  },
+  "POST /rails/active_storage/direct_uploads": {
+   "anchor": "route-post-rails-active-storage-direct-uploads",
+   "doc": "30-http-api.md",
+   "controller": "",
+   "dev_only": false
+  },
+  "GET /api/v1/transactions": {
+   "anchor": "route-get-api-v1-transactions",
+   "doc": "30-http-api.md",
+   "controller": "Grape"
+  },
+  "GET /api/v1/transactions/:source_type/:source_id": {
+   "anchor": "route-get-api-v1-transactions-source-type-source-id",
+   "doc": "30-http-api.md",
+   "controller": "Grape"
+  },
+  "GET /api/v1/cash_transactions": {
+   "anchor": "route-get-api-v1-cash-transactions",
+   "doc": "30-http-api.md",
+   "controller": "Grape"
+  },
+  "POST /api/v1/cash_transactions": {
+   "anchor": "route-post-api-v1-cash-transactions",
+   "doc": "30-http-api.md",
+   "controller": "Grape"
+  },
+  "GET /api/v1/cash_transactions/:id": {
+   "anchor": "route-get-api-v1-cash-transactions-id",
+   "doc": "30-http-api.md",
+   "controller": "Grape"
+  },
+  "PATCH /api/v1/cash_transactions/:id": {
+   "anchor": "route-patch-api-v1-cash-transactions-id",
+   "doc": "30-http-api.md",
+   "controller": "Grape"
+  },
+  "DELETE /api/v1/cash_transactions/:id": {
+   "anchor": "route-delete-api-v1-cash-transactions-id",
+   "doc": "30-http-api.md",
+   "controller": "Grape"
+  },
+  "GET /api/v1/bank_transactions": {
+   "anchor": "route-get-api-v1-bank-transactions",
+   "doc": "30-http-api.md",
+   "controller": "Grape"
+  },
+  "GET /api/v1/bank_transactions/:id": {
+   "anchor": "route-get-api-v1-bank-transactions-id",
+   "doc": "30-http-api.md",
+   "controller": "Grape"
+  },
+  "POST /api/v1/bank_transactions/:bank_transaction_id/classification": {
+   "anchor": "route-post-api-v1-bank-transactions-bank-transaction-id-classification",
+   "doc": "30-http-api.md",
+   "controller": "Grape"
+  },
+  "GET /api/v1/categories": {
+   "anchor": "route-get-api-v1-categories",
+   "doc": "30-http-api.md",
+   "controller": "Grape"
+  },
+  "POST /api/v1/categories": {
+   "anchor": "route-post-api-v1-categories",
+   "doc": "30-http-api.md",
+   "controller": "Grape"
+  },
+  "GET /api/v1/categories/:id": {
+   "anchor": "route-get-api-v1-categories-id",
+   "doc": "30-http-api.md",
+   "controller": "Grape"
+  },
+  "PATCH /api/v1/categories/:id": {
+   "anchor": "route-patch-api-v1-categories-id",
+   "doc": "30-http-api.md",
+   "controller": "Grape"
+  },
+  "DELETE /api/v1/categories/:id": {
+   "anchor": "route-delete-api-v1-categories-id",
+   "doc": "30-http-api.md",
+   "controller": "Grape"
+  },
+  "POST /api/v1/categories/:id/archive": {
+   "anchor": "route-post-api-v1-categories-id-archive",
+   "doc": "30-http-api.md",
+   "controller": "Grape"
+  },
+  "POST /api/v1/categories/:id/unarchive": {
+   "anchor": "route-post-api-v1-categories-id-unarchive",
+   "doc": "30-http-api.md",
+   "controller": "Grape"
+  },
+  "GET /api/v1/merchants": {
+   "anchor": "route-get-api-v1-merchants",
+   "doc": "30-http-api.md",
+   "controller": "Grape"
+  },
+  "POST /api/v1/merchants": {
+   "anchor": "route-post-api-v1-merchants",
+   "doc": "30-http-api.md",
+   "controller": "Grape"
+  },
+  "GET /api/v1/merchants/:id": {
+   "anchor": "route-get-api-v1-merchants-id",
+   "doc": "30-http-api.md",
+   "controller": "Grape"
+  },
+  "PATCH /api/v1/merchants/:id": {
+   "anchor": "route-patch-api-v1-merchants-id",
+   "doc": "30-http-api.md",
+   "controller": "Grape"
+  },
+  "DELETE /api/v1/merchants/:id": {
+   "anchor": "route-delete-api-v1-merchants-id",
+   "doc": "30-http-api.md",
+   "controller": "Grape"
+  },
+  "POST /api/v1/merchants/:id/archive": {
+   "anchor": "route-post-api-v1-merchants-id-archive",
+   "doc": "30-http-api.md",
+   "controller": "Grape"
+  },
+  "POST /api/v1/merchants/:id/unarchive": {
+   "anchor": "route-post-api-v1-merchants-id-unarchive",
+   "doc": "30-http-api.md",
+   "controller": "Grape"
+  },
+  "POST /api/v1/merchants/:id/approve": {
+   "anchor": "route-post-api-v1-merchants-id-approve",
+   "doc": "30-http-api.md",
+   "controller": "Grape"
+  },
+  "GET /api/v1/merchants/:merchant_id/rules": {
+   "anchor": "route-get-api-v1-merchants-merchant-id-rules",
+   "doc": "30-http-api.md",
+   "controller": "Grape"
+  },
+  "POST /api/v1/merchants/:merchant_id/rules": {
+   "anchor": "route-post-api-v1-merchants-merchant-id-rules",
+   "doc": "30-http-api.md",
+   "controller": "Grape"
+  },
+  "PATCH /api/v1/merchants/:merchant_id/rules/:id": {
+   "anchor": "route-patch-api-v1-merchants-merchant-id-rules-id",
+   "doc": "30-http-api.md",
+   "controller": "Grape"
+  },
+  "DELETE /api/v1/merchants/:merchant_id/rules/:id": {
+   "anchor": "route-delete-api-v1-merchants-merchant-id-rules-id",
+   "doc": "30-http-api.md",
+   "controller": "Grape"
+  },
+  "GET /api/v1/bank_accounts": {
+   "anchor": "route-get-api-v1-bank-accounts",
+   "doc": "30-http-api.md",
+   "controller": "Grape"
+  },
+  "GET /api/v1/bank_accounts/:id": {
+   "anchor": "route-get-api-v1-bank-accounts-id",
+   "doc": "30-http-api.md",
+   "controller": "Grape"
+  },
+  "POST /api/v1/bank_accounts/:id/refresh_details": {
+   "anchor": "route-post-api-v1-bank-accounts-id-refresh-details",
+   "doc": "30-http-api.md",
+   "controller": "Grape"
+  },
+  "POST /api/v1/bank_accounts/:id/refresh_balances": {
+   "anchor": "route-post-api-v1-bank-accounts-id-refresh-balances",
+   "doc": "30-http-api.md",
+   "controller": "Grape"
+  },
+  "GET /api/v1/bank_connections": {
+   "anchor": "route-get-api-v1-bank-connections",
+   "doc": "30-http-api.md",
+   "controller": "Grape"
+  },
+  "GET /api/v1/bank_connections/:id": {
+   "anchor": "route-get-api-v1-bank-connections-id",
+   "doc": "30-http-api.md",
+   "controller": "Grape"
+  },
+  "PATCH /api/v1/bank_connections/:id": {
+   "anchor": "route-patch-api-v1-bank-connections-id",
+   "doc": "30-http-api.md",
+   "controller": "Grape"
+  },
+  "POST /api/v1/bank_connections/:id/refresh": {
+   "anchor": "route-post-api-v1-bank-connections-id-refresh",
+   "doc": "30-http-api.md",
+   "controller": "Grape"
+  },
+  "DELETE /api/v1/bank_connections/:id": {
+   "anchor": "route-delete-api-v1-bank-connections-id",
+   "doc": "30-http-api.md",
+   "controller": "Grape"
+  },
+  "GET /api/v1/tpp_credentials": {
+   "anchor": "route-get-api-v1-tpp-credentials",
+   "doc": "30-http-api.md",
+   "controller": "Grape"
+  },
+  "POST /api/v1/tpp_credentials": {
+   "anchor": "route-post-api-v1-tpp-credentials",
+   "doc": "30-http-api.md",
+   "controller": "Grape"
+  },
+  "GET /api/v1/tpp_credentials/:id": {
+   "anchor": "route-get-api-v1-tpp-credentials-id",
+   "doc": "30-http-api.md",
+   "controller": "Grape"
+  },
+  "PATCH /api/v1/tpp_credentials/:id": {
+   "anchor": "route-patch-api-v1-tpp-credentials-id",
+   "doc": "30-http-api.md",
+   "controller": "Grape"
+  },
+  "DELETE /api/v1/tpp_credentials/:id": {
+   "anchor": "route-delete-api-v1-tpp-credentials-id",
+   "doc": "30-http-api.md",
+   "controller": "Grape"
+  },
+  "POST /api/v1/tpp_credentials/:id/test_connection": {
+   "anchor": "route-post-api-v1-tpp-credentials-id-test-connection",
+   "doc": "30-http-api.md",
+   "controller": "Grape"
+  },
+  "POST /api/v1/tpp_credentials/:id/make_primary": {
+   "anchor": "route-post-api-v1-tpp-credentials-id-make-primary",
+   "doc": "30-http-api.md",
+   "controller": "Grape"
+  },
+  "GET /api/v1/transaction_syncs": {
+   "anchor": "route-get-api-v1-transaction-syncs",
+   "doc": "30-http-api.md",
+   "controller": "Grape"
+  },
+  "POST /api/v1/transaction_syncs": {
+   "anchor": "route-post-api-v1-transaction-syncs",
+   "doc": "30-http-api.md",
+   "controller": "Grape"
+  },
+  "GET /api/v1/transaction_syncs/:id": {
+   "anchor": "route-get-api-v1-transaction-syncs-id",
+   "doc": "30-http-api.md",
+   "controller": "Grape"
+  },
+  "GET /api/v1/llm_enrichments": {
+   "anchor": "route-get-api-v1-llm-enrichments",
+   "doc": "30-http-api.md",
+   "controller": "Grape"
+  },
+  "POST /api/v1/llm_enrichments": {
+   "anchor": "route-post-api-v1-llm-enrichments",
+   "doc": "30-http-api.md",
+   "controller": "Grape"
+  },
+  "GET /api/v1/llm_enrichments/:id": {
+   "anchor": "route-get-api-v1-llm-enrichments-id",
+   "doc": "30-http-api.md",
+   "controller": "Grape"
+  },
+  "GET /api/v1/analytics/cash_flow": {
+   "anchor": "route-get-api-v1-analytics-cash-flow",
+   "doc": "30-http-api.md",
+   "controller": "Grape"
+  },
+  "GET /api/v1/analytics/spend": {
+   "anchor": "route-get-api-v1-analytics-spend",
+   "doc": "30-http-api.md",
+   "controller": "Grape"
+  },
+  "GET /api/v1/analytics/top_merchants": {
+   "anchor": "route-get-api-v1-analytics-top-merchants",
+   "doc": "30-http-api.md",
+   "controller": "Grape"
+  },
+  "GET /api/v1/analytics/categories/:slug": {
+   "anchor": "route-get-api-v1-analytics-categories-slug",
+   "doc": "30-http-api.md",
+   "controller": "Grape"
+  },
+  "GET /api/v1/analytics/merchants/:slug": {
+   "anchor": "route-get-api-v1-analytics-merchants-slug",
+   "doc": "30-http-api.md",
+   "controller": "Grape"
+  },
+  "GET /api/v1/swagger_doc": {
+   "anchor": "route-get-api-v1-swagger-doc",
+   "doc": "30-http-api.md",
+   "controller": "Grape"
+  },
+  "GET /api/v1/swagger_doc/:name": {
+   "anchor": "route-get-api-v1-swagger-doc-name",
+   "doc": "30-http-api.md",
+   "controller": "Grape"
+  }
+ },
+ "mcp_tools": {
+  "analytics.cash_flow": {
+   "anchor": "mcp-analytics-cash-flow",
+   "doc": "30-http-api.md",
+   "file": "lib/mcp/tools/analytics/cash_flow.rb"
+  },
+  "analytics.spend": {
+   "anchor": "mcp-analytics-spend",
+   "doc": "30-http-api.md",
+   "file": "lib/mcp/tools/analytics/spend.rb"
+  },
+  "analytics.top_merchants": {
+   "anchor": "mcp-analytics-top-merchants",
+   "doc": "30-http-api.md",
+   "file": "lib/mcp/tools/analytics/top_merchants.rb"
+  },
+  "bank_accounts.list": {
+   "anchor": "mcp-bank-accounts-list",
+   "doc": "30-http-api.md",
+   "file": "lib/mcp/tools/bank_accounts/list.rb"
+  },
+  "bank_accounts.refresh_balances": {
+   "anchor": "mcp-bank-accounts-refresh-balances",
+   "doc": "30-http-api.md",
+   "file": "lib/mcp/tools/bank_accounts/refresh_balances.rb"
+  },
+  "bank_accounts.refresh_details": {
+   "anchor": "mcp-bank-accounts-refresh-details",
+   "doc": "30-http-api.md",
+   "file": "lib/mcp/tools/bank_accounts/refresh_details.rb"
+  },
+  "bank_connections.list": {
+   "anchor": "mcp-bank-connections-list",
+   "doc": "30-http-api.md",
+   "file": "lib/mcp/tools/bank_connections/list.rb"
+  },
+  "bank_connections.refresh": {
+   "anchor": "mcp-bank-connections-refresh",
+   "doc": "30-http-api.md",
+   "file": "lib/mcp/tools/bank_connections/refresh.rb"
+  },
+  "cash.create_transaction": {
+   "anchor": "mcp-cash-create-transaction",
+   "doc": "30-http-api.md",
+   "file": "lib/mcp/tools/cash/create_transaction.rb"
+  },
+  "cash.delete_transaction": {
+   "anchor": "mcp-cash-delete-transaction",
+   "doc": "30-http-api.md",
+   "file": "lib/mcp/tools/cash/delete_transaction.rb"
+  },
+  "cash.update_transaction": {
+   "anchor": "mcp-cash-update-transaction",
+   "doc": "30-http-api.md",
+   "file": "lib/mcp/tools/cash/update_transaction.rb"
+  },
+  "categories.archive": {
+   "anchor": "mcp-categories-archive",
+   "doc": "30-http-api.md",
+   "file": "lib/mcp/tools/categories/archive.rb"
+  },
+  "categories.create": {
+   "anchor": "mcp-categories-create",
+   "doc": "30-http-api.md",
+   "file": "lib/mcp/tools/categories/create.rb"
+  },
+  "categories.list": {
+   "anchor": "mcp-categories-list",
+   "doc": "30-http-api.md",
+   "file": "lib/mcp/tools/categories/list.rb"
+  },
+  "categories.unarchive": {
+   "anchor": "mcp-categories-unarchive",
+   "doc": "30-http-api.md",
+   "file": "lib/mcp/tools/categories/unarchive.rb"
+  },
+  "categories.update": {
+   "anchor": "mcp-categories-update",
+   "doc": "30-http-api.md",
+   "file": "lib/mcp/tools/categories/update.rb"
+  },
+  "merchants.approve": {
+   "anchor": "mcp-merchants-approve",
+   "doc": "30-http-api.md",
+   "file": "lib/mcp/tools/merchants/approve.rb"
+  },
+  "merchants.archive": {
+   "anchor": "mcp-merchants-archive",
+   "doc": "30-http-api.md",
+   "file": "lib/mcp/tools/merchants/archive.rb"
+  },
+  "merchants.create": {
+   "anchor": "mcp-merchants-create",
+   "doc": "30-http-api.md",
+   "file": "lib/mcp/tools/merchants/create.rb"
+  },
+  "merchants.list": {
+   "anchor": "mcp-merchants-list",
+   "doc": "30-http-api.md",
+   "file": "lib/mcp/tools/merchants/list.rb"
+  },
+  "merchants.unarchive": {
+   "anchor": "mcp-merchants-unarchive",
+   "doc": "30-http-api.md",
+   "file": "lib/mcp/tools/merchants/unarchive.rb"
+  },
+  "merchants.update": {
+   "anchor": "mcp-merchants-update",
+   "doc": "30-http-api.md",
+   "file": "lib/mcp/tools/merchants/update.rb"
+  },
+  "llm_enrichments.create": {
+   "anchor": "mcp-llm-enrichments-create",
+   "doc": "30-http-api.md",
+   "file": "lib/mcp/tools/operations/queue_llm_enrichment.rb"
+  },
+  "transaction_syncs.create": {
+   "anchor": "mcp-transaction-syncs-create",
+   "doc": "30-http-api.md",
+   "file": "lib/mcp/tools/operations/queue_transaction_sync.rb"
+  },
+  "transactions.classify": {
+   "anchor": "mcp-transactions-classify",
+   "doc": "30-http-api.md",
+   "file": "lib/mcp/tools/transactions/classify.rb"
+  },
+  "transactions.get": {
+   "anchor": "mcp-transactions-get",
+   "doc": "30-http-api.md",
+   "file": "lib/mcp/tools/transactions/get.rb"
+  },
+  "transactions.list": {
+   "anchor": "mcp-transactions-list",
+   "doc": "30-http-api.md",
+   "file": "lib/mcp/tools/transactions/list.rb"
+  }
+ },
+ "models": {
+  "ActionMailbox::InboundEmail": {
+   "anchor": "model-actionmailbox-inboundemail",
+   "doc": "10-domain-model.md",
+   "table": "action_mailbox_inbound_emails",
+   "app_model": false
+  },
+  "ActionText::EncryptedRichText": {
+   "anchor": "model-actiontext-encryptedrichtext",
+   "doc": "10-domain-model.md",
+   "table": "action_text_rich_texts",
+   "app_model": false
+  },
+  "ActionText::RichText": {
+   "anchor": "model-actiontext-richtext",
+   "doc": "10-domain-model.md",
+   "table": "action_text_rich_texts",
+   "app_model": false
+  },
+  "ActiveStorage::Attachment": {
+   "anchor": "model-activestorage-attachment",
+   "doc": "10-domain-model.md",
+   "table": "active_storage_attachments",
+   "app_model": false
+  },
+  "ActiveStorage::Blob": {
+   "anchor": "model-activestorage-blob",
+   "doc": "10-domain-model.md",
+   "table": "active_storage_blobs",
+   "app_model": false
+  },
+  "ActiveStorage::VariantRecord": {
+   "anchor": "model-activestorage-variantrecord",
+   "doc": "10-domain-model.md",
+   "table": "active_storage_variant_records",
+   "app_model": false
+  },
+  "BankAccount": {
+   "anchor": "model-bankaccount",
+   "doc": "10-domain-model.md",
+   "table": "bank_accounts",
+   "app_model": true
+  },
+  "BankConnection": {
+   "anchor": "model-bankconnection",
+   "doc": "10-domain-model.md",
+   "table": "bank_connections",
+   "app_model": true
+  },
+  "BankTransaction": {
+   "anchor": "model-banktransaction",
+   "doc": "10-domain-model.md",
+   "table": "bank_transactions",
+   "app_model": true
+  },
+  "Category": {
+   "anchor": "model-category",
+   "doc": "10-domain-model.md",
+   "table": "categories",
+   "app_model": true
+  },
+  "Gutentag::Tag": {
+   "anchor": "model-gutentag-tag",
+   "doc": "10-domain-model.md",
+   "table": "gutentag_tags",
+   "app_model": false
+  },
+  "Gutentag::Tagging": {
+   "anchor": "model-gutentag-tagging",
+   "doc": "10-domain-model.md",
+   "table": "gutentag_taggings",
+   "app_model": false
+  },
+  "LedgerEntry": {
+   "anchor": "model-ledgerentry",
+   "doc": "10-domain-model.md",
+   "table": "ledger_entries",
+   "app_model": true
+  },
+  "LlmSetting": {
+   "anchor": "model-llmsetting",
+   "doc": "10-domain-model.md",
+   "table": "llm_settings",
+   "app_model": true
+  },
+  "ManualTransaction": {
+   "anchor": "model-manualtransaction",
+   "doc": "10-domain-model.md",
+   "table": "manual_transactions",
+   "app_model": true
+  },
+  "Merchant": {
+   "anchor": "model-merchant",
+   "doc": "10-domain-model.md",
+   "table": "merchants",
+   "app_model": true
+  },
+  "MerchantRule": {
+   "anchor": "model-merchantrule",
+   "doc": "10-domain-model.md",
+   "table": "merchant_rules",
+   "app_model": true
+  },
+  "OperationRun": {
+   "anchor": "model-operationrun",
+   "doc": "10-domain-model.md",
+   "table": "operation_runs",
+   "app_model": true
+  },
+  "PaperTrail::Version": {
+   "anchor": "model-papertrail-version",
+   "doc": "10-domain-model.md",
+   "table": "versions",
+   "app_model": false
+  },
+  "PersonalAccessToken": {
+   "anchor": "model-personalaccesstoken",
+   "doc": "10-domain-model.md",
+   "table": "personal_access_tokens",
+   "app_model": true
+  },
+  "SyncSchedule": {
+   "anchor": "model-syncschedule",
+   "doc": "10-domain-model.md",
+   "table": "sync_schedules",
+   "app_model": true
+  },
+  "TppCredential": {
+   "anchor": "model-tppcredential",
+   "doc": "10-domain-model.md",
+   "table": "tpp_credentials",
+   "app_model": true
+  },
+  "TransactionEnrichment": {
+   "anchor": "model-transactionenrichment",
+   "doc": "10-domain-model.md",
+   "table": "transaction_enrichments",
+   "app_model": true
+  },
+  "User": {
+   "anchor": "model-user",
+   "doc": "10-domain-model.md",
+   "table": "users",
+   "app_model": true
+  },
+  "UserHiddenCategory": {
+   "anchor": "model-userhiddencategory",
+   "doc": "10-domain-model.md",
+   "table": "user_hidden_categories",
+   "app_model": true
+  },
+  "StyleguideDemo": {
+   "anchor": "model-styleguidedemo",
+   "doc": "10-domain-model.md",
+   "note": "non-AR class in app/models"
+  }
+ },
+ "tables": {
+  "bank_accounts": {
+   "anchor": "table-bank-accounts",
+   "doc": "50-data.md"
+  },
+  "bank_connections": {
+   "anchor": "table-bank-connections",
+   "doc": "50-data.md"
+  },
+  "bank_transactions": {
+   "anchor": "table-bank-transactions",
+   "doc": "50-data.md"
+  },
+  "categories": {
+   "anchor": "table-categories",
+   "doc": "50-data.md"
+  },
+  "gutentag_taggings": {
+   "anchor": "table-gutentag-taggings",
+   "doc": "50-data.md"
+  },
+  "gutentag_tags": {
+   "anchor": "table-gutentag-tags",
+   "doc": "50-data.md"
+  },
+  "llm_settings": {
+   "anchor": "table-llm-settings",
+   "doc": "50-data.md"
+  },
+  "manual_transactions": {
+   "anchor": "table-manual-transactions",
+   "doc": "50-data.md"
+  },
+  "merchant_rules": {
+   "anchor": "table-merchant-rules",
+   "doc": "50-data.md"
+  },
+  "merchants": {
+   "anchor": "table-merchants",
+   "doc": "50-data.md"
+  },
+  "operation_runs": {
+   "anchor": "table-operation-runs",
+   "doc": "50-data.md"
+  },
+  "personal_access_tokens": {
+   "anchor": "table-personal-access-tokens",
+   "doc": "50-data.md"
+  },
+  "sync_schedules": {
+   "anchor": "table-sync-schedules",
+   "doc": "50-data.md"
+  },
+  "tpp_credentials": {
+   "anchor": "table-tpp-credentials",
+   "doc": "50-data.md"
+  },
+  "transaction_enrichments": {
+   "anchor": "table-transaction-enrichments",
+   "doc": "50-data.md"
+  },
+  "user_hidden_categories": {
+   "anchor": "table-user-hidden-categories",
+   "doc": "50-data.md"
+  },
+  "users": {
+   "anchor": "table-users",
+   "doc": "50-data.md"
+  },
+  "versions": {
+   "anchor": "table-versions",
+   "doc": "50-data.md"
+  },
+  "ledger_entries (view)": {
+   "anchor": "table-ledger-entries",
+   "doc": "50-data.md"
+  }
+ },
+ "jobs": {
+  "ApplicationJob": {
+   "anchor": "job-applicationjob",
+   "doc": "60-async-and-integrations.md",
+   "file": "app/jobs/application_job.rb"
+  },
+  "AutoSync::DispatcherJob": {
+   "anchor": "job-autosync-dispatcherjob",
+   "doc": "60-async-and-integrations.md",
+   "file": "app/jobs/auto_sync/dispatcher_job.rb"
+  },
+  "FailingJob": {
+   "anchor": "job-failingjob",
+   "doc": "60-async-and-integrations.md",
+   "file": "app/jobs/failing_job.rb"
+  },
+  "LlmEnrichmentJob": {
+   "anchor": "job-llmenrichmentjob",
+   "doc": "60-async-and-integrations.md",
+   "file": "app/jobs/llm_enrichment_job.rb"
+  },
+  "TransactionSyncJob": {
+   "anchor": "job-transactionsyncjob",
+   "doc": "60-async-and-integrations.md",
+   "file": "app/jobs/transaction_sync_job.rb"
+  },
+  "cron:auto_sync_dispatcher": {
+   "anchor": "cron-auto-sync-dispatcher",
+   "doc": "60-async-and-integrations.md"
+  }
+ },
+ "mailers": {
+  "Devise::Mailer": {
+   "anchor": "mailer-devise-mailer",
+   "doc": "60-async-and-integrations.md",
+   "actions": [
+    "unlock_instructions",
+    "reset_password_instructions",
+    "password_change",
+    "email_changed",
+    "confirmation_instructions"
+   ]
+  },
+  "ApplicationMailer": {
+   "anchor": "mailer-applicationmailer",
+   "doc": "60-async-and-integrations.md",
+   "actions": []
+  }
+ },
+ "pages": {
+  "pwa/manifest.json.erb": {
+   "anchor": "page-pwa-manifest",
+   "doc": "40-ui.md"
+  },
+  "pwa/service-worker.js": {
+   "anchor": "page-pwa-service-worker-js",
+   "doc": "40-ui.md"
+  },
+  "swagger/index.html.erb": {
+   "anchor": "page-swagger-index",
+   "doc": "40-ui.md"
+  },
+  "admin/debug/index.html.erb": {
+   "anchor": "page-admin-debug-index",
+   "doc": "40-ui.md"
+  },
+  "admin/matching_engine/show.html.erb": {
+   "anchor": "page-admin-matching-engine-show",
+   "doc": "40-ui.md"
+  },
+  "admin/styleguide/index.html.erb": {
+   "anchor": "page-admin-styleguide-index",
+   "doc": "40-ui.md"
+  },
+  "admin/settings/preferences/app.html.erb": {
+   "anchor": "page-admin-settings-preferences-app",
+   "doc": "40-ui.md"
+  },
+  "admin/settings/preferences/llm.html.erb": {
+   "anchor": "page-admin-settings-preferences-llm",
+   "doc": "40-ui.md"
+  },
+  "admin/settings/preferences/profile.html.erb": {
+   "anchor": "page-admin-settings-preferences-profile",
+   "doc": "40-ui.md"
+  },
+  "admin/settings/api_tokens/index.html.erb": {
+   "anchor": "page-admin-settings-api-tokens-index",
+   "doc": "40-ui.md"
+  },
+  "admin/settings/data_exchange/show.html.erb": {
+   "anchor": "page-admin-settings-data-exchange-show",
+   "doc": "40-ui.md"
+  },
+  "admin/passwords/edit.html.erb": {
+   "anchor": "page-admin-passwords-edit",
+   "doc": "40-ui.md"
+  },
+  "admin/passwords/new.html.erb": {
+   "anchor": "page-admin-passwords-new",
+   "doc": "40-ui.md"
+  },
+  "admin/bank_transactions/index.html.erb": {
+   "anchor": "page-admin-bank-transactions-index",
+   "doc": "40-ui.md"
+  },
+  "admin/bank_transactions/show.html.erb": {
+   "anchor": "page-admin-bank-transactions-show",
+   "doc": "40-ui.md"
+  },
+  "admin/bank_accounts/index.html.erb": {
+   "anchor": "page-admin-bank-accounts-index",
+   "doc": "40-ui.md"
+  },
+  "admin/bank_accounts/show.html.erb": {
+   "anchor": "page-admin-bank-accounts-show",
+   "doc": "40-ui.md"
+  },
+  "admin/llm_enrichments/index.html.erb": {
+   "anchor": "page-admin-llm-enrichments-index",
+   "doc": "40-ui.md"
+  },
+  "admin/llm_enrichments/show.html.erb": {
+   "anchor": "page-admin-llm-enrichments-show",
+   "doc": "40-ui.md"
+  },
+  "admin/analytics/categories/show.html.erb": {
+   "anchor": "page-admin-analytics-categories-show",
+   "doc": "40-ui.md"
+  },
+  "admin/analytics/merchants/show.html.erb": {
+   "anchor": "page-admin-analytics-merchants-show",
+   "doc": "40-ui.md"
+  },
+  "admin/analytics/dashboard/index.html.erb": {
+   "anchor": "page-admin-analytics-dashboard-index",
+   "doc": "40-ui.md"
+  },
+  "admin/sessions/new.html.erb": {
+   "anchor": "page-admin-sessions-new",
+   "doc": "40-ui.md"
+  },
+  "admin/versions/index.html.erb": {
+   "anchor": "page-admin-versions-index",
+   "doc": "40-ui.md"
+  },
+  "admin/versions/show.html.erb": {
+   "anchor": "page-admin-versions-show",
+   "doc": "40-ui.md"
+  },
+  "admin/transaction_syncs/index.html.erb": {
+   "anchor": "page-admin-transaction-syncs-index",
+   "doc": "40-ui.md"
+  },
+  "admin/transaction_syncs/new.html.erb": {
+   "anchor": "page-admin-transaction-syncs-new",
+   "doc": "40-ui.md"
+  },
+  "admin/transaction_syncs/show.html.erb": {
+   "anchor": "page-admin-transaction-syncs-show",
+   "doc": "40-ui.md"
+  },
+  "admin/cash_transactions/edit.html.erb": {
+   "anchor": "page-admin-cash-transactions-edit",
+   "doc": "40-ui.md"
+  },
+  "admin/cash_transactions/index.html.erb": {
+   "anchor": "page-admin-cash-transactions-index",
+   "doc": "40-ui.md"
+  },
+  "admin/cash_transactions/new.html.erb": {
+   "anchor": "page-admin-cash-transactions-new",
+   "doc": "40-ui.md"
+  },
+  "admin/categories/edit.html.erb": {
+   "anchor": "page-admin-categories-edit",
+   "doc": "40-ui.md"
+  },
+  "admin/categories/index.html.erb": {
+   "anchor": "page-admin-categories-index",
+   "doc": "40-ui.md"
+  },
+  "admin/categories/new.html.erb": {
+   "anchor": "page-admin-categories-new",
+   "doc": "40-ui.md"
+  },
+  "admin/merchants/edit.html.erb": {
+   "anchor": "page-admin-merchants-edit",
+   "doc": "40-ui.md"
+  },
+  "admin/merchants/index.html.erb": {
+   "anchor": "page-admin-merchants-index",
+   "doc": "40-ui.md"
+  },
+  "admin/merchants/new.html.erb": {
+   "anchor": "page-admin-merchants-new",
+   "doc": "40-ui.md"
+  },
+  "admin/merchants/show.html.erb": {
+   "anchor": "page-admin-merchants-show",
+   "doc": "40-ui.md"
+  },
+  "admin/sync_schedules/edit.html.erb": {
+   "anchor": "page-admin-sync-schedules-edit",
+   "doc": "40-ui.md"
+  },
+  "admin/tpp_credentials/edit.html.erb": {
+   "anchor": "page-admin-tpp-credentials-edit",
+   "doc": "40-ui.md"
+  },
+  "admin/tpp_credentials/index.html.erb": {
+   "anchor": "page-admin-tpp-credentials-index",
+   "doc": "40-ui.md"
+  },
+  "admin/tpp_credentials/new.html.erb": {
+   "anchor": "page-admin-tpp-credentials-new",
+   "doc": "40-ui.md"
+  },
+  "admin/tpp_credentials/show.html.erb": {
+   "anchor": "page-admin-tpp-credentials-show",
+   "doc": "40-ui.md"
+  },
+  "admin/bank_connections/edit.html.erb": {
+   "anchor": "page-admin-bank-connections-edit",
+   "doc": "40-ui.md"
+  },
+  "admin/bank_connections/index.html.erb": {
+   "anchor": "page-admin-bank-connections-index",
+   "doc": "40-ui.md"
+  },
+  "admin/bank_connections/new.html.erb": {
+   "anchor": "page-admin-bank-connections-new",
+   "doc": "40-ui.md"
+  },
+  "admin/bank_connections/show.html.erb": {
+   "anchor": "page-admin-bank-connections-show",
+   "doc": "40-ui.md"
+  },
+  "setup/new.html.erb": {
+   "anchor": "page-setup-new",
+   "doc": "40-ui.md"
+  }
+ },
+ "layouts": {
+  "layouts/admin.html.erb": {
+   "anchor": "layout-layouts-admin",
+   "doc": "40-ui.md"
+  },
+  "layouts/admin_auth.html.erb": {
+   "anchor": "layout-layouts-admin-auth",
+   "doc": "40-ui.md"
+  },
+  "layouts/application.html.erb": {
+   "anchor": "layout-layouts-application",
+   "doc": "40-ui.md"
+  },
+  "layouts/mailer.html.erb": {
+   "anchor": "layout-layouts-mailer",
+   "doc": "40-ui.md"
+  },
+  "layouts/mailer.text.erb": {
+   "anchor": "layout-layouts-mailer",
+   "doc": "40-ui.md"
+  }
+ },
+ "partials": {
+  "admin/shared/_auth_flash.html.erb": {
+   "anchor": "partial-admin-shared-auth-flash",
+   "doc": "40-ui.md",
+   "group": "admin/shared"
+  },
+  "admin/shared/_breadcrumbs.html.erb": {
+   "anchor": "partial-admin-shared-breadcrumbs",
+   "doc": "40-ui.md",
+   "group": "admin/shared"
+  },
+  "admin/shared/_flash.html.erb": {
+   "anchor": "partial-admin-shared-flash",
+   "doc": "40-ui.md",
+   "group": "admin/shared"
+  },
+  "admin/shared/_footer.html.erb": {
+   "anchor": "partial-admin-shared-footer",
+   "doc": "40-ui.md",
+   "group": "admin/shared"
+  },
+  "admin/shared/_setup_banner.html.erb": {
+   "anchor": "partial-admin-shared-setup-banner",
+   "doc": "40-ui.md",
+   "group": "admin/shared"
+  },
+  "admin/shared/_sidebar.html.erb": {
+   "anchor": "partial-admin-shared-sidebar",
+   "doc": "40-ui.md",
+   "group": "admin/shared"
+  },
+  "admin/shared/_sidebar_content.html.erb": {
+   "anchor": "partial-admin-shared-sidebar-content",
+   "doc": "40-ui.md",
+   "group": "admin/shared"
+  },
+  "admin/shared/_sidebar_item.html.erb": {
+   "anchor": "partial-admin-shared-sidebar-item",
+   "doc": "40-ui.md",
+   "group": "admin/shared"
+  },
+  "admin/shared/_topbar.html.erb": {
+   "anchor": "partial-admin-shared-topbar",
+   "doc": "40-ui.md",
+   "group": "admin/shared"
+  },
+  "admin/shared/icons/_arrow_down.html.erb": {
+   "anchor": "partial-admin-shared-icons-arrow-down",
+   "doc": "40-ui.md",
+   "group": "admin/shared/icons"
+  },
+  "admin/shared/icons/_arrow_left.html.erb": {
+   "anchor": "partial-admin-shared-icons-arrow-left",
+   "doc": "40-ui.md",
+   "group": "admin/shared/icons"
+  },
+  "admin/shared/icons/_arrow_up.html.erb": {
+   "anchor": "partial-admin-shared-icons-arrow-up",
+   "doc": "40-ui.md",
+   "group": "admin/shared/icons"
+  },
+  "admin/shared/icons/_arrow_up_down.html.erb": {
+   "anchor": "partial-admin-shared-icons-arrow-up-down",
+   "doc": "40-ui.md",
+   "group": "admin/shared/icons"
+  },
+  "admin/shared/icons/_banknote.html.erb": {
+   "anchor": "partial-admin-shared-icons-banknote",
+   "doc": "40-ui.md",
+   "group": "admin/shared/icons"
+  },
+  "admin/shared/icons/_bar_chart_3.html.erb": {
+   "anchor": "partial-admin-shared-icons-bar-chart-3",
+   "doc": "40-ui.md",
+   "group": "admin/shared/icons"
+  },
+  "admin/shared/icons/_bell.html.erb": {
+   "anchor": "partial-admin-shared-icons-bell",
+   "doc": "40-ui.md",
+   "group": "admin/shared/icons"
+  },
+  "admin/shared/icons/_chevron_down.html.erb": {
+   "anchor": "partial-admin-shared-icons-chevron-down",
+   "doc": "40-ui.md",
+   "group": "admin/shared/icons"
+  },
+  "admin/shared/icons/_chevron_right.html.erb": {
+   "anchor": "partial-admin-shared-icons-chevron-right",
+   "doc": "40-ui.md",
+   "group": "admin/shared/icons"
+  },
+  "admin/shared/icons/_clock.html.erb": {
+   "anchor": "partial-admin-shared-icons-clock",
+   "doc": "40-ui.md",
+   "group": "admin/shared/icons"
+  },
+  "admin/shared/icons/_columns_3.html.erb": {
+   "anchor": "partial-admin-shared-icons-columns-3",
+   "doc": "40-ui.md",
+   "group": "admin/shared/icons"
+  },
+  "admin/shared/icons/_dollar_sign.html.erb": {
+   "anchor": "partial-admin-shared-icons-dollar-sign",
+   "doc": "40-ui.md",
+   "group": "admin/shared/icons"
+  },
+  "admin/shared/icons/_download.html.erb": {
+   "anchor": "partial-admin-shared-icons-download",
+   "doc": "40-ui.md",
+   "group": "admin/shared/icons"
+  },
+  "admin/shared/icons/_eye.html.erb": {
+   "anchor": "partial-admin-shared-icons-eye",
+   "doc": "40-ui.md",
+   "group": "admin/shared/icons"
+  },
+  "admin/shared/icons/_eye_off.html.erb": {
+   "anchor": "partial-admin-shared-icons-eye-off",
+   "doc": "40-ui.md",
+   "group": "admin/shared/icons"
+  },
+  "admin/shared/icons/_file_text.html.erb": {
+   "anchor": "partial-admin-shared-icons-file-text",
+   "doc": "40-ui.md",
+   "group": "admin/shared/icons"
+  },
+  "admin/shared/icons/_gauge.html.erb": {
+   "anchor": "partial-admin-shared-icons-gauge",
+   "doc": "40-ui.md",
+   "group": "admin/shared/icons"
+  },
+  "admin/shared/icons/_layout_dashboard.html.erb": {
+   "anchor": "partial-admin-shared-icons-layout-dashboard",
+   "doc": "40-ui.md",
+   "group": "admin/shared/icons"
+  },
+  "admin/shared/icons/_log_out.html.erb": {
+   "anchor": "partial-admin-shared-icons-log-out",
+   "doc": "40-ui.md",
+   "group": "admin/shared/icons"
+  },
+  "admin/shared/icons/_logo_mark.html.erb": {
+   "anchor": "partial-admin-shared-icons-logo-mark",
+   "doc": "40-ui.md",
+   "group": "admin/shared/icons"
+  },
+  "admin/shared/icons/_mail.html.erb": {
+   "anchor": "partial-admin-shared-icons-mail",
+   "doc": "40-ui.md",
+   "group": "admin/shared/icons"
+  },
+  "admin/shared/icons/_map.html.erb": {
+   "anchor": "partial-admin-shared-icons-map",
+   "doc": "40-ui.md",
+   "group": "admin/shared/icons"
+  },
+  "admin/shared/icons/_menu.html.erb": {
+   "anchor": "partial-admin-shared-icons-menu",
+   "doc": "40-ui.md",
+   "group": "admin/shared/icons"
+  },
+  "admin/shared/icons/_more_horizontal.html.erb": {
+   "anchor": "partial-admin-shared-icons-more-horizontal",
+   "doc": "40-ui.md",
+   "group": "admin/shared/icons"
+  },
+  "admin/shared/icons/_package.html.erb": {
+   "anchor": "partial-admin-shared-icons-package",
+   "doc": "40-ui.md",
+   "group": "admin/shared/icons"
+  },
+  "admin/shared/icons/_panel_left.html.erb": {
+   "anchor": "partial-admin-shared-icons-panel-left",
+   "doc": "40-ui.md",
+   "group": "admin/shared/icons"
+  },
+  "admin/shared/icons/_panel_left_close.html.erb": {
+   "anchor": "partial-admin-shared-icons-panel-left-close",
+   "doc": "40-ui.md",
+   "group": "admin/shared/icons"
+  },
+  "admin/shared/icons/_pencil.html.erb": {
+   "anchor": "partial-admin-shared-icons-pencil",
+   "doc": "40-ui.md",
+   "group": "admin/shared/icons"
+  },
+  "admin/shared/icons/_piggy_bank.html.erb": {
+   "anchor": "partial-admin-shared-icons-piggy-bank",
+   "doc": "40-ui.md",
+   "group": "admin/shared/icons"
+  },
+  "admin/shared/icons/_plus.html.erb": {
+   "anchor": "partial-admin-shared-icons-plus",
+   "doc": "40-ui.md",
+   "group": "admin/shared/icons"
+  },
+  "admin/shared/icons/_refresh_cw.html.erb": {
+   "anchor": "partial-admin-shared-icons-refresh-cw",
+   "doc": "40-ui.md",
+   "group": "admin/shared/icons"
+  },
+  "admin/shared/icons/_search.html.erb": {
+   "anchor": "partial-admin-shared-icons-search",
+   "doc": "40-ui.md",
+   "group": "admin/shared/icons"
+  },
+  "admin/shared/icons/_settings.html.erb": {
+   "anchor": "partial-admin-shared-icons-settings",
+   "doc": "40-ui.md",
+   "group": "admin/shared/icons"
+  },
+  "admin/shared/icons/_shield.html.erb": {
+   "anchor": "partial-admin-shared-icons-shield",
+   "doc": "40-ui.md",
+   "group": "admin/shared/icons"
+  },
+  "admin/shared/icons/_shopping_cart.html.erb": {
+   "anchor": "partial-admin-shared-icons-shopping-cart",
+   "doc": "40-ui.md",
+   "group": "admin/shared/icons"
+  },
+  "admin/shared/icons/_sliders_horizontal.html.erb": {
+   "anchor": "partial-admin-shared-icons-sliders-horizontal",
+   "doc": "40-ui.md",
+   "group": "admin/shared/icons"
+  },
+  "admin/shared/icons/_sparkles.html.erb": {
+   "anchor": "partial-admin-shared-icons-sparkles",
+   "doc": "40-ui.md",
+   "group": "admin/shared/icons"
+  },
+  "admin/shared/icons/_tag.html.erb": {
+   "anchor": "partial-admin-shared-icons-tag",
+   "doc": "40-ui.md",
+   "group": "admin/shared/icons"
+  },
+  "admin/shared/icons/_trash_2.html.erb": {
+   "anchor": "partial-admin-shared-icons-trash-2",
+   "doc": "40-ui.md",
+   "group": "admin/shared/icons"
+  },
+  "admin/shared/icons/_trending_down.html.erb": {
+   "anchor": "partial-admin-shared-icons-trending-down",
+   "doc": "40-ui.md",
+   "group": "admin/shared/icons"
+  },
+  "admin/shared/icons/_trending_up.html.erb": {
+   "anchor": "partial-admin-shared-icons-trending-up",
+   "doc": "40-ui.md",
+   "group": "admin/shared/icons"
+  },
+  "admin/shared/icons/_upload.html.erb": {
+   "anchor": "partial-admin-shared-icons-upload",
+   "doc": "40-ui.md",
+   "group": "admin/shared/icons"
+  },
+  "admin/shared/icons/_users.html.erb": {
+   "anchor": "partial-admin-shared-icons-users",
+   "doc": "40-ui.md",
+   "group": "admin/shared/icons"
+  },
+  "admin/shared/icons/_x.html.erb": {
+   "anchor": "partial-admin-shared-icons-x",
+   "doc": "40-ui.md",
+   "group": "admin/shared/icons"
+  },
+  "admin/shared/components/_action_toolbar.html.erb": {
+   "anchor": "partial-admin-shared-components-action-toolbar",
+   "doc": "40-ui.md",
+   "group": "admin/shared/components"
+  },
+  "admin/shared/components/_badge.html.erb": {
+   "anchor": "partial-admin-shared-components-badge",
+   "doc": "40-ui.md",
+   "group": "admin/shared/components"
+  },
+  "admin/shared/components/_bank_logo.html.erb": {
+   "anchor": "partial-admin-shared-components-bank-logo",
+   "doc": "40-ui.md",
+   "group": "admin/shared/components"
+  },
+  "admin/shared/components/_breakdown_list.html.erb": {
+   "anchor": "partial-admin-shared-components-breakdown-list",
+   "doc": "40-ui.md",
+   "group": "admin/shared/components"
+  },
+  "admin/shared/components/_bulk_action_bar.html.erb": {
+   "anchor": "partial-admin-shared-components-bulk-action-bar",
+   "doc": "40-ui.md",
+   "group": "admin/shared/components"
+  },
+  "admin/shared/components/_button.html.erb": {
+   "anchor": "partial-admin-shared-components-button",
+   "doc": "40-ui.md",
+   "group": "admin/shared/components"
+  },
+  "admin/shared/components/_callout.html.erb": {
+   "anchor": "partial-admin-shared-components-callout",
+   "doc": "40-ui.md",
+   "group": "admin/shared/components"
+  },
+  "admin/shared/components/_card.html.erb": {
+   "anchor": "partial-admin-shared-components-card",
+   "doc": "40-ui.md",
+   "group": "admin/shared/components"
+  },
+  "admin/shared/components/_category_breadcrumb.html.erb": {
+   "anchor": "partial-admin-shared-components-category-breadcrumb",
+   "doc": "40-ui.md",
+   "group": "admin/shared/components"
+  },
+  "admin/shared/components/_category_picker.html.erb": {
+   "anchor": "partial-admin-shared-components-category-picker",
+   "doc": "40-ui.md",
+   "group": "admin/shared/components"
+  },
+  "admin/shared/components/_command_palette.html.erb": {
+   "anchor": "partial-admin-shared-components-command-palette",
+   "doc": "40-ui.md",
+   "group": "admin/shared/components"
+  },
+  "admin/shared/components/_confirm_dialog.html.erb": {
+   "anchor": "partial-admin-shared-components-confirm-dialog",
+   "doc": "40-ui.md",
+   "group": "admin/shared/components"
+  },
+  "admin/shared/components/_critical_banner.html.erb": {
+   "anchor": "partial-admin-shared-components-critical-banner",
+   "doc": "40-ui.md",
+   "group": "admin/shared/components"
+  },
+  "admin/shared/components/_data_table.html.erb": {
+   "anchor": "partial-admin-shared-components-data-table",
+   "doc": "40-ui.md",
+   "group": "admin/shared/components"
+  },
+  "admin/shared/components/_definition_list.html.erb": {
+   "anchor": "partial-admin-shared-components-definition-list",
+   "doc": "40-ui.md",
+   "group": "admin/shared/components"
+  },
+  "admin/shared/components/_dropdown_menu.html.erb": {
+   "anchor": "partial-admin-shared-components-dropdown-menu",
+   "doc": "40-ui.md",
+   "group": "admin/shared/components"
+  },
+  "admin/shared/components/_empty_state.html.erb": {
+   "anchor": "partial-admin-shared-components-empty-state",
+   "doc": "40-ui.md",
+   "group": "admin/shared/components"
+  },
+  "admin/shared/components/_filter_chip.html.erb": {
+   "anchor": "partial-admin-shared-components-filter-chip",
+   "doc": "40-ui.md",
+   "group": "admin/shared/components"
+  },
+  "admin/shared/components/_filter_panel.html.erb": {
+   "anchor": "partial-admin-shared-components-filter-panel",
+   "doc": "40-ui.md",
+   "group": "admin/shared/components"
+  },
+  "admin/shared/components/_filter_trigger.html.erb": {
+   "anchor": "partial-admin-shared-components-filter-trigger",
+   "doc": "40-ui.md",
+   "group": "admin/shared/components"
+  },
+  "admin/shared/components/_json_viewer.html.erb": {
+   "anchor": "partial-admin-shared-components-json-viewer",
+   "doc": "40-ui.md",
+   "group": "admin/shared/components"
+  },
+  "admin/shared/components/_modal.html.erb": {
+   "anchor": "partial-admin-shared-components-modal",
+   "doc": "40-ui.md",
+   "group": "admin/shared/components"
+  },
+  "admin/shared/components/_page_header.html.erb": {
+   "anchor": "partial-admin-shared-components-page-header",
+   "doc": "40-ui.md",
+   "group": "admin/shared/components"
+  },
+  "admin/shared/components/_pagination.html.erb": {
+   "anchor": "partial-admin-shared-components-pagination",
+   "doc": "40-ui.md",
+   "group": "admin/shared/components"
+  },
+  "admin/shared/components/_skeleton.html.erb": {
+   "anchor": "partial-admin-shared-components-skeleton",
+   "doc": "40-ui.md",
+   "group": "admin/shared/components"
+  },
+  "admin/shared/components/_stat_card.html.erb": {
+   "anchor": "partial-admin-shared-components-stat-card",
+   "doc": "40-ui.md",
+   "group": "admin/shared/components"
+  },
+  "admin/shared/components/_tabs.html.erb": {
+   "anchor": "partial-admin-shared-components-tabs",
+   "doc": "40-ui.md",
+   "group": "admin/shared/components"
+  },
+  "admin/shared/components/_toast.html.erb": {
+   "anchor": "partial-admin-shared-components-toast",
+   "doc": "40-ui.md",
+   "group": "admin/shared/components"
+  },
+  "admin/shared/form/_ajax_select.html.erb": {
+   "anchor": "partial-admin-shared-form-ajax-select",
+   "doc": "40-ui.md",
+   "group": "admin/shared/form"
+  },
+  "admin/shared/form/_checkbox.html.erb": {
+   "anchor": "partial-admin-shared-form-checkbox",
+   "doc": "40-ui.md",
+   "group": "admin/shared/form"
+  },
+  "admin/shared/form/_checkbox_group.html.erb": {
+   "anchor": "partial-admin-shared-form-checkbox-group",
+   "doc": "40-ui.md",
+   "group": "admin/shared/form"
+  },
+  "admin/shared/form/_color_picker.html.erb": {
+   "anchor": "partial-admin-shared-form-color-picker",
+   "doc": "40-ui.md",
+   "group": "admin/shared/form"
+  },
+  "admin/shared/form/_date_picker.html.erb": {
+   "anchor": "partial-admin-shared-form-date-picker",
+   "doc": "40-ui.md",
+   "group": "admin/shared/form"
+  },
+  "admin/shared/form/_date_range_picker.html.erb": {
+   "anchor": "partial-admin-shared-form-date-range-picker",
+   "doc": "40-ui.md",
+   "group": "admin/shared/form"
+  },
+  "admin/shared/form/_email_field.html.erb": {
+   "anchor": "partial-admin-shared-form-email-field",
+   "doc": "40-ui.md",
+   "group": "admin/shared/form"
+  },
+  "admin/shared/form/_error_summary.html.erb": {
+   "anchor": "partial-admin-shared-form-error-summary",
+   "doc": "40-ui.md",
+   "group": "admin/shared/form"
+  },
+  "admin/shared/form/_file_upload.html.erb": {
+   "anchor": "partial-admin-shared-form-file-upload",
+   "doc": "40-ui.md",
+   "group": "admin/shared/form"
+  },
+  "admin/shared/form/_form_group.html.erb": {
+   "anchor": "partial-admin-shared-form-form-group",
+   "doc": "40-ui.md",
+   "group": "admin/shared/form"
+  },
+  "admin/shared/form/_multi_select.html.erb": {
+   "anchor": "partial-admin-shared-form-multi-select",
+   "doc": "40-ui.md",
+   "group": "admin/shared/form"
+  },
+  "admin/shared/form/_number_field.html.erb": {
+   "anchor": "partial-admin-shared-form-number-field",
+   "doc": "40-ui.md",
+   "group": "admin/shared/form"
+  },
+  "admin/shared/form/_password_field.html.erb": {
+   "anchor": "partial-admin-shared-form-password-field",
+   "doc": "40-ui.md",
+   "group": "admin/shared/form"
+  },
+  "admin/shared/form/_radio_group.html.erb": {
+   "anchor": "partial-admin-shared-form-radio-group",
+   "doc": "40-ui.md",
+   "group": "admin/shared/form"
+  },
+  "admin/shared/form/_searchable_select.html.erb": {
+   "anchor": "partial-admin-shared-form-searchable-select",
+   "doc": "40-ui.md",
+   "group": "admin/shared/form"
+  },
+  "admin/shared/form/_select.html.erb": {
+   "anchor": "partial-admin-shared-form-select",
+   "doc": "40-ui.md",
+   "group": "admin/shared/form"
+  },
+  "admin/shared/form/_tags_input.html.erb": {
+   "anchor": "partial-admin-shared-form-tags-input",
+   "doc": "40-ui.md",
+   "group": "admin/shared/form"
+  },
+  "admin/shared/form/_text_field.html.erb": {
+   "anchor": "partial-admin-shared-form-text-field",
+   "doc": "40-ui.md",
+   "group": "admin/shared/form"
+  },
+  "admin/shared/form/_textarea.html.erb": {
+   "anchor": "partial-admin-shared-form-textarea",
+   "doc": "40-ui.md",
+   "group": "admin/shared/form"
+  },
+  "admin/shared/form/_time_picker.html.erb": {
+   "anchor": "partial-admin-shared-form-time-picker",
+   "doc": "40-ui.md",
+   "group": "admin/shared/form"
+  },
+  "admin/shared/form/_toggle.html.erb": {
+   "anchor": "partial-admin-shared-form-toggle",
+   "doc": "40-ui.md",
+   "group": "admin/shared/form"
+  },
+  "admin/settings/preferences/_layout.html.erb": {
+   "anchor": "partial-admin-settings-preferences-layout",
+   "doc": "40-ui.md",
+   "group": "admin/settings/preferences"
+  },
+  "admin/bank_transactions/_classify_modal.html.erb": {
+   "anchor": "partial-admin-bank-transactions-classify-modal",
+   "doc": "40-ui.md",
+   "group": "admin/bank_transactions"
+  },
+  "admin/llm_enrichments/_run_progress.html.erb": {
+   "anchor": "partial-admin-llm-enrichments-run-progress",
+   "doc": "40-ui.md",
+   "group": "admin/llm_enrichments"
+  },
+  "admin/analytics/shared/_filter_strip.html.erb": {
+   "anchor": "partial-admin-analytics-shared-filter-strip",
+   "doc": "40-ui.md",
+   "group": "admin/analytics/shared"
+  },
+  "admin/transaction_syncs/_auto_sync_panel.html.erb": {
+   "anchor": "partial-admin-transaction-syncs-auto-sync-panel",
+   "doc": "40-ui.md",
+   "group": "admin/transaction_syncs"
+  },
+  "admin/transaction_syncs/_run_progress.html.erb": {
+   "anchor": "partial-admin-transaction-syncs-run-progress",
+   "doc": "40-ui.md",
+   "group": "admin/transaction_syncs"
+  },
+  "admin/cash_transactions/_form.html.erb": {
+   "anchor": "partial-admin-cash-transactions-form",
+   "doc": "40-ui.md",
+   "group": "admin/cash_transactions"
+  },
+  "admin/categories/_form.html.erb": {
+   "anchor": "partial-admin-categories-form",
+   "doc": "40-ui.md",
+   "group": "admin/categories"
+  },
+  "admin/merchants/_form.html.erb": {
+   "anchor": "partial-admin-merchants-form",
+   "doc": "40-ui.md",
+   "group": "admin/merchants"
+  },
+  "admin/sync_schedules/_form.html.erb": {
+   "anchor": "partial-admin-sync-schedules-form",
+   "doc": "40-ui.md",
+   "group": "admin/sync_schedules"
+  },
+  "admin/sync_schedules/_range_preview.html.erb": {
+   "anchor": "partial-admin-sync-schedules-range-preview",
+   "doc": "40-ui.md",
+   "group": "admin/sync_schedules"
+  },
+  "admin/tpp_credentials/_form.html.erb": {
+   "anchor": "partial-admin-tpp-credentials-form",
+   "doc": "40-ui.md",
+   "group": "admin/tpp_credentials"
+  }
+ },
+ "js_controllers": {
+  "ajax_select_controller.js": {
+   "anchor": "js-ajax-select-controller",
+   "doc": "40-ui.md"
+  },
+  "bulk_select_controller.js": {
+   "anchor": "js-bulk-select-controller",
+   "doc": "40-ui.md"
+  },
+  "chart_controller.js": {
+   "anchor": "js-chart-controller",
+   "doc": "40-ui.md"
+  },
+  "clipboard_controller.js": {
+   "anchor": "js-clipboard-controller",
+   "doc": "40-ui.md"
+  },
+  "command_palette_controller.js": {
+   "anchor": "js-command-palette-controller",
+   "doc": "40-ui.md"
+  },
+  "dismissible_controller.js": {
+   "anchor": "js-dismissible-controller",
+   "doc": "40-ui.md"
+  },
+  "dropdown_controller.js": {
+   "anchor": "js-dropdown-controller",
+   "doc": "40-ui.md"
+  },
+  "file_upload_controller.js": {
+   "anchor": "js-file-upload-controller",
+   "doc": "40-ui.md"
+  },
+  "filter_panel_controller.js": {
+   "anchor": "js-filter-panel-controller",
+   "doc": "40-ui.md"
+  },
+  "llm_provider_controller.js": {
+   "anchor": "js-llm-provider-controller",
+   "doc": "40-ui.md"
+  },
+  "modal_controller.js": {
+   "anchor": "js-modal-controller",
+   "doc": "40-ui.md"
+  },
+  "multi_select_controller.js": {
+   "anchor": "js-multi-select-controller",
+   "doc": "40-ui.md"
+  },
+  "preference_toggle_controller.js": {
+   "anchor": "js-preference-toggle-controller",
+   "doc": "40-ui.md"
+  },
+  "propagation_controller.js": {
+   "anchor": "js-propagation-controller",
+   "doc": "40-ui.md"
+  },
+  "searchable_select_controller.js": {
+   "anchor": "js-searchable-select-controller",
+   "doc": "40-ui.md"
+  },
+  "sensitive_mask_controller.js": {
+   "anchor": "js-sensitive-mask-controller",
+   "doc": "40-ui.md"
+  },
+  "sidebar_controller.js": {
+   "anchor": "js-sidebar-controller",
+   "doc": "40-ui.md"
+  },
+  "sidebar_item_controller.js": {
+   "anchor": "js-sidebar-item-controller",
+   "doc": "40-ui.md"
+  },
+  "tabs_controller.js": {
+   "anchor": "js-tabs-controller",
+   "doc": "40-ui.md"
+  },
+  "tags_input_controller.js": {
+   "anchor": "js-tags-input-controller",
+   "doc": "40-ui.md"
+  },
+  "toggle_controller.js": {
+   "anchor": "js-toggle-controller",
+   "doc": "40-ui.md"
+  }
+ },
+ "env": {
+  "ACTIVE_RECORD_ENCRYPTION_DETERMINISTIC_KEY": {
+   "anchor": "env-active-record-encryption-deterministic-key",
+   "doc": "70-security-and-config.md"
+  },
+  "ACTIVE_RECORD_ENCRYPTION_KEY_DERIVATION_SALT": {
+   "anchor": "env-active-record-encryption-key-derivation-salt",
+   "doc": "70-security-and-config.md"
+  },
+  "ACTIVE_RECORD_ENCRYPTION_PRIMARY_KEY": {
+   "anchor": "env-active-record-encryption-primary-key",
+   "doc": "70-security-and-config.md"
+  },
+  "ANNOTATERB_SKIP_ON_DB_TASKS": {
+   "anchor": "env-annotaterb-skip-on-db-tasks",
+   "doc": "70-security-and-config.md"
+  },
+  "APP_HOST": {
+   "anchor": "env-app-host",
+   "doc": "70-security-and-config.md"
+  },
+  "APP_HOSTS": {
+   "anchor": "env-app-hosts",
+   "doc": "70-security-and-config.md"
+  },
+  "APP_PORT": {
+   "anchor": "env-app-port",
+   "doc": "70-security-and-config.md"
+  },
+  "APP_PROTOCOL": {
+   "anchor": "env-app-protocol",
+   "doc": "70-security-and-config.md"
+  },
+  "APP_TAG": {
+   "anchor": "env-app-tag",
+   "doc": "70-security-and-config.md"
+  },
+  "ASPSP": {
+   "anchor": "env-aspsp",
+   "doc": "70-security-and-config.md"
+  },
+  "BACKUPS_DIR": {
+   "anchor": "env-backups-dir",
+   "doc": "70-security-and-config.md"
+  },
+  "BACKUP_KEEP_DAYS": {
+   "anchor": "env-backup-keep-days",
+   "doc": "70-security-and-config.md"
+  },
+  "BACKUP_KEEP_MONTHS": {
+   "anchor": "env-backup-keep-months",
+   "doc": "70-security-and-config.md"
+  },
+  "BACKUP_KEEP_WEEKS": {
+   "anchor": "env-backup-keep-weeks",
+   "doc": "70-security-and-config.md"
+  },
+  "BACKUP_SCHEDULE": {
+   "anchor": "env-backup-schedule",
+   "doc": "70-security-and-config.md"
+  },
+  "BUNDLE_GEMFILE": {
+   "anchor": "env-bundle-gemfile",
+   "doc": "70-security-and-config.md"
+  },
+  "BUNDLE_PATH": {
+   "anchor": "env-bundle-path",
+   "doc": "70-security-and-config.md"
+  },
+  "CANONICAL_ID": {
+   "anchor": "env-canonical-id",
+   "doc": "70-security-and-config.md"
+  },
+  "CI": {
+   "anchor": "env-ci",
+   "doc": "70-security-and-config.md"
+  },
+  "CODE": {
+   "anchor": "env-code",
+   "doc": "70-security-and-config.md"
+  },
+  "COMPOSE_FILE": {
+   "anchor": "env-compose-file",
+   "doc": "70-security-and-config.md"
+  },
+  "CONFIRM": {
+   "anchor": "env-confirm",
+   "doc": "70-security-and-config.md"
+  },
+  "COUNTRY": {
+   "anchor": "env-country",
+   "doc": "70-security-and-config.md"
+  },
+  "CREDENTIAL_ID": {
+   "anchor": "env-credential-id",
+   "doc": "70-security-and-config.md"
+  },
+  "DATABASE_URL": {
+   "anchor": "env-database-url",
+   "doc": "70-security-and-config.md"
+  },
+  "DAYS": {
+   "anchor": "env-days",
+   "doc": "70-security-and-config.md"
+  },
+  "DRY_RUN": {
+   "anchor": "env-dry-run",
+   "doc": "70-security-and-config.md"
+  },
+  "DUP_ID": {
+   "anchor": "env-dup-id",
+   "doc": "70-security-and-config.md"
+  },
+  "FORCE_SSL": {
+   "anchor": "env-force-ssl",
+   "doc": "70-security-and-config.md"
+  },
+  "LLM_MERCHANT_AUTO_APPROVE_THRESHOLD": {
+   "anchor": "env-llm-merchant-auto-approve-threshold",
+   "doc": "70-security-and-config.md"
+  },
+  "OTEL_EXPORTER_OTLP_ENDPOINT": {
+   "anchor": "env-otel-exporter-otlp-endpoint",
+   "doc": "70-security-and-config.md"
+  },
+  "OTEL_EXPORTER_OTLP_PROTOCOL": {
+   "anchor": "env-otel-exporter-otlp-protocol",
+   "doc": "70-security-and-config.md"
+  },
+  "OTEL_LOGS_EXPORTER": {
+   "anchor": "env-otel-logs-exporter",
+   "doc": "70-security-and-config.md"
+  },
+  "OTEL_METRICS_EXPORTER": {
+   "anchor": "env-otel-metrics-exporter",
+   "doc": "70-security-and-config.md"
+  },
+  "OTEL_SDK_DISABLED": {
+   "anchor": "env-otel-sdk-disabled",
+   "doc": "70-security-and-config.md"
+  },
+  "OTEL_SERVICE_NAME": {
+   "anchor": "env-otel-service-name",
+   "doc": "70-security-and-config.md"
+  },
+  "OTEL_TRACES_EXPORTER": {
+   "anchor": "env-otel-traces-exporter",
+   "doc": "70-security-and-config.md"
+  },
+  "PIDFILE": {
+   "anchor": "env-pidfile",
+   "doc": "70-security-and-config.md"
+  },
+  "PORT": {
+   "anchor": "env-port",
+   "doc": "70-security-and-config.md"
+  },
+  "POSTGRES_DB": {
+   "anchor": "env-postgres-db",
+   "doc": "70-security-and-config.md"
+  },
+  "POSTGRES_HOST": {
+   "anchor": "env-postgres-host",
+   "doc": "70-security-and-config.md"
+  },
+  "POSTGRES_PASSWORD": {
+   "anchor": "env-postgres-password",
+   "doc": "70-security-and-config.md"
+  },
+  "POSTGRES_PORT": {
+   "anchor": "env-postgres-port",
+   "doc": "70-security-and-config.md"
+  },
+  "POSTGRES_USER": {
+   "anchor": "env-postgres-user",
+   "doc": "70-security-and-config.md"
+  },
+  "PSU_IP_ADDRESS": {
+   "anchor": "env-psu-ip-address",
+   "doc": "70-security-and-config.md"
+  },
+  "PSU_TYPE": {
+   "anchor": "env-psu-type",
+   "doc": "70-security-and-config.md"
+  },
+  "PSU_USER_AGENT": {
+   "anchor": "env-psu-user-agent",
+   "doc": "70-security-and-config.md"
+  },
+  "RAILS_ENV": {
+   "anchor": "env-rails-env",
+   "doc": "70-security-and-config.md"
+  },
+  "RAILS_LOG_LEVEL": {
+   "anchor": "env-rails-log-level",
+   "doc": "70-security-and-config.md"
+  },
+  "RAILS_MAX_THREADS": {
+   "anchor": "env-rails-max-threads",
+   "doc": "70-security-and-config.md"
+  },
+  "REDIRECT_URL": {
+   "anchor": "env-redirect-url",
+   "doc": "70-security-and-config.md"
+  },
+  "REDIS_PORT": {
+   "anchor": "env-redis-port",
+   "doc": "70-security-and-config.md"
+  },
+  "REDIS_URL": {
+   "anchor": "env-redis-url",
+   "doc": "70-security-and-config.md"
+  },
+  "RUBY_DEBUG_LAZY": {
+   "anchor": "env-ruby-debug-lazy",
+   "doc": "70-security-and-config.md"
+  },
+  "RUBY_DEBUG_OPEN": {
+   "anchor": "env-ruby-debug-open",
+   "doc": "70-security-and-config.md"
+  },
+  "SECRETS_DIR": {
+   "anchor": "env-secrets-dir",
+   "doc": "70-security-and-config.md"
+  },
+  "SECRET_KEY_BASE_DUMMY": {
+   "anchor": "env-secret-key-base-dummy",
+   "doc": "70-security-and-config.md"
+  },
+  "SMTP_ADDRESS": {
+   "anchor": "env-smtp-address",
+   "doc": "70-security-and-config.md"
+  },
+  "SMTP_AUTHENTICATION": {
+   "anchor": "env-smtp-authentication",
+   "doc": "70-security-and-config.md"
+  },
+  "SMTP_DOMAIN": {
+   "anchor": "env-smtp-domain",
+   "doc": "70-security-and-config.md"
+  },
+  "SMTP_PASSWORD": {
+   "anchor": "env-smtp-password",
+   "doc": "70-security-and-config.md"
+  },
+  "SMTP_PORT": {
+   "anchor": "env-smtp-port",
+   "doc": "70-security-and-config.md"
+  },
+  "SMTP_STARTTLS": {
+   "anchor": "env-smtp-starttls",
+   "doc": "70-security-and-config.md"
+  },
+  "SMTP_USERNAME": {
+   "anchor": "env-smtp-username",
+   "doc": "70-security-and-config.md"
+  },
+  "STATE": {
+   "anchor": "env-state",
+   "doc": "70-security-and-config.md"
+  },
+  "USER_EMAIL": {
+   "anchor": "env-user-email",
+   "doc": "70-security-and-config.md"
+  },
+  "WEB_CONCURRENCY": {
+   "anchor": "env-web-concurrency",
+   "doc": "70-security-and-config.md"
+  },
+  "SECRET_KEY_BASE": {
+   "anchor": "env-secret-key-base",
+   "doc": "70-security-and-config.md"
+  },
+  "APP_VERSION": {
+   "anchor": "env-app-version",
+   "doc": "70-security-and-config.md"
+  },
+  "RUBY_VERSION": {
+   "anchor": "env-ruby-version",
+   "doc": "70-security-and-config.md"
+  },
+  "OTEL_* (SDK-standard, implicit)": {
+   "anchor": "env-otel-sdk-standard-implicit",
+   "doc": "70-security-and-config.md"
+  }
+ },
+ "rake_tasks": {
+  "banking:backfill_counterparty_kind": {
+   "anchor": "rake-banking-backfill-counterparty-kind",
+   "doc": "60-async-and-integrations.md",
+   "file": "lib/tasks/banking.rake"
+  },
+  "banking:backfill_payment_methods": {
+   "anchor": "rake-banking-backfill-payment-methods",
+   "doc": "60-async-and-integrations.md",
+   "file": "lib/tasks/banking.rake"
+  },
+  "banking:diagnose_duplicate_accounts": {
+   "anchor": "rake-banking-diagnose-duplicate-accounts",
+   "doc": "60-async-and-integrations.md",
+   "file": "lib/tasks/duplicate_bank_accounts.rake"
+  },
+  "banking:finish_auth": {
+   "anchor": "rake-banking-finish-auth",
+   "doc": "60-async-and-integrations.md",
+   "file": "lib/tasks/eb_auth.rake"
+  },
+  "banking:merge_duplicate_accounts": {
+   "anchor": "rake-banking-merge-duplicate-accounts",
+   "doc": "60-async-and-integrations.md",
+   "file": "lib/tasks/duplicate_bank_accounts.rake"
+  },
+  "banking:start_auth": {
+   "anchor": "rake-banking-start-auth",
+   "doc": "60-async-and-integrations.md",
+   "file": "lib/tasks/eb_auth.rake"
+  },
+  "cash:backfill_atm_links": {
+   "anchor": "rake-cash-backfill-atm-links",
+   "doc": "60-async-and-integrations.md",
+   "file": "lib/tasks/cash.rake"
+  }
+ },
+ "initializers": {
+  "active_record_encryption.rb": {
+   "anchor": "init-active-record-encryption",
+   "doc": "70-security-and-config.md"
+  },
+  "assets.rb": {
+   "anchor": "init-assets",
+   "doc": "70-security-and-config.md"
+  },
+  "content_security_policy.rb": {
+   "anchor": "init-content-security-policy",
+   "doc": "70-security-and-config.md"
+  },
+  "cors.rb": {
+   "anchor": "init-cors",
+   "doc": "70-security-and-config.md"
+  },
+  "devise.rb": {
+   "anchor": "init-devise",
+   "doc": "70-security-and-config.md"
+  },
+  "filter_parameter_logging.rb": {
+   "anchor": "init-filter-parameter-logging",
+   "doc": "70-security-and-config.md"
+  },
+  "inflections.rb": {
+   "anchor": "init-inflections",
+   "doc": "70-security-and-config.md"
+  },
+  "json_schema.rb": {
+   "anchor": "init-json-schema",
+   "doc": "70-security-and-config.md"
+  },
+  "lograge.rb": {
+   "anchor": "init-lograge",
+   "doc": "70-security-and-config.md"
+  },
+  "money.rb": {
+   "anchor": "init-money",
+   "doc": "70-security-and-config.md"
+  },
+  "opentelemetry.rb": {
+   "anchor": "init-opentelemetry",
+   "doc": "70-security-and-config.md"
+  },
+  "opentelemetry_error_subscriber.rb": {
+   "anchor": "init-opentelemetry-error-subscriber",
+   "doc": "70-security-and-config.md"
+  },
+  "pagy.rb": {
+   "anchor": "init-pagy",
+   "doc": "70-security-and-config.md"
+  },
+  "paper_trail_ransack.rb": {
+   "anchor": "init-paper-trail-ransack",
+   "doc": "70-security-and-config.md"
+  },
+  "ransack.rb": {
+   "anchor": "init-ransack",
+   "doc": "70-security-and-config.md"
+  },
+  "ruby_llm.rb": {
+   "anchor": "init-ruby-llm",
+   "doc": "70-security-and-config.md"
+  },
+  "sidekiq.rb": {
+   "anchor": "init-sidekiq",
+   "doc": "70-security-and-config.md"
+  }
+ },
+ "services": {
+  "app/services/operation_run_finalizer.rb": {
+   "anchor": "svc-operation-run-finalizer",
+   "doc": "20-business-rules.md"
+  },
+  "app/services/cash/atm_withdrawal_linker.rb": {
+   "anchor": "svc-cash-atm-withdrawal-linker",
+   "doc": "20-business-rules.md"
+  },
+  "app/services/cash/tracking.rb": {
+   "anchor": "svc-cash-tracking",
+   "doc": "20-business-rules.md"
+  },
+  "app/services/cash/transaction_creator.rb": {
+   "anchor": "svc-cash-transaction-creator",
+   "doc": "20-business-rules.md"
+  },
+  "app/services/cash/transaction_updater.rb": {
+   "anchor": "svc-cash-transaction-updater",
+   "doc": "20-business-rules.md"
+  },
+  "app/services/cash/wallet_resolver.rb": {
+   "anchor": "svc-cash-wallet-resolver",
+   "doc": "20-business-rules.md"
+  },
+  "app/services/banking/counterparty_resolver.rb": {
+   "anchor": "svc-banking-counterparty-resolver",
+   "doc": "20-business-rules.md"
+  },
+  "app/services/llm/client.rb": {
+   "anchor": "svc-llm-client",
+   "doc": "20-business-rules.md"
+  },
+  "app/services/llm/connection_test_runner.rb": {
+   "anchor": "svc-llm-connection-test-runner",
+   "doc": "20-business-rules.md"
+  },
+  "app/services/llm/enrichable_query.rb": {
+   "anchor": "svc-llm-enrichable-query",
+   "doc": "20-business-rules.md"
+  },
+  "app/services/llm/enrichment_runner.rb": {
+   "anchor": "svc-llm-enrichment-runner",
+   "doc": "20-business-rules.md"
+  },
+  "app/services/llm/merchant_suggester.rb": {
+   "anchor": "svc-llm-merchant-suggester",
+   "doc": "20-business-rules.md"
+  },
+  "app/services/llm/providers.rb": {
+   "anchor": "svc-llm-providers",
+   "doc": "20-business-rules.md"
+  },
+  "app/services/llm/clients/gemini.rb": {
+   "anchor": "svc-llm-clients-gemini",
+   "doc": "20-business-rules.md"
+  },
+  "app/services/llm/clients/openai.rb": {
+   "anchor": "svc-llm-clients-openai",
+   "doc": "20-business-rules.md"
+  },
+  "app/services/enable_banking/backfill_window.rb": {
+   "anchor": "svc-enable-banking-backfill-window",
+   "doc": "20-business-rules.md"
+  },
+  "app/services/enable_banking/client.rb": {
+   "anchor": "svc-enable-banking-client",
+   "doc": "20-business-rules.md"
+  },
+  "app/services/enable_banking/error.rb": {
+   "anchor": "svc-enable-banking-error",
+   "doc": "20-business-rules.md"
+  },
+  "app/services/enable_banking/jwt_signer.rb": {
+   "anchor": "svc-enable-banking-jwt-signer",
+   "doc": "20-business-rules.md"
+  },
+  "app/services/enable_banking/payment_method_inferer.rb": {
+   "anchor": "svc-enable-banking-payment-method-inferer",
+   "doc": "20-business-rules.md"
+  },
+  "app/services/enable_banking/result.rb": {
+   "anchor": "svc-enable-banking-result",
+   "doc": "20-business-rules.md"
+  },
+  "app/services/enable_banking/state.rb": {
+   "anchor": "svc-enable-banking-state",
+   "doc": "20-business-rules.md"
+  },
+  "app/services/enable_banking/transaction_normalizer.rb": {
+   "anchor": "svc-enable-banking-transaction-normalizer",
+   "doc": "20-business-rules.md"
+  },
+  "app/services/enable_banking/api/base.rb": {
+   "anchor": "svc-enable-banking-api-base",
+   "doc": "20-business-rules.md"
+  },
+  "app/services/enable_banking/api/close_session.rb": {
+   "anchor": "svc-enable-banking-api-close-session",
+   "doc": "20-business-rules.md"
+  },
+  "app/services/enable_banking/api/create_session.rb": {
+   "anchor": "svc-enable-banking-api-create-session",
+   "doc": "20-business-rules.md"
+  },
+  "app/services/enable_banking/api/get_account_balances.rb": {
+   "anchor": "svc-enable-banking-api-get-account-balances",
+   "doc": "20-business-rules.md"
+  },
+  "app/services/enable_banking/api/get_account_details.rb": {
+   "anchor": "svc-enable-banking-api-get-account-details",
+   "doc": "20-business-rules.md"
+  },
+  "app/services/enable_banking/api/get_account_transactions.rb": {
+   "anchor": "svc-enable-banking-api-get-account-transactions",
+   "doc": "20-business-rules.md"
+  },
+  "app/services/enable_banking/api/get_application.rb": {
+   "anchor": "svc-enable-banking-api-get-application",
+   "doc": "20-business-rules.md"
+  },
+  "app/services/enable_banking/api/get_session.rb": {
+   "anchor": "svc-enable-banking-api-get-session",
+   "doc": "20-business-rules.md"
+  },
+  "app/services/enable_banking/api/list_aspsps.rb": {
+   "anchor": "svc-enable-banking-api-list-aspsps",
+   "doc": "20-business-rules.md"
+  },
+  "app/services/enable_banking/api/start_auth.rb": {
+   "anchor": "svc-enable-banking-api-start-auth",
+   "doc": "20-business-rules.md"
+  },
+  "app/services/enable_banking/operations/base.rb": {
+   "anchor": "svc-enable-banking-operations-base",
+   "doc": "20-business-rules.md"
+  },
+  "app/services/enable_banking/operations/close_connection.rb": {
+   "anchor": "svc-enable-banking-operations-close-connection",
+   "doc": "20-business-rules.md"
+  },
+  "app/services/enable_banking/operations/create_connection.rb": {
+   "anchor": "svc-enable-banking-operations-create-connection",
+   "doc": "20-business-rules.md"
+  },
+  "app/services/enable_banking/operations/refresh_account_balances.rb": {
+   "anchor": "svc-enable-banking-operations-refresh-account-balances",
+   "doc": "20-business-rules.md"
+  },
+  "app/services/enable_banking/operations/refresh_account_details.rb": {
+   "anchor": "svc-enable-banking-operations-refresh-account-details",
+   "doc": "20-business-rules.md"
+  },
+  "app/services/enable_banking/operations/refresh_connection.rb": {
+   "anchor": "svc-enable-banking-operations-refresh-connection",
+   "doc": "20-business-rules.md"
+  },
+  "app/services/enable_banking/operations/start_auth.rb": {
+   "anchor": "svc-enable-banking-operations-start-auth",
+   "doc": "20-business-rules.md"
+  },
+  "app/services/enable_banking/operations/sync_account_transactions.rb": {
+   "anchor": "svc-enable-banking-operations-sync-account-transactions",
+   "doc": "20-business-rules.md"
+  },
+  "app/services/enable_banking/operations/sync_connection_transactions.rb": {
+   "anchor": "svc-enable-banking-operations-sync-connection-transactions",
+   "doc": "20-business-rules.md"
+  },
+  "app/services/enable_banking/operations/sync_user_transactions.rb": {
+   "anchor": "svc-enable-banking-operations-sync-user-transactions",
+   "doc": "20-business-rules.md"
+  },
+  "app/services/enable_banking/operations/verify_credential.rb": {
+   "anchor": "svc-enable-banking-operations-verify-credential",
+   "doc": "20-business-rules.md"
+  },
+  "app/services/llm_enrichments/queuer.rb": {
+   "anchor": "svc-llm-enrichments-queuer",
+   "doc": "20-business-rules.md"
+  },
+  "app/services/analytics/account_breakdown.rb": {
+   "anchor": "svc-analytics-account-breakdown",
+   "doc": "20-business-rules.md"
+  },
+  "app/services/analytics/cash_flow.rb": {
+   "anchor": "svc-analytics-cash-flow",
+   "doc": "20-business-rules.md"
+  },
+  "app/services/analytics/facet_breakdown.rb": {
+   "anchor": "svc-analytics-facet-breakdown",
+   "doc": "20-business-rules.md"
+  },
+  "app/services/analytics/filter.rb": {
+   "anchor": "svc-analytics-filter",
+   "doc": "20-business-rules.md"
+  },
+  "app/services/analytics/period.rb": {
+   "anchor": "svc-analytics-period",
+   "doc": "20-business-rules.md"
+  },
+  "app/services/analytics/spend_breakdown.rb": {
+   "anchor": "svc-analytics-spend-breakdown",
+   "doc": "20-business-rules.md"
+  },
+  "app/services/analytics/top_merchants.rb": {
+   "anchor": "svc-analytics-top-merchants",
+   "doc": "20-business-rules.md"
+  },
+  "app/services/analytics/top_movers.rb": {
+   "anchor": "svc-analytics-top-movers",
+   "doc": "20-business-rules.md"
+  },
+  "app/services/transaction_syncs/queuer.rb": {
+   "anchor": "svc-transaction-syncs-queuer",
+   "doc": "20-business-rules.md"
+  },
+  "app/services/enrichment/classification_applier.rb": {
+   "anchor": "svc-enrichment-classification-applier",
+   "doc": "20-business-rules.md"
+  },
+  "app/services/enrichment/own_account_merchant_syncer.rb": {
+   "anchor": "svc-enrichment-own-account-merchant-syncer",
+   "doc": "20-business-rules.md"
+  },
+  "app/services/enrichment/title_normalizer.rb": {
+   "anchor": "svc-enrichment-title-normalizer",
+   "doc": "20-business-rules.md"
+  },
+  "app/services/enrichment/transaction_enricher.rb": {
+   "anchor": "svc-enrichment-transaction-enricher",
+   "doc": "20-business-rules.md"
+  },
+  "app/services/auth/personal_access_token_authenticator.rb": {
+   "anchor": "svc-auth-personal-access-token-authenticator",
+   "doc": "20-business-rules.md"
+  },
+  "app/services/auth/personal_access_token_issuer.rb": {
+   "anchor": "svc-auth-personal-access-token-issuer",
+   "doc": "20-business-rules.md"
+  },
+  "app/services/categories/creator.rb": {
+   "anchor": "svc-categories-creator",
+   "doc": "20-business-rules.md"
+  },
+  "app/services/categories/mover.rb": {
+   "anchor": "svc-categories-mover",
+   "doc": "20-business-rules.md"
+  },
+  "app/services/merchants/approver.rb": {
+   "anchor": "svc-merchants-approver",
+   "doc": "20-business-rules.md"
+  },
+  "app/services/merchants/creator.rb": {
+   "anchor": "svc-merchants-creator",
+   "doc": "20-business-rules.md"
+  },
+  "app/services/merchant_rules/creator.rb": {
+   "anchor": "svc-merchant-rules-creator",
+   "doc": "20-business-rules.md"
+  },
+  "app/services/merchant_rules/destroyer.rb": {
+   "anchor": "svc-merchant-rules-destroyer",
+   "doc": "20-business-rules.md"
+  },
+  "app/services/merchant_rules/updater.rb": {
+   "anchor": "svc-merchant-rules-updater",
+   "doc": "20-business-rules.md"
+  },
+  "app/services/seeders/categories.rb": {
+   "anchor": "svc-seeders-categories",
+   "doc": "20-business-rules.md"
+  },
+  "app/services/seeders/merchant_rules.rb": {
+   "anchor": "svc-seeders-merchant-rules",
+   "doc": "20-business-rules.md"
+  },
+  "app/services/seeders/showcase.rb": {
+   "anchor": "svc-seeders-showcase",
+   "doc": "20-business-rules.md"
+  },
+  "app/services/auto_sync/circuit_breaker.rb": {
+   "anchor": "svc-auto-sync-circuit-breaker",
+   "doc": "20-business-rules.md"
+  },
+  "app/services/auto_sync/dispatcher.rb": {
+   "anchor": "svc-auto-sync-dispatcher",
+   "doc": "20-business-rules.md"
+  },
+  "app/services/auto_sync/next_run_calculator.rb": {
+   "anchor": "svc-auto-sync-next-run-calculator",
+   "doc": "20-business-rules.md"
+  },
+  "app/services/auto_sync/schedule_upserter.rb": {
+   "anchor": "svc-auto-sync-schedule-upserter",
+   "doc": "20-business-rules.md"
+  },
+  "app/services/data_exchange/bundle.rb": {
+   "anchor": "svc-data-exchange-bundle",
+   "doc": "20-business-rules.md"
+  },
+  "app/services/data_exchange/bundle_cipher.rb": {
+   "anchor": "svc-data-exchange-bundle-cipher",
+   "doc": "20-business-rules.md"
+  },
+  "app/services/data_exchange/ref_map.rb": {
+   "anchor": "svc-data-exchange-ref-map",
+   "doc": "20-business-rules.md"
+  },
+  "app/services/data_exchange/registry.rb": {
+   "anchor": "svc-data-exchange-registry",
+   "doc": "20-business-rules.md"
+  },
+  "app/services/data_exchange/result.rb": {
+   "anchor": "svc-data-exchange-result",
+   "doc": "20-business-rules.md"
+  },
+  "app/services/data_exchange/operations/base.rb": {
+   "anchor": "svc-data-exchange-operations-base",
+   "doc": "20-business-rules.md"
+  },
+  "app/services/data_exchange/operations/export.rb": {
+   "anchor": "svc-data-exchange-operations-export",
+   "doc": "20-business-rules.md"
+  },
+  "app/services/data_exchange/operations/import.rb": {
+   "anchor": "svc-data-exchange-operations-import",
+   "doc": "20-business-rules.md"
+  },
+  "app/services/data_exchange/resources/bank_account_resource.rb": {
+   "anchor": "svc-data-exchange-resources-bank-account-resource",
+   "doc": "20-business-rules.md"
+  },
+  "app/services/data_exchange/resources/bank_connection_resource.rb": {
+   "anchor": "svc-data-exchange-resources-bank-connection-resource",
+   "doc": "20-business-rules.md"
+  },
+  "app/services/data_exchange/resources/base.rb": {
+   "anchor": "svc-data-exchange-resources-base",
+   "doc": "20-business-rules.md"
+  },
+  "app/services/data_exchange/resources/tpp_credential_resource.rb": {
+   "anchor": "svc-data-exchange-resources-tpp-credential-resource",
+   "doc": "20-business-rules.md"
+  },
+  "app/forms/bank_connection_request_form.rb": {
+   "anchor": "svc-app-forms-bank-connection-request-form",
+   "doc": "20-business-rules.md"
+  }
+ }
+}

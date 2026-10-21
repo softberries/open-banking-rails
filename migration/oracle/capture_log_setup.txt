@@ -1,0 +1,7 @@
+302 GET /admin/analytics [anon/no_users_redirects_to_setup]
+200 GET /setup [anon/no_users]
+422 POST /setup [anon/no_users_invalid]
+UI 200 setup_first_run /setup -> http://127.0.0.1:3000/setup
+UI 200 setup_first_run_invalid /setup -> http://127.0.0.1:3000/setup
+302 POST /setup [anon/no_users_valid]
+UI 200 first_run_after_setup_dashboard /admin/sign_in -> http://127.0.0.1:3000/admin/sign_in

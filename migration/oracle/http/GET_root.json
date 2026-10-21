@@ -1,0 +1,29 @@
+{
+  "route": "GET /",
+  "captured_at": "2026-10-21T13:22:01.582Z",
+  "base_url": "http://127.0.0.1:3000",
+  "cases": [
+    {
+      "case": "default",
+      "actor": "anon",
+      "request": {
+        "method": "GET",
+        "path": "/",
+        "headers": {}
+      },
+      "response": {
+        "status": 301,
+        "duration_ms": 184,
+        "headers": {
+          "location": "http://127.0.0.1:3000/admin",
+          "content-type": "text/html; charset=UTF-8",
+          "cache-control": "no-cache",
+          "x-request-id": "9e954419-a023-4059-9fc1-9f49396c3776",
+          "vary": "Origin",
+          "content-length": "0"
+        },
+        "body_sample": ""
+      }
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "route": "POST /rails/action_mailbox/mailgun/inbound_emails/mime(.:format)",
+  "captured_at": "2026-10-21T13:22:11.421Z",
+  "base_url": "http://127.0.0.1:3000",
+  "cases": [
+    {
+      "case": "default",
+      "actor": "anon",
+      "request": {
+        "method": "POST",
+        "path": "/rails/action_mailbox/mailgun/inbound_emails/mime",
+        "headers": {},
+        "body": {
+          "x": "1"
+        }
+      },
+      "response": {
+        "status": 404,
+        "duration_ms": 128,
+        "headers": {
+          "x-frame-options": "SAMEORIGIN",
+          "x-content-type-options": "nosniff",
+          "content-type": "text/html",
+          "cache-control": "no-cache",
+          "x-request-id": "77385b27-5229-4d0a-8d7d-f4ba780f693f",
+          "vary": "Origin",
+          "content-length": "0"
+        },
+        "body_sample": ""
+      }
+    }
+  ]
+}

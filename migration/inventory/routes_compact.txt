@@ -1,0 +1,140 @@
+W, [2026-10-21T11:37:19.637610 #7808]  WARN -- : Environment variable OTEL_SDK_DISABLED is defined as true. SDK is disabled.
+                                         Prefix Verb            URI Pattern                                                                                       Controller#Action
+                               new_user_session GET             /admin/sign_in(.:format)                                                                          admin/sessions#new
+                                   user_session POST            /admin/sign_in(.:format)                                                                          admin/sessions#create
+                           destroy_user_session DELETE          /admin/sign_out(.:format)                                                                         admin/sessions#destroy
+                              new_user_password GET             /admin/password/new(.:format)                                                                     admin/passwords#new
+                             edit_user_password GET             /admin/password/edit(.:format)                                                                    admin/passwords#edit
+                                  user_password PATCH           /admin/password(.:format)                                                                         admin/passwords#update
+                                                PUT             /admin/password(.:format)                                                                         admin/passwords#update
+                                                POST            /admin/password(.:format)                                                                         admin/passwords#create
+                                    sidekiq_web                 /sidekiq                                                                                          Sidekiq::Web
+                                          setup GET             /setup(.:format)                                                                                  setup#new
+                                                POST            /setup(.:format)                                                                                  setup#create
+                             rails_health_check GET             /up(.:format)                                                                                     rails/health#show
+                                 oauth_callback GET             /callback(.:format)                                                                               oauth_callbacks#enable_banking
+                                       api_docs GET             /api/:version/docs(.:format)                                                                      swagger#index {version: /v\d+/}
+                                            mcp GET|POST|DELETE /mcp(.:format)                                                                                    mcp#handle
+                                            api                 /                                                                                                 Api
+                                     admin_root GET             /admin(.:format)                                                                                  redirect(301, /admin/analytics)
+                               admin_styleguide GET             /admin/styleguide(.:format)                                                                       admin/styleguide#index
+                 admin_onboarding_seed_taxonomy POST            /admin/onboarding/seed_taxonomy(.:format)                                                         admin/onboarding#seed_taxonomy
+                                 admin_versions GET             /admin/versions(.:format)                                                                         admin/versions#index
+                                  admin_version GET             /admin/versions/:id(.:format)                                                                     admin/versions#show
+              admin_bank_transaction_enrichment PATCH           /admin/bank_transactions/:bank_transaction_id/enrichment(.:format)                                admin/transaction_enrichments#update
+                                                PUT             /admin/bank_transactions/:bank_transaction_id/enrichment(.:format)                                admin/transaction_enrichments#update
+                        admin_bank_transactions GET             /admin/bank_transactions(.:format)                                                                admin/bank_transactions#index
+                         admin_bank_transaction GET             /admin/bank_transactions/:id(.:format)                                                            admin/bank_transactions#show
+                        admin_cash_transactions GET             /admin/cash_transactions(.:format)                                                                admin/cash_transactions#index
+                                                POST            /admin/cash_transactions(.:format)                                                                admin/cash_transactions#create
+                     new_admin_cash_transaction GET             /admin/cash_transactions/new(.:format)                                                            admin/cash_transactions#new
+                    edit_admin_cash_transaction GET             /admin/cash_transactions/:id/edit(.:format)                                                       admin/cash_transactions#edit
+                         admin_cash_transaction GET             /admin/cash_transactions/:id(.:format)                                                            admin/cash_transactions#show
+                                                PATCH           /admin/cash_transactions/:id(.:format)                                                            admin/cash_transactions#update
+                                                PUT             /admin/cash_transactions/:id(.:format)                                                            admin/cash_transactions#update
+                                                DELETE          /admin/cash_transactions/:id(.:format)                                                            admin/cash_transactions#destroy
+                         archive_admin_category POST            /admin/categories/:id/archive(.:format)                                                           admin/categories#archive
+                       unarchive_admin_category POST            /admin/categories/:id/unarchive(.:format)                                                         admin/categories#unarchive
+                               admin_categories GET             /admin/categories(.:format)                                                                       admin/categories#index
+                                                POST            /admin/categories(.:format)                                                                       admin/categories#create
+                             new_admin_category GET             /admin/categories/new(.:format)                                                                   admin/categories#new
+                            edit_admin_category GET             /admin/categories/:id/edit(.:format)                                                              admin/categories#edit
+                                 admin_category PATCH           /admin/categories/:id(.:format)                                                                   admin/categories#update
+                                                PUT             /admin/categories/:id(.:format)                                                                   admin/categories#update
+                                                DELETE          /admin/categories/:id(.:format)                                                                   admin/categories#destroy
+                         archive_admin_merchant POST            /admin/merchants/:id/archive(.:format)                                                            admin/merchants#archive
+                       unarchive_admin_merchant POST            /admin/merchants/:id/unarchive(.:format)                                                          admin/merchants#unarchive
+                         approve_admin_merchant POST            /admin/merchants/:id/approve(.:format)                                                            admin/merchants#approve
+                  admin_merchant_merchant_rules POST            /admin/merchants/:merchant_id/merchant_rules(.:format)                                            admin/merchant_rules#create
+                   admin_merchant_merchant_rule PATCH           /admin/merchants/:merchant_id/merchant_rules/:id(.:format)                                        admin/merchant_rules#update
+                                                PUT             /admin/merchants/:merchant_id/merchant_rules/:id(.:format)                                        admin/merchant_rules#update
+                                                DELETE          /admin/merchants/:merchant_id/merchant_rules/:id(.:format)                                        admin/merchant_rules#destroy
+                                admin_merchants GET             /admin/merchants(.:format)                                                                        admin/merchants#index
+                                                POST            /admin/merchants(.:format)                                                                        admin/merchants#create
+                             new_admin_merchant GET             /admin/merchants/new(.:format)                                                                    admin/merchants#new
+                            edit_admin_merchant GET             /admin/merchants/:id/edit(.:format)                                                               admin/merchants#edit
+                                 admin_merchant GET             /admin/merchants/:id(.:format)                                                                    admin/merchants#show
+                                                PATCH           /admin/merchants/:id(.:format)                                                                    admin/merchants#update
+                                                PUT             /admin/merchants/:id(.:format)                                                                    admin/merchants#update
+                                                DELETE          /admin/merchants/:id(.:format)                                                                    admin/merchants#destroy
+                          admin_llm_enrichments GET             /admin/llm_enrichments(.:format)                                                                  admin/llm_enrichments#index
+                                                POST            /admin/llm_enrichments(.:format)                                                                  admin/llm_enrichments#create
+                           admin_llm_enrichment GET             /admin/llm_enrichments/:id(.:format)                                                              admin/llm_enrichments#show
+                           admin_analytics_root GET             /admin/analytics(.:format)                                                                        admin/analytics/dashboard#index
+                       admin_analytics_category GET             /admin/analytics/categories/:slug(.:format)                                                       admin/analytics/categories#show
+                       admin_analytics_merchant GET             /admin/analytics/merchants/:slug(.:format)                                                        admin/analytics/merchants#show
+                          admin_matching_engine GET             /admin/matching_engine(.:format)                                                                  admin/matching_engine#show
+                        admin_transaction_syncs GET             /admin/transaction_syncs(.:format)                                                                admin/transaction_syncs#index
+                                                POST            /admin/transaction_syncs(.:format)                                                                admin/transaction_syncs#create
+                     new_admin_transaction_sync GET             /admin/transaction_syncs/new(.:format)                                                            admin/transaction_syncs#new
+                         admin_transaction_sync GET             /admin/transaction_syncs/:id(.:format)                                                            admin/transaction_syncs#show
+           test_connection_admin_tpp_credential POST            /admin/tpp_credentials/:id/test_connection(.:format)                                              admin/tpp_credentials#test_connection
+              make_primary_admin_tpp_credential POST            /admin/tpp_credentials/:id/make_primary(.:format)                                                 admin/tpp_credentials#make_primary
+                          admin_tpp_credentials GET             /admin/tpp_credentials(.:format)                                                                  admin/tpp_credentials#index
+                                                POST            /admin/tpp_credentials(.:format)                                                                  admin/tpp_credentials#create
+                       new_admin_tpp_credential GET             /admin/tpp_credentials/new(.:format)                                                              admin/tpp_credentials#new
+                      edit_admin_tpp_credential GET             /admin/tpp_credentials/:id/edit(.:format)                                                         admin/tpp_credentials#edit
+                           admin_tpp_credential GET             /admin/tpp_credentials/:id(.:format)                                                              admin/tpp_credentials#show
+                                                PATCH           /admin/tpp_credentials/:id(.:format)                                                              admin/tpp_credentials#update
+                                                PUT             /admin/tpp_credentials/:id(.:format)                                                              admin/tpp_credentials#update
+                                                DELETE          /admin/tpp_credentials/:id(.:format)                                                              admin/tpp_credentials#destroy
+                  refresh_admin_bank_connection POST            /admin/bank_connections/:id/refresh(.:format)                                                     admin/bank_connections#refresh
+                   reauth_admin_bank_connection POST            /admin/bank_connections/:id/reauth(.:format)                                                      admin/bank_connections#reauth
+       edit_admin_bank_connection_sync_schedule GET             /admin/bank_connections/:bank_connection_id/sync_schedule/edit(.:format)                          admin/sync_schedules#edit
+            admin_bank_connection_sync_schedule PATCH           /admin/bank_connections/:bank_connection_id/sync_schedule(.:format)                               admin/sync_schedules#update
+                                                PUT             /admin/bank_connections/:bank_connection_id/sync_schedule(.:format)                               admin/sync_schedules#update
+                         admin_bank_connections GET             /admin/bank_connections(.:format)                                                                 admin/bank_connections#index
+                                                POST            /admin/bank_connections(.:format)                                                                 admin/bank_connections#create
+                      new_admin_bank_connection GET             /admin/bank_connections/new(.:format)                                                             admin/bank_connections#new
+                     edit_admin_bank_connection GET             /admin/bank_connections/:id/edit(.:format)                                                        admin/bank_connections#edit
+                          admin_bank_connection GET             /admin/bank_connections/:id(.:format)                                                             admin/bank_connections#show
+                                                PATCH           /admin/bank_connections/:id(.:format)                                                             admin/bank_connections#update
+                                                PUT             /admin/bank_connections/:id(.:format)                                                             admin/bank_connections#update
+                                                DELETE          /admin/bank_connections/:id(.:format)                                                             admin/bank_connections#destroy
+             refresh_details_admin_bank_account POST            /admin/bank_accounts/:id/refresh_details(.:format)                                                admin/bank_accounts#refresh_details
+            refresh_balances_admin_bank_account POST            /admin/bank_accounts/:id/refresh_balances(.:format)                                               admin/bank_accounts#refresh_balances
+                            admin_bank_accounts GET             /admin/bank_accounts(.:format)                                                                    admin/bank_accounts#index
+                             admin_bank_account GET             /admin/bank_accounts/:id(.:format)                                                                admin/bank_accounts#show
+                            admin_settings_root GET             /admin/settings(.:format)                                                                         redirect(301, /admin/settings/preferences)
+                     admin_settings_preferences GET             /admin/settings/preferences(.:format)                                                             redirect(301, /admin/settings/preferences/profile)
+             admin_settings_preferences_profile GET             /admin/settings/preferences/profile(.:format)                                                     admin/settings/preferences#profile
+                                                PATCH           /admin/settings/preferences/profile(.:format)                                                     admin/settings/preferences#update_profile
+            admin_settings_preferences_password PATCH           /admin/settings/preferences/password(.:format)                                                    admin/settings/preferences#update_password
+                 admin_settings_preferences_app GET             /admin/settings/preferences/app(.:format)                                                         admin/settings/preferences#app
+                                                PATCH           /admin/settings/preferences/app(.:format)                                                         admin/settings/preferences#update_app
+                 admin_settings_preferences_llm GET             /admin/settings/preferences/llm(.:format)                                                         admin/settings/preferences#llm
+                                                PATCH           /admin/settings/preferences/llm(.:format)                                                         admin/settings/preferences#update_llm
+            admin_settings_preferences_test_llm POST            /admin/settings/preferences/llm/test(.:format)                                                    admin/settings/preferences#test_llm
+       admin_settings_preferences_data_exchange GET             /admin/settings/preferences/data_exchange(.:format)                                               admin/settings/data_exchange#show
+admin_settings_preferences_data_exchange_export POST            /admin/settings/preferences/data_exchange/export(.:format)                                        admin/settings/data_exchange#export
+admin_settings_preferences_data_exchange_import POST            /admin/settings/preferences/data_exchange/import(.:format)                                        admin/settings/data_exchange#import
+          admin_settings_preferences_api_tokens GET             /admin/settings/preferences/api_tokens(.:format)                                                  admin/settings/api_tokens#index
+                                                POST            /admin/settings/preferences/api_tokens(.:format)                                                  admin/settings/api_tokens#create
+           admin_settings_preferences_api_token DELETE          /admin/settings/preferences/api_tokens/:id(.:format)                                              admin/settings/api_tokens#destroy
+                                           root GET             /                                                                                                 redirect(301, /admin)
+               turbo_recede_historical_location GET             /recede_historical_location(.:format)                                                             turbo/native/navigation#recede
+               turbo_resume_historical_location GET             /resume_historical_location(.:format)                                                             turbo/native/navigation#resume
+              turbo_refresh_historical_location GET             /refresh_historical_location(.:format)                                                            turbo/native/navigation#refresh
+                  rails_postmark_inbound_emails POST            /rails/action_mailbox/postmark/inbound_emails(.:format)                                           action_mailbox/ingresses/postmark/inbound_emails#create
+                     rails_relay_inbound_emails POST            /rails/action_mailbox/relay/inbound_emails(.:format)                                              action_mailbox/ingresses/relay/inbound_emails#create
+                  rails_sendgrid_inbound_emails POST            /rails/action_mailbox/sendgrid/inbound_emails(.:format)                                           action_mailbox/ingresses/sendgrid/inbound_emails#create
+            rails_mandrill_inbound_health_check GET             /rails/action_mailbox/mandrill/inbound_emails(.:format)                                           action_mailbox/ingresses/mandrill/inbound_emails#health_check
+                  rails_mandrill_inbound_emails POST            /rails/action_mailbox/mandrill/inbound_emails(.:format)                                           action_mailbox/ingresses/mandrill/inbound_emails#create
+                   rails_mailgun_inbound_emails POST            /rails/action_mailbox/mailgun/inbound_emails/mime(.:format)                                       action_mailbox/ingresses/mailgun/inbound_emails#create
+                 rails_conductor_inbound_emails GET             /rails/conductor/action_mailbox/inbound_emails(.:format)                                          rails/conductor/action_mailbox/inbound_emails#index
+                                                POST            /rails/conductor/action_mailbox/inbound_emails(.:format)                                          rails/conductor/action_mailbox/inbound_emails#create
+              new_rails_conductor_inbound_email GET             /rails/conductor/action_mailbox/inbound_emails/new(.:format)                                      rails/conductor/action_mailbox/inbound_emails#new
+                  rails_conductor_inbound_email GET             /rails/conductor/action_mailbox/inbound_emails/:id(.:format)                                      rails/conductor/action_mailbox/inbound_emails#show
+       new_rails_conductor_inbound_email_source GET             /rails/conductor/action_mailbox/inbound_emails/sources/new(.:format)                              rails/conductor/action_mailbox/inbound_emails/sources#new
+          rails_conductor_inbound_email_sources POST            /rails/conductor/action_mailbox/inbound_emails/sources(.:format)                                  rails/conductor/action_mailbox/inbound_emails/sources#create
+          rails_conductor_inbound_email_reroute POST            /rails/conductor/action_mailbox/:inbound_email_id/reroute(.:format)                               rails/conductor/action_mailbox/reroutes#create
+       rails_conductor_inbound_email_incinerate POST            /rails/conductor/action_mailbox/:inbound_email_id/incinerate(.:format)                            rails/conductor/action_mailbox/incinerates#create
+                             rails_service_blob GET             /rails/active_storage/blobs/redirect/:signed_id/*filename(.:format)                               active_storage/blobs/redirect#show
+                       rails_service_blob_proxy GET             /rails/active_storage/blobs/proxy/:signed_id/*filename(.:format)                                  active_storage/blobs/proxy#show
+                                                GET             /rails/active_storage/blobs/:signed_id/*filename(.:format)                                        active_storage/blobs/redirect#show
+                      rails_blob_representation GET             /rails/active_storage/representations/redirect/:signed_blob_id/:variation_key/*filename(.:format) active_storage/representations/redirect#show
+                rails_blob_representation_proxy GET             /rails/active_storage/representations/proxy/:signed_blob_id/:variation_key/*filename(.:format)    active_storage/representations/proxy#show
+                                                GET             /rails/active_storage/representations/:signed_blob_id/:variation_key/*filename(.:format)          active_storage/representations/redirect#show
+                             rails_disk_service GET             /rails/active_storage/disk/:encoded_key/*filename(.:format)                                       active_storage/disk#show
+                      update_rails_disk_service PUT             /rails/active_storage/disk/:encoded_token(.:format)                                               active_storage/disk#update
+                           rails_direct_uploads POST            /rails/active_storage/direct_uploads(.:format)                                                    active_storage/direct_uploads#create

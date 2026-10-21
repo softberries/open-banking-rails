@@ -1,0 +1,65 @@
+{
+  "route": "GET /admin/analytics/categories/:slug(.:format)",
+  "captured_at": "2026-10-21T13:23:00.023Z",
+  "base_url": "http://127.0.0.1:3000",
+  "cases": [
+    {
+      "case": "default",
+      "actor": "main(session)",
+      "request": {
+        "method": "GET",
+        "path": "/admin/analytics/categories/food",
+        "headers": {}
+      },
+      "response": {
+        "status": 200,
+        "duration_ms": 458,
+        "headers": {
+          "x-frame-options": "SAMEORIGIN",
+          "x-content-type-options": "nosniff",
+          "content-type": "text/html; charset=utf-8",
+          "vary": "Accept, Origin",
+          "cache-control": "max-age=0, private, must-revalidate",
+          "x-request-id": "5b6d5db7-ee10-4572-8c04-fcc1c0c2cbe2",
+          "content-length": "106833",
+          "set-cookie": [
+            "_open_banking_rails_session=<redacted>; path=/; httponly; samesite=lax"
+          ]
+        },
+        "body_sample": {
+          "html_title": "Jedzenie · Open Banking",
+          "h1": "Jedzenie",
+          "flash": [],
+          "length": 106743,
+          "head": "<!-- BEGIN app/views/layouts/admin.html.erb --><!DOCTYPE html> <html lang=\"en\" class=\"\"> <head> <meta charset=\"UTF-8\"> <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"> <title>Jedzenie · Open Banking</title> <meta name=\"csrf-param\" content=\"authenticity_token\" /> <meta name=\"csrf-token\" content=\"l9KlOc-yJR6kFEC83NLDsawuy8yYa8QO0B9rt_308-KAgCNBznZkqr9a_DHmlueZ1BZGxGSECS2cSY6vKgXV4w\" /> <script> (function () { if (localStorage.getItem(\"sidebar-collapsed\") === \"true\") { document.documentElement.classList.add(\"sidebar-collapsed\"); } })(); </script> <link rel=\"icon\" href=\"/icon.svg?v=3\" type=\"image/svg+xml\"> <link rel=\"apple-touch-icon\" href=\"/icon.png\"> <link rel=\"preconnect\" href=\"https://fonts.googleapis.com\"> <link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin> <link href=\"https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap\" rel=\"stylesheet\"> <link rel=\"stylesheet\" href=\"/assets/tailwind-e94f0c0a.css\" data-turbo-track=\"reload\" /> <script type=\"importmap\" data-turbo-track=\"reload\">{ \"imports\": { \"application\": \"/assets/application-bfcdf840.js\", \"@hotwired/turbo-rails\": \"/assets/turbo.min-9fd88cd5.js\", \"@hotwired/stimulus\": \"/assets/stimulus.min-4b1e420e.js\", \"@hotwired/stimulus-loading\": \"/assets/stimulus-loading-1fc53fe7.js\", \"chart.js\": \"https://cdn.jsdelivr.net/npm/chart.js@4.5.1/+esm\", \"chartjs-plugin-datalabels\": \"https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/+esm\", \"controllers/ajax_s…[truncated 98396 chars]"
+        }
+      }
+    },
+    {
+      "case": "unknown_slug",
+      "actor": "main(session)",
+      "request": {
+        "method": "GET",
+        "path": "/admin/analytics/categories/nope",
+        "headers": {}
+      },
+      "response": {
+        "status": 404,
+        "duration_ms": 546,
+        "headers": {
+          "content-type": "text/html; charset=UTF-8",
+          "x-request-id": "f4c34996-749f-4ea4-b2f7-4a38da435d7b",
+          "vary": "Origin",
+          "content-length": "198288"
+        },
+        "body_sample": {
+          "html_title": "Action Controller: Exception caught",
+          "h1": "ActiveRecord::RecordNotFound\n      in Admin::Analytics::CategoriesController#show",
+          "flash": [],
+          "length": 198288,
+          "head": "<!DOCTYPE html> <html lang=\"en\"> <head> <meta charset=\"utf-8\" /> <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"> <meta name=\"turbo-visit-control\" content=\"reload\"> <title>Action Controller: Exception caught</title> <style> body { background-color: #FAFAFA; color: #333; color-scheme: light dark; supported-color-schemes: light dark; margin: 0px; } body, p, ol, ul, td { font-family: helvetica, verdana, arial, sans-serif; font-size: 13px; line-height: 18px; } pre { font-size: 11px; white-space: pre-wrap; } pre.box { border: 1px solid #EEE; padding: 10px; margin: 0px; width: 958px; } header { color: #F0F0F0; background: #C00; padding: 0.5em 1.5em; } header button { appearance: none; background-color: hsl(0 0% 0% / 0.2); border: 0; border-radius: 14px; color: white; float: right; font-weight: 500; height: 28px; padding-inline: 14px; margin: 0.35em 0; } header button:active { background-color: hsl(0 0% 0% / 0.25); } h1 { overflow-wrap: break-word; margin: 0.2em 0; line-height: 1.1em; font-size: 2em; } h2 { color: #C00; line-height: 25px; } code.traces { font-size: 11px; } .trace-container { margin-top: 10px; } code.traces .trace { display: flex; align-items: center; gap: 2px; } .edit-icon { width: 16px; height: 16px; display: flex; font-size: 13px; align-items: center; justify-content: center; text-decoration: none; } .edit-icon:hover { scale: 1.05; } .response-heading, .request-heading { margin-top: 30px; } .exception-message { padding: 8px 0; } .exception-mess…[truncated 162851 chars]"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,284 @@
+{
+  "route": "GET /api/:version/analytics/cash_flow(.json)",
+  "captured_at": "2026-10-21T13:22:35.625Z",
+  "base_url": "http://127.0.0.1:3000",
+  "cases": [
+    {
+      "case": "default",
+      "actor": "main(token)",
+      "request": {
+        "method": "GET",
+        "path": "/api/v1/analytics/cash_flow",
+        "headers": {
+          "authorization": "Bearer obrl_oracle_main_t…"
+        }
+      },
+      "response": {
+        "status": 200,
+        "duration_ms": 244,
+        "headers": {
+          "content-type": "application/json",
+          "cache-control": "max-age=0, private, must-revalidate",
+          "x-request-id": "7a3e43e4-11a9-465f-ad6b-ee9a3e9da72c",
+          "vary": "Origin",
+          "content-length": "1620"
+        },
+        "body_sample": {
+          "currency": "PLN",
+          "period": {
+            "from": "2026-10-01",
+            "to": "2026-10-21",
+            "bucket": "day"
+          },
+          "totals": {
+            "spend_cents": 0,
+            "income_cents": 650000,
+            "net_cents": 650000
+          },
+          "series": [
+            {
+              "date": "2026-10-01",
+              "spend_cents": 0,
+              "income_cents": 0,
+              "net_cents": 0
+            },
+            {
+              "date": "2026-10-02",
+              "spend_cents": 0,
+              "income_cents": 650000,
+              "net_cents": 650000
+            },
+            {
+              "date": "2026-10-03",
+              "spend_cents": 0,
+              "income_cents": 0,
+              "net_cents": 0
+            },
+            {
+              "date": "2026-10-04",
+              "spend_cents": 0,
+              "income_cents": 0,
+              "net_cents": 0
+            },
+            {
+              "date": "2026-10-05",
+              "spend_cents": 0,
+              "income_cents": 0,
+              "net_cents": 0
+            },
+            {
+              "date": "2026-10-06",
+              "spend_cents": 0,
+              "income_cents": 0,
+              "net_cents": 0
+            },
+            {
+              "date": "2026-10-07",
+              "spend_cents": 0,
+              "income_cents": 0,
+              "net_cents": 0
+            },
+            {
+              "date": "2026-10-08",
+              "spend_cents": 0,
+              "income_cents": 0,
+              "net_cents": 0
+            },
+            {
+              "date": "2026-10-09",
+              "spend_cents": 0,
+              "income_cents": 0,
+              "net_cents": 0
+            },
+            {
+              "date": "2026-10-10",
+              "spend_cents": 0,
+              "income_cents": 0,
+              "net_cents": 0
+            },
+            {
+              "date": "2026-10-11",
+              "spend_cents": 0,
+              "income_cents": 0,
+              "net_cents": 0
+            },
+            {
+              "date": "2026-10-12",
+              "spend_cents": 0,
+              "income_cents": 0,
+              "net_cents": 0
+            },
+            {
+              "date": "2026-10-13",
+              "spend_cents": 0,
+              "income_cents": 0,
+              "net_cents": 0
+            },
+            {
+              "date": "2026-10-14",
+              "spend_cents": 0,
+              "income_cents": 0,
+              "net_cents": 0
+            },
+            {
+              "date": "2026-10-15",
+              "spend_cents": 0,
+              "income_cents": 0,
+              "net_cents": 0
+            },
+            {
+              "date": "2026-10-16",
+              "spend_cents": 0,
+              "income_cents": 0,
+              "net_cents": 0
+            },
+            {
+              "date": "2026-10-17",
+              "spend_cents": 0,
+              "income_cents": 0,
+              "net_cents": 0
+            },
+            {
+              "date": "2026-10-18",
+              "spend_cents": 0,
+              "income_cents": 0,
+              "net_cents": 0
+            },
+            {
+              "date": "2026-10-19",
+              "spend_cents": 0,
+              "income_cents": 0,
+              "net_cents": 0
+            },
+            {
+              "date": "2026-10-20",
+              "spend_cents": 0,
+              "income_cents": 0,
+              "net_cents": 0
+            },
+            {
+              "date": "2026-10-21",
+              "spend_cents": 0,
+              "income_cents": 0,
+              "net_cents": 0
+            }
+          ]
+        }
+      }
+    },
+    {
+      "case": "explicit_range",
+      "actor": "main(token)",
+      "request": {
+        "method": "GET",
+        "path": "/api/v1/analytics/cash_flow?from=2026-07-13&to=2026-10-21&bucket=month&currency=PLN",
+        "headers": {
+          "authorization": "Bearer obrl_oracle_main_t…"
+        }
+      },
+      "response": {
+        "status": 200,
+        "duration_ms": 250,
+        "headers": {
+          "content-type": "application/json",
+          "cache-control": "max-age=0, private, must-revalidate",
+          "x-request-id": "f7089be5-80a8-4aca-ba0f-31cd341bdaa8",
+          "vary": "Origin",
+          "content-length": "486"
+        },
+        "body_sample": {
+          "currency": "PLN",
+          "period": {
+            "from": "2026-07-13",
+            "to": "2026-10-21",
+            "bucket": "month"
+          },
+          "totals": {
+            "spend_cents": 231240,
+            "income_cents": 1950000,
+            "net_cents": 1718760
+          },
+          "series": [
+            {
+              "date": "2026-07-01",
+              "spend_cents": 0,
+              "income_cents": 0,
+              "net_cents": 0
+            },
+            {
+              "date": "2026-08-01",
+              "spend_cents": 100245,
+              "income_cents": 650000,
+              "net_cents": 549755
+            },
+            {
+              "date": "2026-09-01",
+              "spend_cents": 130995,
+              "income_cents": 650000,
+              "net_cents": 519005
+            },
+            {
+              "date": "2026-10-01",
+              "spend_cents": 0,
+              "income_cents": 650000,
+              "net_cents": 650000
+            }
+          ]
+        }
+      }
+    },
+    {
+      "case": "invalid_bucket",
+      "actor": "main(token)",
+      "request": {
+        "method": "GET",
+        "path": "/api/v1/analytics/cash_flow?bucket=year",
+        "headers": {
+          "authorization": "Bearer obrl_oracle_main_t…"
+        }
+      },
+      "response": {
+        "status": 400,
+        "duration_ms": 134,
+        "headers": {
+          "content-type": "application/json",
+          "cache-control": "no-cache",
+          "x-request-id": "b3eb5806-6fd2-4a41-a7c2-234a55d805c3",
+          "vary": "Origin",
+          "content-length": "82"
+        },
+        "body_sample": {
+          "message": "Invalid parameters.",
+          "details": [
+            "bucket does not have a valid value"
+          ]
+        }
+      }
+    },
+    {
+      "case": "from_after_to",
+      "actor": "main(token)",
+      "request": {
+        "method": "GET",
+        "path": "/api/v1/analytics/cash_flow?from=2026-10-21&to=2026-07-13",
+        "headers": {
+          "authorization": "Bearer obrl_oracle_main_t…"
+        }
+      },
+      "response": {
+        "status": 500,
+        "duration_ms": 197,
+        "headers": {
+          "content-type": "application/json",
+          "cache-control": "no-cache",
+          "x-request-id": "72fc2d02-68ed-442f-a680-7d90ae2fd5ef",
+          "vary": "Origin",
+          "content-length": "47"
+        },
+        "body_sample": {
+          "message": "ArgumentError: from must be <= to"
+        }
+      }
+    }
+  ]
+}

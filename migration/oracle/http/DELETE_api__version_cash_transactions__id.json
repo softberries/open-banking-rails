@@ -1,0 +1,53 @@
+{
+  "route": "DELETE /api/:version/cash_transactions/:id(.json)",
+  "captured_at": "2026-10-21T13:22:54.622Z",
+  "base_url": "http://127.0.0.1:3000",
+  "cases": [
+    {
+      "case": "default",
+      "actor": "main(token)",
+      "request": {
+        "method": "DELETE",
+        "path": "/api/v1/cash_transactions/26",
+        "headers": {
+          "authorization": "Bearer obrl_oracle_main_t…"
+        }
+      },
+      "response": {
+        "status": 204,
+        "duration_ms": 259,
+        "headers": {
+          "cache-control": "no-cache",
+          "x-request-id": "4a8d2d20-98a8-4701-aa36-a054d6ef8551",
+          "vary": "Origin"
+        },
+        "body_sample": ""
+      }
+    },
+    {
+      "case": "other_tenant_id",
+      "actor": "main(token)",
+      "request": {
+        "method": "DELETE",
+        "path": "/api/v1/cash_transactions/19",
+        "headers": {
+          "authorization": "Bearer obrl_oracle_main_t…"
+        }
+      },
+      "response": {
+        "status": 404,
+        "duration_ms": 184,
+        "headers": {
+          "content-type": "application/json",
+          "cache-control": "no-cache",
+          "x-request-id": "121db53f-d780-4d47-852f-6801b19947c5",
+          "vary": "Origin",
+          "content-length": "147"
+        },
+        "body_sample": {
+          "message": "Couldn't find ManualTransaction with 'id'=19 [WHERE \"bank_accounts\".\"manual_owner_id\" = $1 AND \"bank_accounts\".\"manual\" = $2]"
+        }
+      }
+    }
+  ]
+}

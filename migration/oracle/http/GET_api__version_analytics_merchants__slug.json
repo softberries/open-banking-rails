@@ -1,0 +1,257 @@
+{
+  "route": "GET /api/:version/analytics/merchants/:slug(.json)",
+  "captured_at": "2026-10-21T13:22:37.389Z",
+  "base_url": "http://127.0.0.1:3000",
+  "cases": [
+    {
+      "case": "default",
+      "actor": "main(token)",
+      "request": {
+        "method": "GET",
+        "path": "/api/v1/analytics/merchants/biedronka?from=2026-07-13&to=2026-10-21",
+        "headers": {
+          "authorization": "Bearer obrl_oracle_main_t…"
+        }
+      },
+      "response": {
+        "status": 200,
+        "duration_ms": 267,
+        "headers": {
+          "content-type": "application/json",
+          "cache-control": "max-age=0, private, must-revalidate",
+          "x-request-id": "efdec370-f8eb-4d16-a75a-11be13bfef1f",
+          "vary": "Origin",
+          "content-length": "3250"
+        },
+        "body_sample": {
+          "merchant": {
+            "id": 1,
+            "name": "Biedronka",
+            "slug": "biedronka",
+            "default_category_id": 12
+          },
+          "currency": "PLN",
+          "period": {
+            "from": "2026-07-13",
+            "to": "2026-10-21"
+          },
+          "total_cents": 9995,
+          "count": 5,
+          "monthly_trend": [
+            {
+              "period": "2025-11-01",
+              "amount_cents": 0
+            },
+            {
+              "period": "2025-12-01",
+              "amount_cents": 0
+            },
+            {
+              "period": "2026-01-01",
+              "amount_cents": 0
+            },
+            {
+              "period": "2026-02-01",
+              "amount_cents": 0
+            },
+            {
+              "period": "2026-03-01",
+              "amount_cents": 0
+            },
+            {
+              "period": "2026-04-01",
+              "amount_cents": 0
+            },
+            {
+              "period": "2026-05-01",
+              "amount_cents": 0
+            },
+            {
+              "period": "2026-06-01",
+              "amount_cents": 0
+            },
+            {
+              "period": "2026-07-01",
+              "amount_cents": 0
+            },
+            {
+              "period": "2026-08-01",
+              "amount_cents": 5997
+            },
+            {
+              "period": "2026-09-01",
+              "amount_cents": 3998
+            },
+            {
+              "period": "2026-10-01",
+              "amount_cents": 0
+            }
+          ],
+          "transactions": [
+            {
+              "source_type": "BankTransaction",
+              "source_id": 25,
+              "bank_account_id": 1,
+              "amount": {
+                "cents": 1999,
+                "currency": "PLN"
+              },
+              "signed_amount": {
+                "cents": -1999,
+                "currency": "PLN"
+              },
+              "direction": "debit",
+              "status": "booked",
+              "payment_method": "card",
+              "booking_date": "2026-09-19",
+              "transaction_date": "2026-09-19",
+              "title": "BIEDRONKA WARSZAWA",
+              "counterparty_name": null,
+              "counterparty_kind": "unknown",
+              "essential": true,
+              "enrichment_source": "system_rule",
+              "merchant_id": 1,
+              "effective_category_id": 12,
+              "category_path": "food.cooking.supermarket"
+            },
+            {
+              "source_type": "BankTransaction",
+              "source_id": 19,
+              "bank_account_id": 1,
+              "amount": {
+                "cents": 1999,
+                "currency": "PLN"
+              },
+              "signed_amount": {
+                "cents": -1999,
+                "currency": "PLN"
+              },
+              "direction": "debit",
+              "status": "booked",
+              "payment_method": "card",
+              "booking_date": "2026-09-07",
+              "transaction_date": "2026-09-07",
+              "title": "BIEDRONKA WARSZAWA",
+              "counterparty_name": null,
+              "counterparty_kind": "unknown",
+              "essential": true,
+              "enrichment_source": "system_rule",
+              "merchant_id": 1,
+              "effective_category_id": 12,
+              "category_path": "food.cooking.supermarket"
+            },
+            {
+              "source_type": "BankTransaction",
+              "source_id": 13,
+              "bank_account_id": 1,
+              "amount": {
+                "cents": 1999,
+                "currency": "PLN"
+              },
+              "signed_amount": {
+                "cents": -1999,
+                "currency": "PLN"
+              },
+              "direction": "debit",
+              "status": "booked",
+              "payment_method": "card",
+              "booking_date": "2026-08-26",
+              "transaction_date": "2026-08-26",
+              "title": "BIEDRONKA WARSZAWA",
+              "counterparty_name": null,
+              "counterparty_kind": "unknown",
+              "essential": true,
+              "enrichment_source": "system_rule",
+              "merchant_id": 1,
+              "effective_category_id": 12,
+              "category_path": "food.cooking.supermarket"
+            },
+            {
+              "source_type": "BankTransaction",
+              "source_id": 7,
+              "bank_account_id": 1,
+              "amount": {
+                "cents": 1999,
+                "currency": "PLN"
+              },
+              "signed_amount": {
+                "cents": -1999,
+                "currency": "PLN"
+              },
+              "direction": "debit",
+              "status": "booked",
+              "payment_method": "card",
+              "booking_date": "2026-08-14",
+              "transaction_date": "2026-08-14",
+              "title": "BIEDRONKA WARSZAWA",
+              "counterparty_name": null,
+              "counterparty_kind": "unknown",
+              "essential": true,
+              "enrichment_source": "system_rule",
+              "merchant_id": 1,
+              "effective_category_id": 12,
+              "category_path": "food.cooking.supermarket"
+            },
+            {
+              "source_type": "BankTransaction",
+              "source_id": 1,
+              "bank_account_id": 1,
+              "amount": {
+                "cents": 1999,
+                "currency": "PLN"
+              },
+              "signed_amount": {
+                "cents": -1999,
+                "currency": "PLN"
+              },
+              "direction": "debit",
+              "status": "booked",
+              "payment_method": "card",
+              "booking_date": "2026-08-02",
+              "transaction_date": "2026-08-02",
+              "title": "BIEDRONKA WARSZAWA",
+              "counterparty_name": null,
+              "counterparty_kind": "unknown",
+              "essential": false,
+              "enrichment_source": "manual",
+              "merchant_id": 1,
+              "effective_category_id": 1,
+              "category_path": "food"
+            }
+          ],
+          "pagination": {
+            "page": 1,
+            "limit": 10,
+            "count": 5,
+            "pages": 1
+          }
+        }
+      }
+    },
+    {
+      "case": "unknown_slug",
+      "actor": "main(token)",
+      "request": {
+        "method": "GET",
+        "path": "/api/v1/analytics/merchants/does-not-exist",
+        "headers": {
+          "authorization": "Bearer obrl_oracle_main_t…"
+        }
+      },
+      "response": {
+        "status": 404,
+        "duration_ms": 181,
+        "headers": {
+          "content-type": "application/json",
+          "cache-control": "no-cache",
+          "x-request-id": "023ce7d6-4374-4f86-93f4-a4a2b1a73e67",
+          "vary": "Origin",
+          "content-length": "112"
+        },
+        "body_sample": {
+          "message": "Couldn't find Merchant with [WHERE \"merchants\".\"user_id\" = $1 AND \"merchants\".\"slug\" = $2]"
+        }
+      }
+    }
+  ]
+}

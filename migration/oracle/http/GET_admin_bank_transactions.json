@@ -1,0 +1,71 @@
+{
+  "route": "GET /admin/bank_transactions(.:format)",
+  "captured_at": "2026-10-21T13:23:05.165Z",
+  "base_url": "http://127.0.0.1:3000",
+  "cases": [
+    {
+      "case": "default",
+      "actor": "main(session)",
+      "request": {
+        "method": "GET",
+        "path": "/admin/bank_transactions",
+        "headers": {}
+      },
+      "response": {
+        "status": 200,
+        "duration_ms": 1445,
+        "headers": {
+          "x-frame-options": "SAMEORIGIN",
+          "x-content-type-options": "nosniff",
+          "content-type": "text/html; charset=utf-8",
+          "vary": "Accept, Origin",
+          "cache-control": "max-age=0, private, must-revalidate",
+          "x-request-id": "c1879847-2972-4308-872f-5a44d7682b55",
+          "content-length": "154577",
+          "set-cookie": [
+            "_open_banking_rails_session=<redacted>; path=/; httponly; samesite=lax"
+          ]
+        },
+        "body_sample": {
+          "html_title": "Bank Transactions · Open Banking",
+          "h1": "Bank Transactions",
+          "flash": [],
+          "length": 154280,
+          "head": "<!-- BEGIN app/views/layouts/admin.html.erb --><!DOCTYPE html> <html lang=\"en\" class=\"\"> <head> <meta charset=\"UTF-8\"> <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"> <title>Bank Transactions · Open Banking</title> <meta name=\"csrf-param\" content=\"authenticity_token\" /> <meta name=\"csrf-token\" content=\"Mv0Dv-szmSEPr1IWqvUa-tyrdxjdhEjAk-qJQ-sAmWIlr4XH6vfYlRTh7puQsT7SpJP6ECFrhePfvGxbPPG_Yw\" /> <script> (function () { if (localStorage.getItem(\"sidebar-collapsed\") === \"true\") { document.documentElement.classList.add(\"sidebar-collapsed\"); } })(); </script> <link rel=\"icon\" href=\"/icon.svg?v=3\" type=\"image/svg+xml\"> <link rel=\"apple-touch-icon\" href=\"/icon.png\"> <link rel=\"preconnect\" href=\"https://fonts.googleapis.com\"> <link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin> <link href=\"https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap\" rel=\"stylesheet\"> <link rel=\"stylesheet\" href=\"/assets/tailwind-e94f0c0a.css\" data-turbo-track=\"reload\" /> <script type=\"importmap\" data-turbo-track=\"reload\">{ \"imports\": { \"application\": \"/assets/application-bfcdf840.js\", \"@hotwired/turbo-rails\": \"/assets/turbo.min-9fd88cd5.js\", \"@hotwired/stimulus\": \"/assets/stimulus.min-4b1e420e.js\", \"@hotwired/stimulus-loading\": \"/assets/stimulus-loading-1fc53fe7.js\", \"chart.js\": \"https://cdn.jsdelivr.net/npm/chart.js@4.5.1/+esm\", \"chartjs-plugin-datalabels\": \"https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/+esm\", \"controlle…[truncated 136575 chars]"
+        }
+      }
+    },
+    {
+      "case": "filtered",
+      "actor": "main(session)",
+      "request": {
+        "method": "GET",
+        "path": "/admin/bank_transactions?enrichment_state=unclassified&payment_method=card&q[title_cont]=BIED",
+        "headers": {}
+      },
+      "response": {
+        "status": 200,
+        "duration_ms": 1316,
+        "headers": {
+          "x-frame-options": "SAMEORIGIN",
+          "x-content-type-options": "nosniff",
+          "content-type": "text/html; charset=utf-8",
+          "vary": "Accept, Origin",
+          "cache-control": "max-age=0, private, must-revalidate",
+          "x-request-id": "5a5e7ca6-000f-41e9-9c63-49dca0afbde9",
+          "content-length": "134615",
+          "set-cookie": [
+            "_open_banking_rails_session=<redacted>; path=/; httponly; samesite=lax"
+          ]
+        },
+        "body_sample": {
+          "html_title": "Bank Transactions · Open Banking",
+          "h1": "Bank Transactions",
+          "flash": [],
+          "length": 134345,
+          "head": "<!-- BEGIN app/views/layouts/admin.html.erb --><!DOCTYPE html> <html lang=\"en\" class=\"\"> <head> <meta charset=\"UTF-8\"> <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"> <title>Bank Transactions · Open Banking</title> <meta name=\"csrf-param\" content=\"authenticity_token\" /> <meta name=\"csrf-token\" content=\"ddIc9VMHsyz9tqlSm2cNYQ6x5cNRTsBkrqxFA7gpUI9igJqNUsPymOb4Fd-hIylJdoloy62hDUfi-qAbb9h2jg\" /> <script> (function () { if (localStorage.getItem(\"sidebar-collapsed\") === \"true\") { document.documentElement.classList.add(\"sidebar-collapsed\"); } })(); </script> <link rel=\"icon\" href=\"/icon.svg?v=3\" type=\"image/svg+xml\"> <link rel=\"apple-touch-icon\" href=\"/icon.png\"> <link rel=\"preconnect\" href=\"https://fonts.googleapis.com\"> <link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin> <link href=\"https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap\" rel=\"stylesheet\"> <link rel=\"stylesheet\" href=\"/assets/tailwind-e94f0c0a.css\" data-turbo-track=\"reload\" /> <script type=\"importmap\" data-turbo-track=\"reload\">{ \"imports\": { \"application\": \"/assets/application-bfcdf840.js\", \"@hotwired/turbo-rails\": \"/assets/turbo.min-9fd88cd5.js\", \"@hotwired/stimulus\": \"/assets/stimulus.min-4b1e420e.js\", \"@hotwired/stimulus-loading\": \"/assets/stimulus-loading-1fc53fe7.js\", \"chart.js\": \"https://cdn.jsdelivr.net/npm/chart.js@4.5.1/+esm\", \"chartjs-plugin-datalabels\": \"https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/+esm\", \"controlle…[truncated 119410 chars]"
+        }
+      }
+    }
+  ]
+}

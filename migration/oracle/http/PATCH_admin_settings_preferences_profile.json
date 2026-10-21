@@ -1,0 +1,74 @@
+{
+  "route": "PATCH /admin/settings/preferences/profile(.:format)",
+  "captured_at": "2026-10-21T13:24:06.235Z",
+  "base_url": "http://127.0.0.1:3000",
+  "cases": [
+    {
+      "case": "default",
+      "actor": "main(session)",
+      "request": {
+        "method": "PATCH",
+        "path": "/admin/settings/preferences/profile",
+        "headers": {},
+        "body": {
+          "authenticity_token": "<redacted>",
+          "user[name]": "John Doe (oracle)"
+        }
+      },
+      "response": {
+        "status": 302,
+        "duration_ms": 161,
+        "headers": {
+          "x-frame-options": "SAMEORIGIN",
+          "x-content-type-options": "nosniff",
+          "location": "http://127.0.0.1:3000/admin/settings/preferences/profile",
+          "content-type": "text/html; charset=utf-8",
+          "cache-control": "no-cache",
+          "x-request-id": "a3586185-7ead-4c03-9825-49229efa80a7",
+          "vary": "Origin",
+          "content-length": "0",
+          "set-cookie": [
+            "_open_banking_rails_session=<redacted>; path=/; httponly; samesite=lax"
+          ]
+        },
+        "body_sample": ""
+      }
+    },
+    {
+      "case": "invalid_blank_name",
+      "actor": "main(session)",
+      "request": {
+        "method": "PATCH",
+        "path": "/admin/settings/preferences/profile",
+        "headers": {},
+        "body": {
+          "authenticity_token": "<redacted>",
+          "user[name]": ""
+        }
+      },
+      "response": {
+        "status": 422,
+        "duration_ms": 168,
+        "headers": {
+          "x-frame-options": "SAMEORIGIN",
+          "x-content-type-options": "nosniff",
+          "content-type": "text/html; charset=utf-8",
+          "vary": "Accept, Origin",
+          "cache-control": "no-cache",
+          "x-request-id": "59ea6c7c-abc8-4bc0-8642-8a8191bedb7e",
+          "content-length": "88670",
+          "set-cookie": [
+            "_open_banking_rails_session=<redacted>; path=/; httponly; samesite=lax"
+          ]
+        },
+        "body_sample": {
+          "html_title": "Preferences · Open Banking",
+          "h1": "Preferences",
+          "flash": [],
+          "length": 88619,
+          "head": "<!-- BEGIN app/views/layouts/admin.html.erb --><!DOCTYPE html> <html lang=\"en\" class=\"\"> <head> <meta charset=\"UTF-8\"> <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"> <title>Preferences · Open Banking</title> <meta name=\"csrf-param\" content=\"authenticity_token\" /> <meta name=\"csrf-token\" content=\"OeE_iQllwnGPv5UZ-PyDuRRJpU_gyS9jDViBRcnyoHMus7nxCKGDxZTxKZTCuKeRbHEoRxwm4kBBDmRdHgOGcg\" /> <script> (function () { if (localStorage.getItem(\"sidebar-collapsed\") === \"true\") { document.documentElement.classList.add(\"sidebar-collapsed\"); } })(); </script> <link rel=\"icon\" href=\"/icon.svg?v=3\" type=\"image/svg+xml\"> <link rel=\"apple-touch-icon\" href=\"/icon.png\"> <link rel=\"preconnect\" href=\"https://fonts.googleapis.com\"> <link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin> <link href=\"https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap\" rel=\"stylesheet\"> <link rel=\"stylesheet\" href=\"/assets/tailwind-e94f0c0a.css\" data-turbo-track=\"reload\" /> <script type=\"importmap\" data-turbo-track=\"reload\">{ \"imports\": { \"application\": \"/assets/application-bfcdf840.js\", \"@hotwired/turbo-rails\": \"/assets/turbo.min-9fd88cd5.js\", \"@hotwired/stimulus\": \"/assets/stimulus.min-4b1e420e.js\", \"@hotwired/stimulus-loading\": \"/assets/stimulus-loading-1fc53fe7.js\", \"chart.js\": \"https://cdn.jsdelivr.net/npm/chart.js@4.5.1/+esm\", \"chartjs-plugin-datalabels\": \"https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/+esm\", \"controllers/aja…[truncated 82410 chars]"
+        }
+      }
+    }
+  ]
+}

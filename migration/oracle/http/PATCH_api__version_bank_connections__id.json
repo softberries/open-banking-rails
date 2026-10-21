@@ -1,0 +1,39 @@
+{
+  "route": "PATCH /api/:version/bank_connections/:id(.json)",
+  "captured_at": "2026-10-21T13:22:49.040Z",
+  "base_url": "http://127.0.0.1:3000",
+  "cases": [
+    {
+      "case": "invalid_status",
+      "actor": "main(token)",
+      "request": {
+        "method": "PATCH",
+        "path": "/api/v1/bank_connections/1",
+        "headers": {
+          "authorization": "Bearer obrl_oracle_main_t…",
+          "content-type": "application/json"
+        },
+        "body": {
+          "status": "bogus"
+        }
+      },
+      "response": {
+        "status": 422,
+        "duration_ms": 169,
+        "headers": {
+          "content-type": "application/json",
+          "cache-control": "no-cache",
+          "x-request-id": "4cf39ba5-a9aa-498a-b729-81c8856ee546",
+          "vary": "Origin",
+          "content-length": "97"
+        },
+        "body_sample": {
+          "message": "Status is not included in the list",
+          "details": [
+            "Status is not included in the list"
+          ]
+        }
+      }
+    }
+  ]
+}

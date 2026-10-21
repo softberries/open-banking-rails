@@ -1,0 +1,78 @@
+{
+  "route": "POST /admin/cash_transactions(.:format)",
+  "captured_at": "2026-10-21T13:23:53.738Z",
+  "base_url": "http://127.0.0.1:3000",
+  "cases": [
+    {
+      "case": "default",
+      "actor": "main(session)",
+      "request": {
+        "method": "POST",
+        "path": "/admin/cash_transactions",
+        "headers": {},
+        "body": {
+          "authenticity_token": "<redacted>",
+          "cash_transaction[amount]": "10.00",
+          "cash_transaction[currency]": "PLN",
+          "cash_transaction[direction]": "debit",
+          "cash_transaction[title]": "Oracle UI cash",
+          "cash_transaction[booking_date]": "2026-01-12"
+        }
+      },
+      "response": {
+        "status": 302,
+        "duration_ms": 220,
+        "headers": {
+          "x-frame-options": "SAMEORIGIN",
+          "x-content-type-options": "nosniff",
+          "location": "http://127.0.0.1:3000/admin/cash_transactions",
+          "content-type": "text/html; charset=utf-8",
+          "cache-control": "no-cache",
+          "x-request-id": "66dc6cf8-7939-466c-a0a3-743cb47c35ca",
+          "vary": "Origin",
+          "content-length": "0",
+          "set-cookie": [
+            "_open_banking_rails_session=<redacted>; path=/; httponly; samesite=lax"
+          ]
+        },
+        "body_sample": ""
+      }
+    },
+    {
+      "case": "invalid_amount",
+      "actor": "main(session)",
+      "request": {
+        "method": "POST",
+        "path": "/admin/cash_transactions",
+        "headers": {},
+        "body": {
+          "authenticity_token": "<redacted>",
+          "cash_transaction[amount]": "abc"
+        }
+      },
+      "response": {
+        "status": 422,
+        "duration_ms": 1146,
+        "headers": {
+          "x-frame-options": "SAMEORIGIN",
+          "x-content-type-options": "nosniff",
+          "content-type": "text/html; charset=utf-8",
+          "vary": "Accept, Origin",
+          "cache-control": "no-cache",
+          "x-request-id": "4a7a7b14-14f7-464c-8641-771ca5f2b958",
+          "content-length": "92951",
+          "set-cookie": [
+            "_open_banking_rails_session=<redacted>; path=/; httponly; samesite=lax"
+          ]
+        },
+        "body_sample": {
+          "html_title": "New cash transaction · Open Banking",
+          "h1": "New cash transaction",
+          "flash": [],
+          "length": 92693,
+          "head": "<!-- BEGIN app/views/layouts/admin.html.erb --><!DOCTYPE html> <html lang=\"en\" class=\"\"> <head> <meta charset=\"UTF-8\"> <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"> <title>New cash transaction · Open Banking</title> <meta name=\"csrf-param\" content=\"authenticity_token\" /> <meta name=\"csrf-token\" content=\"2QbLv3ZVOCyj_leKhBqPOk-MkAAhLXBijytF0fojfPnOVE3Hd5F5mLiw6we-XqsSN7QdCN3CvUHDfaDJLdJa-A\" /> <script> (function () { if (localStorage.getItem(\"sidebar-collapsed\") === \"true\") { document.documentElement.classList.add(\"sidebar-collapsed\"); } })(); </script> <link rel=\"icon\" href=\"/icon.svg?v=3\" type=\"image/svg+xml\"> <link rel=\"apple-touch-icon\" href=\"/icon.png\"> <link rel=\"preconnect\" href=\"https://fonts.googleapis.com\"> <link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin> <link href=\"https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap\" rel=\"stylesheet\"> <link rel=\"stylesheet\" href=\"/assets/tailwind-e94f0c0a.css\" data-turbo-track=\"reload\" /> <script type=\"importmap\" data-turbo-track=\"reload\">{ \"imports\": { \"application\": \"/assets/application-bfcdf840.js\", \"@hotwired/turbo-rails\": \"/assets/turbo.min-9fd88cd5.js\", \"@hotwired/stimulus\": \"/assets/stimulus.min-4b1e420e.js\", \"@hotwired/stimulus-loading\": \"/assets/stimulus-loading-1fc53fe7.js\", \"chart.js\": \"https://cdn.jsdelivr.net/npm/chart.js@4.5.1/+esm\", \"chartjs-plugin-datalabels\": \"https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/+esm\", \"contro…[truncated 86908 chars]"
+        }
+      }
+    }
+  ]
+}

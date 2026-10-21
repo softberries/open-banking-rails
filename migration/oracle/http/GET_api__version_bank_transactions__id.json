@@ -1,0 +1,144 @@
+{
+  "route": "GET /api/:version/bank_transactions/:id(.json)",
+  "captured_at": "2026-10-21T13:22:30.408Z",
+  "base_url": "http://127.0.0.1:3000",
+  "cases": [
+    {
+      "case": "default",
+      "actor": "main(token)",
+      "request": {
+        "method": "GET",
+        "path": "/api/v1/bank_transactions/1",
+        "headers": {
+          "authorization": "Bearer obrl_oracle_main_t…"
+        }
+      },
+      "response": {
+        "status": 200,
+        "duration_ms": 215,
+        "headers": {
+          "content-type": "application/json",
+          "cache-control": "max-age=0, private, must-revalidate",
+          "x-request-id": "b01c8c9d-127a-4dd8-9d1e-efa03e558d82",
+          "vary": "Origin",
+          "content-length": "1552"
+        },
+        "body_sample": {
+          "id": 1,
+          "external_id": "fake-tx-1",
+          "bank_account_id": 1,
+          "amount": {
+            "cents": 1999,
+            "currency": "PLN"
+          },
+          "signed_amount": {
+            "cents": -1999,
+            "currency": "PLN"
+          },
+          "direction": "debit",
+          "status": "booked",
+          "booking_date": "2026-08-02",
+          "value_date": "2026-08-02",
+          "transaction_date": "2026-08-02",
+          "title": "BIEDRONKA WARSZAWA",
+          "counterparty_name": null,
+          "counterparty_iban": null,
+          "counterparty_kind": "unknown",
+          "payment_method": "card",
+          "type_hint": null,
+          "bank_transaction_code": null,
+          "fetched_at": "2026-10-21T13:21:23.027Z",
+          "enrichment": {
+            "id": 26,
+            "merchant_id": 1,
+            "category_id": 1,
+            "merchant_rule_id": null,
+            "source": "manual",
+            "category_overridden": true,
+            "confidence": null,
+            "model": null,
+            "enriched_at": "2026-10-21T13:22:26.252Z",
+            "merchant": {
+              "id": 1,
+              "name": "Biedronka",
+              "slug": "biedronka",
+              "kind": "company",
+              "source": "system",
+              "logo_url": null,
+              "notes": null,
+              "default_category_id": 12,
+              "confidence": null,
+              "model": null,
+              "approved_at": "2026-10-21T13:21:02.277Z",
+              "archived_at": null,
+              "default_category": {
+                "id": 12,
+                "name": "Supermarkety",
+                "slug": "food_cooking_supermarket",
+                "path": "food.cooking.supermarket",
+                "kind": "expense",
+                "color": "emerald",
+                "icon": null,
+                "essential": true,
+                "position": 11,
+                "archived_at": null,
+                "parent_path": "food.cooking"
+              }
+            },
+            "category": {
+              "id": 1,
+              "name": "Jedzenie",
+              "slug": "food",
+              "path": "food",
+              "kind": "expense",
+              "color": "emerald",
+              "icon": "utensils",
+              "essential": false,
+              "position": 0,
+              "archived_at": null,
+              "parent_path": null
+            },
+            "effective_category": {
+              "id": 1,
+              "name": "Jedzenie",
+              "slug": "food",
+              "path": "food",
+              "kind": "expense",
+              "color": "emerald",
+              "icon": "utensils",
+              "essential": false,
+              "position": 0,
+              "archived_at": null,
+              "parent_path": null
+            }
+          }
+        }
+      }
+    },
+    {
+      "case": "other_tenant_id",
+      "actor": "main(token)",
+      "request": {
+        "method": "GET",
+        "path": "/api/v1/bank_transactions/55",
+        "headers": {
+          "authorization": "Bearer obrl_oracle_main_t…"
+        }
+      },
+      "response": {
+        "status": 404,
+        "duration_ms": 173,
+        "headers": {
+          "content-type": "application/json",
+          "cache-control": "no-cache",
+          "x-request-id": "ca18b438-f69e-4a1c-b188-1c26e4f54c7d",
+          "vary": "Origin",
+          "content-length": "101"
+        },
+        "body_sample": {
+          "message": "Couldn't find BankTransaction with 'id'=55 [WHERE \"tpp_credentials\".\"user_id\" = $1]"
+        }
+      }
+    }
+  ]
+}

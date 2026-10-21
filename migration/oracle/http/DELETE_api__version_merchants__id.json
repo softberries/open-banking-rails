@@ -1,0 +1,32 @@
+{
+  "route": "DELETE /api/:version/merchants/:id(.json)",
+  "captured_at": "2026-10-21T13:22:54.999Z",
+  "base_url": "http://127.0.0.1:3000",
+  "cases": [
+    {
+      "case": "default",
+      "actor": "main(token)",
+      "request": {
+        "method": "DELETE",
+        "path": "/api/v1/merchants/58",
+        "headers": {
+          "authorization": "Bearer obrl_oracle_main_t…"
+        }
+      },
+      "response": {
+        "status": 422,
+        "duration_ms": 193,
+        "headers": {
+          "content-type": "application/json",
+          "cache-control": "no-cache",
+          "x-request-id": "c782808d-fe18-478a-bfd2-b0a62ae16d69",
+          "vary": "Origin",
+          "content-length": "87"
+        },
+        "body_sample": {
+          "message": "Can't delete - this merchant has linked transactions. Archive it instead."
+        }
+      }
+    }
+  ]
+}

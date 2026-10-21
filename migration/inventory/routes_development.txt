@@ -1,0 +1,865 @@
+W, [2026-10-21T12:27:09.851050 #9454]  WARN -- : Environment variable OTEL_SDK_DISABLED is defined as true. SDK is disabled.
+--[ Route 1 ]-------------------------------------------------------------------
+Prefix            | new_user_session
+Verb              | GET
+URI               | /admin/sign_in(.:format)
+Controller#Action | admin/sessions#new
+Source Location   | devise (5.0.4) lib/devise/rails/routes.rb:378
+--[ Route 2 ]-------------------------------------------------------------------
+Prefix            | user_session
+Verb              | POST
+URI               | /admin/sign_in(.:format)
+Controller#Action | admin/sessions#create
+Source Location   | devise (5.0.4) lib/devise/rails/routes.rb:379
+--[ Route 3 ]-------------------------------------------------------------------
+Prefix            | destroy_user_session
+Verb              | DELETE
+URI               | /admin/sign_out(.:format)
+Controller#Action | admin/sessions#destroy
+Source Location   | devise (5.0.4) lib/devise/rails/routes.rb:380
+--[ Route 4 ]-------------------------------------------------------------------
+Prefix            | new_user_password
+Verb              | GET
+URI               | /admin/password/new(.:format)
+Controller#Action | admin/passwords#new
+Source Location   | devise (5.0.4) lib/devise/rails/routes.rb:385
+--[ Route 5 ]-------------------------------------------------------------------
+Prefix            | edit_user_password
+Verb              | GET
+URI               | /admin/password/edit(.:format)
+Controller#Action | admin/passwords#edit
+Source Location   | devise (5.0.4) lib/devise/rails/routes.rb:385
+--[ Route 6 ]-------------------------------------------------------------------
+Prefix            | user_password
+Verb              | PATCH
+URI               | /admin/password(.:format)
+Controller#Action | admin/passwords#update
+Source Location   | devise (5.0.4) lib/devise/rails/routes.rb:385
+--[ Route 7 ]-------------------------------------------------------------------
+Prefix            | 
+Verb              | PUT
+URI               | /admin/password(.:format)
+Controller#Action | admin/passwords#update
+Source Location   | devise (5.0.4) lib/devise/rails/routes.rb:385
+--[ Route 8 ]-------------------------------------------------------------------
+Prefix            | 
+Verb              | POST
+URI               | /admin/password(.:format)
+Controller#Action | admin/passwords#create
+Source Location   | devise (5.0.4) lib/devise/rails/routes.rb:385
+--[ Route 9 ]-------------------------------------------------------------------
+Prefix            | sidekiq_web
+Verb              | 
+URI               | /sidekiq
+Controller#Action | Sidekiq::Web
+Source Location   | /workspace/ruby-service-investigator/src/config/routes.rb:13
+--[ Route 10 ]------------------------------------------------------------------
+Prefix            | setup
+Verb              | GET
+URI               | /setup(.:format)
+Controller#Action | setup#new
+Source Location   | /workspace/ruby-service-investigator/src/config/routes.rb:18
+--[ Route 11 ]------------------------------------------------------------------
+Prefix            | 
+Verb              | POST
+URI               | /setup(.:format)
+Controller#Action | setup#create
+Source Location   | /workspace/ruby-service-investigator/src/config/routes.rb:19
+--[ Route 12 ]------------------------------------------------------------------
+Prefix            | rails_health_check
+Verb              | GET
+URI               | /up(.:format)
+Controller#Action | rails/health#show
+Source Location   | /workspace/ruby-service-investigator/src/config/routes.rb:21
+--[ Route 13 ]------------------------------------------------------------------
+Prefix            | oauth_callback
+Verb              | GET
+URI               | /callback(.:format)
+Controller#Action | oauth_callbacks#enable_banking
+Source Location   | /workspace/ruby-service-investigator/src/config/routes.rb:25
+--[ Route 14 ]------------------------------------------------------------------
+Prefix            | api_docs
+Verb              | GET
+URI               | /api/:version/docs(.:format)
+Controller#Action | swagger#index {version: /v\d+/}
+Source Location   | /workspace/ruby-service-investigator/src/config/routes.rb:27
+--[ Route 15 ]------------------------------------------------------------------
+Prefix            | mcp
+Verb              | GET|POST|DELETE
+URI               | /mcp(.:format)
+Controller#Action | mcp#handle
+Source Location   | /workspace/ruby-service-investigator/src/config/routes.rb:29
+--[ Route 16 ]------------------------------------------------------------------
+Prefix            | api
+Verb              | 
+URI               | /
+Controller#Action | Api
+Source Location   | /workspace/ruby-service-investigator/src/config/routes.rb:31
+--[ Route 17 ]------------------------------------------------------------------
+Prefix            | admin_debug
+Verb              | GET
+URI               | /admin/debug(.:format)
+Controller#Action | admin/debug#index
+Source Location   | /workspace/ruby-service-investigator/src/config/routes.rb:35
+--[ Route 18 ]------------------------------------------------------------------
+Prefix            | admin_debug_runtime_error
+Verb              | GET
+URI               | /admin/debug/runtime_error(.:format)
+Controller#Action | admin/debug#runtime_error
+Source Location   | /workspace/ruby-service-investigator/src/config/routes.rb:36
+--[ Route 19 ]------------------------------------------------------------------
+Prefix            | admin_debug_zero_division
+Verb              | GET
+URI               | /admin/debug/zero_division(.:format)
+Controller#Action | admin/debug#zero_division
+Source Location   | /workspace/ruby-service-investigator/src/config/routes.rb:37
+--[ Route 20 ]------------------------------------------------------------------
+Prefix            | admin_debug_argument_error
+Verb              | GET
+URI               | /admin/debug/argument_error(.:format)
+Controller#Action | admin/debug#argument_error
+Source Location   | /workspace/ruby-service-investigator/src/config/routes.rb:38
+--[ Route 21 ]------------------------------------------------------------------
+Prefix            | admin_debug_nested_error
+Verb              | GET
+URI               | /admin/debug/nested_error(.:format)
+Controller#Action | admin/debug#nested_error
+Source Location   | /workspace/ruby-service-investigator/src/config/routes.rb:39
+--[ Route 22 ]------------------------------------------------------------------
+Prefix            | admin_debug_enqueue_failing_job
+Verb              | POST
+URI               | /admin/debug/enqueue_failing_job(.:format)
+Controller#Action | admin/debug#enqueue_failing_job
+Source Location   | /workspace/ruby-service-investigator/src/config/routes.rb:40
+--[ Route 23 ]------------------------------------------------------------------
+Prefix            | admin_root
+Verb              | GET
+URI               | /admin(.:format)
+Controller#Action | redirect(301, /admin/analytics)
+Source Location   | /workspace/ruby-service-investigator/src/config/routes.rb:48
+--[ Route 24 ]------------------------------------------------------------------
+Prefix            | admin_styleguide
+Verb              | GET
+URI               | /admin/styleguide(.:format)
+Controller#Action | admin/styleguide#index
+Source Location   | /workspace/ruby-service-investigator/src/config/routes.rb:49
+--[ Route 25 ]------------------------------------------------------------------
+Prefix            | admin_onboarding_seed_taxonomy
+Verb              | POST
+URI               | /admin/onboarding/seed_taxonomy(.:format)
+Controller#Action | admin/onboarding#seed_taxonomy
+Source Location   | /workspace/ruby-service-investigator/src/config/routes.rb:54
+--[ Route 26 ]------------------------------------------------------------------
+Prefix            | admin_versions
+Verb              | GET
+URI               | /admin/versions(.:format)
+Controller#Action | admin/versions#index
+Source Location   | /workspace/ruby-service-investigator/src/config/routes.rb:56
+--[ Route 27 ]------------------------------------------------------------------
+Prefix            | admin_version
+Verb              | GET
+URI               | /admin/versions/:id(.:format)
+Controller#Action | admin/versions#show
+Source Location   | /workspace/ruby-service-investigator/src/config/routes.rb:56
+--[ Route 28 ]------------------------------------------------------------------
+Prefix            | admin_bank_transaction_enrichment
+Verb              | PATCH
+URI               | /admin/bank_transactions/:bank_transaction_id/enrichment(.:format)
+Controller#Action | admin/transaction_enrichments#update
+Source Location   | /workspace/ruby-service-investigator/src/config/routes.rb:59
+--[ Route 29 ]------------------------------------------------------------------
+Prefix            | 
+Verb              | PUT
+URI               | /admin/bank_transactions/:bank_transaction_id/enrichment(.:format)
+Controller#Action | admin/transaction_enrichments#update
+Source Location   | /workspace/ruby-service-investigator/src/config/routes.rb:59
+--[ Route 30 ]------------------------------------------------------------------
+Prefix            | admin_bank_transactions
+Verb              | GET
+URI               | /admin/bank_transactions(.:format)
+Controller#Action | admin/bank_transactions#index
+Source Location   | /workspace/ruby-service-investigator/src/config/routes.rb:58
+--[ Route 31 ]------------------------------------------------------------------
+Prefix            | admin_bank_transaction
+Verb              | GET
+URI               | /admin/bank_transactions/:id(.:format)
+Controller#Action | admin/bank_transactions#show
+Source Location   | /workspace/ruby-service-investigator/src/config/routes.rb:58
+--[ Route 32 ]------------------------------------------------------------------
+Prefix            | admin_cash_transactions
+Verb              | GET
+URI               | /admin/cash_transactions(.:format)
+Controller#Action | admin/cash_transactions#index
+Source Location   | /workspace/ruby-service-investigator/src/config/routes.rb:62
+--[ Route 33 ]------------------------------------------------------------------
+Prefix            | 
+Verb              | POST
+URI               | /admin/cash_transactions(.:format)
+Controller#Action | admin/cash_transactions#create
+Source Location   | /workspace/ruby-service-investigator/src/config/routes.rb:62
+--[ Route 34 ]------------------------------------------------------------------
+Prefix            | new_admin_cash_transaction
+Verb              | GET
+URI               | /admin/cash_transactions/new(.:format)
+Controller#Action | admin/cash_transactions#new
+Source Location   | /workspace/ruby-service-investigator/src/config/routes.rb:62
+--[ Route 35 ]------------------------------------------------------------------
+Prefix            | edit_admin_cash_transaction
+Verb              | GET
+URI               | /admin/cash_transactions/:id/edit(.:format)
+Controller#Action | admin/cash_transactions#edit
+Source Location   | /workspace/ruby-service-investigator/src/config/routes.rb:62
+--[ Route 36 ]------------------------------------------------------------------
+Prefix            | admin_cash_transaction
+Verb              | GET
+URI               | /admin/cash_transactions/:id(.:format)
+Controller#Action | admin/cash_transactions#show
+Source Location   | /workspace/ruby-service-investigator/src/config/routes.rb:62
+--[ Route 37 ]------------------------------------------------------------------
+Prefix            | 
+Verb              | PATCH
+URI               | /admin/cash_transactions/:id(.:format)
+Controller#Action | admin/cash_transactions#update
+Source Location   | /workspace/ruby-service-investigator/src/config/routes.rb:62
+--[ Route 38 ]------------------------------------------------------------------
+Prefix            | 
+Verb              | PUT
+URI               | /admin/cash_transactions/:id(.:format)
+Controller#Action | admin/cash_transactions#update
+Source Location   | /workspace/ruby-service-investigator/src/config/routes.rb:62
+--[ Route 39 ]------------------------------------------------------------------
+Prefix            | 
+Verb              | DELETE
+URI               | /admin/cash_transactions/:id(.:format)
+Controller#Action | admin/cash_transactions#destroy
+Source Location   | /workspace/ruby-service-investigator/src/config/routes.rb:62
+--[ Route 40 ]------------------------------------------------------------------
+Prefix            | archive_admin_category
+Verb              | POST
+URI               | /admin/categories/:id/archive(.:format)
+Controller#Action | admin/categories#archive
+Source Location   | /workspace/ruby-service-investigator/src/config/routes.rb:66
+--[ Route 41 ]------------------------------------------------------------------
+Prefix            | unarchive_admin_category
+Verb              | POST
+URI               | /admin/categories/:id/unarchive(.:format)
+Controller#Action | admin/categories#unarchive
+Source Location   | /workspace/ruby-service-investigator/src/config/routes.rb:67
+--[ Route 42 ]------------------------------------------------------------------
+Prefix            | admin_categories
+Verb              | GET
+URI               | /admin/categories(.:format)
+Controller#Action | admin/categories#index
+Source Location   | /workspace/ruby-service-investigator/src/config/routes.rb:64
+--[ Route 43 ]------------------------------------------------------------------
+Prefix            | 
+Verb              | POST
+URI               | /admin/categories(.:format)
+Controller#Action | admin/categories#create
+Source Location   | /workspace/ruby-service-investigator/src/config/routes.rb:64
+--[ Route 44 ]------------------------------------------------------------------
+Prefix            | new_admin_category
+Verb              | GET
+URI               | /admin/categories/new(.:format)
+Controller#Action | admin/categories#new
+Source Location   | /workspace/ruby-service-investigator/src/config/routes.rb:64
+--[ Route 45 ]------------------------------------------------------------------
+Prefix            | edit_admin_category
+Verb              | GET
+URI               | /admin/categories/:id/edit(.:format)
+Controller#Action | admin/categories#edit
+Source Location   | /workspace/ruby-service-investigator/src/config/routes.rb:64
+--[ Route 46 ]------------------------------------------------------------------
+Prefix            | admin_category
+Verb              | PATCH
+URI               | /admin/categories/:id(.:format)
+Controller#Action | admin/categories#update
+Source Location   | /workspace/ruby-service-investigator/src/config/routes.rb:64
+--[ Route 47 ]------------------------------------------------------------------
+Prefix            | 
+Verb              | PUT
+URI               | /admin/categories/:id(.:format)
+Controller#Action | admin/categories#update
+Source Location   | /workspace/ruby-service-investigator/src/config/routes.rb:64
+--[ Route 48 ]------------------------------------------------------------------
+Prefix            | 
+Verb              | DELETE
+URI               | /admin/categories/:id(.:format)
+Controller#Action | admin/categories#destroy
+Source Location   | /workspace/ruby-service-investigator/src/config/routes.rb:64
+--[ Route 49 ]------------------------------------------------------------------
+Prefix            | archive_admin_merchant
+Verb              | POST
+URI               | /admin/merchants/:id/archive(.:format)
+Controller#Action | admin/merchants#archive
+Source Location   | /workspace/ruby-service-investigator/src/config/routes.rb:73
+--[ Route 50 ]------------------------------------------------------------------
+Prefix            | unarchive_admin_merchant
+Verb              | POST
+URI               | /admin/merchants/:id/unarchive(.:format)
+Controller#Action | admin/merchants#unarchive
+Source Location   | /workspace/ruby-service-investigator/src/config/routes.rb:74
+--[ Route 51 ]------------------------------------------------------------------
+Prefix            | approve_admin_merchant
+Verb              | POST
+URI               | /admin/merchants/:id/approve(.:format)
+Controller#Action | admin/merchants#approve
+Source Location   | /workspace/ruby-service-investigator/src/config/routes.rb:75
+--[ Route 52 ]------------------------------------------------------------------
+Prefix            | admin_merchant_merchant_rules
+Verb              | POST
+URI               | /admin/merchants/:merchant_id/merchant_rules(.:format)
+Controller#Action | admin/merchant_rules#create
+Source Location   | /workspace/ruby-service-investigator/src/config/routes.rb:77
+--[ Route 53 ]------------------------------------------------------------------
+Prefix            | admin_merchant_merchant_rule
+Verb              | PATCH
+URI               | /admin/merchants/:merchant_id/merchant_rules/:id(.:format)
+Controller#Action | admin/merchant_rules#update
+Source Location   | /workspace/ruby-service-investigator/src/config/routes.rb:77
+--[ Route 54 ]------------------------------------------------------------------
+Prefix            | 
+Verb              | PUT
+URI               | /admin/merchants/:merchant_id/merchant_rules/:id(.:format)
+Controller#Action | admin/merchant_rules#update
+Source Location   | /workspace/ruby-service-investigator/src/config/routes.rb:77
+--[ Route 55 ]------------------------------------------------------------------
+Prefix            | 
+Verb              | DELETE
+URI               | /admin/merchants/:merchant_id/merchant_rules/:id(.:format)
+Controller#Action | admin/merchant_rules#destroy
+Source Location   | /workspace/ruby-service-investigator/src/config/routes.rb:77
+--[ Route 56 ]------------------------------------------------------------------
+Prefix            | admin_merchants
+Verb              | GET
+URI               | /admin/merchants(.:format)
+Controller#Action | admin/merchants#index
+Source Location   | /workspace/ruby-service-investigator/src/config/routes.rb:71
+--[ Route 57 ]------------------------------------------------------------------
+Prefix            | 
+Verb              | POST
+URI               | /admin/merchants(.:format)
+Controller#Action | admin/merchants#create
+Source Location   | /workspace/ruby-service-investigator/src/config/routes.rb:71
+--[ Route 58 ]------------------------------------------------------------------
+Prefix            | new_admin_merchant
+Verb              | GET
+URI               | /admin/merchants/new(.:format)
+Controller#Action | admin/merchants#new
+Source Location   | /workspace/ruby-service-investigator/src/config/routes.rb:71
+--[ Route 59 ]------------------------------------------------------------------
+Prefix            | edit_admin_merchant
+Verb              | GET
+URI               | /admin/merchants/:id/edit(.:format)
+Controller#Action | admin/merchants#edit
+Source Location   | /workspace/ruby-service-investigator/src/config/routes.rb:71
+--[ Route 60 ]------------------------------------------------------------------
+Prefix            | admin_merchant
+Verb              | GET
+URI               | /admin/merchants/:id(.:format)
+Controller#Action | admin/merchants#show
+Source Location   | /workspace/ruby-service-investigator/src/config/routes.rb:71
+--[ Route 61 ]------------------------------------------------------------------
+Prefix            | 
+Verb              | PATCH
+URI               | /admin/merchants/:id(.:format)
+Controller#Action | admin/merchants#update
+Source Location   | /workspace/ruby-service-investigator/src/config/routes.rb:71
+--[ Route 62 ]------------------------------------------------------------------
+Prefix            | 
+Verb              | PUT
+URI               | /admin/merchants/:id(.:format)
+Controller#Action | admin/merchants#update
+Source Location   | /workspace/ruby-service-investigator/src/config/routes.rb:71
+--[ Route 63 ]------------------------------------------------------------------
+Prefix            | 
+Verb              | DELETE
+URI               | /admin/merchants/:id(.:format)
+Controller#Action | admin/merchants#destroy
+Source Location   | /workspace/ruby-service-investigator/src/config/routes.rb:71
+--[ Route 64 ]------------------------------------------------------------------
+Prefix            | admin_llm_enrichments
+Verb              | GET
+URI               | /admin/llm_enrichments(.:format)
+Controller#Action | admin/llm_enrichments#index
+Source Location   | /workspace/ruby-service-investigator/src/config/routes.rb:81
+--[ Route 65 ]------------------------------------------------------------------
+Prefix            | 
+Verb              | POST
+URI               | /admin/llm_enrichments(.:format)
+Controller#Action | admin/llm_enrichments#create
+Source Location   | /workspace/ruby-service-investigator/src/config/routes.rb:81
+--[ Route 66 ]------------------------------------------------------------------
+Prefix            | admin_llm_enrichment
+Verb              | GET
+URI               | /admin/llm_enrichments/:id(.:format)
+Controller#Action | admin/llm_enrichments#show
+Source Location   | /workspace/ruby-service-investigator/src/config/routes.rb:81
+--[ Route 67 ]------------------------------------------------------------------
+Prefix            | admin_analytics_root
+Verb              | GET
+URI               | /admin/analytics(.:format)
+Controller#Action | admin/analytics/dashboard#index
+Source Location   | /workspace/ruby-service-investigator/src/config/routes.rb:84
+--[ Route 68 ]------------------------------------------------------------------
+Prefix            | admin_analytics_category
+Verb              | GET
+URI               | /admin/analytics/categories/:slug(.:format)
+Controller#Action | admin/analytics/categories#show
+Source Location   | /workspace/ruby-service-investigator/src/config/routes.rb:85
+--[ Route 69 ]------------------------------------------------------------------
+Prefix            | admin_analytics_merchant
+Verb              | GET
+URI               | /admin/analytics/merchants/:slug(.:format)
+Controller#Action | admin/analytics/merchants#show
+Source Location   | /workspace/ruby-service-investigator/src/config/routes.rb:86
+--[ Route 70 ]------------------------------------------------------------------
+Prefix            | admin_matching_engine
+Verb              | GET
+URI               | /admin/matching_engine(.:format)
+Controller#Action | admin/matching_engine#show
+Source Location   | /workspace/ruby-service-investigator/src/config/routes.rb:91
+--[ Route 71 ]------------------------------------------------------------------
+Prefix            | admin_transaction_syncs
+Verb              | GET
+URI               | /admin/transaction_syncs(.:format)
+Controller#Action | admin/transaction_syncs#index
+Source Location   | /workspace/ruby-service-investigator/src/config/routes.rb:95
+--[ Route 72 ]------------------------------------------------------------------
+Prefix            | 
+Verb              | POST
+URI               | /admin/transaction_syncs(.:format)
+Controller#Action | admin/transaction_syncs#create
+Source Location   | /workspace/ruby-service-investigator/src/config/routes.rb:95
+--[ Route 73 ]------------------------------------------------------------------
+Prefix            | new_admin_transaction_sync
+Verb              | GET
+URI               | /admin/transaction_syncs/new(.:format)
+Controller#Action | admin/transaction_syncs#new
+Source Location   | /workspace/ruby-service-investigator/src/config/routes.rb:95
+--[ Route 74 ]------------------------------------------------------------------
+Prefix            | admin_transaction_sync
+Verb              | GET
+URI               | /admin/transaction_syncs/:id(.:format)
+Controller#Action | admin/transaction_syncs#show
+Source Location   | /workspace/ruby-service-investigator/src/config/routes.rb:95
+--[ Route 75 ]------------------------------------------------------------------
+Prefix            | test_connection_admin_tpp_credential
+Verb              | POST
+URI               | /admin/tpp_credentials/:id/test_connection(.:format)
+Controller#Action | admin/tpp_credentials#test_connection
+Source Location   | /workspace/ruby-service-investigator/src/config/routes.rb:103
+--[ Route 76 ]------------------------------------------------------------------
+Prefix            | make_primary_admin_tpp_credential
+Verb              | POST
+URI               | /admin/tpp_credentials/:id/make_primary(.:format)
+Controller#Action | admin/tpp_credentials#make_primary
+Source Location   | /workspace/ruby-service-investigator/src/config/routes.rb:104
+--[ Route 77 ]------------------------------------------------------------------
+Prefix            | admin_tpp_credentials
+Verb              | GET
+URI               | /admin/tpp_credentials(.:format)
+Controller#Action | admin/tpp_credentials#index
+Source Location   | /workspace/ruby-service-investigator/src/config/routes.rb:101
+--[ Route 78 ]------------------------------------------------------------------
+Prefix            | 
+Verb              | POST
+URI               | /admin/tpp_credentials(.:format)
+Controller#Action | admin/tpp_credentials#create
+Source Location   | /workspace/ruby-service-investigator/src/config/routes.rb:101
+--[ Route 79 ]------------------------------------------------------------------
+Prefix            | new_admin_tpp_credential
+Verb              | GET
+URI               | /admin/tpp_credentials/new(.:format)
+Controller#Action | admin/tpp_credentials#new
+Source Location   | /workspace/ruby-service-investigator/src/config/routes.rb:101
+--[ Route 80 ]------------------------------------------------------------------
+Prefix            | edit_admin_tpp_credential
+Verb              | GET
+URI               | /admin/tpp_credentials/:id/edit(.:format)
+Controller#Action | admin/tpp_credentials#edit
+Source Location   | /workspace/ruby-service-investigator/src/config/routes.rb:101
+--[ Route 81 ]------------------------------------------------------------------
+Prefix            | admin_tpp_credential
+Verb              | GET
+URI               | /admin/tpp_credentials/:id(.:format)
+Controller#Action | admin/tpp_credentials#show
+Source Location   | /workspace/ruby-service-investigator/src/config/routes.rb:101
+--[ Route 82 ]------------------------------------------------------------------
+Prefix            | 
+Verb              | PATCH
+URI               | /admin/tpp_credentials/:id(.:format)
+Controller#Action | admin/tpp_credentials#update
+Source Location   | /workspace/ruby-service-investigator/src/config/routes.rb:101
+--[ Route 83 ]------------------------------------------------------------------
+Prefix            | 
+Verb              | PUT
+URI               | /admin/tpp_credentials/:id(.:format)
+Controller#Action | admin/tpp_credentials#update
+Source Location   | /workspace/ruby-service-investigator/src/config/routes.rb:101
+--[ Route 84 ]------------------------------------------------------------------
+Prefix            | 
+Verb              | DELETE
+URI               | /admin/tpp_credentials/:id(.:format)
+Controller#Action | admin/tpp_credentials#destroy
+Source Location   | /workspace/ruby-service-investigator/src/config/routes.rb:101
+--[ Route 85 ]------------------------------------------------------------------
+Prefix            | refresh_admin_bank_connection
+Verb              | POST
+URI               | /admin/bank_connections/:id/refresh(.:format)
+Controller#Action | admin/bank_connections#refresh
+Source Location   | /workspace/ruby-service-investigator/src/config/routes.rb:110
+--[ Route 86 ]------------------------------------------------------------------
+Prefix            | reauth_admin_bank_connection
+Verb              | POST
+URI               | /admin/bank_connections/:id/reauth(.:format)
+Controller#Action | admin/bank_connections#reauth
+Source Location   | /workspace/ruby-service-investigator/src/config/routes.rb:111
+--[ Route 87 ]------------------------------------------------------------------
+Prefix            | edit_admin_bank_connection_sync_schedule
+Verb              | GET
+URI               | /admin/bank_connections/:bank_connection_id/sync_schedule/edit(.:format)
+Controller#Action | admin/sync_schedules#edit
+Source Location   | /workspace/ruby-service-investigator/src/config/routes.rb:113
+--[ Route 88 ]------------------------------------------------------------------
+Prefix            | admin_bank_connection_sync_schedule
+Verb              | PATCH
+URI               | /admin/bank_connections/:bank_connection_id/sync_schedule(.:format)
+Controller#Action | admin/sync_schedules#update
+Source Location   | /workspace/ruby-service-investigator/src/config/routes.rb:113
+--[ Route 89 ]------------------------------------------------------------------
+Prefix            | 
+Verb              | PUT
+URI               | /admin/bank_connections/:bank_connection_id/sync_schedule(.:format)
+Controller#Action | admin/sync_schedules#update
+Source Location   | /workspace/ruby-service-investigator/src/config/routes.rb:113
+--[ Route 90 ]------------------------------------------------------------------
+Prefix            | admin_bank_connections
+Verb              | GET
+URI               | /admin/bank_connections(.:format)
+Controller#Action | admin/bank_connections#index
+Source Location   | /workspace/ruby-service-investigator/src/config/routes.rb:108
+--[ Route 91 ]------------------------------------------------------------------
+Prefix            | 
+Verb              | POST
+URI               | /admin/bank_connections(.:format)
+Controller#Action | admin/bank_connections#create
+Source Location   | /workspace/ruby-service-investigator/src/config/routes.rb:108
+--[ Route 92 ]------------------------------------------------------------------
+Prefix            | new_admin_bank_connection
+Verb              | GET
+URI               | /admin/bank_connections/new(.:format)
+Controller#Action | admin/bank_connections#new
+Source Location   | /workspace/ruby-service-investigator/src/config/routes.rb:108
+--[ Route 93 ]------------------------------------------------------------------
+Prefix            | edit_admin_bank_connection
+Verb              | GET
+URI               | /admin/bank_connections/:id/edit(.:format)
+Controller#Action | admin/bank_connections#edit
+Source Location   | /workspace/ruby-service-investigator/src/config/routes.rb:108
+--[ Route 94 ]------------------------------------------------------------------
+Prefix            | admin_bank_connection
+Verb              | GET
+URI               | /admin/bank_connections/:id(.:format)
+Controller#Action | admin/bank_connections#show
+Source Location   | /workspace/ruby-service-investigator/src/config/routes.rb:108
+--[ Route 95 ]------------------------------------------------------------------
+Prefix            | 
+Verb              | PATCH
+URI               | /admin/bank_connections/:id(.:format)
+Controller#Action | admin/bank_connections#update
+Source Location   | /workspace/ruby-service-investigator/src/config/routes.rb:108
+--[ Route 96 ]------------------------------------------------------------------
+Prefix            | 
+Verb              | PUT
+URI               | /admin/bank_connections/:id(.:format)
+Controller#Action | admin/bank_connections#update
+Source Location   | /workspace/ruby-service-investigator/src/config/routes.rb:108
+--[ Route 97 ]------------------------------------------------------------------
+Prefix            | 
+Verb              | DELETE
+URI               | /admin/bank_connections/:id(.:format)
+Controller#Action | admin/bank_connections#destroy
+Source Location   | /workspace/ruby-service-investigator/src/config/routes.rb:108
+--[ Route 98 ]------------------------------------------------------------------
+Prefix            | refresh_details_admin_bank_account
+Verb              | POST
+URI               | /admin/bank_accounts/:id/refresh_details(.:format)
+Controller#Action | admin/bank_accounts#refresh_details
+Source Location   | /workspace/ruby-service-investigator/src/config/routes.rb:118
+--[ Route 99 ]------------------------------------------------------------------
+Prefix            | refresh_balances_admin_bank_account
+Verb              | POST
+URI               | /admin/bank_accounts/:id/refresh_balances(.:format)
+Controller#Action | admin/bank_accounts#refresh_balances
+Source Location   | /workspace/ruby-service-investigator/src/config/routes.rb:119
+--[ Route 100 ]-----------------------------------------------------------------
+Prefix            | admin_bank_accounts
+Verb              | GET
+URI               | /admin/bank_accounts(.:format)
+Controller#Action | admin/bank_accounts#index
+Source Location   | /workspace/ruby-service-investigator/src/config/routes.rb:116
+--[ Route 101 ]-----------------------------------------------------------------
+Prefix            | admin_bank_account
+Verb              | GET
+URI               | /admin/bank_accounts/:id(.:format)
+Controller#Action | admin/bank_accounts#show
+Source Location   | /workspace/ruby-service-investigator/src/config/routes.rb:116
+--[ Route 102 ]-----------------------------------------------------------------
+Prefix            | admin_settings_root
+Verb              | GET
+URI               | /admin/settings(.:format)
+Controller#Action | redirect(301, /admin/settings/preferences)
+Source Location   | /workspace/ruby-service-investigator/src/config/routes.rb:124
+--[ Route 103 ]-----------------------------------------------------------------
+Prefix            | admin_settings_preferences
+Verb              | GET
+URI               | /admin/settings/preferences(.:format)
+Controller#Action | redirect(301, /admin/settings/preferences/profile)
+Source Location   | /workspace/ruby-service-investigator/src/config/routes.rb:127
+--[ Route 104 ]-----------------------------------------------------------------
+Prefix            | admin_settings_preferences_profile
+Verb              | GET
+URI               | /admin/settings/preferences/profile(.:format)
+Controller#Action | admin/settings/preferences#profile
+Source Location   | /workspace/ruby-service-investigator/src/config/routes.rb:134
+--[ Route 105 ]-----------------------------------------------------------------
+Prefix            | 
+Verb              | PATCH
+URI               | /admin/settings/preferences/profile(.:format)
+Controller#Action | admin/settings/preferences#update_profile
+Source Location   | /workspace/ruby-service-investigator/src/config/routes.rb:135
+--[ Route 106 ]-----------------------------------------------------------------
+Prefix            | admin_settings_preferences_password
+Verb              | PATCH
+URI               | /admin/settings/preferences/password(.:format)
+Controller#Action | admin/settings/preferences#update_password
+Source Location   | /workspace/ruby-service-investigator/src/config/routes.rb:136
+--[ Route 107 ]-----------------------------------------------------------------
+Prefix            | admin_settings_preferences_app
+Verb              | GET
+URI               | /admin/settings/preferences/app(.:format)
+Controller#Action | admin/settings/preferences#app
+Source Location   | /workspace/ruby-service-investigator/src/config/routes.rb:138
+--[ Route 108 ]-----------------------------------------------------------------
+Prefix            | 
+Verb              | PATCH
+URI               | /admin/settings/preferences/app(.:format)
+Controller#Action | admin/settings/preferences#update_app
+Source Location   | /workspace/ruby-service-investigator/src/config/routes.rb:139
+--[ Route 109 ]-----------------------------------------------------------------
+Prefix            | admin_settings_preferences_llm
+Verb              | GET
+URI               | /admin/settings/preferences/llm(.:format)
+Controller#Action | admin/settings/preferences#llm
+Source Location   | /workspace/ruby-service-investigator/src/config/routes.rb:141
+--[ Route 110 ]-----------------------------------------------------------------
+Prefix            | 
+Verb              | PATCH
+URI               | /admin/settings/preferences/llm(.:format)
+Controller#Action | admin/settings/preferences#update_llm
+Source Location   | /workspace/ruby-service-investigator/src/config/routes.rb:142
+--[ Route 111 ]-----------------------------------------------------------------
+Prefix            | admin_settings_preferences_test_llm
+Verb              | POST
+URI               | /admin/settings/preferences/llm/test(.:format)
+Controller#Action | admin/settings/preferences#test_llm
+Source Location   | /workspace/ruby-service-investigator/src/config/routes.rb:143
+--[ Route 112 ]-----------------------------------------------------------------
+Prefix            | admin_settings_preferences_data_exchange
+Verb              | GET
+URI               | /admin/settings/preferences/data_exchange(.:format)
+Controller#Action | admin/settings/data_exchange#show
+Source Location   | /workspace/ruby-service-investigator/src/config/routes.rb:149
+--[ Route 113 ]-----------------------------------------------------------------
+Prefix            | admin_settings_preferences_data_exchange_export
+Verb              | POST
+URI               | /admin/settings/preferences/data_exchange/export(.:format)
+Controller#Action | admin/settings/data_exchange#export
+Source Location   | /workspace/ruby-service-investigator/src/config/routes.rb:150
+--[ Route 114 ]-----------------------------------------------------------------
+Prefix            | admin_settings_preferences_data_exchange_import
+Verb              | POST
+URI               | /admin/settings/preferences/data_exchange/import(.:format)
+Controller#Action | admin/settings/data_exchange#import
+Source Location   | /workspace/ruby-service-investigator/src/config/routes.rb:151
+--[ Route 115 ]-----------------------------------------------------------------
+Prefix            | admin_settings_preferences_api_tokens
+Verb              | GET
+URI               | /admin/settings/preferences/api_tokens(.:format)
+Controller#Action | admin/settings/api_tokens#index
+Source Location   | /workspace/ruby-service-investigator/src/config/routes.rb:153
+--[ Route 116 ]-----------------------------------------------------------------
+Prefix            | 
+Verb              | POST
+URI               | /admin/settings/preferences/api_tokens(.:format)
+Controller#Action | admin/settings/api_tokens#create
+Source Location   | /workspace/ruby-service-investigator/src/config/routes.rb:153
+--[ Route 117 ]-----------------------------------------------------------------
+Prefix            | admin_settings_preferences_api_token
+Verb              | DELETE
+URI               | /admin/settings/preferences/api_tokens/:id(.:format)
+Controller#Action | admin/settings/api_tokens#destroy
+Source Location   | /workspace/ruby-service-investigator/src/config/routes.rb:153
+--[ Route 118 ]-----------------------------------------------------------------
+Prefix            | root
+Verb              | GET
+URI               | /
+Controller#Action | redirect(301, /admin)
+Source Location   | /workspace/ruby-service-investigator/src/config/routes.rb:158
+--[ Route 119 ]-----------------------------------------------------------------
+Prefix            | turbo_recede_historical_location
+Verb              | GET
+URI               | /recede_historical_location(.:format)
+Controller#Action | turbo/native/navigation#recede
+Source Location   | turbo-rails (2.0.23) config/routes.rb:2
+--[ Route 120 ]-----------------------------------------------------------------
+Prefix            | turbo_resume_historical_location
+Verb              | GET
+URI               | /resume_historical_location(.:format)
+Controller#Action | turbo/native/navigation#resume
+Source Location   | turbo-rails (2.0.23) config/routes.rb:3
+--[ Route 121 ]-----------------------------------------------------------------
+Prefix            | turbo_refresh_historical_location
+Verb              | GET
+URI               | /refresh_historical_location(.:format)
+Controller#Action | turbo/native/navigation#refresh
+Source Location   | turbo-rails (2.0.23) config/routes.rb:4
+--[ Route 122 ]-----------------------------------------------------------------
+Prefix            | rails_postmark_inbound_emails
+Verb              | POST
+URI               | /rails/action_mailbox/postmark/inbound_emails(.:format)
+Controller#Action | action_mailbox/ingresses/postmark/inbound_emails#create
+Source Location   | actionmailbox (8.1.3) config/routes.rb:5
+--[ Route 123 ]-----------------------------------------------------------------
+Prefix            | rails_relay_inbound_emails
+Verb              | POST
+URI               | /rails/action_mailbox/relay/inbound_emails(.:format)
+Controller#Action | action_mailbox/ingresses/relay/inbound_emails#create
+Source Location   | actionmailbox (8.1.3) config/routes.rb:6
+--[ Route 124 ]-----------------------------------------------------------------
+Prefix            | rails_sendgrid_inbound_emails
+Verb              | POST
+URI               | /rails/action_mailbox/sendgrid/inbound_emails(.:format)
+Controller#Action | action_mailbox/ingresses/sendgrid/inbound_emails#create
+Source Location   | actionmailbox (8.1.3) config/routes.rb:7
+--[ Route 125 ]-----------------------------------------------------------------
+Prefix            | rails_mandrill_inbound_health_check
+Verb              | GET
+URI               | /rails/action_mailbox/mandrill/inbound_emails(.:format)
+Controller#Action | action_mailbox/ingresses/mandrill/inbound_emails#health_check
+Source Location   | actionmailbox (8.1.3) config/routes.rb:10
+--[ Route 126 ]-----------------------------------------------------------------
+Prefix            | rails_mandrill_inbound_emails
+Verb              | POST
+URI               | /rails/action_mailbox/mandrill/inbound_emails(.:format)
+Controller#Action | action_mailbox/ingresses/mandrill/inbound_emails#create
+Source Location   | actionmailbox (8.1.3) config/routes.rb:11
+--[ Route 127 ]-----------------------------------------------------------------
+Prefix            | rails_mailgun_inbound_emails
+Verb              | POST
+URI               | /rails/action_mailbox/mailgun/inbound_emails/mime(.:format)
+Controller#Action | action_mailbox/ingresses/mailgun/inbound_emails#create
+Source Location   | actionmailbox (8.1.3) config/routes.rb:14
+--[ Route 128 ]-----------------------------------------------------------------
+Prefix            | rails_conductor_inbound_emails
+Verb              | GET
+URI               | /rails/conductor/action_mailbox/inbound_emails(.:format)
+Controller#Action | rails/conductor/action_mailbox/inbound_emails#index
+Source Location   | actionmailbox (8.1.3) config/routes.rb:19
+--[ Route 129 ]-----------------------------------------------------------------
+Prefix            | 
+Verb              | POST
+URI               | /rails/conductor/action_mailbox/inbound_emails(.:format)
+Controller#Action | rails/conductor/action_mailbox/inbound_emails#create
+Source Location   | actionmailbox (8.1.3) config/routes.rb:19
+--[ Route 130 ]-----------------------------------------------------------------
+Prefix            | new_rails_conductor_inbound_email
+Verb              | GET
+URI               | /rails/conductor/action_mailbox/inbound_emails/new(.:format)
+Controller#Action | rails/conductor/action_mailbox/inbound_emails#new
+Source Location   | actionmailbox (8.1.3) config/routes.rb:19
+--[ Route 131 ]-----------------------------------------------------------------
+Prefix            | rails_conductor_inbound_email
+Verb              | GET
+URI               | /rails/conductor/action_mailbox/inbound_emails/:id(.:format)
+Controller#Action | rails/conductor/action_mailbox/inbound_emails#show
+Source Location   | actionmailbox (8.1.3) config/routes.rb:19
+--[ Route 132 ]-----------------------------------------------------------------
+Prefix            | new_rails_conductor_inbound_email_source
+Verb              | GET
+URI               | /rails/conductor/action_mailbox/inbound_emails/sources/new(.:format)
+Controller#Action | rails/conductor/action_mailbox/inbound_emails/sources#new
+Source Location   | actionmailbox (8.1.3) config/routes.rb:20
+--[ Route 133 ]-----------------------------------------------------------------
+Prefix            | rails_conductor_inbound_email_sources
+Verb              | POST
+URI               | /rails/conductor/action_mailbox/inbound_emails/sources(.:format)
+Controller#Action | rails/conductor/action_mailbox/inbound_emails/sources#create
+Source Location   | actionmailbox (8.1.3) config/routes.rb:21
+--[ Route 134 ]-----------------------------------------------------------------
+Prefix            | rails_conductor_inbound_email_reroute
+Verb              | POST
+URI               | /rails/conductor/action_mailbox/:inbound_email_id/reroute(.:format)
+Controller#Action | rails/conductor/action_mailbox/reroutes#create
+Source Location   | actionmailbox (8.1.3) config/routes.rb:23
+--[ Route 135 ]-----------------------------------------------------------------
+Prefix            | rails_conductor_inbound_email_incinerate
+Verb              | POST
+URI               | /rails/conductor/action_mailbox/:inbound_email_id/incinerate(.:format)
+Controller#Action | rails/conductor/action_mailbox/incinerates#create
+Source Location   | actionmailbox (8.1.3) config/routes.rb:24
+--[ Route 136 ]-----------------------------------------------------------------
+Prefix            | rails_service_blob
+Verb              | GET
+URI               | /rails/active_storage/blobs/redirect/:signed_id/*filename(.:format)
+Controller#Action | active_storage/blobs/redirect#show
+Source Location   | activestorage (8.1.3) config/routes.rb:5
+--[ Route 137 ]-----------------------------------------------------------------
+Prefix            | rails_service_blob_proxy
+Verb              | GET
+URI               | /rails/active_storage/blobs/proxy/:signed_id/*filename(.:format)
+Controller#Action | active_storage/blobs/proxy#show
+Source Location   | activestorage (8.1.3) config/routes.rb:6
+--[ Route 138 ]-----------------------------------------------------------------
+Prefix            | 
+Verb              | GET
+URI               | /rails/active_storage/blobs/:signed_id/*filename(.:format)
+Controller#Action | active_storage/blobs/redirect#show
+Source Location   | activestorage (8.1.3) config/routes.rb:7
+--[ Route 139 ]-----------------------------------------------------------------
+Prefix            | rails_blob_representation
+Verb              | GET
+URI               | /rails/active_storage/representations/redirect/:signed_blob_id/:variation_key/*filename(.:format)
+Controller#Action | active_storage/representations/redirect#show
+Source Location   | activestorage (8.1.3) config/routes.rb:9
+--[ Route 140 ]-----------------------------------------------------------------
+Prefix            | rails_blob_representation_proxy
+Verb              | GET
+URI               | /rails/active_storage/representations/proxy/:signed_blob_id/:variation_key/*filename(.:format)
+Controller#Action | active_storage/representations/proxy#show
+Source Location   | activestorage (8.1.3) config/routes.rb:10
+--[ Route 141 ]-----------------------------------------------------------------
+Prefix            | 
+Verb              | GET
+URI               | /rails/active_storage/representations/:signed_blob_id/:variation_key/*filename(.:format)
+Controller#Action | active_storage/representations/redirect#show
+Source Location   | activestorage (8.1.3) config/routes.rb:11
+--[ Route 142 ]-----------------------------------------------------------------
+Prefix            | rails_disk_service
+Verb              | GET
+URI               | /rails/active_storage/disk/:encoded_key/*filename(.:format)
+Controller#Action | active_storage/disk#show
+Source Location   | activestorage (8.1.3) config/routes.rb:13
+--[ Route 143 ]-----------------------------------------------------------------
+Prefix            | update_rails_disk_service
+Verb              | PUT
+URI               | /rails/active_storage/disk/:encoded_token(.:format)
+Controller#Action | active_storage/disk#update
+Source Location   | activestorage (8.1.3) config/routes.rb:14
+--[ Route 144 ]-----------------------------------------------------------------
+Prefix            | rails_direct_uploads
+Verb              | POST
+URI               | /rails/active_storage/direct_uploads(.:format)
+Controller#Action | active_storage/direct_uploads#create
+Source Location   | activestorage (8.1.3) config/routes.rb:15

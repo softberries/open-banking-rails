@@ -1,0 +1,435 @@
+{
+  "route": "GET /api/:version/transactions(.json)",
+  "captured_at": "2026-10-21T13:22:28.034Z",
+  "base_url": "http://127.0.0.1:3000",
+  "cases": [
+    {
+      "case": "default",
+      "actor": "main(token)",
+      "request": {
+        "method": "GET",
+        "path": "/api/v1/transactions",
+        "headers": {
+          "authorization": "Bearer obrl_oracle_main_t…"
+        }
+      },
+      "response": {
+        "status": 200,
+        "duration_ms": 228,
+        "headers": {
+          "content-type": "application/json",
+          "cache-control": "max-age=0, private, must-revalidate",
+          "x-request-id": "168690d3-3f63-4394-a0ad-62e0a377b48a",
+          "vary": "Origin",
+          "content-length": "4863"
+        },
+        "body_sample": {
+          "data": [
+            {
+              "source_type": "BankTransaction",
+              "source_id": 54,
+              "bank_account_id": 3,
+              "amount": {
+                "cents": 500,
+                "currency": "EUR"
+              },
+              "signed_amount": {
+                "cents": -500,
+                "currency": "EUR"
+              },
+              "direction": "debit",
+              "status": "booked",
+              "payment_method": "card",
+              "booking_date": "2026-10-11",
+              "transaction_date": "2026-10-11",
+              "title": "OpenAI",
+              "counterparty_name": "Openai LLC",
+              "counterparty_kind": "external",
+              "essential": false,
+              "enrichment_source": null,
+              "merchant_id": null,
+              "effective_category_id": null,
+              "category_path": ""
+            },
+            {
+              "source_type": "BankTransaction",
+              "source_id": 53,
+              "bank_account_id": 3,
+              "amount": {
+                "cents": 1499,
+                "currency": "EUR"
+              },
+              "signed_amount": {
+                "cents": -1499,
+                "currency": "EUR"
+              },
+              "direction": "debit",
+              "status": "booked",
+              "payment_method": "card",
+              "booking_date": "2026-10-06",
+              "transaction_date": "2026-10-06",
+              "title": "Netflix",
+              "counterparty_name": "Netflix Intl.",
+              "counterparty_kind": "external",
+              "essential": false,
+              "enrichment_source": null,
+              "merchant_id": null,
+              "effective_category_id": null,
+              "category_path": ""
+            },
+            {
+              "source_type": "BankTransaction",
+              "source_id": 39,
+              "bank_account_id": 1,
+              "amount": {
+                "cents": 650000,
+                "currency": "PLN"
+              },
+              "signed_amount": {
+                "cents": 650000,
+                "currency": "PLN"
+              },
+              "direction": "credit",
+              "status": "booked",
+              "payment_method": "card",
+              "booking_date": "2026-10-02",
+              "transaction_date": "2026-10-02",
+              "title": "WYNAGRODZENIE",
+              "counterparty_name": "Some Company sp. z o.o.",
+              "counterparty_kind": "external",
+              "essential": false,
+              "enrichment_source": null,
+              "merchant_id": null,
+              "effective_category_id": null,
+              "category_path": ""
+            },
+            {
+              "source_type": "BankTransaction",
+              "source_id": 52,
+              "bank_account_id": 3,
+              "amount": {
+                "cents": 999,
+                "currency": "EUR"
+              },
+              "signed_amount": {
+                "cents": -999,
+                "currency": "EUR"
+              },
+              "direction": "debit",
+              "status": "booked",
+              "payment_method": "card",
+              "booking_date": "2026-10-01",
+              "transaction_date": "2026-10-01",
+              "title": "Spotify",
+              "counterparty_name": "Spotify AB",
+              "counterparty_kind": "external",
+              "essential": false,
+              "enrichment_source": null,
+              "merchant_id": null,
+              "effective_category_id": null,
+              "category_path": ""
+            },
+            {
+              "source_type": "BankTransaction",
+              "source_id": 36,
+              "bank_account_id": 1,
+              "amount": {
+                "cents": 20000,
+                "currency": "PLN"
+              },
+              "signed_amount": {
+                "cents": -20000,
+                "currency": "PLN"
+              },
+              "direction": "debit",
+              "status": "booked",
+              "payment_method": "blik_atm",
+              "booking_date": "2026-10-01",
+              "transaction_date": "2026-10-01",
+              "title": "WYP. BANKOMAT",
+              "counterparty_name": null,
+              "counterparty_kind": "unknown",
+              "essential": false,
+              "enrichment_source": null,
+              "merchant_id": null,
+              "effective_category_id": null,
+              "category_path": ""
+            },
+            {
+              "source_type": "ManualTransaction",
+              "source_id": 6,
+              "bank_account_id": 5,
+              "amount": {
+                "cents": 20000,
+                "currency": "PLN"
+              },
+              "signed_amount": {
+                "cents": 20000,
+                "currency": "PLN"
+              },
+              "direction": "credit",
+              "status": "booked",
+              "payment_method": "cash_atm_topup",
+              "booking_date": "2026-10-01",
+              "transaction_date": "2026-10-01",
+              "title": "ATM withdrawal (PKO BP)",
+              "counterparty_name": null,
+              "counterparty_kind": "unknown",
+              "essential": false,
+              "enrichment_source": "system_fallback",
+              "merchant_id": null,
+              "effective_category_id": 101,
+              "category_path": "money.transfers.atm"
+            },
+            {
+              "source_type": "BankTransaction",
+              "source_id": 30,
+              "bank_account_id": 1,
+              "amount": {
+                "cents": 22000,
+                "currency": "PLN"
+              },
+              "signed_amount": {
+                "cents": -22000,
+                "currency": "PLN"
+              },
+              "direction": "debit",
+              "status": "booked",
+              "payment_method": "card",
+              "booking_date": "2026-09-29",
+              "transaction_date": "2026-09-29",
+              "title": "DECATHLON",
+              "counterparty_name": null,
+              "counterparty_kind": "unknown",
+              "essential": false,
+              "enrichment_source": null,
+              "merchant_id": null,
+              "effective_category_id": null,
+              "category_path": ""
+            },
+            {
+              "source_type": "BankTransaction",
+              "source_id": 29,
+              "bank_account_id": 1,
+              "amount": {
+                "cents": 899,
+                "currency": "PLN"
+              },
+              "signed_amount": {
+                "cents": -899,
+                "currency": "PLN"
+              },
+              "direction": "debit",
+              "status": "booked",
+              "payment_method": "card",
+              "booking_date": "2026-09-27",
+              "transaction_date": "2026-09-27",
+              "title": "ROSSMANN 0123",
+              "counterparty_name": null,
+              "counterparty_kind": "unknown",
+              "essential": false,
+              "enrichment_source": null,
+              "merchant_id": null,
+              "effective_category_id": null,
+              "category_path": ""
+            },
+            {
+              "source_type": "BankTransaction",
+              "source_id": 51,
+              "bank_account_id": 3,
+              "amount": {
+                "cents": 2500,
+                "currency": "EUR"
+              },
+              "signed_amount": {
+                "cents": -2500,
+                "currency": "EUR"
+              },
+              "direction": "debit",
+              "status": "booked",
+              "payment_method": "card",
+              "booking_date": "2026-09-26",
+              "transaction_date": "2026-09-26",
+              "title": "Anthropic",
+              "counterparty_name": "Anthropic",
+              "counterparty_kind": "external",
+              "essential": false,
+              "enrichment_source": null,
+              "merchant_id": null,
+              "effective_category_id": null,
+              "category_path": ""
+            },
+            {
+              "source_type": "BankTransaction",
+              "source_id": 28,
+              "bank_account_id": 1,
+              "amount": {
+                "cents": 15600,
+                "currency": "PLN"
+              },
+              "signed_amount": {
+                "cents": -15600,
+                "currency": "PLN"
+              },
+              "direction": "debit",
+              "status": "booked",
+              "payment_method": "card",
+              "booking_date": "2026-09-25",
+              "transaction_date": "2026-09-25",
+              "title": "T-MOBILE POLSKA",
+              "counterparty_name": null,
+              "counterparty_kind": "unknown",
+              "essential": false,
+              "enrichment_source": null,
+              "merchant_id": null,
+              "effective_category_id": null,
+              "category_path": ""
+            }
+          ],
+          "pagination": {
+            "page": 1,
+            "limit": 10,
+            "count": 66,
+            "pages": 7
+          }
+        }
+      }
+    },
+    {
+      "case": "filtered_paged",
+      "actor": "main(token)",
+      "request": {
+        "method": "GET",
+        "path": "/api/v1/transactions?direction=debit&limit=2&page=2",
+        "headers": {
+          "authorization": "Bearer obrl_oracle_main_t…"
+        }
+      },
+      "response": {
+        "status": 200,
+        "duration_ms": 205,
+        "headers": {
+          "content-type": "application/json",
+          "cache-control": "max-age=0, private, must-revalidate",
+          "x-request-id": "14371902-54e3-4633-bdf9-5689a5710ad5",
+          "vary": "Origin",
+          "content-length": "1013"
+        },
+        "body_sample": {
+          "data": [
+            {
+              "source_type": "BankTransaction",
+              "source_id": 52,
+              "bank_account_id": 3,
+              "amount": {
+                "cents": 999,
+                "currency": "EUR"
+              },
+              "signed_amount": {
+                "cents": -999,
+                "currency": "EUR"
+              },
+              "direction": "debit",
+              "status": "booked",
+              "payment_method": "card",
+              "booking_date": "2026-10-01",
+              "transaction_date": "2026-10-01",
+              "title": "Spotify",
+              "counterparty_name": "Spotify AB",
+              "counterparty_kind": "external",
+              "essential": false,
+              "enrichment_source": null,
+              "merchant_id": null,
+              "effective_category_id": null,
+              "category_path": ""
+            },
+            {
+              "source_type": "BankTransaction",
+              "source_id": 36,
+              "bank_account_id": 1,
+              "amount": {
+                "cents": 20000,
+                "currency": "PLN"
+              },
+              "signed_amount": {
+                "cents": -20000,
+                "currency": "PLN"
+              },
+              "direction": "debit",
+              "status": "booked",
+              "payment_method": "blik_atm",
+              "booking_date": "2026-10-01",
+              "transaction_date": "2026-10-01",
+              "title": "WYP. BANKOMAT",
+              "counterparty_name": null,
+              "counterparty_kind": "unknown",
+              "essential": false,
+              "enrichment_source": null,
+              "merchant_id": null,
+              "effective_category_id": null,
+              "category_path": ""
+            }
+          ],
+          "pagination": {
+            "page": 2,
+            "limit": 2,
+            "count": 57,
+            "pages": 29
+          }
+        }
+      }
+    },
+    {
+      "case": "invalid_params",
+      "actor": "main(token)",
+      "request": {
+        "method": "GET",
+        "path": "/api/v1/transactions?direction=sideways&from=notadate",
+        "headers": {
+          "authorization": "Bearer obrl_oracle_main_t…"
+        }
+      },
+      "response": {
+        "status": 400,
+        "duration_ms": 135,
+        "headers": {
+          "content-type": "application/json",
+          "cache-control": "no-cache",
+          "x-request-id": "98beba0d-a352-4958-8605-41e8c42ec1cb",
+          "vary": "Origin",
+          "content-length": "103"
+        },
+        "body_sample": {
+          "message": "Invalid parameters.",
+          "details": [
+            "from is invalid",
+            "direction does not have a valid value"
+          ]
+        }
+      }
+    },
+    {
+      "case": "limit_above_max",
+      "actor": "main(token)",
+      "request": {
+        "method": "GET",
+        "path": "/api/v1/transactions?limit=1000",
+        "headers": {
+          "authorization": "Bearer obrl_oracle_main_t…"
+        }
+      },
+      "response": {
+        "status": 200,
+        "duration_ms": 223,
+        "headers": {
+          "content-type": "application/json",
+          "cache-control": "max-age=0, private, must-revalidate",
+          "x-request-id": "3a3deb15-8933-4b02-a16b-91a3b9202383",
+          "vary": "Origin",
+          "content-length": "31555"
+        },
+        "body_sample": "{\"data\":[{\"source_type\":\"BankTransaction\",\"source_id\":54,\"bank_account_id\":3,\"amount\":{\"cents\":500,\"currency\":\"EUR\"},\"signed_amount\":{\"cents\":-500,\"currency\":\"EUR\"},\"direction\":\"debit\",\"status\":\"booked\",\"payment_method\":\"card\",\"booking_date\":\"2026-10-11\",\"transaction_date\":\"2026-10-11\",\"title\":\"OpenAI\",\"counterparty_name\":\"Openai LLC\",\"counterparty_kind\":\"external\",\"essential\":false,\"enrichment_source\":null,\"merchant_id\":null,\"effective_category_id\":null,\"category_path\":\"\"},{\"source_type\":\"BankTransaction\",\"source_id\":53,\"bank_account_id\":3,\"amount\":{\"cents\":1499,\"currency\":\"EUR\"},\"signed_amount\":{\"cents\":-1499,\"currency\":\"EUR\"},\"direction\":\"debit\",\"status\":\"booked\",\"payment_method\":\"card\",\"booking_date\":\"2026-10-06\",\"transaction_date\":\"2026-10-06\",\"title\":\"Netflix\",\"counterparty_name\":\"Netflix Intl.\",\"counterparty_kind\":\"external\",\"essential\":false,\"enrichment_source\":null,\"merchant_id\":null,\"effective_category_id\":null,\"category_path\":\"\"},{\"source_type\":\"BankTransaction\",\"source_id\":39,\"bank_account_id\":1,\"amount\":{\"cents\":650000,\"currency\":\"PLN\"},\"signed_amount\":{\"cents\":650000,\"currency\":\"PLN\"},\"direction\":\"credit\",\"status\":\"booked\",\"payment_method\":\"card\",\"booking_date\":\"2026-10-02\",\"transaction_date\":\"2026-10-02\",\"title\":\"WYNAGRODZENIE\",\"counterparty_name\":\"Some Company sp. z o.o.\",\"counterparty_kind\":\"external\",\"essential\":false,\"enrichment_source\":null,\"merchant_id\":null,\"effective_category_id\":null,\"category_path\":\"\"},{\"source_type\":\"BankTransaction\",\"source_id\":52,\"bank_account_id\":3,\"amount\":{\"cents\":999,\"currency\":\"EUR\"},\"signed_amount\":{\"cents\":-999,\"currency\":\"EUR\"},\"direction\":\"debit\",\"status\":\"booked\",\"payment_method\":\"card\",\"booking_date\":\"2026-10-01\",\"transaction_date\":\"2026-10-01\",\"title\":\"Spotify\",\"counterparty_name\":\"Spotify AB\",\"counterparty_kind\":\"external\",\"essential\":false,\"enrichment_source\":null,\"merchant_id\":null,\"effective_category_id\":null,\"category_path\":\"\"},{\"source_type\":\"BankTransaction\",\"source_id\":36,\"bank_account_id\":1,\"amount\":{\"cents\":20000,\"currency\":\"PLN\"},\"signed_amount\":{\"cents\":-20000,\"currency\":\"PLN\"},\"direction\":\"debit\",\"status\":\"booked\",\"payment_method\":\"blik_atm\",\"booking_date\":\"2026-10-01\",\"transaction_date\":\"2026-10-01\",\"title\":\"WYP. BANKOMAT\",\"counterparty_name\":null,\"counterparty_kind\":\"unknown\",\"essential\":false,\"enrichment_source\":null,\"merchant_id\":null,\"effective_category_id\":null,\"category_path\":\"\"},{\"source_type\":\"ManualTransaction\",\"source_id\":6,\"bank_account_id\":5,\"amount\":{\"cents\":20000,\"currency\":\"PLN\"},\"signed_amount\":{\"cents\":20000,\"currency\":\"PLN\"},\"direction\":\"credit\",\"status\":\"booked\",\"payment_method\":\"cash_atm_topup\",\"booking_date\":\"2026-10-01\",\"transaction_date\":\"2026-10-01\",\"title\":\"ATM withdrawal (PKO BP)\",\"counterparty_name\":null,\"counterparty_kind\":\"unknown\",\"essential\":false,\"enrichment_source\":\"system_fallback\",\"merchant_id\":null,\"effective_category_id\":101,\"category_path\":\"money.transfers.atm\"},{\"source_type\":\"BankTransaction\",\"source_id\":30,\"bank_account_id\":1,\"amount\":{\"cents\":22000,\"currency\":\"PLN\"},\"signed_amount\":{\"cents\":-22000,\"currency\":\"PLN\"},\"direction\":\"debit\",\"status\":\"booked\",\"payment_method\":\"card\",\"booking_date\":\"2026-09-29\",\"transaction_date\":\"2026-09-29\",\"title\":\"DECATHLON\",\"counterparty_name\":null,\"counterparty_kind\":\"unknown\",\"essential\":false,\"enrichment_source\":null,\"merchant_id\":null,\"effective_category_id\":null,\"category_path\":\"\"},{\"source_type\":\"BankTransaction\",\"source_id\":29,\"bank_account_id\":1,\"amount\":{\"cents\":899,\"currency\":\"PLN\"},\"signed_amount\":{\"cents\":-899,\"currency\":\"PLN\"},\"direction\":\"debit\",\"status\":\"booked\",\"payment_method\":\"card\",\"booking_date\":\"2026-09-27\",\"transaction_date\":\"2026-09-27\",\"title\":\"ROSSMANN 0123\",\"counterparty_name\":null,\"counterparty_kind\":\"unknown\",\"essential\":false,\"enrichment_source\":null,\"merchant_id\":null,\"effective_category_id\":null,\"category_path\":\"\"},{\"source_type\":\"BankTransaction\",\"source_id\":51,\"bank_account_id\":3,\"amount\":{\"cents\":2500,\"currency\":\"EUR\"},\"signed_amount\":{\"cents\":-2500,\"currency\":\"EUR\"},\"direction\":\"debit\",\"status\":\"booked\",\"payment_method\":\"card\",\"booking_date\":\"2026-09-26\",\"transaction_date\":\"2026-09-26\",\"title\":\"Anthropic\",\"counterparty_name\":\"Anthropic\",\"counterparty_kind\":\"external\",\"essential\":false,\"enrichment_source\":null,\"merchant_id\":null,\"effective_category_id\":null,\"category_path\":\"\"},{\"source_type\":\"BankTransaction\",\"source_id\":28,\"bank_account_id\":1,\"amount\":{\"cents\":15600,\"currency\":\"PLN\"},\"signed_amount\":{\"cents\":-15600,\"currency\":\"PLN\"},\"direction\":\"debit\",\"status\":\"booked\",\"payment_method\":\"card\",\"booking_date\":\"2026-09-25\",\"transaction_date\":\"2026-09-25\",\"title\":\"T-MOBILE POLSKA\",\"counterparty_name\":null,\"counterparty_kind\":\"unknown\",\"essential\":false,\"enrichment_source\":null,\"merchant_id\":null,\"effective_category_id\":null,\"category_path\":\"\"},{\"source_type\":\"BankTransaction\",\"source_id\":27,\"bank_account_id\":1,\"amount\":{\"cents\":1250,\"currency\":\"PLN\"},\"signed_amount\":{\"cents\":-1250,\"currency\":\"PLN\"},\"direction\":\"debit\",\"status\":\"booked\",\"payment_method\":\"card\",\"booking_date\":\"2026-09-23\",\"transaction_date\":\"2026-09-23\",\"title\":\"MCDONALD'S 5230\",\"counterparty_name\":null,\"counterparty_kind\":\"unknown\",\"essential\":false,\"enrichment_source\":null,\"merchant_id\":null,\"effective_category_id\":null,\"category_path\":\"\"},{\"source_type\":\"BankTransaction\",\"source_id\":50,\"bank_account_id\":3,\"amount\":{\"cents\":500,\"currency\":\"EUR\"},\"signed_amount\":{\"cents\":-500,\"currency\":\"EUR\"},\"direction\":\"debit\",\"status\":\"booked\",\"payment_method\":\"card\",\"booking_date\":\"2026-09-21\",\"transaction_date\":\"2026-09-21\",\"title\":\"OpenAI\",\"counterparty_name\":\"Openai LLC\",\"counterparty_kind\":\"external\",\"essential\":false,\"enrichment_source\":null,\"merchant_id\":null,\"effective_category_id\":null,\"category_path\":\"\"},{\"source_type\":\"BankTransaction\",\"source_id\":26,\"bank_account_id\":1,\"amount\":{\"cents\":4500,\"currency\":\"PLN\"},\"signed_amount\":{\"cents\":-4500,\"currency\":\"PLN\"},\"direction\":\"debit\",\"status\":\"booked\",\"payment_method\":\"card\",\"booking_date\":\"2026-09-21\",\"transaction_date\":\"2026-09-21\",\"title\":\"ZABKA NANO\",\"counterparty_name\":null,\"counterparty_kind\":\"unknown\",\"essential\":false,\"enrichment_source\":null,\"merchant_id\":null,\"effective_category_id\":null,\"category_path\":\"\"},{\"source_type\":\"BankTransaction\",\"source_id\":35,\"bank_account_id\":1,\"amount\":{\"cents\":20000,\"currency\":\"PLN\"},\"signed_amount\":{\"cents\":-20000,\"currency\":\"PLN\"},\"direction\":\"debit\",\"status\":\"booked\",\"payment_method\":\"blik_atm\",\"booking_date\":\"2026-09-19\",\"transaction_date\":\"2026-09-19\",\"title\":\"WYP. BANKOMAT\",\"counterparty_name\":null,\"counterparty_kind\":\"unknown\",\"essential\":false,\"enrichment_source\":null,\"merchant_id\":null,\"effective_category_id\":null,\"category_path\":\"\"},{\"source_type\":\"BankTransaction\",\"source_id\":25,\"bank_account_id\":1,\"amount\":{\"cents\":1999,\"currency\":\"PLN\"},\"signed_amount\":{\"cents\":-1999,\"currency\":\"PLN\"},\"direction\":\"debit\",\"status\":\"booked\",\"payment_method\":\"card\",\"booking_date\":\"2026-09-19\",\"transaction_date\":\"2026-09-19\",\"title\":\"BIEDRONKA WARSZAWA\",\"counterparty_name\":null,\"counterparty_kind\":\"unknown\",\"essential\":false,\"enrichment_source\":null,\"merchant_id\":null,\"effective_category_id\":null,\"category_path\":\"\"},{\"source_type\":\"ManualTransaction\",\"source_id\":5,\"bank_account_id\":5,\"amount\":{\"cents\":20000,\"currency\":\"PLN\"},\"signed_amount\":{\"cents\":20000,\"currency\":\"PLN\"},\"direction\":\"credit\",\"status\":\"booked\",\"payment_method\":\"cash_atm_topup\",\"booking_date\":\"2026-09-19\",\"transaction_date\":\"2026-09-19\",\"title\":\"ATM withdrawal (PKO BP)\",\"counterparty_name\":null,\"counterparty_kind\":\"unknown\",\"essential\":false,\"enrichment_source\":\"system_fallback\",\"merchant_id\":null,\"effective_category_id\":101,\"category_path\":\"money.transfers.atm\"},{\"source_type\":\"BankTransaction\",\"source_id\":24,\"bank_account_id\":1,\"amount\":{\"cents\":22000,\"currency\":\"PLN\"},\"signed_amount\":{\"cents\":-22000,\"currency\":\"PLN\"},\"direction\":\"debit\",\"status\":\"booked\",\"payment_method\":\"card\",\"booking_date\":\"2026-09-17\",\"transaction_date\":\"2026-09-17\",\"title\":\"DECATHLON\",\"counterparty_name\":null,\"counterparty_kind\":\"unknown\",\"essential\":false,\"enrichment_source\":null,\"merchant_id\":null,\"effective_category_id\":null,\"category_path\":\"\"},{\"source_type\":\"BankTransaction\",\"source_id\":49,\"bank_account_id\":3,\"amount\":{\"cents\":1499,\"currency\":\"EUR\"},\"signed_amount\":{\"cents\":-1499,\"currency\":\"EUR\"},\"direction\":\"debit\",\"status\":\"booked\",\"payment_method\":\"card\",\"booking_date\":\"2026-09-16\",\"transaction_date\":\"2026-09-16\",\"title\":\"Netflix\",\"counterparty_name\":\"Netflix Intl.\",\"counterparty_kind\":\"external\",\"essential\":false,\"enrichment_source\":null,\"merchant_id\":null,\"effective_category_id\":null,\"category_path\":\"\"},{\"source_type\":\"BankTransaction\",\"source_id\":23,\"bank_account_id\":1,\"amount\":{\"cents\":899,\"currency\":\"PLN\"},\"signed_amount\":{\"cents\":-899,\"currency\":\"PLN\"},\"direction\":\"debit\",\"status\":\"booked\",\"payment_method\":\"card\",\"booking_date\":\"2026-09-15\",\"transaction_date\":\"2026-09-15\",\"title\":\"ROSSMANN 0123\",\"counterparty_name\":null,\"counterparty_kind\":\"unknown\",\"essential\":false,\"enrichment_source\":null,\"merchant_id\":null,\"effective_category_id\":null,\"category_path\":\"\"},{\"source_type\":\"BankTransaction\",\"source_id\":22,\"bank_account_id\":1,\"amount\":{\"cents\":15600,\"currency\":\"PLN\"},\"signed_amount\":{\"cents\":-15600,\"currency\":\"PLN\"},\"direction\":\"debit\",\"status\":\"booked\",\"payment_method\":\"card\",\"booking_date\":\"2026-09-13\",\"transaction_date\":\"2026-09-13\",\"title\":\"T-MOBILE POLSKA\",\"counterparty_name\":null,\"counterparty_kind\":\"unknown\",\"essential\":false,\"enrichment_source\":null,\"merchant_id\":null,\"effective_category_id\":null,\"category_path\":\"\"},{\"source_type\":\"BankTransaction\",\"source_id\":48,\"bank_account_id\":3,\"amount\":{\"cents\":999,\"currency\":\"EUR\"},\"signed_amount\":{\"cents\":-999,\"currency\":\"EUR\"},\"direction\":\"debit\",\"status\":\"booked\",\"payment_method\":\"card\",\"booking_date\":\"2026-09-11\",\"transaction_date\":\"2026-09-11\",\"title\":\"Spotify\",\"counterparty_name\":\"Spotify AB\",\"counterparty_kind\":\"external\",\"essential\":false,\"enrichment_source\":null,\"merchant_id\":null,\"effective_category_id\":null,\"category_path\":\"\"},{\"source_type\":\"BankTransaction\",\"source_id\":21,\"bank_account_id\":1,\"amount\":{\"cents\":1250,\"currency\":\"PLN\"},\"signed_amount\":{\"cents\":-1250,\"currency\":\"PLN\"},\"direction\":\"debit\",\"status\":\"booked\",\"payment_method\":\"card\",\"booking_date\":\"2026-09-11\",\"transaction_date\":\"2026-09-11\",\"title\":\"MCDONALD'S 5230\",\"counterparty_name\":null,\"counterparty_kind\":\"unknown\",\"essential\":false,\"enrichment_source\":null,\"merchant_id\":null,\"effective_category_id\":null,\"category_path\":\"\"},{\"source_type\":\"BankTransaction\",\"source_id\":20,\"bank_account_id\":1,\"amount\":{\"cents\":4500,\"currency\":\"PLN\"},\"signed_amount\":{\"cents\":-4500,\"currency\":\"PLN\"},\"direction\":\"debit\",\"status\":\"booked\",\"payment_method\":\"card\",\"booking_date\":\"2026-09-09\",\"transaction_date\":\"2026-09-09\",\"title\":\"ZABKA NANO\",\"counterparty_name\":null,\"counterparty_kind\":\"unknown\",\"essential\":false,\"enrichment_source\":null,\"merchant_id\":null,\"effective_category_id\":null,\"category_path\":\"\"},{\"source_type\":\"BankTransaction\",\"source_id\":34,\"bank_account_id\":1,\"amount\":{\"cents\":20000,\"currency\":\"PLN\"},\"signed_amount\":{\"cents\":-20000,\"currency\":\"PLN\"},\"direction\":\"debit\",\"status\":\"booked\",\"payment_method\":\"blik_atm\",\"booking_date\":\"2026-09-07\",\"transaction_date\":\"2026-09-07\",\"title\":\"WYP. BANKOMAT\",\"counterparty_name\":null,\"counterparty_kind\":\"unknown\",\"essential\":false,\"enrichment_source\":null,\"merchant_id\":null,\"effective_category_id\":null,\"category_path\":\"\"},{\"source_type\":\"BankTransaction\",\"source_id\":19,\"bank_account_id\":1,\"amount\":{\"cents\":1999,\"currency\":\"PLN\"},\"signed_amount\":{\"cents\":-1999,\"currency\":\"PLN\"},\"direction\":\"debit\",\"status\":\"booked\",\"payment_method\":\"card\",\"booking_date\":\"2026-09-07\",\"transaction_date\":\"2026-09-07\",\"title\":\"BIEDRONKA WARSZAWA\",\"counterparty_name\":null,\"counterparty_kind\":\"unknown\",\"essential\":false,\"enrichment_source\":null,\"merchant_id\":null,\"effective_category_id\":null,\"category_path\":\"\"},{\"source_type\":\"ManualTransaction\",\"source_id\":4,\"bank_account_…[truncated 19555 chars]"
+      }
+    }
+  ]
+}

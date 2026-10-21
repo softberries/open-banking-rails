@@ -1,0 +1,1458 @@
+[
+  {
+    "method": "GET",
+    "path": "/api/:version/transactions(.json)",
+    "version": "v1",
+    "description": "List ledger entries (bank + manual) with filters and pagination",
+    "params": {
+      "from": {
+        "required": "false",
+        "type": "Date",
+        "desc": "Booking date >= (ISO 8601)"
+      },
+      "to": {
+        "required": "false",
+        "type": "Date",
+        "desc": "Booking date <= (ISO 8601)"
+      },
+      "direction": {
+        "required": "false",
+        "type": "String",
+        "values": "[\"credit\", \"debit\"]"
+      },
+      "status": {
+        "required": "false",
+        "type": "String",
+        "values": "[\"booked\", \"pending\"]"
+      },
+      "account_id": {
+        "required": "false",
+        "type": "Integer"
+      },
+      "merchant_id": {
+        "required": "false",
+        "type": "Integer"
+      },
+      "category_id": {
+        "required": "false",
+        "type": "Integer"
+      },
+      "category_path": {
+        "required": "false",
+        "type": "String",
+        "desc": "ltree prefix; matches descendants"
+      },
+      "payment_method": {
+        "required": "false",
+        "type": "String"
+      },
+      "currency": {
+        "required": "false",
+        "type": "String"
+      },
+      "source_type": {
+        "required": "false",
+        "type": "String",
+        "values": "[\"BankTransaction\", \"ManualTransaction\"]"
+      },
+      "page": {
+        "required": "false",
+        "type": "Integer"
+      },
+      "limit": {
+        "required": "false",
+        "type": "Integer"
+      }
+    },
+    "namespace": "/transactions",
+    "settings_auth": null
+  },
+  {
+    "method": "GET",
+    "path": "/api/:version/transactions/:source_type/:source_id(.json)",
+    "version": "v1",
+    "description": "Fetch a single ledger entry by source type + id",
+    "params": {
+      "source_type": {
+        "required": "true",
+        "type": "String",
+        "values": "[\"BankTransaction\", \"ManualTransaction\"]"
+      },
+      "source_id": {
+        "required": "true",
+        "type": "Integer"
+      }
+    },
+    "namespace": "/transactions/:source_type/:source_id",
+    "settings_auth": null
+  },
+  {
+    "method": "GET",
+    "path": "/api/:version/cash_transactions(.json)",
+    "version": "v1",
+    "description": "List manual transactions",
+    "params": {
+      "wallet_id": {
+        "required": "false",
+        "type": "Integer"
+      },
+      "direction": {
+        "required": "false",
+        "type": "String",
+        "values": "[\"credit\", \"debit\"]"
+      },
+      "from": {
+        "required": "false",
+        "type": "Date"
+      },
+      "to": {
+        "required": "false",
+        "type": "Date"
+      },
+      "page": {
+        "required": "false",
+        "type": "Integer"
+      },
+      "limit": {
+        "required": "false",
+        "type": "Integer"
+      }
+    },
+    "namespace": "/cash_transactions",
+    "settings_auth": null
+  },
+  {
+    "method": "POST",
+    "path": "/api/:version/cash_transactions(.json)",
+    "version": "v1",
+    "description": "Create a manual cash transaction",
+    "params": {
+      "amount": {
+        "required": "true",
+        "type": "String",
+        "desc": "e.g. '12.50'"
+      },
+      "currency": {
+        "required": "false",
+        "type": "String",
+        "default": "PLN"
+      },
+      "direction": {
+        "required": "false",
+        "type": "String",
+        "values": "[\"credit\", \"debit\"]",
+        "default": "debit"
+      },
+      "booking_date": {
+        "required": "false",
+        "type": "Date"
+      },
+      "transaction_date": {
+        "required": "false",
+        "type": "Date"
+      },
+      "title": {
+        "required": "false",
+        "type": "String"
+      },
+      "note": {
+        "required": "false",
+        "type": "String"
+      },
+      "counterparty_name": {
+        "required": "false",
+        "type": "String"
+      },
+      "merchant_id": {
+        "required": "false",
+        "type": "Integer"
+      },
+      "category_id": {
+        "required": "false",
+        "type": "Integer"
+      },
+      "payment_method": {
+        "required": "false",
+        "type": "String"
+      }
+    },
+    "namespace": "/cash_transactions",
+    "settings_auth": null
+  },
+  {
+    "method": "GET",
+    "path": "/api/:version/cash_transactions/:id(.json)",
+    "version": "v1",
+    "description": "Fetch a manual transaction",
+    "params": {
+      "id": {
+        "required": "true",
+        "type": "Integer"
+      }
+    },
+    "namespace": "/cash_transactions/:id",
+    "settings_auth": null
+  },
+  {
+    "method": "PATCH",
+    "path": "/api/:version/cash_transactions/:id(.json)",
+    "version": "v1",
+    "description": "Update a manual transaction",
+    "params": {
+      "id": {
+        "required": "true",
+        "type": "Integer"
+      },
+      "amount": {
+        "required": "false",
+        "type": "String"
+      },
+      "direction": {
+        "required": "false",
+        "type": "String",
+        "values": "[\"credit\", \"debit\"]"
+      },
+      "booking_date": {
+        "required": "false",
+        "type": "Date"
+      },
+      "transaction_date": {
+        "required": "false",
+        "type": "Date"
+      },
+      "title": {
+        "required": "false",
+        "type": "String"
+      },
+      "note": {
+        "required": "false",
+        "type": "String"
+      },
+      "counterparty_name": {
+        "required": "false",
+        "type": "String"
+      },
+      "merchant_id": {
+        "required": "false",
+        "type": "Integer"
+      },
+      "category_id": {
+        "required": "false",
+        "type": "Integer"
+      },
+      "payment_method": {
+        "required": "false",
+        "type": "String"
+      }
+    },
+    "namespace": "/cash_transactions/:id",
+    "settings_auth": null
+  },
+  {
+    "method": "DELETE",
+    "path": "/api/:version/cash_transactions/:id(.json)",
+    "version": "v1",
+    "description": "Delete a manual transaction",
+    "params": {
+      "id": {
+        "required": "true",
+        "type": "Integer"
+      }
+    },
+    "namespace": "/cash_transactions/:id",
+    "settings_auth": null
+  },
+  {
+    "method": "GET",
+    "path": "/api/:version/bank_transactions(.json)",
+    "version": "v1",
+    "description": "List bank-synced transactions",
+    "params": {
+      "account_id": {
+        "required": "false",
+        "type": "Integer"
+      },
+      "merchant_id": {
+        "required": "false",
+        "type": "Integer"
+      },
+      "category_id": {
+        "required": "false",
+        "type": "Integer"
+      },
+      "payment_method": {
+        "required": "false",
+        "type": "String"
+      },
+      "enrichment_source": {
+        "required": "false",
+        "type": "String"
+      },
+      "from": {
+        "required": "false",
+        "type": "Date"
+      },
+      "to": {
+        "required": "false",
+        "type": "Date"
+      },
+      "page": {
+        "required": "false",
+        "type": "Integer"
+      },
+      "limit": {
+        "required": "false",
+        "type": "Integer"
+      }
+    },
+    "namespace": "/bank_transactions",
+    "settings_auth": null
+  },
+  {
+    "method": "GET",
+    "path": "/api/:version/bank_transactions/:id(.json)",
+    "version": "v1",
+    "description": "Fetch a single bank transaction",
+    "params": {
+      "id": {
+        "required": "true",
+        "type": "Integer"
+      }
+    },
+    "namespace": "/bank_transactions/:id",
+    "settings_auth": null
+  },
+  {
+    "method": "POST",
+    "path": "/api/:version/bank_transactions/:bank_transaction_id/classification(.json)",
+    "version": "v1",
+    "description": "Apply merchant + category to a bank transaction",
+    "params": {
+      "bank_transaction_id": {
+        "required": "true",
+        "type": "Integer"
+      },
+      "mode": {
+        "required": "true",
+        "type": "String",
+        "values": "[\"only_this\", \"all_for_merchant\", \"create_rule\"]",
+        "desc": "Propagation strategy"
+      },
+      "merchant_id": {
+        "required": "false",
+        "type": "Integer"
+      },
+      "category_id": {
+        "required": "false",
+        "type": "Integer"
+      },
+      "rule_field": {
+        "required": "false",
+        "type": "String",
+        "values": "[\"title\", \"counterparty_name\", \"counterparty_iban\"]",
+        "desc": "Required when mode=create_rule"
+      },
+      "rule_kind": {
+        "required": "false",
+        "type": "String",
+        "values": "[\"contains\", \"equals\", \"regex\", \"starts_with\", \"ends_with\"]"
+      },
+      "rule_pattern": {
+        "required": "false",
+        "type": "String"
+      }
+    },
+    "namespace": "/bank_transactions/:bank_transaction_id/classification",
+    "settings_auth": null
+  },
+  {
+    "method": "GET",
+    "path": "/api/:version/categories(.json)",
+    "version": "v1",
+    "description": "List categories",
+    "params": {
+      "include_archived": {
+        "required": "false",
+        "type": "Grape::API::Boolean",
+        "default": "false"
+      }
+    },
+    "namespace": "/categories",
+    "settings_auth": null
+  },
+  {
+    "method": "POST",
+    "path": "/api/:version/categories(.json)",
+    "version": "v1",
+    "description": "Create a category",
+    "params": {
+      "name": {
+        "required": "true",
+        "type": "String"
+      },
+      "slug": {
+        "required": "false",
+        "type": "String"
+      },
+      "kind": {
+        "required": "false",
+        "type": "String",
+        "values": "[\"expense\", \"income\", \"transfer\", \"savings\", \"ignored\"]",
+        "default": "expense"
+      },
+      "color": {
+        "required": "false",
+        "type": "String"
+      },
+      "icon": {
+        "required": "false",
+        "type": "String"
+      },
+      "position": {
+        "required": "false",
+        "type": "Integer"
+      },
+      "essential": {
+        "required": "false",
+        "type": "Grape::API::Boolean"
+      },
+      "parent_path": {
+        "required": "false",
+        "type": "String",
+        "desc": "Parent ltree path; null/empty = top-level"
+      }
+    },
+    "namespace": "/categories",
+    "settings_auth": null
+  },
+  {
+    "method": "GET",
+    "path": "/api/:version/categories/:id(.json)",
+    "version": "v1",
+    "description": "Fetch a category",
+    "params": {
+      "id": {
+        "required": "true",
+        "type": "Integer"
+      }
+    },
+    "namespace": "/categories/:id",
+    "settings_auth": null
+  },
+  {
+    "method": "PATCH",
+    "path": "/api/:version/categories/:id(.json)",
+    "version": "v1",
+    "description": "Update / move a category",
+    "params": {
+      "id": {
+        "required": "true",
+        "type": "Integer"
+      },
+      "name": {
+        "required": "false",
+        "type": "String"
+      },
+      "slug": {
+        "required": "false",
+        "type": "String"
+      },
+      "kind": {
+        "required": "false",
+        "type": "String",
+        "values": "[\"expense\", \"income\", \"transfer\", \"savings\", \"ignored\"]"
+      },
+      "color": {
+        "required": "false",
+        "type": "String"
+      },
+      "icon": {
+        "required": "false",
+        "type": "String"
+      },
+      "position": {
+        "required": "false",
+        "type": "Integer"
+      },
+      "essential": {
+        "required": "false",
+        "type": "Grape::API::Boolean"
+      },
+      "parent_path": {
+        "required": "false",
+        "type": "String"
+      }
+    },
+    "namespace": "/categories/:id",
+    "settings_auth": null
+  },
+  {
+    "method": "DELETE",
+    "path": "/api/:version/categories/:id(.json)",
+    "version": "v1",
+    "description": "Delete a category (only when unused)",
+    "params": {
+      "id": {
+        "required": "true",
+        "type": "Integer"
+      }
+    },
+    "namespace": "/categories/:id",
+    "settings_auth": null
+  },
+  {
+    "method": "POST",
+    "path": "/api/:version/categories/:id/archive(.json)",
+    "version": "v1",
+    "description": "Archive a category",
+    "params": {
+      "id": {
+        "required": "true",
+        "type": "Integer"
+      }
+    },
+    "namespace": "/categories/:id",
+    "settings_auth": null
+  },
+  {
+    "method": "POST",
+    "path": "/api/:version/categories/:id/unarchive(.json)",
+    "version": "v1",
+    "description": "Unarchive a category",
+    "params": {
+      "id": {
+        "required": "true",
+        "type": "Integer"
+      }
+    },
+    "namespace": "/categories/:id",
+    "settings_auth": null
+  },
+  {
+    "method": "GET",
+    "path": "/api/:version/merchants(.json)",
+    "version": "v1",
+    "description": "List merchants",
+    "params": {
+      "q": {
+        "required": "false",
+        "type": "String",
+        "desc": "Name ILIKE %q%"
+      },
+      "source": {
+        "required": "false",
+        "type": "String",
+        "values": "[\"user\", \"llm\", \"seed\"]"
+      },
+      "category_id": {
+        "required": "false",
+        "type": "Integer",
+        "desc": "Filter by default_category_id"
+      },
+      "include_archived": {
+        "required": "false",
+        "type": "Grape::API::Boolean",
+        "default": "false"
+      },
+      "page": {
+        "required": "false",
+        "type": "Integer"
+      },
+      "limit": {
+        "required": "false",
+        "type": "Integer"
+      }
+    },
+    "namespace": "/merchants",
+    "settings_auth": null
+  },
+  {
+    "method": "POST",
+    "path": "/api/:version/merchants(.json)",
+    "version": "v1",
+    "description": "Create a merchant",
+    "params": {
+      "name": {
+        "required": "true",
+        "type": "String"
+      },
+      "slug": {
+        "required": "false",
+        "type": "String"
+      },
+      "kind": {
+        "required": "false",
+        "type": "String",
+        "values": "[\"company\", \"person\", \"unknown\"]",
+        "default": "company"
+      },
+      "default_category_id": {
+        "required": "false",
+        "type": "Integer"
+      },
+      "logo_url": {
+        "required": "false",
+        "type": "String"
+      },
+      "notes": {
+        "required": "false",
+        "type": "String"
+      }
+    },
+    "namespace": "/merchants",
+    "settings_auth": null
+  },
+  {
+    "method": "GET",
+    "path": "/api/:version/merchants/:id(.json)",
+    "version": "v1",
+    "description": "Fetch a merchant",
+    "params": {
+      "id": {
+        "required": "true",
+        "type": "Integer"
+      }
+    },
+    "namespace": "/merchants/:id",
+    "settings_auth": null
+  },
+  {
+    "method": "PATCH",
+    "path": "/api/:version/merchants/:id(.json)",
+    "version": "v1",
+    "description": "Update a merchant",
+    "params": {
+      "id": {
+        "required": "true",
+        "type": "Integer"
+      },
+      "name": {
+        "required": "false",
+        "type": "String"
+      },
+      "slug": {
+        "required": "false",
+        "type": "String"
+      },
+      "kind": {
+        "required": "false",
+        "type": "String",
+        "values": "[\"company\", \"person\", \"unknown\"]"
+      },
+      "default_category_id": {
+        "required": "false",
+        "type": "Integer"
+      },
+      "logo_url": {
+        "required": "false",
+        "type": "String"
+      },
+      "notes": {
+        "required": "false",
+        "type": "String"
+      }
+    },
+    "namespace": "/merchants/:id",
+    "settings_auth": null
+  },
+  {
+    "method": "DELETE",
+    "path": "/api/:version/merchants/:id(.json)",
+    "version": "v1",
+    "description": "Delete a merchant (only when no transactions reference it)",
+    "params": {
+      "id": {
+        "required": "true",
+        "type": "Integer"
+      }
+    },
+    "namespace": "/merchants/:id",
+    "settings_auth": null
+  },
+  {
+    "method": "POST",
+    "path": "/api/:version/merchants/:id/archive(.json)",
+    "version": "v1",
+    "description": "Archive a merchant",
+    "params": {
+      "id": {
+        "required": "true",
+        "type": "Integer"
+      }
+    },
+    "namespace": "/merchants/:id",
+    "settings_auth": null
+  },
+  {
+    "method": "POST",
+    "path": "/api/:version/merchants/:id/unarchive(.json)",
+    "version": "v1",
+    "description": "Unarchive a merchant",
+    "params": {
+      "id": {
+        "required": "true",
+        "type": "Integer"
+      }
+    },
+    "namespace": "/merchants/:id",
+    "settings_auth": null
+  },
+  {
+    "method": "POST",
+    "path": "/api/:version/merchants/:id/approve(.json)",
+    "version": "v1",
+    "description": "Approve an LLM-suggested merchant (and enable its rules)",
+    "params": {
+      "id": {
+        "required": "true",
+        "type": "Integer"
+      }
+    },
+    "namespace": "/merchants/:id",
+    "settings_auth": null
+  },
+  {
+    "method": "GET",
+    "path": "/api/:version/merchants/:merchant_id/rules(.json)",
+    "version": "v1",
+    "description": "List rules for a merchant",
+    "params": {
+      "merchant_id": {
+        "required": "true",
+        "type": "Integer"
+      }
+    },
+    "namespace": "/merchants/:merchant_id/rules",
+    "settings_auth": null
+  },
+  {
+    "method": "POST",
+    "path": "/api/:version/merchants/:merchant_id/rules(.json)",
+    "version": "v1",
+    "description": "Add a rule to a merchant",
+    "params": {
+      "merchant_id": {
+        "required": "true",
+        "type": "Integer"
+      },
+      "kind": {
+        "required": "true",
+        "type": "String",
+        "values": "[\"contains\", \"equals\", \"regex\", \"starts_with\", \"ends_with\"]"
+      },
+      "field": {
+        "required": "true",
+        "type": "String",
+        "values": "[\"title\", \"counterparty_name\", \"counterparty_iban\"]"
+      },
+      "pattern": {
+        "required": "true",
+        "type": "String"
+      },
+      "case_sensitive": {
+        "required": "false",
+        "type": "Grape::API::Boolean",
+        "default": "false"
+      },
+      "priority": {
+        "required": "false",
+        "type": "Integer",
+        "default": "0"
+      },
+      "enabled": {
+        "required": "false",
+        "type": "Grape::API::Boolean",
+        "default": "true"
+      }
+    },
+    "namespace": "/merchants/:merchant_id/rules",
+    "settings_auth": null
+  },
+  {
+    "method": "PATCH",
+    "path": "/api/:version/merchants/:merchant_id/rules/:id(.json)",
+    "version": "v1",
+    "description": "Update a rule",
+    "params": {
+      "merchant_id": {
+        "required": "true",
+        "type": "Integer"
+      },
+      "id": {
+        "required": "true",
+        "type": "Integer"
+      },
+      "kind": {
+        "required": "false",
+        "type": "String",
+        "values": "[\"contains\", \"equals\", \"regex\", \"starts_with\", \"ends_with\"]"
+      },
+      "field": {
+        "required": "false",
+        "type": "String",
+        "values": "[\"title\", \"counterparty_name\", \"counterparty_iban\"]"
+      },
+      "pattern": {
+        "required": "false",
+        "type": "String"
+      },
+      "case_sensitive": {
+        "required": "false",
+        "type": "Grape::API::Boolean"
+      },
+      "priority": {
+        "required": "false",
+        "type": "Integer"
+      },
+      "enabled": {
+        "required": "false",
+        "type": "Grape::API::Boolean"
+      }
+    },
+    "namespace": "/merchants/:merchant_id/rules/:id",
+    "settings_auth": null
+  },
+  {
+    "method": "DELETE",
+    "path": "/api/:version/merchants/:merchant_id/rules/:id(.json)",
+    "version": "v1",
+    "description": "Delete a rule",
+    "params": {
+      "merchant_id": {
+        "required": "true",
+        "type": "Integer"
+      },
+      "id": {
+        "required": "true",
+        "type": "Integer"
+      }
+    },
+    "namespace": "/merchants/:merchant_id/rules/:id",
+    "settings_auth": null
+  },
+  {
+    "method": "GET",
+    "path": "/api/:version/bank_accounts(.json)",
+    "version": "v1",
+    "description": "List bank accounts (synced + manual cash wallets)",
+    "params": {
+      "manual": {
+        "required": "false",
+        "type": "Grape::API::Boolean",
+        "desc": "true → only cash wallets, false → only synced"
+      },
+      "page": {
+        "required": "false",
+        "type": "Integer"
+      },
+      "limit": {
+        "required": "false",
+        "type": "Integer"
+      }
+    },
+    "namespace": "/bank_accounts",
+    "settings_auth": null
+  },
+  {
+    "method": "GET",
+    "path": "/api/:version/bank_accounts/:id(.json)",
+    "version": "v1",
+    "description": "Fetch a bank account",
+    "params": {
+      "id": {
+        "required": "true",
+        "type": "Integer"
+      }
+    },
+    "namespace": "/bank_accounts/:id",
+    "settings_auth": null
+  },
+  {
+    "method": "POST",
+    "path": "/api/:version/bank_accounts/:id/refresh_details(.json)",
+    "version": "v1",
+    "description": "Refresh account details from the AISP provider",
+    "params": {
+      "id": {
+        "required": "true",
+        "type": "Integer"
+      }
+    },
+    "namespace": "/bank_accounts/:id",
+    "settings_auth": null
+  },
+  {
+    "method": "POST",
+    "path": "/api/:version/bank_accounts/:id/refresh_balances(.json)",
+    "version": "v1",
+    "description": "Refresh balances from the AISP provider",
+    "params": {
+      "id": {
+        "required": "true",
+        "type": "Integer"
+      }
+    },
+    "namespace": "/bank_accounts/:id",
+    "settings_auth": null
+  },
+  {
+    "method": "GET",
+    "path": "/api/:version/bank_connections(.json)",
+    "version": "v1",
+    "description": "List bank connections",
+    "params": {
+      "status": {
+        "required": "false",
+        "type": "String"
+      },
+      "page": {
+        "required": "false",
+        "type": "Integer"
+      },
+      "limit": {
+        "required": "false",
+        "type": "Integer"
+      }
+    },
+    "namespace": "/bank_connections",
+    "settings_auth": null
+  },
+  {
+    "method": "GET",
+    "path": "/api/:version/bank_connections/:id(.json)",
+    "version": "v1",
+    "description": "Fetch a bank connection",
+    "params": {
+      "id": {
+        "required": "true",
+        "type": "Integer"
+      }
+    },
+    "namespace": "/bank_connections/:id",
+    "settings_auth": null
+  },
+  {
+    "method": "PATCH",
+    "path": "/api/:version/bank_connections/:id(.json)",
+    "version": "v1",
+    "description": "Update editable fields",
+    "params": {
+      "id": {
+        "required": "true",
+        "type": "Integer"
+      },
+      "valid_until": {
+        "required": "false",
+        "type": "DateTime"
+      },
+      "status": {
+        "required": "false",
+        "type": "String"
+      }
+    },
+    "namespace": "/bank_connections/:id",
+    "settings_auth": null
+  },
+  {
+    "method": "POST",
+    "path": "/api/:version/bank_connections/:id/refresh(.json)",
+    "version": "v1",
+    "description": "Refresh status from the provider",
+    "params": {
+      "id": {
+        "required": "true",
+        "type": "Integer"
+      }
+    },
+    "namespace": "/bank_connections/:id",
+    "settings_auth": null
+  },
+  {
+    "method": "DELETE",
+    "path": "/api/:version/bank_connections/:id(.json)",
+    "version": "v1",
+    "description": "Close a connection at the provider",
+    "params": {
+      "id": {
+        "required": "true",
+        "type": "Integer"
+      }
+    },
+    "namespace": "/bank_connections/:id",
+    "settings_auth": null
+  },
+  {
+    "method": "GET",
+    "path": "/api/:version/tpp_credentials(.json)",
+    "version": "v1",
+    "description": "List TPP credentials",
+    "params": {
+      "page": {
+        "required": "false",
+        "type": "Integer"
+      },
+      "limit": {
+        "required": "false",
+        "type": "Integer"
+      }
+    },
+    "namespace": "/tpp_credentials",
+    "settings_auth": null
+  },
+  {
+    "method": "POST",
+    "path": "/api/:version/tpp_credentials(.json)",
+    "version": "v1",
+    "description": "Create a TPP credential",
+    "params": {
+      "name": {
+        "required": "true",
+        "type": "String"
+      },
+      "provider": {
+        "required": "false",
+        "type": "String",
+        "default": "enable_banking"
+      },
+      "environment": {
+        "required": "false",
+        "type": "String",
+        "default": "PRODUCTION"
+      },
+      "redirect_url": {
+        "required": "false",
+        "type": "String"
+      },
+      "application_id": {
+        "required": "false",
+        "type": "String"
+      },
+      "private_key_pem": {
+        "required": "false",
+        "type": "String"
+      },
+      "public_cert_pem": {
+        "required": "false",
+        "type": "String"
+      }
+    },
+    "namespace": "/tpp_credentials",
+    "settings_auth": null
+  },
+  {
+    "method": "GET",
+    "path": "/api/:version/tpp_credentials/:id(.json)",
+    "version": "v1",
+    "description": "Fetch a credential",
+    "params": {
+      "id": {
+        "required": "true",
+        "type": "Integer"
+      }
+    },
+    "namespace": "/tpp_credentials/:id",
+    "settings_auth": null
+  },
+  {
+    "method": "PATCH",
+    "path": "/api/:version/tpp_credentials/:id(.json)",
+    "version": "v1",
+    "description": "Update a credential",
+    "params": {
+      "id": {
+        "required": "true",
+        "type": "Integer"
+      },
+      "name": {
+        "required": "false",
+        "type": "String"
+      },
+      "provider": {
+        "required": "false",
+        "type": "String"
+      },
+      "environment": {
+        "required": "false",
+        "type": "String"
+      },
+      "redirect_url": {
+        "required": "false",
+        "type": "String"
+      },
+      "application_id": {
+        "required": "false",
+        "type": "String"
+      },
+      "private_key_pem": {
+        "required": "false",
+        "type": "String"
+      },
+      "public_cert_pem": {
+        "required": "false",
+        "type": "String"
+      }
+    },
+    "namespace": "/tpp_credentials/:id",
+    "settings_auth": null
+  },
+  {
+    "method": "DELETE",
+    "path": "/api/:version/tpp_credentials/:id(.json)",
+    "version": "v1",
+    "description": "Delete a credential (only when no bank connections reference it)",
+    "params": {
+      "id": {
+        "required": "true",
+        "type": "Integer"
+      }
+    },
+    "namespace": "/tpp_credentials/:id",
+    "settings_auth": null
+  },
+  {
+    "method": "POST",
+    "path": "/api/:version/tpp_credentials/:id/test_connection(.json)",
+    "version": "v1",
+    "description": "Verify the credential against the provider",
+    "params": {
+      "id": {
+        "required": "true",
+        "type": "Integer"
+      }
+    },
+    "namespace": "/tpp_credentials/:id",
+    "settings_auth": null
+  },
+  {
+    "method": "POST",
+    "path": "/api/:version/tpp_credentials/:id/make_primary(.json)",
+    "version": "v1",
+    "description": "Mark this credential as primary",
+    "params": {
+      "id": {
+        "required": "true",
+        "type": "Integer"
+      }
+    },
+    "namespace": "/tpp_credentials/:id",
+    "settings_auth": null
+  },
+  {
+    "method": "GET",
+    "path": "/api/:version/transaction_syncs(.json)",
+    "version": "v1",
+    "description": "List transaction-sync runs",
+    "params": {
+      "status": {
+        "required": "false",
+        "type": "String"
+      },
+      "page": {
+        "required": "false",
+        "type": "Integer"
+      },
+      "limit": {
+        "required": "false",
+        "type": "Integer"
+      }
+    },
+    "namespace": "/transaction_syncs",
+    "settings_auth": null
+  },
+  {
+    "method": "POST",
+    "path": "/api/:version/transaction_syncs(.json)",
+    "version": "v1",
+    "description": "Queue a new transaction sync",
+    "params": {
+      "bank_connection_id": {
+        "required": "false",
+        "type": "Integer",
+        "desc": "Sync a single connection; omit for all"
+      },
+      "date_from": {
+        "required": "false",
+        "type": "Date"
+      },
+      "date_to": {
+        "required": "false",
+        "type": "Date"
+      }
+    },
+    "namespace": "/transaction_syncs",
+    "settings_auth": null
+  },
+  {
+    "method": "GET",
+    "path": "/api/:version/transaction_syncs/:id(.json)",
+    "version": "v1",
+    "description": "Fetch a sync run",
+    "params": {
+      "id": {
+        "required": "true",
+        "type": "Integer"
+      }
+    },
+    "namespace": "/transaction_syncs/:id",
+    "settings_auth": null
+  },
+  {
+    "method": "GET",
+    "path": "/api/:version/llm_enrichments(.json)",
+    "version": "v1",
+    "description": "List LLM enrichment runs",
+    "params": {
+      "status": {
+        "required": "false",
+        "type": "String"
+      },
+      "page": {
+        "required": "false",
+        "type": "Integer"
+      },
+      "limit": {
+        "required": "false",
+        "type": "Integer"
+      }
+    },
+    "namespace": "/llm_enrichments",
+    "settings_auth": null
+  },
+  {
+    "method": "POST",
+    "path": "/api/:version/llm_enrichments(.json)",
+    "version": "v1",
+    "description": "Queue a new LLM enrichment run",
+    "params": {
+      "limit": {
+        "required": "false",
+        "type": "Integer",
+        "desc": "Max distinct title groups to send to the LLM"
+      }
+    },
+    "namespace": "/llm_enrichments",
+    "settings_auth": null
+  },
+  {
+    "method": "GET",
+    "path": "/api/:version/llm_enrichments/:id(.json)",
+    "version": "v1",
+    "description": "Fetch an LLM enrichment run",
+    "params": {
+      "id": {
+        "required": "true",
+        "type": "Integer"
+      }
+    },
+    "namespace": "/llm_enrichments/:id",
+    "settings_auth": null
+  },
+  {
+    "method": "GET",
+    "path": "/api/:version/analytics/cash_flow(.json)",
+    "version": "v1",
+    "description": "Cash flow time-series + totals for the requested period",
+    "params": {
+      "from": {
+        "required": "false",
+        "type": "Date"
+      },
+      "to": {
+        "required": "false",
+        "type": "Date"
+      },
+      "bucket": {
+        "required": "false",
+        "type": "String",
+        "values": "[\"day\", \"week\", \"month\"]"
+      },
+      "currency": {
+        "required": "false",
+        "type": "String"
+      },
+      "account_ids": {
+        "required": "false",
+        "type": "[Integer]"
+      },
+      "under_path": {
+        "required": "false",
+        "type": "String",
+        "desc": "ltree prefix to narrow the scope"
+      }
+    },
+    "namespace": "/analytics",
+    "settings_auth": null
+  },
+  {
+    "method": "GET",
+    "path": "/api/:version/analytics/spend(.json)",
+    "version": "v1",
+    "description": "Spend breakdown by category path",
+    "params": {
+      "from": {
+        "required": "false",
+        "type": "Date"
+      },
+      "to": {
+        "required": "false",
+        "type": "Date"
+      },
+      "bucket": {
+        "required": "false",
+        "type": "String",
+        "values": "[\"day\", \"week\", \"month\"]"
+      },
+      "currency": {
+        "required": "false",
+        "type": "String"
+      },
+      "account_ids": {
+        "required": "false",
+        "type": "[Integer]"
+      },
+      "under_path": {
+        "required": "false",
+        "type": "String"
+      },
+      "depth": {
+        "required": "false",
+        "type": "Integer",
+        "desc": "nil = leaf rows, 1 = top level, 2 = mid level"
+      }
+    },
+    "namespace": "/analytics",
+    "settings_auth": null
+  },
+  {
+    "method": "GET",
+    "path": "/api/:version/analytics/top_merchants(.json)",
+    "version": "v1",
+    "description": "Top spend merchants for the period",
+    "params": {
+      "from": {
+        "required": "false",
+        "type": "Date"
+      },
+      "to": {
+        "required": "false",
+        "type": "Date"
+      },
+      "currency": {
+        "required": "false",
+        "type": "String"
+      },
+      "account_ids": {
+        "required": "false",
+        "type": "[Integer]"
+      },
+      "under_path": {
+        "required": "false",
+        "type": "String"
+      },
+      "limit": {
+        "required": "false",
+        "type": "Integer",
+        "default": "10"
+      }
+    },
+    "namespace": "/analytics",
+    "settings_auth": null
+  },
+  {
+    "method": "GET",
+    "path": "/api/:version/analytics/categories/:slug(.json)",
+    "version": "v1",
+    "description": "Per-category drilldown - merchants in this category for the period",
+    "params": {
+      "slug": {
+        "required": "true",
+        "type": "String"
+      },
+      "from": {
+        "required": "false",
+        "type": "Date"
+      },
+      "to": {
+        "required": "false",
+        "type": "Date"
+      },
+      "currency": {
+        "required": "false",
+        "type": "String"
+      },
+      "account_ids": {
+        "required": "false",
+        "type": "[Integer]"
+      }
+    },
+    "namespace": "/analytics/categories/:slug",
+    "settings_auth": null
+  },
+  {
+    "method": "GET",
+    "path": "/api/:version/analytics/merchants/:slug(.json)",
+    "version": "v1",
+    "description": "Per-merchant drilldown - transactions, monthly trend, totals",
+    "params": {
+      "slug": {
+        "required": "true",
+        "type": "String"
+      },
+      "from": {
+        "required": "false",
+        "type": "Date"
+      },
+      "to": {
+        "required": "false",
+        "type": "Date"
+      },
+      "currency": {
+        "required": "false",
+        "type": "String"
+      },
+      "account_ids": {
+        "required": "false",
+        "type": "[Integer]"
+      },
+      "page": {
+        "required": "false",
+        "type": "Integer"
+      },
+      "limit": {
+        "required": "false",
+        "type": "Integer"
+      }
+    },
+    "namespace": "/analytics/merchants/:slug",
+    "settings_auth": null
+  },
+  {
+    "method": "GET",
+    "path": "/api/:version/swagger_doc(.:format)",
+    "version": "v1",
+    "description": "Swagger compatible API description",
+    "params": {},
+    "namespace": "/",
+    "settings_auth": null
+  },
+  {
+    "method": "GET",
+    "path": "/api/:version/swagger_doc/:name(.:format)",
+    "version": "v1",
+    "description": "Swagger compatible API description for specific API",
+    "params": {
+      "name": {
+        "required": "true",
+        "type": "String",
+        "desc": "Resource name of mounted API"
+      },
+      "locale": {
+        "required": "false",
+        "type": "Symbol",
+        "desc": "Locale of API documentation"
+      }
+    },
+    "namespace": "/",
+    "settings_auth": null
+  }
+]

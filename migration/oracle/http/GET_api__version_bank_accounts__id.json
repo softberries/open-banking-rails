@@ -1,0 +1,55 @@
+{
+  "route": "GET /api/:version/bank_accounts/:id(.json)",
+  "captured_at": "2026-10-21T13:22:33.573Z",
+  "base_url": "http://127.0.0.1:3000",
+  "cases": [
+    {
+      "case": "default",
+      "actor": "main(token)",
+      "request": {
+        "method": "GET",
+        "path": "/api/v1/bank_accounts/1",
+        "headers": {
+          "authorization": "Bearer obrl_oracle_main_t…"
+        }
+      },
+      "response": {
+        "status": 200,
+        "duration_ms": 246,
+        "headers": {
+          "content-type": "application/json",
+          "cache-control": "max-age=0, private, must-revalidate",
+          "x-request-id": "a133de8c-9286-4619-85e8-cc57a50b65fd",
+          "vary": "Origin",
+          "content-length": "529"
+        },
+        "body_sample": {
+          "id": 1,
+          "uid": "fake-account-fake-session-1-1",
+          "name": "MACIEJ TEST",
+          "iban": "PL61109010140000071219812874",
+          "bban": null,
+          "currency": "PLN",
+          "status": "active",
+          "manual": false,
+          "product": "Konto Osobiste",
+          "cash_account_type": "CACC",
+          "details": "Konto Osobiste",
+          "details_fetched_at": "2026-10-21T13:22:26.753Z",
+          "balances_synced_at": "2026-10-21T13:22:26.469Z",
+          "transactions_synced_at": "2026-10-21T13:22:29.962Z",
+          "balances": [
+            {
+              "name": null,
+              "type": "ITAV",
+              "amount_cents": 1234567,
+              "currency": "PLN",
+              "reference_date": "2026-10-21",
+              "last_change_at": null
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

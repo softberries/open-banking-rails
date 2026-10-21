@@ -1,0 +1,38 @@
+{
+  "route": "PUT /admin/merchants/:merchant_id/merchant_rules/:id(.:format)",
+  "captured_at": "2026-10-21T13:23:53.341Z",
+  "base_url": "http://127.0.0.1:3000",
+  "cases": [
+    {
+      "case": "invalid_blank_pattern",
+      "actor": "main(session)",
+      "request": {
+        "method": "PUT",
+        "path": "/admin/merchants/60/merchant_rules/68",
+        "headers": {},
+        "body": {
+          "authenticity_token": "<redacted>",
+          "merchant_rule[pattern]": ""
+        }
+      },
+      "response": {
+        "status": 302,
+        "duration_ms": 157,
+        "headers": {
+          "x-frame-options": "SAMEORIGIN",
+          "x-content-type-options": "nosniff",
+          "location": "http://127.0.0.1:3000/admin/merchants/60",
+          "content-type": "text/html; charset=utf-8",
+          "cache-control": "no-cache",
+          "x-request-id": "312c76d2-9f7c-424f-9c40-8d372cbf5516",
+          "vary": "Origin",
+          "content-length": "0",
+          "set-cookie": [
+            "_open_banking_rails_session=<redacted>; path=/; httponly; samesite=lax"
+          ]
+        },
+        "body_sample": ""
+      }
+    }
+  ]
+}

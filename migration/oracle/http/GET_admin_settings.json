@@ -1,0 +1,29 @@
+{
+  "route": "GET /admin/settings(.:format)",
+  "captured_at": "2026-10-21T13:23:25.701Z",
+  "base_url": "http://127.0.0.1:3000",
+  "cases": [
+    {
+      "case": "default",
+      "actor": "main(session)",
+      "request": {
+        "method": "GET",
+        "path": "/admin/settings",
+        "headers": {}
+      },
+      "response": {
+        "status": 301,
+        "duration_ms": 112,
+        "headers": {
+          "location": "http://127.0.0.1:3000/admin/settings/preferences",
+          "content-type": "text/html; charset=UTF-8",
+          "cache-control": "no-cache",
+          "x-request-id": "c9f9608c-bc2e-4cf3-a83a-e17ce8783d1e",
+          "vary": "Origin",
+          "content-length": "0"
+        },
+        "body_sample": ""
+      }
+    }
+  ]
+}

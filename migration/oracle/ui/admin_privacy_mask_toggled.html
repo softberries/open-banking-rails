@@ -1,0 +1,2447 @@
+<!DOCTYPE html><html lang="en" class=""><head><style type="text/css">.turbo-progress-bar {
+  position: fixed;
+  display: block;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: #0076ff;
+  z-index: 2147483647;
+  transition:
+    width 300ms ease-out,
+    opacity 150ms 150ms ease-in;
+  transform: translate3d(0, 0, 0);
+}
+</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bank Transactions · Open Banking</title>
+    <meta name="csrf-param" content="authenticity_token">
+<meta name="csrf-token" content="jiBUK_-uVsy0VMSN9yGuoFp2FmOg0YhMxqrSpMPHyLtktPiGNrmnrL8r9GzwMrzG_Wk1S9P1RC-7bNdAKQsCJA">
+    
+    <script>
+      (function () {
+        if (localStorage.getItem("sidebar-collapsed") === "true") {
+          document.documentElement.classList.add("sidebar-collapsed");
+        }
+      })();
+    </script>
+    <link rel="icon" href="/icon.svg?v=3" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/icon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/tailwind-e94f0c0a.css" data-turbo-track="reload">
+    <script type="importmap" data-turbo-track="reload">{
+  "imports": {
+    "application": "/assets/application-bfcdf840.js",
+    "@hotwired/turbo-rails": "/assets/turbo.min-9fd88cd5.js",
+    "@hotwired/stimulus": "/assets/stimulus.min-4b1e420e.js",
+    "@hotwired/stimulus-loading": "/assets/stimulus-loading-1fc53fe7.js",
+    "chart.js": "https://cdn.jsdelivr.net/npm/chart.js@4.5.1/+esm",
+    "chartjs-plugin-datalabels": "https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/+esm",
+    "controllers/ajax_select_controller": "/assets/controllers/ajax_select_controller-9f440917.js",
+    "controllers/application": "/assets/controllers/application-3affb389.js",
+    "controllers/bulk_select_controller": "/assets/controllers/bulk_select_controller-e1aaa8af.js",
+    "controllers/chart_controller": "/assets/controllers/chart_controller-52554f38.js",
+    "controllers/clipboard_controller": "/assets/controllers/clipboard_controller-ce3baddb.js",
+    "controllers/command_palette_controller": "/assets/controllers/command_palette_controller-aef5f798.js",
+    "controllers/dismissible_controller": "/assets/controllers/dismissible_controller-30eb3eef.js",
+    "controllers/dropdown_controller": "/assets/controllers/dropdown_controller-491311a4.js",
+    "controllers/file_upload_controller": "/assets/controllers/file_upload_controller-9f0bcede.js",
+    "controllers/filter_panel_controller": "/assets/controllers/filter_panel_controller-2060fad7.js",
+    "controllers": "/assets/controllers/index-ee64e1f1.js",
+    "controllers/llm_provider_controller": "/assets/controllers/llm_provider_controller-442bebb5.js",
+    "controllers/modal_controller": "/assets/controllers/modal_controller-652872f0.js",
+    "controllers/multi_select_controller": "/assets/controllers/multi_select_controller-dd69068d.js",
+    "controllers/preference_toggle_controller": "/assets/controllers/preference_toggle_controller-faf6d534.js",
+    "controllers/propagation_controller": "/assets/controllers/propagation_controller-9d52220e.js",
+    "controllers/searchable_select_controller": "/assets/controllers/searchable_select_controller-52005179.js",
+    "controllers/sensitive_mask_controller": "/assets/controllers/sensitive_mask_controller-99bddd4c.js",
+    "controllers/sidebar_controller": "/assets/controllers/sidebar_controller-33046b9a.js",
+    "controllers/sidebar_item_controller": "/assets/controllers/sidebar_item_controller-0ad8ac39.js",
+    "controllers/tabs_controller": "/assets/controllers/tabs_controller-6136e3f3.js",
+    "controllers/tags_input_controller": "/assets/controllers/tags_input_controller-3378f308.js",
+    "controllers/toggle_controller": "/assets/controllers/toggle_controller-46cb788c.js"
+  }
+}</script>
+<link rel="modulepreload" href="/assets/application-bfcdf840.js">
+<link rel="modulepreload" href="/assets/turbo.min-9fd88cd5.js">
+<link rel="modulepreload" href="/assets/stimulus.min-4b1e420e.js">
+<link rel="modulepreload" href="/assets/stimulus-loading-1fc53fe7.js">
+<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/chart.js@4.5.1/+esm">
+<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/+esm">
+<link rel="modulepreload" href="/assets/controllers/ajax_select_controller-9f440917.js">
+<link rel="modulepreload" href="/assets/controllers/application-3affb389.js">
+<link rel="modulepreload" href="/assets/controllers/bulk_select_controller-e1aaa8af.js">
+<link rel="modulepreload" href="/assets/controllers/chart_controller-52554f38.js">
+<link rel="modulepreload" href="/assets/controllers/clipboard_controller-ce3baddb.js">
+<link rel="modulepreload" href="/assets/controllers/command_palette_controller-aef5f798.js">
+<link rel="modulepreload" href="/assets/controllers/dismissible_controller-30eb3eef.js">
+<link rel="modulepreload" href="/assets/controllers/dropdown_controller-491311a4.js">
+<link rel="modulepreload" href="/assets/controllers/file_upload_controller-9f0bcede.js">
+<link rel="modulepreload" href="/assets/controllers/filter_panel_controller-2060fad7.js">
+<link rel="modulepreload" href="/assets/controllers/index-ee64e1f1.js">
+<link rel="modulepreload" href="/assets/controllers/llm_provider_controller-442bebb5.js">
+<link rel="modulepreload" href="/assets/controllers/modal_controller-652872f0.js">
+<link rel="modulepreload" href="/assets/controllers/multi_select_controller-dd69068d.js">
+<link rel="modulepreload" href="/assets/controllers/preference_toggle_controller-faf6d534.js">
+<link rel="modulepreload" href="/assets/controllers/propagation_controller-9d52220e.js">
+<link rel="modulepreload" href="/assets/controllers/searchable_select_controller-52005179.js">
+<link rel="modulepreload" href="/assets/controllers/sensitive_mask_controller-99bddd4c.js">
+<link rel="modulepreload" href="/assets/controllers/sidebar_controller-33046b9a.js">
+<link rel="modulepreload" href="/assets/controllers/sidebar_item_controller-0ad8ac39.js">
+<link rel="modulepreload" href="/assets/controllers/tabs_controller-6136e3f3.js">
+<link rel="modulepreload" href="/assets/controllers/tags_input_controller-3378f308.js">
+<link rel="modulepreload" href="/assets/controllers/toggle_controller-46cb788c.js">
+<script type="module">import "application"</script>
+  </head>
+
+  <body data-controller="sensitive-mask">
+    <div class="flex h-screen overflow-hidden bg-background" data-controller="sidebar">
+
+      <div data-sidebar-target="overlay" class="fixed inset-0 z-40 bg-foreground/50 lg:hidden hidden" data-action="click-&gt;sidebar#closeMobile"></div>
+
+      <!-- BEGIN app/views/admin/shared/_sidebar.html.erb
+-->
+<aside class="hidden lg:flex flex-col border-r border-sidebar-border bg-sidebar transition-[width] duration-300 w-64 sidebar-collapsed:w-16">
+  <!-- BEGIN app/views/admin/shared/_sidebar_content.html.erb
+--><div class="flex h-full flex-col">
+  <div class="flex h-16 items-center border-b border-sidebar-border px-4 sidebar-collapsed:px-1.5 sidebar-collapsed:justify-center">
+    <div class="flex items-center gap-3">
+      <div class="h-9 w-9 rounded-lg bg-success text-success-foreground flex items-center justify-center shrink-0">
+        <!-- BEGIN app/views/admin/shared/icons/_logo_mark.html.erb
+--><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5">
+  <rect x="3" y="5" width="16" height="3.5" rx="1"></rect>
+  <rect x="3" y="10.25" width="12" height="3.5" rx="1" opacity="0.85"></rect>
+  <rect x="3" y="15.5" width="8" height="3.5" rx="1" opacity="0.7"></rect>
+</svg>
+<!-- END app/views/admin/shared/icons/_logo_mark.html.erb -->
+      </div>
+      <span class="text-base font-bold text-sidebar-foreground sidebar-label leading-none">Open Banking<br><span class="text-xs font-normal text-sidebar-muted">Personal finances</span></span>
+    </div>
+  </div>
+
+  <nav class="flex-1 overflow-y-auto p-3 space-y-6">
+      <div>
+        <h3 class="mb-2 px-3 text-xs font-semibold uppercase tracking-wider text-sidebar-muted sidebar-label">
+          Analytics
+        </h3>
+        <ul class="space-y-0.5">
+            <!-- BEGIN app/views/admin/shared/_sidebar_item.html.erb
+--><li data-controller="sidebar-item" data-sidebar-item-open-value="false">
+
+    <a class="flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-colors text-sidebar-foreground/70 hover:bg-sidebar-accent/50 hover:text-sidebar-foreground " href="/admin/analytics">
+        <!-- BEGIN app/views/admin/shared/icons/_layout_dashboard.html.erb
+--><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 shrink-0">
+  <rect width="7" height="9" x="3" y="3" rx="1"></rect>
+  <rect width="7" height="5" x="14" y="3" rx="1"></rect>
+  <rect width="7" height="9" x="14" y="12" rx="1"></rect>
+  <rect width="7" height="5" x="3" y="16" rx="1"></rect>
+</svg>
+<!-- END app/views/admin/shared/icons/_layout_dashboard.html.erb -->
+      <span class="truncate sidebar-label">Dashboard</span>
+</a></li>
+<!-- END app/views/admin/shared/_sidebar_item.html.erb -->
+        </ul>
+      </div>
+      <div>
+        <h3 class="mb-2 px-3 text-xs font-semibold uppercase tracking-wider text-sidebar-muted sidebar-label">
+          Operations
+        </h3>
+        <ul class="space-y-0.5">
+            <!-- BEGIN app/views/admin/shared/_sidebar_item.html.erb
+--><li data-controller="sidebar-item" data-sidebar-item-open-value="false">
+
+    <a class="flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-colors bg-sidebar-accent text-sidebar-accent-foreground " href="/admin/bank_transactions">
+        <!-- BEGIN app/views/admin/shared/icons/_dollar_sign.html.erb
+--><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 shrink-0">
+  <line x1="12" x2="12" y1="2" y2="22"></line>
+  <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+</svg>
+<!-- END app/views/admin/shared/icons/_dollar_sign.html.erb -->
+      <span class="truncate sidebar-label">Bank Transactions</span>
+</a></li>
+<!-- END app/views/admin/shared/_sidebar_item.html.erb -->
+            <!-- BEGIN app/views/admin/shared/_sidebar_item.html.erb
+--><li data-controller="sidebar-item" data-sidebar-item-open-value="false">
+
+    <a class="flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-colors text-sidebar-foreground/70 hover:bg-sidebar-accent/50 hover:text-sidebar-foreground " href="/admin/cash_transactions">
+        <!-- BEGIN app/views/admin/shared/icons/_banknote.html.erb
+--><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 shrink-0">
+  <rect width="20" height="12" x="2" y="6" rx="2"></rect>
+  <circle cx="12" cy="12" r="2"></circle>
+  <path d="M6 12h.01M18 12h.01"></path>
+</svg>
+<!-- END app/views/admin/shared/icons/_banknote.html.erb -->
+      <span class="truncate sidebar-label">Cash Transactions</span>
+</a></li>
+<!-- END app/views/admin/shared/_sidebar_item.html.erb -->
+            <!-- BEGIN app/views/admin/shared/_sidebar_item.html.erb
+--><li data-controller="sidebar-item" data-sidebar-item-open-value="false">
+
+    <a class="flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-colors text-sidebar-foreground/70 hover:bg-sidebar-accent/50 hover:text-sidebar-foreground " href="/admin/transaction_syncs">
+        <!-- BEGIN app/views/admin/shared/icons/_refresh_cw.html.erb
+--><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 shrink-0">
+  <path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"></path>
+  <path d="M21 3v5h-5"></path>
+  <path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"></path>
+  <path d="M8 16H3v5"></path>
+</svg>
+<!-- END app/views/admin/shared/icons/_refresh_cw.html.erb -->
+      <span class="truncate sidebar-label">Sync Transactions</span>
+</a></li>
+<!-- END app/views/admin/shared/_sidebar_item.html.erb -->
+        </ul>
+      </div>
+      <div>
+        <h3 class="mb-2 px-3 text-xs font-semibold uppercase tracking-wider text-sidebar-muted sidebar-label">
+          Classification
+        </h3>
+        <ul class="space-y-0.5">
+            <!-- BEGIN app/views/admin/shared/_sidebar_item.html.erb
+--><li data-controller="sidebar-item" data-sidebar-item-open-value="false">
+
+    <a class="flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-colors text-sidebar-foreground/70 hover:bg-sidebar-accent/50 hover:text-sidebar-foreground " href="/admin/merchants">
+        <!-- BEGIN app/views/admin/shared/icons/_tag.html.erb
+--><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 shrink-0">
+  <path d="M12.586 2.586A2 2 0 0 0 11.172 2H4a2 2 0 0 0-2 2v7.172a2 2 0 0 0 .586 1.414l8.704 8.704a2.426 2.426 0 0 0 3.42 0l6.58-6.58a2.426 2.426 0 0 0 0-3.42z"></path>
+  <circle cx="7.5" cy="7.5" r=".5" fill="currentColor"></circle>
+</svg>
+<!-- END app/views/admin/shared/icons/_tag.html.erb -->
+      <span class="truncate sidebar-label">Merchants</span>
+</a></li>
+<!-- END app/views/admin/shared/_sidebar_item.html.erb -->
+            <!-- BEGIN app/views/admin/shared/_sidebar_item.html.erb
+--><li data-controller="sidebar-item" data-sidebar-item-open-value="false">
+
+    <a class="flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-colors text-sidebar-foreground/70 hover:bg-sidebar-accent/50 hover:text-sidebar-foreground " href="/admin/categories">
+        <!-- BEGIN app/views/admin/shared/icons/_shopping_cart.html.erb
+--><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 shrink-0">
+  <circle cx="8" cy="21" r="1"></circle>
+  <circle cx="19" cy="21" r="1"></circle>
+  <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"></path>
+</svg>
+<!-- END app/views/admin/shared/icons/_shopping_cart.html.erb -->
+      <span class="truncate sidebar-label">Categories</span>
+</a></li>
+<!-- END app/views/admin/shared/_sidebar_item.html.erb -->
+            <!-- BEGIN app/views/admin/shared/_sidebar_item.html.erb
+--><li data-controller="sidebar-item" data-sidebar-item-open-value="false">
+
+    <a class="flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-colors text-sidebar-foreground/70 hover:bg-sidebar-accent/50 hover:text-sidebar-foreground " href="/admin/llm_enrichments">
+        <!-- BEGIN app/views/admin/shared/icons/_sparkles.html.erb
+--><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 shrink-0">
+  <path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"></path>
+  <path d="M20 3v4"></path>
+  <path d="M22 5h-4"></path>
+  <path d="M4 17v2"></path>
+  <path d="M5 18H3"></path>
+</svg>
+<!-- END app/views/admin/shared/icons/_sparkles.html.erb -->
+      <span class="truncate sidebar-label">AI Enrichment</span>
+</a></li>
+<!-- END app/views/admin/shared/_sidebar_item.html.erb -->
+            <!-- BEGIN app/views/admin/shared/_sidebar_item.html.erb
+--><li data-controller="sidebar-item" data-sidebar-item-open-value="false">
+
+    <a class="flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-colors text-sidebar-foreground/70 hover:bg-sidebar-accent/50 hover:text-sidebar-foreground " href="/admin/matching_engine">
+        <!-- BEGIN app/views/admin/shared/icons/_search.html.erb
+--><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 shrink-0">
+  <circle cx="11" cy="11" r="8"></circle>
+  <path d="m21 21-4.3-4.3"></path>
+</svg>
+<!-- END app/views/admin/shared/icons/_search.html.erb -->
+      <span class="truncate sidebar-label">Matching engine</span>
+</a></li>
+<!-- END app/views/admin/shared/_sidebar_item.html.erb -->
+        </ul>
+      </div>
+      <div>
+        <h3 class="mb-2 px-3 text-xs font-semibold uppercase tracking-wider text-sidebar-muted sidebar-label">
+          Bank Integrations
+        </h3>
+        <ul class="space-y-0.5">
+            <!-- BEGIN app/views/admin/shared/_sidebar_item.html.erb
+--><li data-controller="sidebar-item" data-sidebar-item-open-value="false">
+
+    <a class="flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-colors text-sidebar-foreground/70 hover:bg-sidebar-accent/50 hover:text-sidebar-foreground " href="/admin/tpp_credentials">
+        <!-- BEGIN app/views/admin/shared/icons/_file_text.html.erb
+--><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 shrink-0">
+  <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"></path>
+  <path d="M14 2v4a2 2 0 0 0 2 2h4"></path>
+  <path d="M10 9H8"></path>
+  <path d="M16 13H8"></path>
+  <path d="M16 17H8"></path>
+</svg>
+<!-- END app/views/admin/shared/icons/_file_text.html.erb -->
+      <span class="truncate sidebar-label">TPP Credentials</span>
+</a></li>
+<!-- END app/views/admin/shared/_sidebar_item.html.erb -->
+            <!-- BEGIN app/views/admin/shared/_sidebar_item.html.erb
+--><li data-controller="sidebar-item" data-sidebar-item-open-value="false">
+
+    <a class="flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-colors text-sidebar-foreground/70 hover:bg-sidebar-accent/50 hover:text-sidebar-foreground " href="/admin/bank_connections">
+        <!-- BEGIN app/views/admin/shared/icons/_package.html.erb
+--><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 shrink-0">
+  <path d="M11 21.73a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73z"></path>
+  <path d="M12 22V12"></path>
+  <path d="m3.3 7 7.703 4.734a2 2 0 0 0 1.994 0L20.7 7"></path>
+  <path d="m7.5 4.27 9 5.15"></path>
+</svg>
+<!-- END app/views/admin/shared/icons/_package.html.erb -->
+      <span class="truncate sidebar-label">Bank Connections</span>
+</a></li>
+<!-- END app/views/admin/shared/_sidebar_item.html.erb -->
+            <!-- BEGIN app/views/admin/shared/_sidebar_item.html.erb
+--><li data-controller="sidebar-item" data-sidebar-item-open-value="false">
+
+    <a class="flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-colors text-sidebar-foreground/70 hover:bg-sidebar-accent/50 hover:text-sidebar-foreground " href="/admin/bank_accounts">
+        <!-- BEGIN app/views/admin/shared/icons/_dollar_sign.html.erb
+--><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 shrink-0">
+  <line x1="12" x2="12" y1="2" y2="22"></line>
+  <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+</svg>
+<!-- END app/views/admin/shared/icons/_dollar_sign.html.erb -->
+      <span class="truncate sidebar-label">Bank Accounts</span>
+</a></li>
+<!-- END app/views/admin/shared/_sidebar_item.html.erb -->
+        </ul>
+      </div>
+      <div>
+        <h3 class="mb-2 px-3 text-xs font-semibold uppercase tracking-wider text-sidebar-muted sidebar-label">
+          Settings
+        </h3>
+        <ul class="space-y-0.5">
+            <!-- BEGIN app/views/admin/shared/_sidebar_item.html.erb
+--><li data-controller="sidebar-item" data-sidebar-item-open-value="false">
+
+    <a class="flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-colors text-sidebar-foreground/70 hover:bg-sidebar-accent/50 hover:text-sidebar-foreground " href="/admin/settings/preferences">
+        <!-- BEGIN app/views/admin/shared/icons/_settings.html.erb
+--><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 shrink-0">
+  <path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"></path>
+  <circle cx="12" cy="12" r="3"></circle>
+</svg>
+<!-- END app/views/admin/shared/icons/_settings.html.erb -->
+      <span class="truncate sidebar-label">Preferences</span>
+</a></li>
+<!-- END app/views/admin/shared/_sidebar_item.html.erb -->
+            <!-- BEGIN app/views/admin/shared/_sidebar_item.html.erb
+--><li data-controller="sidebar-item" data-sidebar-item-open-value="false">
+
+    <a class="flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-colors text-sidebar-foreground/70 hover:bg-sidebar-accent/50 hover:text-sidebar-foreground " href="/admin/versions">
+        <!-- BEGIN app/views/admin/shared/icons/_shield.html.erb
+--><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 shrink-0">
+  <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path>
+</svg>
+<!-- END app/views/admin/shared/icons/_shield.html.erb -->
+      <span class="truncate sidebar-label">Audit Log</span>
+</a></li>
+<!-- END app/views/admin/shared/_sidebar_item.html.erb -->
+        </ul>
+      </div>
+      <div>
+        <h3 class="mb-2 px-3 text-xs font-semibold uppercase tracking-wider text-sidebar-muted sidebar-label">
+          Development
+        </h3>
+        <ul class="space-y-0.5">
+            <!-- BEGIN app/views/admin/shared/_sidebar_item.html.erb
+--><li data-controller="sidebar-item" data-sidebar-item-open-value="false">
+
+    <a class="flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-colors text-sidebar-foreground/70 hover:bg-sidebar-accent/50 hover:text-sidebar-foreground " href="/admin/styleguide">
+        <!-- BEGIN app/views/admin/shared/icons/_settings.html.erb
+--><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 shrink-0">
+  <path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"></path>
+  <circle cx="12" cy="12" r="3"></circle>
+</svg>
+<!-- END app/views/admin/shared/icons/_settings.html.erb -->
+      <span class="truncate sidebar-label">Styleguide</span>
+</a></li>
+<!-- END app/views/admin/shared/_sidebar_item.html.erb -->
+            <!-- BEGIN app/views/admin/shared/_sidebar_item.html.erb
+--><li data-controller="sidebar-item" data-sidebar-item-open-value="false">
+
+    <a class="flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-colors text-sidebar-foreground/70 hover:bg-sidebar-accent/50 hover:text-sidebar-foreground " href="/admin/debug">
+        <!-- BEGIN app/views/admin/shared/icons/_sliders_horizontal.html.erb
+--><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 shrink-0">
+  <line x1="21" x2="14" y1="4" y2="4"></line>
+  <line x1="10" x2="3" y1="4" y2="4"></line>
+  <line x1="21" x2="12" y1="12" y2="12"></line>
+  <line x1="8" x2="3" y1="12" y2="12"></line>
+  <line x1="21" x2="16" y1="20" y2="20"></line>
+  <line x1="12" x2="3" y1="20" y2="20"></line>
+  <line x1="14" x2="14" y1="2" y2="6"></line>
+  <line x1="8" x2="8" y1="10" y2="14"></line>
+  <line x1="16" x2="16" y1="18" y2="22"></line>
+</svg>
+<!-- END app/views/admin/shared/icons/_sliders_horizontal.html.erb -->
+      <span class="truncate sidebar-label">Debug</span>
+</a></li>
+<!-- END app/views/admin/shared/_sidebar_item.html.erb -->
+        </ul>
+      </div>
+  </nav>
+
+  <div class="hidden lg:block border-t border-sidebar-border p-3">
+    <button data-action="click-&gt;sidebar#toggleCollapse" class="flex w-full items-center gap-3 rounded-lg px-3 py-2 text-sm text-sidebar-foreground/70 hover:bg-sidebar-accent/50 transition-colors">
+      <span class="sidebar-collapsed:hidden">
+        <!-- BEGIN app/views/admin/shared/icons/_panel_left_close.html.erb
+--><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4">
+  <rect width="18" height="18" x="3" y="3" rx="2"></rect>
+  <path d="M9 3v18"></path>
+  <path d="m16 15-3-3 3-3"></path>
+</svg>
+<!-- END app/views/admin/shared/icons/_panel_left_close.html.erb -->
+      </span>
+      <span class="hidden sidebar-collapsed:inline">
+        <!-- BEGIN app/views/admin/shared/icons/_panel_left.html.erb
+--><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4">
+  <rect width="18" height="18" x="3" y="3" rx="2"></rect>
+  <path d="M9 3v18"></path>
+</svg>
+<!-- END app/views/admin/shared/icons/_panel_left.html.erb -->
+      </span>
+      <span class="sidebar-label">Collapse</span>
+    </button>
+  </div>
+
+  <div class="border-t border-sidebar-border p-3">
+    <div class="flex items-center gap-3 rounded-lg px-3 py-2 sidebar-collapsed:px-0 sidebar-collapsed:justify-center">
+      <div class="h-8 w-8 rounded-full bg-primary/20 flex items-center justify-center text-primary text-xs font-bold shrink-0 sensitive-avatar">
+        <span>JD</span>
+      </div>
+      <a class="flex-1 min-w-0 sidebar-label rounded-md hover:bg-sidebar-accent/40 -mx-1 px-1 py-0.5 transition-colors" title="Profile settings" href="/admin/settings/preferences/profile">
+        <p class="text-sm font-medium text-sidebar-foreground truncate sensitive sensitive--blur">John Doe (oracle)</p>
+        <p class="text-xs text-sidebar-muted truncate sensitive sensitive--blur">maciek@example.com</p>
+</a>      <form class="sidebar-label" method="post" action="/admin/sign_out"><input type="hidden" name="_method" value="delete" style=""><button class="text-sidebar-muted hover:text-sidebar-foreground transition-colors cursor-pointer" title="Sign out" aria-label="Sign out" type="submit">
+        <!-- BEGIN app/views/admin/shared/icons/_log_out.html.erb
+--><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4">
+  <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+  <polyline points="16 17 21 12 16 7"></polyline>
+  <line x1="21" x2="9" y1="12" y2="12"></line>
+</svg>
+<!-- END app/views/admin/shared/icons/_log_out.html.erb -->
+</button><input type="hidden" name="authenticity_token" value="1tDnuTgigybBZn_Ch8K-T4eAcbLxmE_-GrllIZXV6kTM6DlDwh5LanfSZZNdpTgMWbI_b5y9DKvV1EOdWmqSlQ" style=""></form>    </div>
+  </div>
+</div>
+<!-- END app/views/admin/shared/_sidebar_content.html.erb -->
+</aside>
+
+<aside data-sidebar-target="mobile" class="fixed inset-y-0 left-0 z-50 flex w-64 flex-col bg-sidebar shadow-xl transition-transform duration-300 lg:hidden -translate-x-full">
+  <!-- BEGIN app/views/admin/shared/_sidebar_content.html.erb
+--><div class="flex h-full flex-col">
+  <div class="flex h-16 items-center border-b border-sidebar-border px-4 sidebar-collapsed:px-1.5 sidebar-collapsed:justify-center">
+    <div class="flex items-center gap-3">
+      <div class="h-9 w-9 rounded-lg bg-success text-success-foreground flex items-center justify-center shrink-0">
+        <!-- BEGIN app/views/admin/shared/icons/_logo_mark.html.erb
+--><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5">
+  <rect x="3" y="5" width="16" height="3.5" rx="1"></rect>
+  <rect x="3" y="10.25" width="12" height="3.5" rx="1" opacity="0.85"></rect>
+  <rect x="3" y="15.5" width="8" height="3.5" rx="1" opacity="0.7"></rect>
+</svg>
+<!-- END app/views/admin/shared/icons/_logo_mark.html.erb -->
+      </div>
+      <span class="text-base font-bold text-sidebar-foreground sidebar-label leading-none">Open Banking<br><span class="text-xs font-normal text-sidebar-muted">Personal finances</span></span>
+    </div>
+  </div>
+
+  <nav class="flex-1 overflow-y-auto p-3 space-y-6">
+      <div>
+        <h3 class="mb-2 px-3 text-xs font-semibold uppercase tracking-wider text-sidebar-muted sidebar-label">
+          Analytics
+        </h3>
+        <ul class="space-y-0.5">
+            <!-- BEGIN app/views/admin/shared/_sidebar_item.html.erb
+--><li data-controller="sidebar-item" data-sidebar-item-open-value="false">
+
+    <a class="flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-colors text-sidebar-foreground/70 hover:bg-sidebar-accent/50 hover:text-sidebar-foreground " href="/admin/analytics">
+        <!-- BEGIN app/views/admin/shared/icons/_layout_dashboard.html.erb
+--><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 shrink-0">
+  <rect width="7" height="9" x="3" y="3" rx="1"></rect>
+  <rect width="7" height="5" x="14" y="3" rx="1"></rect>
+  <rect width="7" height="9" x="14" y="12" rx="1"></rect>
+  <rect width="7" height="5" x="3" y="16" rx="1"></rect>
+</svg>
+<!-- END app/views/admin/shared/icons/_layout_dashboard.html.erb -->
+      <span class="truncate sidebar-label">Dashboard</span>
+</a></li>
+<!-- END app/views/admin/shared/_sidebar_item.html.erb -->
+        </ul>
+      </div>
+      <div>
+        <h3 class="mb-2 px-3 text-xs font-semibold uppercase tracking-wider text-sidebar-muted sidebar-label">
+          Operations
+        </h3>
+        <ul class="space-y-0.5">
+            <!-- BEGIN app/views/admin/shared/_sidebar_item.html.erb
+--><li data-controller="sidebar-item" data-sidebar-item-open-value="false">
+
+    <a class="flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-colors bg-sidebar-accent text-sidebar-accent-foreground " href="/admin/bank_transactions">
+        <!-- BEGIN app/views/admin/shared/icons/_dollar_sign.html.erb
+--><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 shrink-0">
+  <line x1="12" x2="12" y1="2" y2="22"></line>
+  <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+</svg>
+<!-- END app/views/admin/shared/icons/_dollar_sign.html.erb -->
+      <span class="truncate sidebar-label">Bank Transactions</span>
+</a></li>
+<!-- END app/views/admin/shared/_sidebar_item.html.erb -->
+            <!-- BEGIN app/views/admin/shared/_sidebar_item.html.erb
+--><li data-controller="sidebar-item" data-sidebar-item-open-value="false">
+
+    <a class="flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-colors text-sidebar-foreground/70 hover:bg-sidebar-accent/50 hover:text-sidebar-foreground " href="/admin/cash_transactions">
+        <!-- BEGIN app/views/admin/shared/icons/_banknote.html.erb
+--><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 shrink-0">
+  <rect width="20" height="12" x="2" y="6" rx="2"></rect>
+  <circle cx="12" cy="12" r="2"></circle>
+  <path d="M6 12h.01M18 12h.01"></path>
+</svg>
+<!-- END app/views/admin/shared/icons/_banknote.html.erb -->
+      <span class="truncate sidebar-label">Cash Transactions</span>
+</a></li>
+<!-- END app/views/admin/shared/_sidebar_item.html.erb -->
+            <!-- BEGIN app/views/admin/shared/_sidebar_item.html.erb
+--><li data-controller="sidebar-item" data-sidebar-item-open-value="false">
+
+    <a class="flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-colors text-sidebar-foreground/70 hover:bg-sidebar-accent/50 hover:text-sidebar-foreground " href="/admin/transaction_syncs">
+        <!-- BEGIN app/views/admin/shared/icons/_refresh_cw.html.erb
+--><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 shrink-0">
+  <path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"></path>
+  <path d="M21 3v5h-5"></path>
+  <path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"></path>
+  <path d="M8 16H3v5"></path>
+</svg>
+<!-- END app/views/admin/shared/icons/_refresh_cw.html.erb -->
+      <span class="truncate sidebar-label">Sync Transactions</span>
+</a></li>
+<!-- END app/views/admin/shared/_sidebar_item.html.erb -->
+        </ul>
+      </div>
+      <div>
+        <h3 class="mb-2 px-3 text-xs font-semibold uppercase tracking-wider text-sidebar-muted sidebar-label">
+          Classification
+        </h3>
+        <ul class="space-y-0.5">
+            <!-- BEGIN app/views/admin/shared/_sidebar_item.html.erb
+--><li data-controller="sidebar-item" data-sidebar-item-open-value="false">
+
+    <a class="flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-colors text-sidebar-foreground/70 hover:bg-sidebar-accent/50 hover:text-sidebar-foreground " href="/admin/merchants">
+        <!-- BEGIN app/views/admin/shared/icons/_tag.html.erb
+--><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 shrink-0">
+  <path d="M12.586 2.586A2 2 0 0 0 11.172 2H4a2 2 0 0 0-2 2v7.172a2 2 0 0 0 .586 1.414l8.704 8.704a2.426 2.426 0 0 0 3.42 0l6.58-6.58a2.426 2.426 0 0 0 0-3.42z"></path>
+  <circle cx="7.5" cy="7.5" r=".5" fill="currentColor"></circle>
+</svg>
+<!-- END app/views/admin/shared/icons/_tag.html.erb -->
+      <span class="truncate sidebar-label">Merchants</span>
+</a></li>
+<!-- END app/views/admin/shared/_sidebar_item.html.erb -->
+            <!-- BEGIN app/views/admin/shared/_sidebar_item.html.erb
+--><li data-controller="sidebar-item" data-sidebar-item-open-value="false">
+
+    <a class="flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-colors text-sidebar-foreground/70 hover:bg-sidebar-accent/50 hover:text-sidebar-foreground " href="/admin/categories">
+        <!-- BEGIN app/views/admin/shared/icons/_shopping_cart.html.erb
+--><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 shrink-0">
+  <circle cx="8" cy="21" r="1"></circle>
+  <circle cx="19" cy="21" r="1"></circle>
+  <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"></path>
+</svg>
+<!-- END app/views/admin/shared/icons/_shopping_cart.html.erb -->
+      <span class="truncate sidebar-label">Categories</span>
+</a></li>
+<!-- END app/views/admin/shared/_sidebar_item.html.erb -->
+            <!-- BEGIN app/views/admin/shared/_sidebar_item.html.erb
+--><li data-controller="sidebar-item" data-sidebar-item-open-value="false">
+
+    <a class="flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-colors text-sidebar-foreground/70 hover:bg-sidebar-accent/50 hover:text-sidebar-foreground " href="/admin/llm_enrichments">
+        <!-- BEGIN app/views/admin/shared/icons/_sparkles.html.erb
+--><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 shrink-0">
+  <path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"></path>
+  <path d="M20 3v4"></path>
+  <path d="M22 5h-4"></path>
+  <path d="M4 17v2"></path>
+  <path d="M5 18H3"></path>
+</svg>
+<!-- END app/views/admin/shared/icons/_sparkles.html.erb -->
+      <span class="truncate sidebar-label">AI Enrichment</span>
+</a></li>
+<!-- END app/views/admin/shared/_sidebar_item.html.erb -->
+            <!-- BEGIN app/views/admin/shared/_sidebar_item.html.erb
+--><li data-controller="sidebar-item" data-sidebar-item-open-value="false">
+
+    <a class="flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-colors text-sidebar-foreground/70 hover:bg-sidebar-accent/50 hover:text-sidebar-foreground " href="/admin/matching_engine">
+        <!-- BEGIN app/views/admin/shared/icons/_search.html.erb
+--><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 shrink-0">
+  <circle cx="11" cy="11" r="8"></circle>
+  <path d="m21 21-4.3-4.3"></path>
+</svg>
+<!-- END app/views/admin/shared/icons/_search.html.erb -->
+      <span class="truncate sidebar-label">Matching engine</span>
+</a></li>
+<!-- END app/views/admin/shared/_sidebar_item.html.erb -->
+        </ul>
+      </div>
+      <div>
+        <h3 class="mb-2 px-3 text-xs font-semibold uppercase tracking-wider text-sidebar-muted sidebar-label">
+          Bank Integrations
+        </h3>
+        <ul class="space-y-0.5">
+            <!-- BEGIN app/views/admin/shared/_sidebar_item.html.erb
+--><li data-controller="sidebar-item" data-sidebar-item-open-value="false">
+
+    <a class="flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-colors text-sidebar-foreground/70 hover:bg-sidebar-accent/50 hover:text-sidebar-foreground " href="/admin/tpp_credentials">
+        <!-- BEGIN app/views/admin/shared/icons/_file_text.html.erb
+--><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 shrink-0">
+  <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"></path>
+  <path d="M14 2v4a2 2 0 0 0 2 2h4"></path>
+  <path d="M10 9H8"></path>
+  <path d="M16 13H8"></path>
+  <path d="M16 17H8"></path>
+</svg>
+<!-- END app/views/admin/shared/icons/_file_text.html.erb -->
+      <span class="truncate sidebar-label">TPP Credentials</span>
+</a></li>
+<!-- END app/views/admin/shared/_sidebar_item.html.erb -->
+            <!-- BEGIN app/views/admin/shared/_sidebar_item.html.erb
+--><li data-controller="sidebar-item" data-sidebar-item-open-value="false">
+
+    <a class="flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-colors text-sidebar-foreground/70 hover:bg-sidebar-accent/50 hover:text-sidebar-foreground " href="/admin/bank_connections">
+        <!-- BEGIN app/views/admin/shared/icons/_package.html.erb
+--><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 shrink-0">
+  <path d="M11 21.73a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73z"></path>
+  <path d="M12 22V12"></path>
+  <path d="m3.3 7 7.703 4.734a2 2 0 0 0 1.994 0L20.7 7"></path>
+  <path d="m7.5 4.27 9 5.15"></path>
+</svg>
+<!-- END app/views/admin/shared/icons/_package.html.erb -->
+      <span class="truncate sidebar-label">Bank Connections</span>
+</a></li>
+<!-- END app/views/admin/shared/_sidebar_item.html.erb -->
+            <!-- BEGIN app/views/admin/shared/_sidebar_item.html.erb
+--><li data-controller="sidebar-item" data-sidebar-item-open-value="false">
+
+    <a class="flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-colors text-sidebar-foreground/70 hover:bg-sidebar-accent/50 hover:text-sidebar-foreground " href="/admin/bank_accounts">
+        <!-- BEGIN app/views/admin/shared/icons/_dollar_sign.html.erb
+--><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 shrink-0">
+  <line x1="12" x2="12" y1="2" y2="22"></line>
+  <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+</svg>
+<!-- END app/views/admin/shared/icons/_dollar_sign.html.erb -->
+      <span class="truncate sidebar-label">Bank Accounts</span>
+</a></li>
+<!-- END app/views/admin/shared/_sidebar_item.html.erb -->
+        </ul>
+      </div>
+      <div>
+        <h3 class="mb-2 px-3 text-xs font-semibold uppercase tracking-wider text-sidebar-muted sidebar-label">
+          Settings
+        </h3>
+        <ul class="space-y-0.5">
+            <!-- BEGIN app/views/admin/shared/_sidebar_item.html.erb
+--><li data-controller="sidebar-item" data-sidebar-item-open-value="false">
+
+    <a class="flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-colors text-sidebar-foreground/70 hover:bg-sidebar-accent/50 hover:text-sidebar-foreground " href="/admin/settings/preferences">
+        <!-- BEGIN app/views/admin/shared/icons/_settings.html.erb
+--><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 shrink-0">
+  <path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"></path>
+  <circle cx="12" cy="12" r="3"></circle>
+</svg>
+<!-- END app/views/admin/shared/icons/_settings.html.erb -->
+      <span class="truncate sidebar-label">Preferences</span>
+</a></li>
+<!-- END app/views/admin/shared/_sidebar_item.html.erb -->
+            <!-- BEGIN app/views/admin/shared/_sidebar_item.html.erb
+--><li data-controller="sidebar-item" data-sidebar-item-open-value="false">
+
+    <a class="flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-colors text-sidebar-foreground/70 hover:bg-sidebar-accent/50 hover:text-sidebar-foreground " href="/admin/versions">
+        <!-- BEGIN app/views/admin/shared/icons/_shield.html.erb
+--><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 shrink-0">
+  <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path>
+</svg>
+<!-- END app/views/admin/shared/icons/_shield.html.erb -->
+      <span class="truncate sidebar-label">Audit Log</span>
+</a></li>
+<!-- END app/views/admin/shared/_sidebar_item.html.erb -->
+        </ul>
+      </div>
+      <div>
+        <h3 class="mb-2 px-3 text-xs font-semibold uppercase tracking-wider text-sidebar-muted sidebar-label">
+          Development
+        </h3>
+        <ul class="space-y-0.5">
+            <!-- BEGIN app/views/admin/shared/_sidebar_item.html.erb
+--><li data-controller="sidebar-item" data-sidebar-item-open-value="false">
+
+    <a class="flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-colors text-sidebar-foreground/70 hover:bg-sidebar-accent/50 hover:text-sidebar-foreground " href="/admin/styleguide">
+        <!-- BEGIN app/views/admin/shared/icons/_settings.html.erb
+--><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 shrink-0">
+  <path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"></path>
+  <circle cx="12" cy="12" r="3"></circle>
+</svg>
+<!-- END app/views/admin/shared/icons/_settings.html.erb -->
+      <span class="truncate sidebar-label">Styleguide</span>
+</a></li>
+<!-- END app/views/admin/shared/_sidebar_item.html.erb -->
+            <!-- BEGIN app/views/admin/shared/_sidebar_item.html.erb
+--><li data-controller="sidebar-item" data-sidebar-item-open-value="false">
+
+    <a class="flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-colors text-sidebar-foreground/70 hover:bg-sidebar-accent/50 hover:text-sidebar-foreground " href="/admin/debug">
+        <!-- BEGIN app/views/admin/shared/icons/_sliders_horizontal.html.erb
+--><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 shrink-0">
+  <line x1="21" x2="14" y1="4" y2="4"></line>
+  <line x1="10" x2="3" y1="4" y2="4"></line>
+  <line x1="21" x2="12" y1="12" y2="12"></line>
+  <line x1="8" x2="3" y1="12" y2="12"></line>
+  <line x1="21" x2="16" y1="20" y2="20"></line>
+  <line x1="12" x2="3" y1="20" y2="20"></line>
+  <line x1="14" x2="14" y1="2" y2="6"></line>
+  <line x1="8" x2="8" y1="10" y2="14"></line>
+  <line x1="16" x2="16" y1="18" y2="22"></line>
+</svg>
+<!-- END app/views/admin/shared/icons/_sliders_horizontal.html.erb -->
+      <span class="truncate sidebar-label">Debug</span>
+</a></li>
+<!-- END app/views/admin/shared/_sidebar_item.html.erb -->
+        </ul>
+      </div>
+  </nav>
+
+  <div class="hidden lg:block border-t border-sidebar-border p-3">
+    <button data-action="click-&gt;sidebar#toggleCollapse" class="flex w-full items-center gap-3 rounded-lg px-3 py-2 text-sm text-sidebar-foreground/70 hover:bg-sidebar-accent/50 transition-colors">
+      <span class="sidebar-collapsed:hidden">
+        <!-- BEGIN app/views/admin/shared/icons/_panel_left_close.html.erb
+--><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4">
+  <rect width="18" height="18" x="3" y="3" rx="2"></rect>
+  <path d="M9 3v18"></path>
+  <path d="m16 15-3-3 3-3"></path>
+</svg>
+<!-- END app/views/admin/shared/icons/_panel_left_close.html.erb -->
+      </span>
+      <span class="hidden sidebar-collapsed:inline">
+        <!-- BEGIN app/views/admin/shared/icons/_panel_left.html.erb
+--><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4">
+  <rect width="18" height="18" x="3" y="3" rx="2"></rect>
+  <path d="M9 3v18"></path>
+</svg>
+<!-- END app/views/admin/shared/icons/_panel_left.html.erb -->
+      </span>
+      <span class="sidebar-label">Collapse</span>
+    </button>
+  </div>
+
+  <div class="border-t border-sidebar-border p-3">
+    <div class="flex items-center gap-3 rounded-lg px-3 py-2 sidebar-collapsed:px-0 sidebar-collapsed:justify-center">
+      <div class="h-8 w-8 rounded-full bg-primary/20 flex items-center justify-center text-primary text-xs font-bold shrink-0 sensitive-avatar">
+        <span>JD</span>
+      </div>
+      <a class="flex-1 min-w-0 sidebar-label rounded-md hover:bg-sidebar-accent/40 -mx-1 px-1 py-0.5 transition-colors" title="Profile settings" href="/admin/settings/preferences/profile">
+        <p class="text-sm font-medium text-sidebar-foreground truncate sensitive sensitive--blur">John Doe (oracle)</p>
+        <p class="text-xs text-sidebar-muted truncate sensitive sensitive--blur">maciek@example.com</p>
+</a>      <form class="sidebar-label" method="post" action="/admin/sign_out"><input type="hidden" name="_method" value="delete" style=""><button class="text-sidebar-muted hover:text-sidebar-foreground transition-colors cursor-pointer" title="Sign out" aria-label="Sign out" type="submit">
+        <!-- BEGIN app/views/admin/shared/icons/_log_out.html.erb
+--><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4">
+  <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+  <polyline points="16 17 21 12 16 7"></polyline>
+  <line x1="21" x2="9" y1="12" y2="12"></line>
+</svg>
+<!-- END app/views/admin/shared/icons/_log_out.html.erb -->
+</button><input type="hidden" name="authenticity_token" value="kRyVGijDUI5EZjRpc996l-2tnfm2ubLChMTCeZnz2yqLJEvg0v-YwvLSLjipuPzUM5_TJNuc8ZdLqeTFVkyj-w" style=""></form>    </div>
+  </div>
+</div>
+<!-- END app/views/admin/shared/_sidebar_content.html.erb -->
+</aside>
+<!-- END app/views/admin/shared/_sidebar.html.erb -->
+
+      <div class="flex flex-1 flex-col overflow-hidden min-w-0">
+        <!-- BEGIN app/views/admin/shared/_topbar.html.erb
+--><header class="sticky top-0 z-30 flex h-16 items-center gap-3 border-b bg-card px-3 sm:px-4 lg:px-6">
+  <button data-action="click-&gt;sidebar#openMobile" class="lg:hidden shrink-0 -ml-1 p-2 rounded-lg text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-colors" aria-label="Open navigation">
+    <!-- BEGIN app/views/admin/shared/icons/_menu.html.erb
+--><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5">
+  <line x1="4" x2="20" y1="6" y2="6"></line>
+  <line x1="4" x2="20" y1="12" y2="12"></line>
+  <line x1="4" x2="20" y1="18" y2="18"></line>
+</svg>
+<!-- END app/views/admin/shared/icons/_menu.html.erb -->
+  </button>
+
+  <nav class="flex items-center gap-1 text-sm min-w-0 flex-1 overflow-hidden">
+    <!-- BEGIN app/views/admin/shared/_breadcrumbs.html.erb
+-->    <span class="flex items-center gap-1 shrink-0 ">
+      <a class="text-muted-foreground hover:text-foreground transition-colors whitespace-nowrap " href="/admin">Admin</a>
+      <!-- BEGIN app/views/admin/shared/icons/_chevron_right.html.erb
+--><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-3 w-3 text-muted-foreground/50">
+  <path d="m9 18 6-6-6-6"></path>
+</svg>
+<!-- END app/views/admin/shared/icons/_chevron_right.html.erb -->
+    </span>
+    <span class="flex items-center gap-1 min-w-0">
+      <span class="font-medium text-foreground truncate ">Bank Transactions</span>
+    </span>
+<!-- END app/views/admin/shared/_breadcrumbs.html.erb -->
+  </nav>
+
+  <div class="ml-auto flex items-center gap-2 shrink-0">
+    <button type="button" title="Toggle privacy mode - hides sensitive data on screen-share" aria-pressed="false" class="rounded-lg p-2 text-muted-foreground hover:bg-card-hover hover:text-foreground transition-colors" data-controller="preference-toggle" data-action="click-&gt;preference-toggle#toggle" data-preference-toggle-name-value="privacy_mode" data-preference-toggle-class-value="privacy-mode" data-preference-toggle-scope-value=":root"><span data-preference-toggle-target="iconOff"><!-- BEGIN app/views/admin/shared/icons/_eye.html.erb
+--><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5">
+  <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path>
+  <circle cx="12" cy="12" r="3"></circle>
+</svg>
+<!-- END app/views/admin/shared/icons/_eye.html.erb --></span><span data-preference-toggle-target="iconOn" class="hidden"><!-- BEGIN app/views/admin/shared/icons/_eye_off.html.erb
+--><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5">
+  <path d="M9.88 9.88a3 3 0 1 0 4.24 4.24"></path>
+  <path d="M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68"></path>
+  <path d="M6.61 6.61A13.526 13.526 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61"></path>
+  <line x1="2" x2="22" y1="2" y2="22"></line>
+</svg>
+<!-- END app/views/admin/shared/icons/_eye_off.html.erb --></span></button>
+
+    <div class="hidden sm:flex items-center gap-2 ml-2 pl-2 border-l">
+      <div class="h-8 w-8 rounded-full bg-primary/20 flex items-center justify-center text-primary text-xs font-bold sensitive-avatar">
+        <span>JD</span>
+      </div>
+      <a class="text-sm font-medium rounded-md px-2 py-1 -mx-1 hover:bg-sidebar-accent/40 transition-colors sensitive sensitive--blur" title="Profile settings" href="/admin/settings/preferences/profile">
+        John Doe (oracle)
+</a>    </div>
+  </div>
+</header>
+<!-- END app/views/admin/shared/_topbar.html.erb -->
+        <main class="flex-1 overflow-y-auto overflow-x-hidden p-4 lg:p-6 [scrollbar-gutter:stable]">
+          <div class="mx-auto w-full max-w-[1400px]">
+            <!-- BEGIN app/views/admin/shared/_flash.html.erb
+--><!-- END app/views/admin/shared/_flash.html.erb -->
+            
+            <!-- BEGIN app/views/admin/bank_transactions/index.html.erb
+-->
+<div class="space-y-6" data-controller="filter-panel">
+  <!-- BEGIN app/views/admin/shared/components/_page_header.html.erb
+--><div class="flex flex-col gap-3 sm:gap-4 sm:flex-row sm:items-center sm:justify-between">
+  <div class="flex items-start sm:items-center min-w-0 gap-3">
+    <div class="min-w-0">
+      <h1 class="text-xl sm:text-2xl font-bold text-foreground break-words">Bank Transactions</h1>
+        <p class="text-xs sm:text-sm text-muted-foreground">All transactions pulled from Enable Banking, normalized across PKO / Revolut / mBank quirks.</p>
+    </div>
+  </div>
+    <div class="self-start flex flex-wrap items-center gap-2">
+        <!-- BEGIN app/views/admin/shared/components/_button.html.erb
+-->  <a class="inline-flex items-center justify-center gap-2 rounded-lg font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:opacity-50 cursor-pointer border bg-card hover:bg-card-hover text-foreground h-10 px-4 py-2 text-sm" href="/admin/transaction_syncs/new"><!-- BEGIN app/views/admin/shared/icons/_plus.html.erb
+--><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4">
+  <path d="M5 12h14"></path>
+  <path d="M12 5v14"></path>
+</svg>
+<!-- END app/views/admin/shared/icons/_plus.html.erb -->Sync now</a>
+<!-- END app/views/admin/shared/components/_button.html.erb -->
+
+    </div>
+</div>
+<!-- END app/views/admin/shared/components/_page_header.html.erb -->
+
+
+  <form class="bank_transaction_search" id="bank_transaction_search" data-turbo="false" action="/admin/bank_transactions" accept-charset="UTF-8" method="get">
+    <input type="hidden" name="q[s]" id="q_s" style="">
+    <input type="hidden" name="merchant_id" id="ef_merchant_id" style="">
+    <input type="hidden" name="category_id" id="ef_category_id" style="">
+    <input type="hidden" name="payment_method" id="ef_payment_method" style="">
+    <input type="hidden" name="enrichment_source" id="ef_enrichment_source" style="">
+    <input type="hidden" name="enrichment_state" id="ef_enrichment_state" style="">
+
+    <div class="flex flex-wrap items-center gap-2 sm:gap-3">
+      <div class="relative w-full sm:w-auto sm:flex-1 sm:max-w-md">
+        <!-- BEGIN app/views/admin/shared/icons/_search.html.erb
+--><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground">
+  <circle cx="11" cy="11" r="8"></circle>
+  <path d="m21 21-4.3-4.3"></path>
+</svg>
+<!-- END app/views/admin/shared/icons/_search.html.erb -->
+        <input placeholder="Search title, counterparty or merchant…" class="w-full rounded-lg border bg-card pl-9 pr-4 py-2 text-sm outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition" type="search" name="q[title_or_counterparty_name_or_enrichment_merchant_name_cont]" id="q_title_or_counterparty_name_or_enrichment_merchant_name_cont" style="">
+      </div>
+
+      <!-- BEGIN app/views/admin/shared/components/_filter_trigger.html.erb
+--><button type="button" data-action="filter-panel#open" class="inline-flex items-center gap-2 rounded-lg border bg-card px-4 py-2 text-sm font-medium hover:bg-card-hover transition-colors ">
+  <!-- BEGIN app/views/admin/shared/icons/_sliders_horizontal.html.erb
+--><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4">
+  <line x1="21" x2="14" y1="4" y2="4"></line>
+  <line x1="10" x2="3" y1="4" y2="4"></line>
+  <line x1="21" x2="12" y1="12" y2="12"></line>
+  <line x1="8" x2="3" y1="12" y2="12"></line>
+  <line x1="21" x2="16" y1="20" y2="20"></line>
+  <line x1="12" x2="3" y1="20" y2="20"></line>
+  <line x1="14" x2="14" y1="2" y2="6"></line>
+  <line x1="8" x2="8" y1="10" y2="14"></line>
+  <line x1="16" x2="16" y1="18" y2="22"></line>
+</svg>
+<!-- END app/views/admin/shared/icons/_sliders_horizontal.html.erb -->
+  Filters
+</button>
+<!-- END app/views/admin/shared/components/_filter_trigger.html.erb -->
+
+      <!-- BEGIN app/views/admin/shared/components/_button.html.erb
+-->  <button type="submit" class="inline-flex items-center justify-center gap-2 rounded-lg font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:opacity-50 cursor-pointer bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2 text-sm">Apply</button>
+<!-- END app/views/admin/shared/components/_button.html.erb -->
+    </div>
+
+
+    <!-- BEGIN app/views/admin/shared/components/_filter_panel.html.erb
+-->
+<div data-filter-panel-target="overlay" class="hidden fixed inset-0 z-40 bg-foreground/20 lg:bg-foreground/10" data-action="click-&gt;filter-panel#close"></div>
+
+<div data-filter-panel-target="panel" class="fixed right-0 top-0 z-50 flex h-full w-full max-w-sm flex-col border-l bg-card shadow-2xl translate-x-full transition-transform duration-300 ease-out">
+
+  <div class="flex items-center justify-between border-b px-5 py-4">
+    <div class="flex items-center gap-2">
+      <!-- BEGIN app/views/admin/shared/icons/_sliders_horizontal.html.erb
+--><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 text-muted-foreground">
+  <line x1="21" x2="14" y1="4" y2="4"></line>
+  <line x1="10" x2="3" y1="4" y2="4"></line>
+  <line x1="21" x2="12" y1="12" y2="12"></line>
+  <line x1="8" x2="3" y1="12" y2="12"></line>
+  <line x1="21" x2="16" y1="20" y2="20"></line>
+  <line x1="12" x2="3" y1="20" y2="20"></line>
+  <line x1="14" x2="14" y1="2" y2="6"></line>
+  <line x1="8" x2="8" y1="10" y2="14"></line>
+  <line x1="16" x2="16" y1="18" y2="22"></line>
+</svg>
+<!-- END app/views/admin/shared/icons/_sliders_horizontal.html.erb -->
+      <h2 class="text-sm font-semibold text-foreground">Filters</h2>
+    </div>
+    <button type="button" data-action="filter-panel#close" class="rounded-lg p-1.5 text-muted-foreground hover:bg-muted/50 hover:text-foreground transition-colors">
+      <!-- BEGIN app/views/admin/shared/icons/_x.html.erb
+--><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4">
+  <path d="M18 6 6 18"></path>
+  <path d="m6 6 12 12"></path>
+</svg>
+<!-- END app/views/admin/shared/icons/_x.html.erb -->
+    </button>
+  </div>
+
+  <div class="flex-1 overflow-y-auto px-5 py-4 space-y-5">
+    
+      <div class="space-y-1.5">
+        <label class="text-xs font-medium text-muted-foreground uppercase tracking-wider">Bank account</label>
+        <select class="form-input" name="q[bank_account_id_eq]" id="q_bank_account_id_eq"><option value="">All accounts</option>
+<option value="3">Revolut LT - Maciej Test</option>
+<option value="4">Revolut LT - Maciej Test</option>
+<option value="1">PKO BP - MACIEJ TEST</option>
+<option value="2">PKO BP - MACIEJ TEST</option></select>
+      </div>
+
+      <div class="space-y-1.5">
+        <label class="text-xs font-medium text-muted-foreground uppercase tracking-wider">Direction</label>
+        <select class="form-input" name="q[direction_eq]" id="q_direction_eq"><option value="">All</option>
+<option value="credit">Credit (incoming)</option>
+<option value="debit">Debit (outgoing)</option></select>
+      </div>
+
+      <div class="space-y-1.5">
+        <label class="text-xs font-medium text-muted-foreground uppercase tracking-wider">Status</label>
+        <select class="form-input" name="q[status_eq]" id="q_status_eq"><option value="">All</option>
+<option value="booked">Booked</option>
+<option value="pending">Pending</option></select>
+      </div>
+
+      <div class="space-y-1.5">
+        <label class="text-xs font-medium text-muted-foreground uppercase tracking-wider">Currency</label>
+        <select class="form-input" name="q[currency_eq]" id="q_currency_eq"><option value="">All</option>
+<option value="EUR">EUR</option>
+<option value="PLN">PLN</option>
+<option value="USD">USD</option></select>
+      </div>
+
+      <div class="space-y-1.5">
+        <label class="text-xs font-medium text-muted-foreground uppercase tracking-wider">Booking date - from</label>
+        <input class="form-input" type="date" name="q[booking_date_gteq]" id="q_booking_date_gteq" style="">
+      </div>
+
+      <div class="space-y-1.5">
+        <label class="text-xs font-medium text-muted-foreground uppercase tracking-wider">Booking date - to</label>
+        <input class="form-input" type="date" name="q[booking_date_lteq]" id="q_booking_date_lteq" style="">
+      </div>
+
+      <div class="space-y-1.5">
+        <label class="text-xs font-medium text-muted-foreground uppercase tracking-wider">Merchant</label>
+        <select onchange="document.getElementById('ef_merchant_id').value = this.value" class="form-input">
+          <option value="">All merchants</option>
+            <option value="12">4F (OTCF)</option>
+            <option value="26">ATM</option>
+            <option value="18">Al Capone</option>
+            <option value="20">AllegroPay</option>
+            <option value="23">Anthropic</option>
+            <option value="4">Auchan</option>
+            <option value="1">Biedronka</option>
+            <option value="21">Claude.ai</option>
+            <option value="14">DOZ Apteka</option>
+            <option value="15">Dara Kebab</option>
+            <option value="11">Decathlon</option>
+            <option value="16">Doner King</option>
+            <option value="24">Google One</option>
+            <option value="3">Kaufland</option>
+            <option value="2">Lidl</option>
+            <option value="25">LinkedIn</option>
+            <option value="17">McDonald's</option>
+            <option value="13">Media Expert</option>
+            <option value="22">OpenAI</option>
+            <option value="58">Oracle API Merchant</option>
+            <option value="59">Oracle Foreign Cat</option>
+            <option value="57">Oracle MCP Merchant</option>
+            <option value="28">Own account (PKO BP ⋯2874)</option>
+            <option value="9">Pepco</option>
+            <option value="8">Rossmann</option>
+            <option value="7">Społem PSS</option>
+            <option value="19">T-Mobile</option>
+            <option value="10">TEDi</option>
+            <option value="27">Top-up (own)</option>
+            <option value="5">eLeclerc</option>
+            <option value="6">Żabka</option>
+        </select>
+      </div>
+
+      <div class="space-y-1.5">
+        <label class="text-xs font-medium text-muted-foreground uppercase tracking-wider">Category</label>
+        <select onchange="document.getElementById('ef_category_id').value = this.value" class="form-input">
+          <option value="">All categories</option>
+            <option value="6">
+              Edukacja
+            </option>
+            <option value="69">
+              Edukacja / Edukacja / Książki
+            </option>
+            <option value="68">
+              Edukacja / Edukacja / Kursy i szkolenia
+            </option>
+            <option value="70">
+              Edukacja / Edukacja / Studia / czesne
+            </option>
+            <option value="1">
+              Jedzenie
+            </option>
+            <option value="11">
+              Jedzenie / Jedzenie / W domu
+            </option>
+            <option value="16">
+              Jedzenie / Jedzenie / W domu / W domu / Alkohol (do domu)
+            </option>
+            <option value="14">
+              Jedzenie / Jedzenie / W domu / W domu / Piekarnie i cukiernie
+            </option>
+            <option value="13">
+              Jedzenie / Jedzenie / W domu / W domu / Sklepy osiedlowe
+            </option>
+            <option value="15">
+              Jedzenie / Jedzenie / W domu / W domu / Sklepy specjalistyczne
+            </option>
+            <option value="12">
+              Jedzenie / Jedzenie / W domu / W domu / Supermarkety
+            </option>
+            <option value="17">
+              Jedzenie / Jedzenie / Na mieście
+            </option>
+            <option value="22">
+              Jedzenie / Jedzenie / Na mieście / Na mieście / Bar / pub / klub
+            </option>
+            <option value="20">
+              Jedzenie / Jedzenie / Na mieście / Na mieście / Kawiarnie
+            </option>
+            <option value="21">
+              Jedzenie / Jedzenie / Na mieście / Na mieście / Dostawa jedzenia
+            </option>
+            <option value="19">
+              Jedzenie / Jedzenie / Na mieście / Na mieście / Fast food / kebab
+            </option>
+            <option value="18">
+              Jedzenie / Jedzenie / Na mieście / Na mieście / Restauracje
+            </option>
+            <option value="238">
+              Jedzenie / Jedzenie / Oracle API Category Renamed
+            </option>
+            <option value="4">
+              Zdrowie i ciało
+            </option>
+            <option value="48">
+              Zdrowie i ciało / Zdrowie i ciało / Ciało
+            </option>
+            <option value="50">
+              Zdrowie i ciało / Zdrowie i ciało / Ciało / Ciało / Kosmetyk
+            </option>
+            <option value="51">
+              Zdrowie i ciało / Zdrowie i ciało / Ciało / Ciało / Sport i siłownia
+            </option>
+            <option value="49">
+              Zdrowie i ciało / Zdrowie i ciało / Ciało / Ciało / Fryzjer
+            </option>
+            <option value="43">
+              Zdrowie i ciało / Zdrowie i ciało / Medyczne
+            </option>
+            <option value="46">
+              Zdrowie i ciało / Zdrowie i ciało / Medyczne / Medyczne / Stomatolog
+            </option>
+            <option value="45">
+              Zdrowie i ciało / Zdrowie i ciało / Medyczne / Medyczne / Lekarze
+            </option>
+            <option value="47">
+              Zdrowie i ciało / Zdrowie i ciało / Medyczne / Medyczne / Optyk
+            </option>
+            <option value="44">
+              Zdrowie i ciało / Zdrowie i ciało / Medyczne / Medyczne / Apteki
+            </option>
+            <option value="3">
+              Mieszkanie
+            </option>
+            <option value="35">
+              Mieszkanie / Mieszkanie / Stałe
+            </option>
+            <option value="36">
+              Mieszkanie / Mieszkanie / Stałe / Stałe / Czynsz / kredyt
+            </option>
+            <option value="38">
+              Mieszkanie / Mieszkanie / Stałe / Stałe / Internet / telefon
+            </option>
+            <option value="37">
+              Mieszkanie / Mieszkanie / Stałe / Stałe / Media (prąd / gaz)
+            </option>
+            <option value="39">
+              Mieszkanie / Mieszkanie / Zmienne
+            </option>
+            <option value="40">
+              Mieszkanie / Mieszkanie / Zmienne / Zmienne / Drogerie
+            </option>
+            <option value="41">
+              Mieszkanie / Mieszkanie / Zmienne / Zmienne / Wyposażenie
+            </option>
+            <option value="42">
+              Mieszkanie / Mieszkanie / Zmienne / Zmienne / Konserwacja i remonty
+            </option>
+            <option value="8">
+              Wpływy
+            </option>
+            <option value="95">
+              Wpływy / Wpływy / Inne wpływy
+            </option>
+            <option value="97">
+              Wpływy / Wpływy / Inne wpływy / Inne wpływy / Otrzymane prezenty
+            </option>
+            <option value="96">
+              Wpływy / Wpływy / Inne wpływy / Inne wpływy / Sprzedaż rzeczy
+            </option>
+            <option value="88">
+              Wpływy / Wpływy / Pasywne
+            </option>
+            <option value="90">
+              Wpływy / Wpływy / Pasywne / Pasywne / Dywidendy
+            </option>
+            <option value="89">
+              Wpływy / Wpływy / Pasywne / Pasywne / Odsetki
+            </option>
+            <option value="91">
+              Wpływy / Wpływy / Pasywne / Pasywne / Najem
+            </option>
+            <option value="92">
+              Wpływy / Wpływy / Zwroty i cashback
+            </option>
+            <option value="94">
+              Wpływy / Wpływy / Zwroty i cashback / Zwroty i cashback / Cashback
+            </option>
+            <option value="93">
+              Wpływy / Wpływy / Zwroty i cashback / Zwroty i cashback / Zwroty
+            </option>
+            <option value="84">
+              Wpływy / Wpływy / Praca
+            </option>
+            <option value="86">
+              Wpływy / Wpływy / Praca / Praca / Premie
+            </option>
+            <option value="87">
+              Wpływy / Wpływy / Praca / Praca / Freelance / B2B
+            </option>
+            <option value="85">
+              Wpływy / Wpływy / Praca / Praca / Wynagrodzenie
+            </option>
+            <option value="5">
+              Lifestyle
+            </option>
+            <option value="52">
+              Lifestyle / Lifestyle / Rozrywka
+            </option>
+            <option value="54">
+              Lifestyle / Lifestyle / Rozrywka / Rozrywka / Bilety i wydarzenia
+            </option>
+            <option value="55">
+              Lifestyle / Lifestyle / Rozrywka / Rozrywka / Gry
+            </option>
+            <option value="56">
+              Lifestyle / Lifestyle / Rozrywka / Rozrywka / Hobby
+            </option>
+            <option value="53">
+              Lifestyle / Lifestyle / Rozrywka / Rozrywka / Streaming
+            </option>
+            <option value="65">
+              Lifestyle / Lifestyle / Prezenty i darowizny
+            </option>
+            <option value="67">
+              Lifestyle / Lifestyle / Prezenty i darowizny / Prezenty i darowizny / Darowizny
+            </option>
+            <option value="66">
+              Lifestyle / Lifestyle / Prezenty i darowizny / Prezenty i darowizny / Prezenty
+            </option>
+            <option value="57">
+              Lifestyle / Lifestyle / Zakupy
+            </option>
+            <option value="58">
+              Lifestyle / Lifestyle / Zakupy / Zakupy / Ubrania i obuwie
+            </option>
+            <option value="59">
+              Lifestyle / Lifestyle / Zakupy / Zakupy / Elektronika
+            </option>
+            <option value="60">
+              Lifestyle / Lifestyle / Zakupy / Zakupy / Inne sklepy
+            </option>
+            <option value="61">
+              Lifestyle / Lifestyle / Narzędzia cyfrowe
+            </option>
+            <option value="63">
+              Lifestyle / Lifestyle / Narzędzia cyfrowe / Narzędzia cyfrowe / Chmura / dyski
+            </option>
+            <option value="64">
+              Lifestyle / Lifestyle / Narzędzia cyfrowe / Narzędzia cyfrowe / Media i prasa
+            </option>
+            <option value="62">
+              Lifestyle / Lifestyle / Narzędzia cyfrowe / Narzędzia cyfrowe / SaaS / AI
+            </option>
+            <option value="2">
+              Mobilność
+            </option>
+            <option value="27">
+              Mobilność / Mobilność / Auto
+            </option>
+            <option value="28">
+              Mobilność / Mobilność / Auto / Auto / Paliwo
+            </option>
+            <option value="29">
+              Mobilność / Mobilność / Auto / Auto / Serwis i mycie
+            </option>
+            <option value="30">
+              Mobilność / Mobilność / Auto / Auto / Opłaty drogowe
+            </option>
+            <option value="23">
+              Mobilność / Mobilność / Codzienne
+            </option>
+            <option value="26">
+              Mobilność / Mobilność / Codzienne / Codzienne / Parkingi
+            </option>
+            <option value="25">
+              Mobilność / Mobilność / Codzienne / Codzienne / Taxi / Bolt / Uber
+            </option>
+            <option value="24">
+              Mobilność / Mobilność / Codzienne / Codzienne / Komunikacja miejska
+            </option>
+            <option value="31">
+              Mobilność / Mobilność / Podróże
+            </option>
+            <option value="32">
+              Mobilność / Mobilność / Podróże / Podróże / Loty
+            </option>
+            <option value="33">
+              Mobilność / Mobilność / Podróże / Podróże / Noclegi
+            </option>
+            <option value="34">
+              Mobilność / Mobilność / Podróże / Podróże / PKP / autobus
+            </option>
+            <option value="9">
+              Ruch pieniędzy
+            </option>
+            <option value="105">
+              Ruch pieniędzy / Ruch pieniędzy / Inwestycje
+            </option>
+            <option value="106">
+              Ruch pieniędzy / Ruch pieniędzy / Inwestycje / Inwestycje / Brokerski
+            </option>
+            <option value="108">
+              Ruch pieniędzy / Ruch pieniędzy / Inwestycje / Inwestycje / Krypto
+            </option>
+            <option value="107">
+              Ruch pieniędzy / Ruch pieniędzy / Inwestycje / Inwestycje / ETF / fundusze
+            </option>
+            <option value="102">
+              Ruch pieniędzy / Ruch pieniędzy / Oszczędności
+            </option>
+            <option value="103">
+              Ruch pieniędzy / Ruch pieniędzy / Oszczędności / Oszczędności / Konto oszczędnościowe
+            </option>
+            <option value="104">
+              Ruch pieniędzy / Ruch pieniędzy / Oszczędności / Oszczędności / Lokaty
+            </option>
+            <option value="98">
+              Ruch pieniędzy / Ruch pieniędzy / Przelewy
+            </option>
+            <option value="101">
+              Ruch pieniędzy / Ruch pieniędzy / Przelewy / Przelewy / Bankomat
+            </option>
+            <option value="99">
+              Ruch pieniędzy / Ruch pieniędzy / Przelewy / Przelewy / Własne konta
+            </option>
+            <option value="100">
+              Ruch pieniędzy / Ruch pieniędzy / Przelewy / Przelewy / Prywatne BLIK / przelewy
+            </option>
+            <option value="10">
+              Niesklasyfikowane
+            </option>
+            <option value="116">
+              Niesklasyfikowane / Niesklasyfikowane / Korekty
+            </option>
+            <option value="117">
+              Niesklasyfikowane / Niesklasyfikowane / Korekty / Korekty / Korekta gotówki
+            </option>
+            <option value="118">
+              Niesklasyfikowane / Niesklasyfikowane / Korekty / Korekty / Korekta walutowa
+            </option>
+            <option value="114">
+              Niesklasyfikowane / Niesklasyfikowane / Autoryzacje
+            </option>
+            <option value="115">
+              Niesklasyfikowane / Niesklasyfikowane / Autoryzacje / Autoryzacje / Autoryzacje karty
+            </option>
+            <option value="109">
+              Niesklasyfikowane / Niesklasyfikowane / Bez sklepu
+            </option>
+            <option value="110">
+              Niesklasyfikowane / Niesklasyfikowane / Bez sklepu / Bez sklepu / BLIK POS bez nazwy
+            </option>
+            <option value="111">
+              Niesklasyfikowane / Niesklasyfikowane / Bez sklepu / Bez sklepu / Karta bez sklepu
+            </option>
+            <option value="112">
+              Niesklasyfikowane / Niesklasyfikowane / Bez sklepu / Bez sklepu / Gotówka bez kontekstu
+            </option>
+            <option value="113">
+              Niesklasyfikowane / Niesklasyfikowane / Bez sklepu / Bez sklepu / Inne
+            </option>
+            <option value="237">
+              Oracle MCP Category 2
+            </option>
+            <option value="7">
+              Usługi i opłaty
+            </option>
+            <option value="71">
+              Usługi i opłaty / Usługi i opłaty / Finansowe
+            </option>
+            <option value="72">
+              Usługi i opłaty / Usługi i opłaty / Finansowe / Finansowe / Prowizje bankowe
+            </option>
+            <option value="73">
+              Usługi i opłaty / Usługi i opłaty / Finansowe / Finansowe / Spread walutowy
+            </option>
+            <option value="77">
+              Usługi i opłaty / Usługi i opłaty / Ubezpieczenia
+            </option>
+            <option value="80">
+              Usługi i opłaty / Usługi i opłaty / Ubezpieczenia / Ubezpieczenia / OC / AC
+            </option>
+            <option value="78">
+              Usługi i opłaty / Usługi i opłaty / Ubezpieczenia / Ubezpieczenia / Na życie
+            </option>
+            <option value="79">
+              Usługi i opłaty / Usługi i opłaty / Ubezpieczenia / Ubezpieczenia / Mieszkania
+            </option>
+            <option value="81">
+              Usługi i opłaty / Usługi i opłaty / Profesjonalne
+            </option>
+            <option value="83">
+              Usługi i opłaty / Usługi i opłaty / Profesjonalne / Profesjonalne / Księgowość
+            </option>
+            <option value="82">
+              Usługi i opłaty / Usługi i opłaty / Profesjonalne / Profesjonalne / Prawne
+            </option>
+            <option value="74">
+              Usługi i opłaty / Usługi i opłaty / Podatki
+            </option>
+            <option value="75">
+              Usługi i opłaty / Usługi i opłaty / Podatki / Podatki / PIT
+            </option>
+            <option value="76">
+              Usługi i opłaty / Usługi i opłaty / Podatki / Podatki / Podatek od nieruchomości
+            </option>
+        </select>
+      </div>
+
+      <div class="space-y-1.5">
+        <label class="text-xs font-medium text-muted-foreground uppercase tracking-wider">Payment method</label>
+        <select onchange="document.getElementById('ef_payment_method').value = this.value" class="form-input">
+            <option value="" selected="">All</option>
+            <option value="card">Card</option>
+            <option value="card_authorization">Card authorization</option>
+            <option value="blik_pos">BLIK at POS</option>
+            <option value="blik_p2p">BLIK to phone</option>
+            <option value="blik_atm">BLIK at ATM</option>
+            <option value="transfer">Transfer</option>
+            <option value="internal_transfer">Internal transfer</option>
+            <option value="topup">Top-up</option>
+            <option value="fee">Fee</option>
+            <option value="other">Other</option>
+        </select>
+      </div>
+
+      <div class="space-y-1.5">
+        <label class="text-xs font-medium text-muted-foreground uppercase tracking-wider">Classification source</label>
+        <select onchange="document.getElementById('ef_enrichment_source').value = this.value" class="form-input">
+          <option value="">All</option>
+            <option value="unmatched">Unmatched</option>
+            <option value="system_rule">Auto</option>
+            <option value="user_rule">Rule</option>
+            <option value="llm_rule">AI</option>
+            <option value="llm_pending">Pending review</option>
+            <option value="manual">Manual</option>
+            <option value="system_fallback">Fallback</option>
+        </select>
+      </div>
+
+      <div class="space-y-1.5">
+        <label class="text-xs font-medium text-muted-foreground uppercase tracking-wider">Enrichment status</label>
+        <select onchange="document.getElementById('ef_enrichment_state').value = this.value" class="form-input">
+          <option value="">All</option>
+          <option value="merchantless">Without a merchant</option>
+          <option value="llm_ready">LLM-ready (has signal)</option>
+          <option value="no_llm_signal">LLM can't help</option>
+        </select>
+      </div>
+
+  </div>
+
+  <div class="border-t px-5 py-4 flex items-center gap-3">
+    <a class="flex-1 rounded-lg border bg-card px-4 py-2 text-sm font-medium text-center hover:bg-card-hover transition-colors opacity-40 pointer-events-none" href="/admin/bank_transactions">Clear all</a>
+    <button type="submit" class="flex-1 rounded-lg bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:bg-primary/90 transition-colors cursor-pointer">
+      Apply
+    </button>
+  </div>
+</div>
+<!-- END app/views/admin/shared/components/_filter_panel.html.erb --></form>
+  <div class="admin-section p-0 overflow-hidden">
+    <!-- BEGIN app/views/admin/shared/components/_data_table.html.erb
+--><div class="overflow-x-auto -mx-px">
+  <table class="w-full min-w-[640px] text-sm">
+    <thead>
+      <tr class="border-b bg-muted/30">
+          <th class="px-3 sm:px-4 py-2.5 sm:py-3 text-left font-medium text-muted-foreground whitespace-nowrap ">
+              <a class="flex items-center gap-1 text-primary font-medium transition-colors" href="/admin/bank_transactions?q%5Bs%5D=booking_date+asc">Date<!-- BEGIN app/views/admin/shared/icons/_arrow_down.html.erb
+--><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-3.5 w-3.5">
+  <path d="m19 12-7 7-7-7"></path>
+  <path d="M12 5v14"></path>
+</svg>
+<!-- END app/views/admin/shared/icons/_arrow_down.html.erb --></a>
+          </th>
+          <th class="px-3 sm:px-4 py-2.5 sm:py-3 text-left font-medium text-muted-foreground whitespace-nowrap ">
+              Account
+          </th>
+          <th class="px-3 sm:px-4 py-2.5 sm:py-3 text-left font-medium text-muted-foreground whitespace-nowrap ">
+              Merchant / Title
+          </th>
+          <th class="px-3 sm:px-4 py-2.5 sm:py-3 text-left font-medium text-muted-foreground whitespace-nowrap ">
+              Category
+          </th>
+          <th class="px-3 sm:px-4 py-2.5 sm:py-3 text-left font-medium text-muted-foreground whitespace-nowrap ">
+              Method
+          </th>
+          <th class="px-3 sm:px-4 py-2.5 sm:py-3 text-left font-medium text-muted-foreground whitespace-nowrap ">
+              <a class="flex items-center gap-1 hover:text-foreground transition-colors" href="/admin/bank_transactions?q%5Bs%5D=status+asc">Status<!-- BEGIN app/views/admin/shared/icons/_arrow_up_down.html.erb
+--><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-3.5 w-3.5 opacity-30">
+  <path d="m21 16-4 4-4-4"></path>
+  <path d="M17 20V4"></path>
+  <path d="m3 8 4-4 4 4"></path>
+  <path d="M7 4v16"></path>
+</svg>
+<!-- END app/views/admin/shared/icons/_arrow_up_down.html.erb --></a>
+          </th>
+          <th class="px-3 sm:px-4 py-2.5 sm:py-3 text-right font-medium text-muted-foreground whitespace-nowrap ">
+              <a class="flex items-center gap-1 hover:text-foreground transition-colors" href="/admin/bank_transactions?q%5Bs%5D=amount_cents+asc">Amount<!-- BEGIN app/views/admin/shared/icons/_arrow_up_down.html.erb
+--><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-3.5 w-3.5 opacity-30">
+  <path d="m21 16-4 4-4-4"></path>
+  <path d="M17 20V4"></path>
+  <path d="m3 8 4-4 4 4"></path>
+  <path d="M7 4v16"></path>
+</svg>
+<!-- END app/views/admin/shared/icons/_arrow_up_down.html.erb --></a>
+          </th>
+          <th class="px-3 sm:px-4 py-2.5 sm:py-3 text-left font-medium text-muted-foreground whitespace-nowrap w-12">
+              
+          </th>
+      </tr>
+    </thead>
+    <tbody>
+      
+          <tr class="border-b last:border-0 hover:bg-muted/20 transition-colors">
+            <td class="px-4 py-3 font-mono text-xs whitespace-nowrap">2026-10-11</td>
+            <td class="px-4 py-3 text-xs text-muted-foreground">
+              <div class="flex items-center gap-2">
+                  <!-- BEGIN app/views/admin/shared/components/_bank_logo.html.erb
+--><span class="inline-flex shrink-0 items-center justify-center overflow-hidden rounded-md border bg-muted size-6 text-[10px]" title="Revolut LT">
+    <span class="font-semibold text-muted-foreground tracking-tight">RL</span>
+</span>
+<!-- END app/views/admin/shared/components/_bank_logo.html.erb -->
+                <div class="min-w-0">
+                  <div class="text-foreground truncate">Revolut LT</div>
+                  <div class="font-mono text-muted-foreground/70 truncate sensitive sensitive--blur">LT123456789012345678</div>
+                </div>
+              </div>
+            </td>
+            <td class="px-4 py-3 max-w-xs">
+                <div class="flex items-center gap-2 min-w-0">
+                  <span class="font-medium truncate sensitive sensitive--blur">OpenAI</span>
+                  <!-- BEGIN app/views/admin/shared/components/_badge.html.erb
+--><span class="inline-flex rounded-full px-2 py-0.5 text-xs font-medium capitalize bg-muted text-muted-foreground">Auto</span>
+<!-- END app/views/admin/shared/components/_badge.html.erb -->
+                </div>
+                  <div class="text-xs text-muted-foreground truncate sensitive sensitive--blur">OpenAI</div>
+            </td>
+            <td class="px-4 py-3 text-xs">
+                <!-- BEGIN app/views/admin/shared/components/_category_breadcrumb.html.erb
+-->  <span><span class="text-muted-foreground">Lifestyle / Lifestyle / Narzędzia cyfrowe / Narzędzia cyfrowe / </span>SaaS / AI</span>
+<!-- END app/views/admin/shared/components/_category_breadcrumb.html.erb -->
+            </td>
+            <td class="px-4 py-3 text-xs text-muted-foreground whitespace-nowrap">
+              Card
+            </td>
+            <td class="px-4 py-3">
+              <!-- BEGIN app/views/admin/shared/components/_badge.html.erb
+--><span class="inline-flex rounded-full px-2 py-0.5 text-xs font-medium capitalize bg-success/10 text-success">booked</span>
+<!-- END app/views/admin/shared/components/_badge.html.erb -->
+            </td>
+            <td class="px-4 py-3 text-right amount whitespace-nowrap text-foreground">
+                <span class="sensitive sensitive--blur">−5.00</span>
+                <span class="text-muted-foreground text-xs font-normal">EUR</span>
+            </td>
+            <td class="px-4 py-3">
+              <!-- BEGIN app/views/admin/shared/components/_dropdown_menu.html.erb
+--><div class="relative" data-controller="dropdown">
+  <button data-action="click-&gt;dropdown#toggle" class="rounded-lg p-1 text-muted-foreground hover:bg-card-hover hover:text-foreground transition-colors">
+      <!-- BEGIN app/views/admin/shared/icons/_more_horizontal.html.erb
+--><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4">
+  <circle cx="12" cy="12" r="1"></circle>
+  <circle cx="19" cy="12" r="1"></circle>
+  <circle cx="5" cy="12" r="1"></circle>
+</svg>
+<!-- END app/views/admin/shared/icons/_more_horizontal.html.erb -->
+  </button>
+  <div data-dropdown-target="menu" class="z-50 w-36 rounded-lg border bg-card py-1 shadow-lg hidden">
+        <a class="flex items-center gap-2 px-3 py-1.5 text-sm hover:bg-card-hover transition-colors " href="/admin/bank_transactions/54">
+            <!-- BEGIN app/views/admin/shared/icons/_eye.html.erb
+--><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-3.5 w-3.5">
+  <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path>
+  <circle cx="12" cy="12" r="3"></circle>
+</svg>
+<!-- END app/views/admin/shared/icons/_eye.html.erb -->
+          View
+</a>  </div>
+</div>
+<!-- END app/views/admin/shared/components/_dropdown_menu.html.erb -->
+            </td>
+          </tr>
+          <tr class="border-b last:border-0 hover:bg-muted/20 transition-colors">
+            <td class="px-4 py-3 font-mono text-xs whitespace-nowrap">2026-10-06</td>
+            <td class="px-4 py-3 text-xs text-muted-foreground">
+              <div class="flex items-center gap-2">
+                  <!-- BEGIN app/views/admin/shared/components/_bank_logo.html.erb
+--><span class="inline-flex shrink-0 items-center justify-center overflow-hidden rounded-md border bg-muted size-6 text-[10px]" title="Revolut LT">
+    <span class="font-semibold text-muted-foreground tracking-tight">RL</span>
+</span>
+<!-- END app/views/admin/shared/components/_bank_logo.html.erb -->
+                <div class="min-w-0">
+                  <div class="text-foreground truncate">Revolut LT</div>
+                  <div class="font-mono text-muted-foreground/70 truncate sensitive sensitive--blur">LT123456789012345678</div>
+                </div>
+              </div>
+            </td>
+            <td class="px-4 py-3 max-w-xs">
+                <div class="flex items-center gap-2 min-w-0">
+                  <span class="truncate sensitive sensitive--blur">Netflix</span>
+                  <!-- BEGIN app/views/admin/shared/components/_badge.html.erb
+--><span class="inline-flex rounded-full px-2 py-0.5 text-xs font-medium capitalize bg-muted text-muted-foreground">Fallback</span>
+<!-- END app/views/admin/shared/components/_badge.html.erb -->
+                </div>
+                  <div class="text-xs text-muted-foreground truncate sensitive sensitive--blur">Netflix Intl.</div>
+            </td>
+            <td class="px-4 py-3 text-xs">
+                <!-- BEGIN app/views/admin/shared/components/_category_breadcrumb.html.erb
+-->  <span><span class="text-muted-foreground">Niesklasyfikowane / Niesklasyfikowane / Bez sklepu / Bez sklepu / </span>Karta bez sklepu</span>
+<!-- END app/views/admin/shared/components/_category_breadcrumb.html.erb -->
+            </td>
+            <td class="px-4 py-3 text-xs text-muted-foreground whitespace-nowrap">
+              Card
+            </td>
+            <td class="px-4 py-3">
+              <!-- BEGIN app/views/admin/shared/components/_badge.html.erb
+--><span class="inline-flex rounded-full px-2 py-0.5 text-xs font-medium capitalize bg-success/10 text-success">booked</span>
+<!-- END app/views/admin/shared/components/_badge.html.erb -->
+            </td>
+            <td class="px-4 py-3 text-right amount whitespace-nowrap text-foreground">
+                <span class="sensitive sensitive--blur">−14.99</span>
+                <span class="text-muted-foreground text-xs font-normal">EUR</span>
+            </td>
+            <td class="px-4 py-3">
+              <!-- BEGIN app/views/admin/shared/components/_dropdown_menu.html.erb
+--><div class="relative" data-controller="dropdown">
+  <button data-action="click-&gt;dropdown#toggle" class="rounded-lg p-1 text-muted-foreground hover:bg-card-hover hover:text-foreground transition-colors">
+      <!-- BEGIN app/views/admin/shared/icons/_more_horizontal.html.erb
+--><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4">
+  <circle cx="12" cy="12" r="1"></circle>
+  <circle cx="19" cy="12" r="1"></circle>
+  <circle cx="5" cy="12" r="1"></circle>
+</svg>
+<!-- END app/views/admin/shared/icons/_more_horizontal.html.erb -->
+  </button>
+  <div data-dropdown-target="menu" class="z-50 w-36 rounded-lg border bg-card py-1 shadow-lg hidden">
+        <a class="flex items-center gap-2 px-3 py-1.5 text-sm hover:bg-card-hover transition-colors " href="/admin/bank_transactions/53">
+            <!-- BEGIN app/views/admin/shared/icons/_eye.html.erb
+--><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-3.5 w-3.5">
+  <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path>
+  <circle cx="12" cy="12" r="3"></circle>
+</svg>
+<!-- END app/views/admin/shared/icons/_eye.html.erb -->
+          View
+</a>  </div>
+</div>
+<!-- END app/views/admin/shared/components/_dropdown_menu.html.erb -->
+            </td>
+          </tr>
+          <tr class="border-b last:border-0 hover:bg-muted/20 transition-colors">
+            <td class="px-4 py-3 font-mono text-xs whitespace-nowrap">2026-10-02</td>
+            <td class="px-4 py-3 text-xs text-muted-foreground">
+              <div class="flex items-center gap-2">
+                  <!-- BEGIN app/views/admin/shared/components/_bank_logo.html.erb
+--><span class="inline-flex shrink-0 items-center justify-center overflow-hidden rounded-md border bg-muted size-6 text-[10px]" title="PKO BP">
+    <span class="font-semibold text-muted-foreground tracking-tight">PB</span>
+</span>
+<!-- END app/views/admin/shared/components/_bank_logo.html.erb -->
+                <div class="min-w-0">
+                  <div class="text-foreground truncate">PKO BP</div>
+                  <div class="font-mono text-muted-foreground/70 truncate sensitive sensitive--blur">PL61109010140000071219812874</div>
+                </div>
+              </div>
+            </td>
+            <td class="px-4 py-3 max-w-xs">
+                <div class="flex items-center gap-2 min-w-0">
+                  <span class="truncate sensitive sensitive--blur">WYNAGRODZENIE</span>
+                  <!-- BEGIN app/views/admin/shared/components/_badge.html.erb
+--><span class="inline-flex rounded-full px-2 py-0.5 text-xs font-medium capitalize bg-muted text-muted-foreground">Fallback</span>
+<!-- END app/views/admin/shared/components/_badge.html.erb -->
+                </div>
+                  <div class="text-xs text-muted-foreground truncate sensitive sensitive--blur">Some Company sp. z o.o.</div>
+            </td>
+            <td class="px-4 py-3 text-xs">
+                <!-- BEGIN app/views/admin/shared/components/_category_breadcrumb.html.erb
+-->  <span><span class="text-muted-foreground">Wpływy / Wpływy / Zwroty i cashback / Zwroty i cashback / </span>Zwroty</span>
+<!-- END app/views/admin/shared/components/_category_breadcrumb.html.erb -->
+            </td>
+            <td class="px-4 py-3 text-xs text-muted-foreground whitespace-nowrap">
+              Card
+            </td>
+            <td class="px-4 py-3">
+              <!-- BEGIN app/views/admin/shared/components/_badge.html.erb
+--><span class="inline-flex rounded-full px-2 py-0.5 text-xs font-medium capitalize bg-success/10 text-success">booked</span>
+<!-- END app/views/admin/shared/components/_badge.html.erb -->
+            </td>
+            <td class="px-4 py-3 text-right amount whitespace-nowrap text-success">
+                <span class="sensitive sensitive--blur">+6,500.00</span>
+                <span class="text-muted-foreground text-xs font-normal">PLN</span>
+            </td>
+            <td class="px-4 py-3">
+              <!-- BEGIN app/views/admin/shared/components/_dropdown_menu.html.erb
+--><div class="relative" data-controller="dropdown">
+  <button data-action="click-&gt;dropdown#toggle" class="rounded-lg p-1 text-muted-foreground hover:bg-card-hover hover:text-foreground transition-colors">
+      <!-- BEGIN app/views/admin/shared/icons/_more_horizontal.html.erb
+--><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4">
+  <circle cx="12" cy="12" r="1"></circle>
+  <circle cx="19" cy="12" r="1"></circle>
+  <circle cx="5" cy="12" r="1"></circle>
+</svg>
+<!-- END app/views/admin/shared/icons/_more_horizontal.html.erb -->
+  </button>
+  <div data-dropdown-target="menu" class="z-50 w-36 rounded-lg border bg-card py-1 shadow-lg hidden">
+        <a class="flex items-center gap-2 px-3 py-1.5 text-sm hover:bg-card-hover transition-colors " href="/admin/bank_transactions/39">
+            <!-- BEGIN app/views/admin/shared/icons/_eye.html.erb
+--><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-3.5 w-3.5">
+  <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path>
+  <circle cx="12" cy="12" r="3"></circle>
+</svg>
+<!-- END app/views/admin/shared/icons/_eye.html.erb -->
+          View
+</a>  </div>
+</div>
+<!-- END app/views/admin/shared/components/_dropdown_menu.html.erb -->
+            </td>
+          </tr>
+          <tr class="border-b last:border-0 hover:bg-muted/20 transition-colors">
+            <td class="px-4 py-3 font-mono text-xs whitespace-nowrap">2026-10-01</td>
+            <td class="px-4 py-3 text-xs text-muted-foreground">
+              <div class="flex items-center gap-2">
+                  <!-- BEGIN app/views/admin/shared/components/_bank_logo.html.erb
+--><span class="inline-flex shrink-0 items-center justify-center overflow-hidden rounded-md border bg-muted size-6 text-[10px]" title="Revolut LT">
+    <span class="font-semibold text-muted-foreground tracking-tight">RL</span>
+</span>
+<!-- END app/views/admin/shared/components/_bank_logo.html.erb -->
+                <div class="min-w-0">
+                  <div class="text-foreground truncate">Revolut LT</div>
+                  <div class="font-mono text-muted-foreground/70 truncate sensitive sensitive--blur">LT123456789012345678</div>
+                </div>
+              </div>
+            </td>
+            <td class="px-4 py-3 max-w-xs">
+                <div class="flex items-center gap-2 min-w-0">
+                  <span class="truncate sensitive sensitive--blur">Spotify</span>
+                  <!-- BEGIN app/views/admin/shared/components/_badge.html.erb
+--><span class="inline-flex rounded-full px-2 py-0.5 text-xs font-medium capitalize bg-muted text-muted-foreground">Fallback</span>
+<!-- END app/views/admin/shared/components/_badge.html.erb -->
+                </div>
+                  <div class="text-xs text-muted-foreground truncate sensitive sensitive--blur">Spotify AB</div>
+            </td>
+            <td class="px-4 py-3 text-xs">
+                <!-- BEGIN app/views/admin/shared/components/_category_breadcrumb.html.erb
+-->  <span><span class="text-muted-foreground">Niesklasyfikowane / Niesklasyfikowane / Bez sklepu / Bez sklepu / </span>Karta bez sklepu</span>
+<!-- END app/views/admin/shared/components/_category_breadcrumb.html.erb -->
+            </td>
+            <td class="px-4 py-3 text-xs text-muted-foreground whitespace-nowrap">
+              Card
+            </td>
+            <td class="px-4 py-3">
+              <!-- BEGIN app/views/admin/shared/components/_badge.html.erb
+--><span class="inline-flex rounded-full px-2 py-0.5 text-xs font-medium capitalize bg-success/10 text-success">booked</span>
+<!-- END app/views/admin/shared/components/_badge.html.erb -->
+            </td>
+            <td class="px-4 py-3 text-right amount whitespace-nowrap text-foreground">
+                <span class="sensitive sensitive--blur">−9.99</span>
+                <span class="text-muted-foreground text-xs font-normal">EUR</span>
+            </td>
+            <td class="px-4 py-3">
+              <!-- BEGIN app/views/admin/shared/components/_dropdown_menu.html.erb
+--><div class="relative" data-controller="dropdown">
+  <button data-action="click-&gt;dropdown#toggle" class="rounded-lg p-1 text-muted-foreground hover:bg-card-hover hover:text-foreground transition-colors">
+      <!-- BEGIN app/views/admin/shared/icons/_more_horizontal.html.erb
+--><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4">
+  <circle cx="12" cy="12" r="1"></circle>
+  <circle cx="19" cy="12" r="1"></circle>
+  <circle cx="5" cy="12" r="1"></circle>
+</svg>
+<!-- END app/views/admin/shared/icons/_more_horizontal.html.erb -->
+  </button>
+  <div data-dropdown-target="menu" class="z-50 w-36 rounded-lg border bg-card py-1 shadow-lg hidden">
+        <a class="flex items-center gap-2 px-3 py-1.5 text-sm hover:bg-card-hover transition-colors " href="/admin/bank_transactions/52">
+            <!-- BEGIN app/views/admin/shared/icons/_eye.html.erb
+--><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-3.5 w-3.5">
+  <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path>
+  <circle cx="12" cy="12" r="3"></circle>
+</svg>
+<!-- END app/views/admin/shared/icons/_eye.html.erb -->
+          View
+</a>  </div>
+</div>
+<!-- END app/views/admin/shared/components/_dropdown_menu.html.erb -->
+            </td>
+          </tr>
+          <tr class="border-b last:border-0 hover:bg-muted/20 transition-colors">
+            <td class="px-4 py-3 font-mono text-xs whitespace-nowrap">2026-10-01</td>
+            <td class="px-4 py-3 text-xs text-muted-foreground">
+              <div class="flex items-center gap-2">
+                  <!-- BEGIN app/views/admin/shared/components/_bank_logo.html.erb
+--><span class="inline-flex shrink-0 items-center justify-center overflow-hidden rounded-md border bg-muted size-6 text-[10px]" title="PKO BP">
+    <span class="font-semibold text-muted-foreground tracking-tight">PB</span>
+</span>
+<!-- END app/views/admin/shared/components/_bank_logo.html.erb -->
+                <div class="min-w-0">
+                  <div class="text-foreground truncate">PKO BP</div>
+                  <div class="font-mono text-muted-foreground/70 truncate sensitive sensitive--blur">PL61109010140000071219812874</div>
+                </div>
+              </div>
+            </td>
+            <td class="px-4 py-3 max-w-xs">
+                <div class="flex items-center gap-2 min-w-0">
+                  <span class="font-medium truncate sensitive sensitive--blur">ATM</span>
+                  <!-- BEGIN app/views/admin/shared/components/_badge.html.erb
+--><span class="inline-flex rounded-full px-2 py-0.5 text-xs font-medium capitalize bg-muted text-muted-foreground">Auto</span>
+<!-- END app/views/admin/shared/components/_badge.html.erb -->
+                </div>
+                  <div class="text-xs text-muted-foreground truncate sensitive sensitive--blur">WYP. BANKOMAT</div>
+            </td>
+            <td class="px-4 py-3 text-xs">
+                <!-- BEGIN app/views/admin/shared/components/_category_breadcrumb.html.erb
+-->  <span><span class="text-muted-foreground">Ruch pieniędzy / Ruch pieniędzy / Przelewy / Przelewy / </span>Bankomat</span>
+<!-- END app/views/admin/shared/components/_category_breadcrumb.html.erb -->
+            </td>
+            <td class="px-4 py-3 text-xs text-muted-foreground whitespace-nowrap">
+              BLIK at ATM
+            </td>
+            <td class="px-4 py-3">
+              <!-- BEGIN app/views/admin/shared/components/_badge.html.erb
+--><span class="inline-flex rounded-full px-2 py-0.5 text-xs font-medium capitalize bg-success/10 text-success">booked</span>
+<!-- END app/views/admin/shared/components/_badge.html.erb -->
+            </td>
+            <td class="px-4 py-3 text-right amount whitespace-nowrap text-foreground">
+                <span class="sensitive sensitive--blur">−200.00</span>
+                <span class="text-muted-foreground text-xs font-normal">PLN</span>
+            </td>
+            <td class="px-4 py-3">
+              <!-- BEGIN app/views/admin/shared/components/_dropdown_menu.html.erb
+--><div class="relative" data-controller="dropdown">
+  <button data-action="click-&gt;dropdown#toggle" class="rounded-lg p-1 text-muted-foreground hover:bg-card-hover hover:text-foreground transition-colors">
+      <!-- BEGIN app/views/admin/shared/icons/_more_horizontal.html.erb
+--><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4">
+  <circle cx="12" cy="12" r="1"></circle>
+  <circle cx="19" cy="12" r="1"></circle>
+  <circle cx="5" cy="12" r="1"></circle>
+</svg>
+<!-- END app/views/admin/shared/icons/_more_horizontal.html.erb -->
+  </button>
+  <div data-dropdown-target="menu" class="z-50 w-36 rounded-lg border bg-card py-1 shadow-lg hidden">
+        <a class="flex items-center gap-2 px-3 py-1.5 text-sm hover:bg-card-hover transition-colors " href="/admin/bank_transactions/36">
+            <!-- BEGIN app/views/admin/shared/icons/_eye.html.erb
+--><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-3.5 w-3.5">
+  <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path>
+  <circle cx="12" cy="12" r="3"></circle>
+</svg>
+<!-- END app/views/admin/shared/icons/_eye.html.erb -->
+          View
+</a>  </div>
+</div>
+<!-- END app/views/admin/shared/components/_dropdown_menu.html.erb -->
+            </td>
+          </tr>
+          <tr class="border-b last:border-0 hover:bg-muted/20 transition-colors">
+            <td class="px-4 py-3 font-mono text-xs whitespace-nowrap">2026-09-29</td>
+            <td class="px-4 py-3 text-xs text-muted-foreground">
+              <div class="flex items-center gap-2">
+                  <!-- BEGIN app/views/admin/shared/components/_bank_logo.html.erb
+--><span class="inline-flex shrink-0 items-center justify-center overflow-hidden rounded-md border bg-muted size-6 text-[10px]" title="PKO BP">
+    <span class="font-semibold text-muted-foreground tracking-tight">PB</span>
+</span>
+<!-- END app/views/admin/shared/components/_bank_logo.html.erb -->
+                <div class="min-w-0">
+                  <div class="text-foreground truncate">PKO BP</div>
+                  <div class="font-mono text-muted-foreground/70 truncate sensitive sensitive--blur">PL61109010140000071219812874</div>
+                </div>
+              </div>
+            </td>
+            <td class="px-4 py-3 max-w-xs">
+                <div class="flex items-center gap-2 min-w-0">
+                  <span class="font-medium truncate sensitive sensitive--blur">Decathlon</span>
+                  <!-- BEGIN app/views/admin/shared/components/_badge.html.erb
+--><span class="inline-flex rounded-full px-2 py-0.5 text-xs font-medium capitalize bg-muted text-muted-foreground">Auto</span>
+<!-- END app/views/admin/shared/components/_badge.html.erb -->
+                </div>
+                  <div class="text-xs text-muted-foreground truncate sensitive sensitive--blur">DECATHLON</div>
+            </td>
+            <td class="px-4 py-3 text-xs">
+                <!-- BEGIN app/views/admin/shared/components/_category_breadcrumb.html.erb
+-->  <span><span class="text-muted-foreground">Zdrowie i ciało / Zdrowie i ciało / Ciało / Ciało / </span>Sport i siłownia</span>
+<!-- END app/views/admin/shared/components/_category_breadcrumb.html.erb -->
+            </td>
+            <td class="px-4 py-3 text-xs text-muted-foreground whitespace-nowrap">
+              Card
+            </td>
+            <td class="px-4 py-3">
+              <!-- BEGIN app/views/admin/shared/components/_badge.html.erb
+--><span class="inline-flex rounded-full px-2 py-0.5 text-xs font-medium capitalize bg-success/10 text-success">booked</span>
+<!-- END app/views/admin/shared/components/_badge.html.erb -->
+            </td>
+            <td class="px-4 py-3 text-right amount whitespace-nowrap text-foreground">
+                <span class="sensitive sensitive--blur">−220.00</span>
+                <span class="text-muted-foreground text-xs font-normal">PLN</span>
+            </td>
+            <td class="px-4 py-3">
+              <!-- BEGIN app/views/admin/shared/components/_dropdown_menu.html.erb
+--><div class="relative" data-controller="dropdown">
+  <button data-action="click-&gt;dropdown#toggle" class="rounded-lg p-1 text-muted-foreground hover:bg-card-hover hover:text-foreground transition-colors">
+      <!-- BEGIN app/views/admin/shared/icons/_more_horizontal.html.erb
+--><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4">
+  <circle cx="12" cy="12" r="1"></circle>
+  <circle cx="19" cy="12" r="1"></circle>
+  <circle cx="5" cy="12" r="1"></circle>
+</svg>
+<!-- END app/views/admin/shared/icons/_more_horizontal.html.erb -->
+  </button>
+  <div data-dropdown-target="menu" class="z-50 w-36 rounded-lg border bg-card py-1 shadow-lg hidden">
+        <a class="flex items-center gap-2 px-3 py-1.5 text-sm hover:bg-card-hover transition-colors " href="/admin/bank_transactions/30">
+            <!-- BEGIN app/views/admin/shared/icons/_eye.html.erb
+--><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-3.5 w-3.5">
+  <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path>
+  <circle cx="12" cy="12" r="3"></circle>
+</svg>
+<!-- END app/views/admin/shared/icons/_eye.html.erb -->
+          View
+</a>  </div>
+</div>
+<!-- END app/views/admin/shared/components/_dropdown_menu.html.erb -->
+            </td>
+          </tr>
+          <tr class="border-b last:border-0 hover:bg-muted/20 transition-colors">
+            <td class="px-4 py-3 font-mono text-xs whitespace-nowrap">2026-09-27</td>
+            <td class="px-4 py-3 text-xs text-muted-foreground">
+              <div class="flex items-center gap-2">
+                  <!-- BEGIN app/views/admin/shared/components/_bank_logo.html.erb
+--><span class="inline-flex shrink-0 items-center justify-center overflow-hidden rounded-md border bg-muted size-6 text-[10px]" title="PKO BP">
+    <span class="font-semibold text-muted-foreground tracking-tight">PB</span>
+</span>
+<!-- END app/views/admin/shared/components/_bank_logo.html.erb -->
+                <div class="min-w-0">
+                  <div class="text-foreground truncate">PKO BP</div>
+                  <div class="font-mono text-muted-foreground/70 truncate sensitive sensitive--blur">PL61109010140000071219812874</div>
+                </div>
+              </div>
+            </td>
+            <td class="px-4 py-3 max-w-xs">
+                <div class="flex items-center gap-2 min-w-0">
+                  <span class="font-medium truncate sensitive sensitive--blur">Rossmann</span>
+                  <!-- BEGIN app/views/admin/shared/components/_badge.html.erb
+--><span class="inline-flex rounded-full px-2 py-0.5 text-xs font-medium capitalize bg-muted text-muted-foreground">Auto</span>
+<!-- END app/views/admin/shared/components/_badge.html.erb -->
+                </div>
+                  <div class="text-xs text-muted-foreground truncate sensitive sensitive--blur">ROSSMANN 0123</div>
+            </td>
+            <td class="px-4 py-3 text-xs">
+                <!-- BEGIN app/views/admin/shared/components/_category_breadcrumb.html.erb
+-->  <span><span class="text-muted-foreground">Mieszkanie / Mieszkanie / Zmienne / Zmienne / </span>Drogerie</span>
+<!-- END app/views/admin/shared/components/_category_breadcrumb.html.erb -->
+            </td>
+            <td class="px-4 py-3 text-xs text-muted-foreground whitespace-nowrap">
+              Card
+            </td>
+            <td class="px-4 py-3">
+              <!-- BEGIN app/views/admin/shared/components/_badge.html.erb
+--><span class="inline-flex rounded-full px-2 py-0.5 text-xs font-medium capitalize bg-success/10 text-success">booked</span>
+<!-- END app/views/admin/shared/components/_badge.html.erb -->
+            </td>
+            <td class="px-4 py-3 text-right amount whitespace-nowrap text-foreground">
+                <span class="sensitive sensitive--blur">−8.99</span>
+                <span class="text-muted-foreground text-xs font-normal">PLN</span>
+            </td>
+            <td class="px-4 py-3">
+              <!-- BEGIN app/views/admin/shared/components/_dropdown_menu.html.erb
+--><div class="relative" data-controller="dropdown">
+  <button data-action="click-&gt;dropdown#toggle" class="rounded-lg p-1 text-muted-foreground hover:bg-card-hover hover:text-foreground transition-colors">
+      <!-- BEGIN app/views/admin/shared/icons/_more_horizontal.html.erb
+--><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4">
+  <circle cx="12" cy="12" r="1"></circle>
+  <circle cx="19" cy="12" r="1"></circle>
+  <circle cx="5" cy="12" r="1"></circle>
+</svg>
+<!-- END app/views/admin/shared/icons/_more_horizontal.html.erb -->
+  </button>
+  <div data-dropdown-target="menu" class="z-50 w-36 rounded-lg border bg-card py-1 shadow-lg hidden">
+        <a class="flex items-center gap-2 px-3 py-1.5 text-sm hover:bg-card-hover transition-colors " href="/admin/bank_transactions/29">
+            <!-- BEGIN app/views/admin/shared/icons/_eye.html.erb
+--><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-3.5 w-3.5">
+  <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path>
+  <circle cx="12" cy="12" r="3"></circle>
+</svg>
+<!-- END app/views/admin/shared/icons/_eye.html.erb -->
+          View
+</a>  </div>
+</div>
+<!-- END app/views/admin/shared/components/_dropdown_menu.html.erb -->
+            </td>
+          </tr>
+          <tr class="border-b last:border-0 hover:bg-muted/20 transition-colors">
+            <td class="px-4 py-3 font-mono text-xs whitespace-nowrap">2026-09-26</td>
+            <td class="px-4 py-3 text-xs text-muted-foreground">
+              <div class="flex items-center gap-2">
+                  <!-- BEGIN app/views/admin/shared/components/_bank_logo.html.erb
+--><span class="inline-flex shrink-0 items-center justify-center overflow-hidden rounded-md border bg-muted size-6 text-[10px]" title="Revolut LT">
+    <span class="font-semibold text-muted-foreground tracking-tight">RL</span>
+</span>
+<!-- END app/views/admin/shared/components/_bank_logo.html.erb -->
+                <div class="min-w-0">
+                  <div class="text-foreground truncate">Revolut LT</div>
+                  <div class="font-mono text-muted-foreground/70 truncate sensitive sensitive--blur">LT123456789012345678</div>
+                </div>
+              </div>
+            </td>
+            <td class="px-4 py-3 max-w-xs">
+                <div class="flex items-center gap-2 min-w-0">
+                  <span class="font-medium truncate sensitive sensitive--blur">Anthropic</span>
+                  <!-- BEGIN app/views/admin/shared/components/_badge.html.erb
+--><span class="inline-flex rounded-full px-2 py-0.5 text-xs font-medium capitalize bg-muted text-muted-foreground">Auto</span>
+<!-- END app/views/admin/shared/components/_badge.html.erb -->
+                </div>
+                  <div class="text-xs text-muted-foreground truncate sensitive sensitive--blur">Anthropic</div>
+            </td>
+            <td class="px-4 py-3 text-xs">
+                <!-- BEGIN app/views/admin/shared/components/_category_breadcrumb.html.erb
+-->  <span><span class="text-muted-foreground">Lifestyle / Lifestyle / Narzędzia cyfrowe / Narzędzia cyfrowe / </span>SaaS / AI</span>
+<!-- END app/views/admin/shared/components/_category_breadcrumb.html.erb -->
+            </td>
+            <td class="px-4 py-3 text-xs text-muted-foreground whitespace-nowrap">
+              Card
+            </td>
+            <td class="px-4 py-3">
+              <!-- BEGIN app/views/admin/shared/components/_badge.html.erb
+--><span class="inline-flex rounded-full px-2 py-0.5 text-xs font-medium capitalize bg-success/10 text-success">booked</span>
+<!-- END app/views/admin/shared/components/_badge.html.erb -->
+            </td>
+            <td class="px-4 py-3 text-right amount whitespace-nowrap text-foreground">
+                <span class="sensitive sensitive--blur">−25.00</span>
+                <span class="text-muted-foreground text-xs font-normal">EUR</span>
+            </td>
+            <td class="px-4 py-3">
+              <!-- BEGIN app/views/admin/shared/components/_dropdown_menu.html.erb
+--><div class="relative" data-controller="dropdown">
+  <button data-action="click-&gt;dropdown#toggle" class="rounded-lg p-1 text-muted-foreground hover:bg-card-hover hover:text-foreground transition-colors">
+      <!-- BEGIN app/views/admin/shared/icons/_more_horizontal.html.erb
+--><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4">
+  <circle cx="12" cy="12" r="1"></circle>
+  <circle cx="19" cy="12" r="1"></circle>
+  <circle cx="5" cy="12" r="1"></circle>
+</svg>
+<!-- END app/views/admin/shared/icons/_more_horizontal.html.erb -->
+  </button>
+  <div data-dropdown-target="menu" class="z-50 w-36 rounded-lg border bg-card py-1 shadow-lg hidden">
+        <a class="flex items-center gap-2 px-3 py-1.5 text-sm hover:bg-card-hover transition-colors " href="/admin/bank_transactions/51">
+            <!-- BEGIN app/views/admin/shared/icons/_eye.html.erb
+--><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-3.5 w-3.5">
+  <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path>
+  <circle cx="12" cy="12" r="3"></circle>
+</svg>
+<!-- END app/views/admin/shared/icons/_eye.html.erb -->
+          View
+</a>  </div>
+</div>
+<!-- END app/views/admin/shared/components/_dropdown_menu.html.erb -->
+            </td>
+          </tr>
+          <tr class="border-b last:border-0 hover:bg-muted/20 transition-colors">
+            <td class="px-4 py-3 font-mono text-xs whitespace-nowrap">2026-09-25</td>
+            <td class="px-4 py-3 text-xs text-muted-foreground">
+              <div class="flex items-center gap-2">
+                  <!-- BEGIN app/views/admin/shared/components/_bank_logo.html.erb
+--><span class="inline-flex shrink-0 items-center justify-center overflow-hidden rounded-md border bg-muted size-6 text-[10px]" title="PKO BP">
+    <span class="font-semibold text-muted-foreground tracking-tight">PB</span>
+</span>
+<!-- END app/views/admin/shared/components/_bank_logo.html.erb -->
+                <div class="min-w-0">
+                  <div class="text-foreground truncate">PKO BP</div>
+                  <div class="font-mono text-muted-foreground/70 truncate sensitive sensitive--blur">PL61109010140000071219812874</div>
+                </div>
+              </div>
+            </td>
+            <td class="px-4 py-3 max-w-xs">
+                <div class="flex items-center gap-2 min-w-0">
+                  <span class="font-medium truncate sensitive sensitive--blur">T-Mobile</span>
+                  <!-- BEGIN app/views/admin/shared/components/_badge.html.erb
+--><span class="inline-flex rounded-full px-2 py-0.5 text-xs font-medium capitalize bg-muted text-muted-foreground">Auto</span>
+<!-- END app/views/admin/shared/components/_badge.html.erb -->
+                </div>
+                  <div class="text-xs text-muted-foreground truncate sensitive sensitive--blur">T-MOBILE POLSKA</div>
+            </td>
+            <td class="px-4 py-3 text-xs">
+                <!-- BEGIN app/views/admin/shared/components/_category_breadcrumb.html.erb
+-->  <span><span class="text-muted-foreground">Mieszkanie / Mieszkanie / Stałe / Stałe / </span>Internet / telefon</span>
+<!-- END app/views/admin/shared/components/_category_breadcrumb.html.erb -->
+            </td>
+            <td class="px-4 py-3 text-xs text-muted-foreground whitespace-nowrap">
+              Card
+            </td>
+            <td class="px-4 py-3">
+              <!-- BEGIN app/views/admin/shared/components/_badge.html.erb
+--><span class="inline-flex rounded-full px-2 py-0.5 text-xs font-medium capitalize bg-success/10 text-success">booked</span>
+<!-- END app/views/admin/shared/components/_badge.html.erb -->
+            </td>
+            <td class="px-4 py-3 text-right amount whitespace-nowrap text-foreground">
+                <span class="sensitive sensitive--blur">−156.00</span>
+                <span class="text-muted-foreground text-xs font-normal">PLN</span>
+            </td>
+            <td class="px-4 py-3">
+              <!-- BEGIN app/views/admin/shared/components/_dropdown_menu.html.erb
+--><div class="relative" data-controller="dropdown">
+  <button data-action="click-&gt;dropdown#toggle" class="rounded-lg p-1 text-muted-foreground hover:bg-card-hover hover:text-foreground transition-colors">
+      <!-- BEGIN app/views/admin/shared/icons/_more_horizontal.html.erb
+--><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4">
+  <circle cx="12" cy="12" r="1"></circle>
+  <circle cx="19" cy="12" r="1"></circle>
+  <circle cx="5" cy="12" r="1"></circle>
+</svg>
+<!-- END app/views/admin/shared/icons/_more_horizontal.html.erb -->
+  </button>
+  <div data-dropdown-target="menu" class="z-50 w-36 rounded-lg border bg-card py-1 shadow-lg hidden">
+        <a class="flex items-center gap-2 px-3 py-1.5 text-sm hover:bg-card-hover transition-colors " href="/admin/bank_transactions/28">
+            <!-- BEGIN app/views/admin/shared/icons/_eye.html.erb
+--><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-3.5 w-3.5">
+  <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path>
+  <circle cx="12" cy="12" r="3"></circle>
+</svg>
+<!-- END app/views/admin/shared/icons/_eye.html.erb -->
+          View
+</a>  </div>
+</div>
+<!-- END app/views/admin/shared/components/_dropdown_menu.html.erb -->
+            </td>
+          </tr>
+          <tr class="border-b last:border-0 hover:bg-muted/20 transition-colors">
+            <td class="px-4 py-3 font-mono text-xs whitespace-nowrap">2026-09-23</td>
+            <td class="px-4 py-3 text-xs text-muted-foreground">
+              <div class="flex items-center gap-2">
+                  <!-- BEGIN app/views/admin/shared/components/_bank_logo.html.erb
+--><span class="inline-flex shrink-0 items-center justify-center overflow-hidden rounded-md border bg-muted size-6 text-[10px]" title="PKO BP">
+    <span class="font-semibold text-muted-foreground tracking-tight">PB</span>
+</span>
+<!-- END app/views/admin/shared/components/_bank_logo.html.erb -->
+                <div class="min-w-0">
+                  <div class="text-foreground truncate">PKO BP</div>
+                  <div class="font-mono text-muted-foreground/70 truncate sensitive sensitive--blur">PL61109010140000071219812874</div>
+                </div>
+              </div>
+            </td>
+            <td class="px-4 py-3 max-w-xs">
+                <div class="flex items-center gap-2 min-w-0">
+                  <span class="font-medium truncate sensitive sensitive--blur">McDonald's</span>
+                  <!-- BEGIN app/views/admin/shared/components/_badge.html.erb
+--><span class="inline-flex rounded-full px-2 py-0.5 text-xs font-medium capitalize bg-muted text-muted-foreground">Auto</span>
+<!-- END app/views/admin/shared/components/_badge.html.erb -->
+                </div>
+                  <div class="text-xs text-muted-foreground truncate sensitive sensitive--blur">MCDONALD'S 5230</div>
+            </td>
+            <td class="px-4 py-3 text-xs">
+                <!-- BEGIN app/views/admin/shared/components/_category_breadcrumb.html.erb
+-->  <span><span class="text-muted-foreground">Jedzenie / Jedzenie / Na mieście / Na mieście / </span>Fast food / kebab</span>
+<!-- END app/views/admin/shared/components/_category_breadcrumb.html.erb -->
+            </td>
+            <td class="px-4 py-3 text-xs text-muted-foreground whitespace-nowrap">
+              Card
+            </td>
+            <td class="px-4 py-3">
+              <!-- BEGIN app/views/admin/shared/components/_badge.html.erb
+--><span class="inline-flex rounded-full px-2 py-0.5 text-xs font-medium capitalize bg-success/10 text-success">booked</span>
+<!-- END app/views/admin/shared/components/_badge.html.erb -->
+            </td>
+            <td class="px-4 py-3 text-right amount whitespace-nowrap text-foreground">
+                <span class="sensitive sensitive--blur">−12.50</span>
+                <span class="text-muted-foreground text-xs font-normal">PLN</span>
+            </td>
+            <td class="px-4 py-3">
+              <!-- BEGIN app/views/admin/shared/components/_dropdown_menu.html.erb
+--><div class="relative" data-controller="dropdown">
+  <button data-action="click-&gt;dropdown#toggle" class="rounded-lg p-1 text-muted-foreground hover:bg-card-hover hover:text-foreground transition-colors">
+      <!-- BEGIN app/views/admin/shared/icons/_more_horizontal.html.erb
+--><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4">
+  <circle cx="12" cy="12" r="1"></circle>
+  <circle cx="19" cy="12" r="1"></circle>
+  <circle cx="5" cy="12" r="1"></circle>
+</svg>
+<!-- END app/views/admin/shared/icons/_more_horizontal.html.erb -->
+  </button>
+  <div data-dropdown-target="menu" class="z-50 w-36 rounded-lg border bg-card py-1 shadow-lg hidden">
+        <a class="flex items-center gap-2 px-3 py-1.5 text-sm hover:bg-card-hover transition-colors " href="/admin/bank_transactions/27">
+            <!-- BEGIN app/views/admin/shared/icons/_eye.html.erb
+--><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-3.5 w-3.5">
+  <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path>
+  <circle cx="12" cy="12" r="3"></circle>
+</svg>
+<!-- END app/views/admin/shared/icons/_eye.html.erb -->
+          View
+</a>  </div>
+</div>
+<!-- END app/views/admin/shared/components/_dropdown_menu.html.erb -->
+            </td>
+          </tr>
+
+    </tbody>
+  </table>
+</div>
+<!-- END app/views/admin/shared/components/_data_table.html.erb -->
+    <!-- BEGIN app/views/admin/shared/components/_pagination.html.erb
+-->  <div class="flex flex-col gap-3 border-t px-3 sm:px-4 py-3 sm:flex-row sm:items-center sm:justify-between">
+    <span class="text-xs sm:text-sm text-muted-foreground">
+      Showing 1–10 of 54 results
+    </span>
+    <div class="overflow-x-auto -mx-1 px-1">
+      <nav class="pagy series-nav" aria-label="Pages"><a role="link" aria-disabled="true" aria-label="Previous">&lt;</a><a role="link" aria-disabled="true" aria-current="page">1</a><a href="/admin/bank_transactions?page=2&amp;limit=10" rel="next">2</a><a href="/admin/bank_transactions?page=3&amp;limit=10">3</a><a href="/admin/bank_transactions?page=4&amp;limit=10">4</a><a href="/admin/bank_transactions?page=5&amp;limit=10">5</a><a href="/admin/bank_transactions?page=6&amp;limit=10">6</a><a href="/admin/bank_transactions?page=2&amp;limit=10" rel="next" aria-label="Next">&gt;</a></nav>
+    </div>
+  </div>
+<!-- END app/views/admin/shared/components/_pagination.html.erb -->
+  </div>
+</div>
+<!-- END app/views/admin/bank_transactions/index.html.erb -->
+          </div>
+          <!-- BEGIN app/views/admin/shared/_footer.html.erb
+--><footer class="border-t border-border py-8 px-6 mt-6">
+  <p class="text-center text-xs text-muted-foreground">
+    © 2026 Open Banking Rails
+    ·
+    Personal Edition
+    ·
+    vdev
+  </p>
+</footer>
+<!-- END app/views/admin/shared/_footer.html.erb -->
+        </main>
+      </div>
+
+      <!-- BEGIN app/views/admin/shared/components/_command_palette.html.erb
+--><div data-controller="command-palette" id="command-palette" class="hidden fixed inset-0 z-50 flex items-start justify-center pt-[10vh] sm:pt-[20vh] px-3 sm:px-4">
+  <div class="fixed inset-0 bg-foreground/50" data-action="click-&gt;command-palette#close"></div>
+  <div class="relative w-full max-w-lg rounded-xl border bg-card shadow-2xl">
+    <div class="flex items-center gap-2 border-b px-4 py-3">
+      <!-- BEGIN app/views/admin/shared/icons/_search.html.erb
+--><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 text-muted-foreground shrink-0">
+  <circle cx="11" cy="11" r="8"></circle>
+  <path d="m21 21-4.3-4.3"></path>
+</svg>
+<!-- END app/views/admin/shared/icons/_search.html.erb -->
+      <input data-command-palette-target="input" data-action="input-&gt;command-palette#filter keydown-&gt;command-palette#navigate" type="text" placeholder="Type a command or search..." class="flex-1 bg-transparent text-sm outline-none placeholder:text-muted-foreground" style="">
+    </div>
+    <div data-command-palette-target="results" class="max-h-64 overflow-y-auto p-2">
+        <div data-command-palette-target="group">
+          <p class="px-2 py-1.5 text-xs font-semibold text-muted-foreground uppercase tracking-wider">Analytics</p>
+            <a data-command-palette-target="item" class="flex items-center gap-3 rounded-lg px-3 py-2 text-sm text-foreground hover:bg-card-hover transition-colors" href="/admin/analytics">
+              <!-- BEGIN app/views/admin/shared/icons/_layout_dashboard.html.erb
+--><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 text-muted-foreground">
+  <rect width="7" height="9" x="3" y="3" rx="1"></rect>
+  <rect width="7" height="5" x="14" y="3" rx="1"></rect>
+  <rect width="7" height="9" x="14" y="12" rx="1"></rect>
+  <rect width="7" height="5" x="3" y="16" rx="1"></rect>
+</svg>
+<!-- END app/views/admin/shared/icons/_layout_dashboard.html.erb -->
+              Dashboard
+</a>        </div>
+        <div data-command-palette-target="group">
+          <p class="px-2 py-1.5 text-xs font-semibold text-muted-foreground uppercase tracking-wider">Operations</p>
+            <a data-command-palette-target="item" class="flex items-center gap-3 rounded-lg px-3 py-2 text-sm text-foreground hover:bg-card-hover transition-colors" href="/admin/bank_transactions">
+              <!-- BEGIN app/views/admin/shared/icons/_dollar_sign.html.erb
+--><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 text-muted-foreground">
+  <line x1="12" x2="12" y1="2" y2="22"></line>
+  <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+</svg>
+<!-- END app/views/admin/shared/icons/_dollar_sign.html.erb -->
+              Bank Transactions
+</a>            <a data-command-palette-target="item" class="flex items-center gap-3 rounded-lg px-3 py-2 text-sm text-foreground hover:bg-card-hover transition-colors" href="/admin/cash_transactions">
+              <!-- BEGIN app/views/admin/shared/icons/_banknote.html.erb
+--><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 text-muted-foreground">
+  <rect width="20" height="12" x="2" y="6" rx="2"></rect>
+  <circle cx="12" cy="12" r="2"></circle>
+  <path d="M6 12h.01M18 12h.01"></path>
+</svg>
+<!-- END app/views/admin/shared/icons/_banknote.html.erb -->
+              Cash Transactions
+</a>            <a data-command-palette-target="item" class="flex items-center gap-3 rounded-lg px-3 py-2 text-sm text-foreground hover:bg-card-hover transition-colors" href="/admin/transaction_syncs">
+              <!-- BEGIN app/views/admin/shared/icons/_refresh_cw.html.erb
+--><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 text-muted-foreground">
+  <path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"></path>
+  <path d="M21 3v5h-5"></path>
+  <path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"></path>
+  <path d="M8 16H3v5"></path>
+</svg>
+<!-- END app/views/admin/shared/icons/_refresh_cw.html.erb -->
+              Sync Transactions
+</a>        </div>
+        <div data-command-palette-target="group">
+          <p class="px-2 py-1.5 text-xs font-semibold text-muted-foreground uppercase tracking-wider">Classification</p>
+            <a data-command-palette-target="item" class="flex items-center gap-3 rounded-lg px-3 py-2 text-sm text-foreground hover:bg-card-hover transition-colors" href="/admin/merchants">
+              <!-- BEGIN app/views/admin/shared/icons/_tag.html.erb
+--><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 text-muted-foreground">
+  <path d="M12.586 2.586A2 2 0 0 0 11.172 2H4a2 2 0 0 0-2 2v7.172a2 2 0 0 0 .586 1.414l8.704 8.704a2.426 2.426 0 0 0 3.42 0l6.58-6.58a2.426 2.426 0 0 0 0-3.42z"></path>
+  <circle cx="7.5" cy="7.5" r=".5" fill="currentColor"></circle>
+</svg>
+<!-- END app/views/admin/shared/icons/_tag.html.erb -->
+              Merchants
+</a>            <a data-command-palette-target="item" class="flex items-center gap-3 rounded-lg px-3 py-2 text-sm text-foreground hover:bg-card-hover transition-colors" href="/admin/categories">
+              <!-- BEGIN app/views/admin/shared/icons/_shopping_cart.html.erb
+--><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 text-muted-foreground">
+  <circle cx="8" cy="21" r="1"></circle>
+  <circle cx="19" cy="21" r="1"></circle>
+  <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"></path>
+</svg>
+<!-- END app/views/admin/shared/icons/_shopping_cart.html.erb -->
+              Categories
+</a>            <a data-command-palette-target="item" class="flex items-center gap-3 rounded-lg px-3 py-2 text-sm text-foreground hover:bg-card-hover transition-colors" href="/admin/llm_enrichments">
+              <!-- BEGIN app/views/admin/shared/icons/_sparkles.html.erb
+--><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 text-muted-foreground">
+  <path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"></path>
+  <path d="M20 3v4"></path>
+  <path d="M22 5h-4"></path>
+  <path d="M4 17v2"></path>
+  <path d="M5 18H3"></path>
+</svg>
+<!-- END app/views/admin/shared/icons/_sparkles.html.erb -->
+              AI Enrichment
+</a>            <a data-command-palette-target="item" class="flex items-center gap-3 rounded-lg px-3 py-2 text-sm text-foreground hover:bg-card-hover transition-colors" href="/admin/matching_engine">
+              <!-- BEGIN app/views/admin/shared/icons/_search.html.erb
+--><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 text-muted-foreground">
+  <circle cx="11" cy="11" r="8"></circle>
+  <path d="m21 21-4.3-4.3"></path>
+</svg>
+<!-- END app/views/admin/shared/icons/_search.html.erb -->
+              Matching engine
+</a>        </div>
+        <div data-command-palette-target="group">
+          <p class="px-2 py-1.5 text-xs font-semibold text-muted-foreground uppercase tracking-wider">Bank Integrations</p>
+            <a data-command-palette-target="item" class="flex items-center gap-3 rounded-lg px-3 py-2 text-sm text-foreground hover:bg-card-hover transition-colors" href="/admin/tpp_credentials">
+              <!-- BEGIN app/views/admin/shared/icons/_file_text.html.erb
+--><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 text-muted-foreground">
+  <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"></path>
+  <path d="M14 2v4a2 2 0 0 0 2 2h4"></path>
+  <path d="M10 9H8"></path>
+  <path d="M16 13H8"></path>
+  <path d="M16 17H8"></path>
+</svg>
+<!-- END app/views/admin/shared/icons/_file_text.html.erb -->
+              TPP Credentials
+</a>            <a data-command-palette-target="item" class="flex items-center gap-3 rounded-lg px-3 py-2 text-sm text-foreground hover:bg-card-hover transition-colors" href="/admin/bank_connections">
+              <!-- BEGIN app/views/admin/shared/icons/_package.html.erb
+--><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 text-muted-foreground">
+  <path d="M11 21.73a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73z"></path>
+  <path d="M12 22V12"></path>
+  <path d="m3.3 7 7.703 4.734a2 2 0 0 0 1.994 0L20.7 7"></path>
+  <path d="m7.5 4.27 9 5.15"></path>
+</svg>
+<!-- END app/views/admin/shared/icons/_package.html.erb -->
+              Bank Connections
+</a>            <a data-command-palette-target="item" class="flex items-center gap-3 rounded-lg px-3 py-2 text-sm text-foreground hover:bg-card-hover transition-colors" href="/admin/bank_accounts">
+              <!-- BEGIN app/views/admin/shared/icons/_dollar_sign.html.erb
+--><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 text-muted-foreground">
+  <line x1="12" x2="12" y1="2" y2="22"></line>
+  <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+</svg>
+<!-- END app/views/admin/shared/icons/_dollar_sign.html.erb -->
+              Bank Accounts
+</a>        </div>
+        <div data-command-palette-target="group">
+          <p class="px-2 py-1.5 text-xs font-semibold text-muted-foreground uppercase tracking-wider">Settings</p>
+            <a data-command-palette-target="item" class="flex items-center gap-3 rounded-lg px-3 py-2 text-sm text-foreground hover:bg-card-hover transition-colors" href="/admin/settings/preferences">
+              <!-- BEGIN app/views/admin/shared/icons/_settings.html.erb
+--><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 text-muted-foreground">
+  <path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"></path>
+  <circle cx="12" cy="12" r="3"></circle>
+</svg>
+<!-- END app/views/admin/shared/icons/_settings.html.erb -->
+              Preferences
+</a>            <a data-command-palette-target="item" class="flex items-center gap-3 rounded-lg px-3 py-2 text-sm text-foreground hover:bg-card-hover transition-colors" href="/admin/versions">
+              <!-- BEGIN app/views/admin/shared/icons/_shield.html.erb
+--><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 text-muted-foreground">
+  <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path>
+</svg>
+<!-- END app/views/admin/shared/icons/_shield.html.erb -->
+              Audit Log
+</a>        </div>
+        <div data-command-palette-target="group">
+          <p class="px-2 py-1.5 text-xs font-semibold text-muted-foreground uppercase tracking-wider">Development</p>
+            <a data-command-palette-target="item" class="flex items-center gap-3 rounded-lg px-3 py-2 text-sm text-foreground hover:bg-card-hover transition-colors" href="/admin/styleguide">
+              <!-- BEGIN app/views/admin/shared/icons/_settings.html.erb
+--><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 text-muted-foreground">
+  <path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"></path>
+  <circle cx="12" cy="12" r="3"></circle>
+</svg>
+<!-- END app/views/admin/shared/icons/_settings.html.erb -->
+              Styleguide
+</a>            <a data-command-palette-target="item" class="flex items-center gap-3 rounded-lg px-3 py-2 text-sm text-foreground hover:bg-card-hover transition-colors" href="/admin/debug">
+              <!-- BEGIN app/views/admin/shared/icons/_sliders_horizontal.html.erb
+--><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 text-muted-foreground">
+  <line x1="21" x2="14" y1="4" y2="4"></line>
+  <line x1="10" x2="3" y1="4" y2="4"></line>
+  <line x1="21" x2="12" y1="12" y2="12"></line>
+  <line x1="8" x2="3" y1="12" y2="12"></line>
+  <line x1="21" x2="16" y1="20" y2="20"></line>
+  <line x1="12" x2="3" y1="20" y2="20"></line>
+  <line x1="14" x2="14" y1="2" y2="6"></line>
+  <line x1="8" x2="8" y1="10" y2="14"></line>
+  <line x1="16" x2="16" y1="18" y2="22"></line>
+</svg>
+<!-- END app/views/admin/shared/icons/_sliders_horizontal.html.erb -->
+              Debug
+</a>        </div>
+    </div>
+  </div>
+</div>
+<!-- END app/views/admin/shared/components/_command_palette.html.erb -->
+    </div>
+  <details id="bullet-footer" data-is-bullet-footer=""><summary>Bullet Warnings</summary><div>user: ubuntu  USE eager loading detected    BankAccount =&gt; [:current_bank_connection]
+  Add to your query: .includes([:current_bank_connection])<br>user: ubuntu  USE eager loading detected    TransactionEnrichment =&gt; [:category]
+  Add to your query: .includes([:category])<br><span id="console-message">See 'Uniform Notifier' in JS Console for Stacktrace</span><style type="text/css">details#bullet-footer #console-message {font-style: italic;}</style></div><style type="text/css">details#bullet-footer {cursor: pointer; position: fixed; left: 0px; bottom: 0px; z-index: 9999; background: #fdf2f2; color: #9b1c1c; font-size: 12px; border-radius: 0px 8px 0px 0px; border: 1px solid #9b1c1c;}
+details#bullet-footer summary {font-weight: 600; padding: 2px 8px;}
+details#bullet-footer div {padding: 8px; border-top: 1px solid #9b1c1c;}
+</style></details><script type="text/javascript">/*<![CDATA[*/
+if (typeof(console) !== 'undefined' && console.log) {
+  if (console.groupCollapsed && console.groupEnd) {
+    console.groupCollapsed("Uniform Notifier");
+    console.log("user: ubuntu\nUSE eager loading detected\n  BankAccount => [:current_bank_connection]\n  Add to your query: .includes([:current_bank_connection])\nCall stack\n  /workspace/ruby-service-investigator/src/app/views/admin/bank_transactions/index.html.erb:131:in 'block (3 levels) in _app_views_admin_bank_transactions_index_html_erb__605633779767804303_31688'\n  /workspace/ruby-service-investigator/src/app/views/admin/bank_transactions/index.html.erb:130:in 'Enumerable#map'\n  /workspace/ruby-service-investigator/src/app/views/admin/bank_transactions/index.html.erb:130:in 'block (2 levels) in _app_views_admin_bank_transactions_index_html_erb__605633779767804303_31688'\n  /workspace/ruby-service-investigator/src/app/views/admin/shared/components/_filter_panel.html.erb:29:in '_app_views_admin_shared_components__filter_panel_html_erb___1038755985165714867_30528'\n  /workspace/ruby-service-investigator/src/app/views/admin/bank_transactions/index.html.erb:123:in 'block in _app_views_admin_bank_transactions_index_html_erb__605633779767804303_31688'\n  /workspace/ruby-service-investigator/src/app/views/admin/bank_transactions/index.html.erb:31:in '_app_views_admin_bank_transactions_index_html_erb__605633779767804303_31688'\n\n");
+    console.groupEnd();
+  } else {
+    console.log("user: ubuntu\nUSE eager loading detected\n  BankAccount => [:current_bank_connection]\n  Add to your query: .includes([:current_bank_connection])\nCall stack\n  /workspace/ruby-service-investigator/src/app/views/admin/bank_transactions/index.html.erb:131:in 'block (3 levels) in _app_views_admin_bank_transactions_index_html_erb__605633779767804303_31688'\n  /workspace/ruby-service-investigator/src/app/views/admin/bank_transactions/index.html.erb:130:in 'Enumerable#map'\n  /workspace/ruby-service-investigator/src/app/views/admin/bank_transactions/index.html.erb:130:in 'block (2 levels) in _app_views_admin_bank_transactions_index_html_erb__605633779767804303_31688'\n  /workspace/ruby-service-investigator/src/app/views/admin/shared/components/_filter_panel.html.erb:29:in '_app_views_admin_shared_components__filter_panel_html_erb___1038755985165714867_30528'\n  /workspace/ruby-service-investigator/src/app/views/admin/bank_transactions/index.html.erb:123:in 'block in _app_views_admin_bank_transactions_index_html_erb__605633779767804303_31688'\n  /workspace/ruby-service-investigator/src/app/views/admin/bank_transactions/index.html.erb:31:in '_app_views_admin_bank_transactions_index_html_erb__605633779767804303_31688'\n\n");
+  }
+}
+
+/*]]>*/</script>
+
+<script type="text/javascript">/*<![CDATA[*/
+if (typeof(console) !== 'undefined' && console.log) {
+  if (console.groupCollapsed && console.groupEnd) {
+    console.groupCollapsed("Uniform Notifier");
+    console.log("user: ubuntu\nUSE eager loading detected\n  TransactionEnrichment => [:category]\n  Add to your query: .includes([:category])\nCall stack\n  /workspace/ruby-service-investigator/src/app/views/admin/bank_transactions/index.html.erb:257:in 'block in _app_views_admin_bank_transactions_index_html_erb__605633779767804303_31688'\n  /workspace/ruby-service-investigator/src/app/views/admin/shared/components/_data_table.html.erb:27:in '_app_views_admin_shared_components__data_table_html_erb__1687934990719570264_30864'\n  /workspace/ruby-service-investigator/src/app/views/admin/bank_transactions/index.html.erb:236:in '_app_views_admin_bank_transactions_index_html_erb__605633779767804303_31688'\n\n");
+    console.groupEnd();
+  } else {
+    console.log("user: ubuntu\nUSE eager loading detected\n  TransactionEnrichment => [:category]\n  Add to your query: .includes([:category])\nCall stack\n  /workspace/ruby-service-investigator/src/app/views/admin/bank_transactions/index.html.erb:257:in 'block in _app_views_admin_bank_transactions_index_html_erb__605633779767804303_31688'\n  /workspace/ruby-service-investigator/src/app/views/admin/shared/components/_data_table.html.erb:27:in '_app_views_admin_shared_components__data_table_html_erb__1687934990719570264_30864'\n  /workspace/ruby-service-investigator/src/app/views/admin/bank_transactions/index.html.erb:236:in '_app_views_admin_bank_transactions_index_html_erb__605633779767804303_31688'\n\n");
+  }
+}
+
+/*]]>*/</script>
+
+
+
+
+<script type="text/javascript">(function () {
+  var oldOpen = window.XMLHttpRequest.prototype.open;
+  var oldSend = window.XMLHttpRequest.prototype.send;
+
+  /**
+   * Return early if we've already extended prototype. This prevents
+   * "maximum call stack exceeded" errors when used with Turbolinks.
+   * See https://github.com/flyerhzm/bullet/issues/454
+   */
+  if (isBulletInitiated()) return;
+
+  function isBulletInitiated() {
+    return oldOpen.name == "bulletXHROpen" && oldSend.name == "bulletXHRSend";
+  }
+  function bulletXHROpen(_, url) {
+    this._storedUrl = url;
+    return Reflect.apply(oldOpen, this, arguments);
+  }
+  function bulletXHRSend() {
+    if (this.onload) {
+      this._storedOnload = this.onload;
+    }
+    this.onload = null;
+    this.addEventListener("load", bulletXHROnload);
+    return Reflect.apply(oldSend, this, arguments);
+  }
+  function bulletXHROnload() {
+    if (
+      this._storedUrl.startsWith(window.location.protocol + "//" + window.location.host) ||
+      !this._storedUrl.startsWith("http") // For relative paths
+    ) {
+      var bulletFooterText = this.getResponseHeader("X-bullet-footer-text");
+      if (bulletFooterText) {
+        setTimeout(function () {
+          var oldHtml = document.querySelector("#bullet-footer").innerHTML.split("<br>");
+          var header = oldHtml[0];
+          oldHtml = oldHtml.slice(1, oldHtml.length);
+          var newHtml = oldHtml.concat(JSON.parse(bulletFooterText));
+          newHtml = newHtml.slice(newHtml.length - 10, newHtml.length); // rotate through 10 most recent
+          document.querySelector("#bullet-footer").innerHTML = `${header}<br>${newHtml.join("<br>")}`;
+        }, 0);
+      }
+      var bulletConsoleText = this.getResponseHeader("X-bullet-console-text");
+      if (bulletConsoleText && typeof console !== "undefined" && console.log) {
+        setTimeout(function () {
+          JSON.parse(bulletConsoleText).forEach((message) => {
+            if (console.groupCollapsed && console.groupEnd) {
+              console.groupCollapsed("Uniform Notifier");
+              console.log(message);
+              console.groupEnd();
+            } else {
+              console.log(message);
+            }
+          });
+        }, 0);
+      }
+    }
+    if (this._storedOnload) {
+      return Reflect.apply(this._storedOnload, this, arguments);
+    }
+  }
+  window.XMLHttpRequest.prototype.open = bulletXHROpen;
+  window.XMLHttpRequest.prototype.send = bulletXHRSend;
+})();
+</script>
+
+</body></html>

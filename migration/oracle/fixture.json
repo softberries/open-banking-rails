@@ -1,0 +1,67 @@
+{
+  "users": {
+    "main": {
+      "id": 1,
+      "email": "maciek@example.com",
+      "password": "Password123!"
+    },
+    "other": {
+      "id": 2,
+      "email": "other@example.com",
+      "password": "Password123!"
+    }
+  },
+  "tokens": {
+    "main": "obrl_oracle_main_token_000000000000000000000001",
+    "other": "obrl_oracle_other_token_00000000000000000000002",
+    "revoked": "obrl_oracle_revoked_token_000000000000000000003"
+  },
+  "main": {
+    "bank_transaction_id": 1,
+    "cash_transaction_id": 7,
+    "category_id": 1,
+    "category_slug": "food",
+    "leaf_category_slug": "services_taxes_property_tax",
+    "merchant_id": 1,
+    "merchant_slug": "biedronka",
+    "merchant_rule_id": 1,
+    "rule_merchant_id": 1,
+    "tpp_credential_id": 1,
+    "bank_connection_id": 1,
+    "bank_account_id": 1,
+    "wallet_id": 5,
+    "operation_run_sync_id": 1,
+    "operation_run_llm_id": null,
+    "version_id": 1
+  },
+  "other": {
+    "bank_transaction_id": 55,
+    "category_id": 119,
+    "merchant_id": 29,
+    "tpp_credential_id": 3,
+    "bank_connection_id": 3,
+    "cash_transaction_id": 19
+  },
+  "counts": {
+    "ar_internal_metadata": 2,
+    "bank_accounts": 10,
+    "bank_connections": 4,
+    "bank_transactions": 108,
+    "categories": 236,
+    "gutentag_taggings": 0,
+    "gutentag_tags": 0,
+    "llm_settings": 2,
+    "manual_transactions": 24,
+    "merchant_rules": 66,
+    "merchants": 56,
+    "operation_runs": 4,
+    "personal_access_tokens": 3,
+    "schema_migrations": 33,
+    "sync_schedules": 4,
+    "tpp_credentials": 4,
+    "transaction_enrichments": 24,
+    "user_hidden_categories": 4,
+    "users": 2,
+    "versions": 54
+  }
+}

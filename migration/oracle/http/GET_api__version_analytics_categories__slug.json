@@ -1,0 +1,114 @@
+{
+  "route": "GET /api/:version/analytics/categories/:slug(.json)",
+  "captured_at": "2026-10-21T13:22:36.950Z",
+  "base_url": "http://127.0.0.1:3000",
+  "cases": [
+    {
+      "case": "default",
+      "actor": "main(token)",
+      "request": {
+        "method": "GET",
+        "path": "/api/v1/analytics/categories/food?from=2026-07-13&to=2026-10-21",
+        "headers": {
+          "authorization": "Bearer obrl_oracle_main_t…"
+        }
+      },
+      "response": {
+        "status": 200,
+        "duration_ms": 268,
+        "headers": {
+          "content-type": "application/json",
+          "cache-control": "max-age=0, private, must-revalidate",
+          "x-request-id": "ac9cbc32-2870-43c4-a959-714e4bf95624",
+          "vary": "Origin",
+          "content-length": "658"
+        },
+        "body_sample": {
+          "category": {
+            "id": 1,
+            "name": "Jedzenie",
+            "slug": "food",
+            "path": "food",
+            "kind": "expense"
+          },
+          "currency": "PLN",
+          "period": {
+            "from": "2026-07-13",
+            "to": "2026-10-21"
+          },
+          "total_cents": 38745,
+          "merchants": [
+            {
+              "merchant": {
+                "id": 6,
+                "name": "Żabka",
+                "slug": "zabka"
+              },
+              "amount_cents": 22500,
+              "count": 5
+            },
+            {
+              "merchant": {
+                "id": 1,
+                "name": "Biedronka",
+                "slug": "biedronka"
+              },
+              "amount_cents": 9995,
+              "count": 5
+            },
+            {
+              "merchant": {
+                "id": 17,
+                "name": "McDonald's",
+                "slug": "mcdonalds"
+              },
+              "amount_cents": 6250,
+              "count": 5
+            }
+          ],
+          "subtree": [
+            {
+              "path": "food.cooking",
+              "slug": "food_cooking",
+              "name": "W domu",
+              "amount_cents": 30496,
+              "count": 9
+            },
+            {
+              "path": "food.eating_out",
+              "slug": "food_eating_out",
+              "name": "Na mieście",
+              "amount_cents": 6250,
+              "count": 5
+            }
+          ]
+        }
+      }
+    },
+    {
+      "case": "unknown_slug",
+      "actor": "main(token)",
+      "request": {
+        "method": "GET",
+        "path": "/api/v1/analytics/categories/does-not-exist",
+        "headers": {
+          "authorization": "Bearer obrl_oracle_main_t…"
+        }
+      },
+      "response": {
+        "status": 404,
+        "duration_ms": 172,
+        "headers": {
+          "content-type": "application/json",
+          "cache-control": "no-cache",
+          "x-request-id": "d5d4e0eb-fce2-4583-8352-2247aa0c91de",
+          "vary": "Origin",
+          "content-length": "114"
+        },
+        "body_sample": {
+          "message": "Couldn't find Category with [WHERE \"categories\".\"user_id\" = $1 AND \"categories\".\"slug\" = $2]"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "route": "PATCH /admin/categories/:id(.:format)",
+  "captured_at": "2026-10-21T13:23:38.111Z",
+  "base_url": "http://127.0.0.1:3000",
+  "cases": [
+    {
+      "case": "default",
+      "actor": "main(session)",
+      "request": {
+        "method": "PATCH",
+        "path": "/admin/categories/239",
+        "headers": {},
+        "body": {
+          "authenticity_token": "<redacted>",
+          "category[name]": "Oracle UI Category 2",
+          "category[color]": "#00ff00"
+        }
+      },
+      "response": {
+        "status": 302,
+        "duration_ms": 173,
+        "headers": {
+          "x-frame-options": "SAMEORIGIN",
+          "x-content-type-options": "nosniff",
+          "location": "http://127.0.0.1:3000/admin/categories",
+          "content-type": "text/html; charset=utf-8",
+          "cache-control": "no-cache",
+          "x-request-id": "45c240ed-a074-4648-be23-edec74260a7a",
+          "vary": "Origin",
+          "content-length": "0",
+          "set-cookie": [
+            "_open_banking_rails_session=<redacted>; path=/; httponly; samesite=lax"
+          ]
+        },
+        "body_sample": ""
+      }
+    }
+  ]
+}

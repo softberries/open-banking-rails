@@ -1,0 +1,70 @@
+{
+  "route": "POST /admin/bank_connections(.:format)",
+  "captured_at": "2026-10-21T13:24:01.852Z",
+  "base_url": "http://127.0.0.1:3000",
+  "cases": [
+    {
+      "case": "default",
+      "actor": "main(session)",
+      "note": "starts bank authorisation; with fakes it returns a fake redirect URL",
+      "request": {
+        "method": "POST",
+        "path": "/admin/bank_connections",
+        "headers": {},
+        "body": {
+          "authenticity_token": "<redacted>",
+          "bank_connection_request_form[aspsp_name]": "PKO BP",
+          "bank_connection_request_form[aspsp_country]": "PL",
+          "bank_connection_request_form[psu_type]": "personal",
+          "bank_connection_request_form[valid_days]": "90"
+        }
+      },
+      "response": {
+        "status": 303,
+        "duration_ms": 179,
+        "headers": {
+          "x-frame-options": "SAMEORIGIN",
+          "x-content-type-options": "nosniff",
+          "location": "https://fake.enablebanking.test/auth?state=eyJ1c2VyX2lkIjoxLCJ0cHBfY3JlZGVudGlhbF9pZCI6MSwiYXNwc3BfbmFtZSI6IlBLTyBCUCIsImFzcHNwX2NvdW50cnkiOiJQTCIsInBzdV90eXBlIjoicGVyc29uYWwiLCJyZXBsYWNlc19jb25uZWN0aW9uX2lkIjpudWxsLCJleHBpcmVzX2F0IjoxNzkyNTkwODQxLCJub25jZSI6ImE3NWY2OWM3YzU5NzUwZWQifQ==--1063233fd37b05b203ec3e1363b486febcefe112",
+          "content-type": "text/html; charset=utf-8",
+          "cache-control": "no-cache",
+          "x-request-id": "2304de6e-58c5-4cd7-bde1-fc700b6109d7",
+          "vary": "Origin",
+          "content-length": "0",
+          "set-cookie": [
+            "_open_banking_rails_session=<redacted>; path=/; httponly; samesite=lax"
+          ]
+        },
+        "body_sample": ""
+      }
+    },
+    {
+      "case": "invalid_blank_aspsp",
+      "actor": "main(session)",
+      "request": {
+        "method": "POST",
+        "path": "/admin/bank_connections",
+        "headers": {},
+        "body": {
+          "authenticity_token": "<redacted>",
+          "bank_connection_request_form[aspsp_name]": ""
+        }
+      },
+      "response": {
+        "status": 204,
+        "duration_ms": 224,
+        "headers": {
+          "x-frame-options": "SAMEORIGIN",
+          "x-content-type-options": "nosniff",
+          "cache-control": "no-cache",
+          "x-request-id": "d9c62ab9-bf67-4141-8af5-b4cb8f4000a2",
+          "vary": "Origin",
+          "set-cookie": [
+            "_open_banking_rails_session=<redacted>; path=/; httponly; samesite=lax"
+          ]
+        },
+        "body_sample": ""
+      }
+    }
+  ]
+}

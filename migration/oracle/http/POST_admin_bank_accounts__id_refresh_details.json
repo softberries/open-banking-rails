@@ -1,0 +1,37 @@
+{
+  "route": "POST /admin/bank_accounts/:id/refresh_details(.:format)",
+  "captured_at": "2026-10-21T13:24:05.522Z",
+  "base_url": "http://127.0.0.1:3000",
+  "cases": [
+    {
+      "case": "default",
+      "actor": "main(session)",
+      "request": {
+        "method": "POST",
+        "path": "/admin/bank_accounts/1/refresh_details",
+        "headers": {},
+        "body": {
+          "authenticity_token": "<redacted>"
+        }
+      },
+      "response": {
+        "status": 302,
+        "duration_ms": 267,
+        "headers": {
+          "x-frame-options": "SAMEORIGIN",
+          "x-content-type-options": "nosniff",
+          "location": "http://127.0.0.1:3000/admin/bank_accounts/1",
+          "content-type": "text/html; charset=utf-8",
+          "cache-control": "no-cache",
+          "x-request-id": "e27c1fe0-eaf3-4180-86fa-c7ebc3a84046",
+          "vary": "Origin",
+          "content-length": "0",
+          "set-cookie": [
+            "_open_banking_rails_session=<redacted>; path=/; httponly; samesite=lax"
+          ]
+        },
+        "body_sample": ""
+      }
+    }
+  ]
+}

@@ -1,0 +1,67 @@
+{
+  "route": "DELETE /admin/settings/preferences/api_tokens/:id(.:format)",
+  "captured_at": "2026-10-21T13:24:17.174Z",
+  "base_url": "http://127.0.0.1:3000",
+  "cases": [
+    {
+      "case": "first_delete_revokes",
+      "actor": "main(session)",
+      "request": {
+        "method": "DELETE",
+        "path": "/admin/settings/preferences/api_tokens/4",
+        "headers": {},
+        "body": {
+          "authenticity_token": "<redacted>"
+        }
+      },
+      "response": {
+        "status": 302,
+        "duration_ms": 188,
+        "headers": {
+          "x-frame-options": "SAMEORIGIN",
+          "x-content-type-options": "nosniff",
+          "location": "http://127.0.0.1:3000/admin/settings/preferences/api_tokens",
+          "content-type": "text/html; charset=utf-8",
+          "cache-control": "no-cache",
+          "x-request-id": "d5d8fda1-31b6-451e-b464-012914eb85b7",
+          "vary": "Origin",
+          "content-length": "0",
+          "set-cookie": [
+            "_open_banking_rails_session=<redacted>; path=/; httponly; samesite=lax"
+          ]
+        },
+        "body_sample": ""
+      }
+    },
+    {
+      "case": "second_delete_destroys_revoked",
+      "actor": "main(session)",
+      "request": {
+        "method": "DELETE",
+        "path": "/admin/settings/preferences/api_tokens/4",
+        "headers": {},
+        "body": {
+          "authenticity_token": "<redacted>"
+        }
+      },
+      "response": {
+        "status": 302,
+        "duration_ms": 174,
+        "headers": {
+          "x-frame-options": "SAMEORIGIN",
+          "x-content-type-options": "nosniff",
+          "location": "http://127.0.0.1:3000/admin/settings/preferences/api_tokens",
+          "content-type": "text/html; charset=utf-8",
+          "cache-control": "no-cache",
+          "x-request-id": "d394c5ce-9676-42a2-b74b-169d625f1f90",
+          "vary": "Origin",
+          "content-length": "0",
+          "set-cookie": [
+            "_open_banking_rails_session=<redacted>; path=/; httponly; samesite=lax"
+          ]
+        },
+        "body_sample": ""
+      }
+    }
+  ]
+}

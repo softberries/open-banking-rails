@@ -1,0 +1,40 @@
+{
+  "route": "PATCH /admin/bank_connections/:bank_connection_id/sync_schedule(.:format)",
+  "captured_at": "2026-10-21T13:24:04.691Z",
+  "base_url": "http://127.0.0.1:3000",
+  "cases": [
+    {
+      "case": "default",
+      "actor": "main(session)",
+      "request": {
+        "method": "PATCH",
+        "path": "/admin/bank_connections/1/sync_schedule",
+        "headers": {},
+        "body": {
+          "authenticity_token": "<redacted>",
+          "sync_schedule[enabled]": "1",
+          "sync_schedule[cadence]": "daily",
+          "sync_schedule[preferred_hour]": "6"
+        }
+      },
+      "response": {
+        "status": 302,
+        "duration_ms": 195,
+        "headers": {
+          "x-frame-options": "SAMEORIGIN",
+          "x-content-type-options": "nosniff",
+          "location": "http://127.0.0.1:3000/admin/transaction_syncs",
+          "content-type": "text/html; charset=utf-8",
+          "cache-control": "no-cache",
+          "x-request-id": "b3b222a3-c370-416b-8795-d3386814b870",
+          "vary": "Origin",
+          "content-length": "0",
+          "set-cookie": [
+            "_open_banking_rails_session=<redacted>; path=/; httponly; samesite=lax"
+          ]
+        },
+        "body_sample": ""
+      }
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+[
+  {
+    "class": "ApplicationJob",
+    "file": "app/jobs/application_job.rb",
+    "queue": "#<Proc:0x000078b10e396f38 /workspace/ruby-service-investigator/bundle/ruby/3.4.0/gems/activejob-8.1.3/lib/active_job/queue_name.rb:55 (lambda)>",
+    "sidekiq_options": {
+      "retry": true,
+      "queue": "default"
+    }
+  },
+  {
+    "class": "AutoSync::DispatcherJob",
+    "file": "app/jobs/auto_sync/dispatcher_job.rb",
+    "queue": "default",
+    "sidekiq_options": {
+      "retry": true,
+      "queue": "default"
+    }
+  },
+  {
+    "class": "FailingJob",
+    "file": "app/jobs/failing_job.rb",
+    "queue": "default",
+    "sidekiq_options": {
+      "retry": true,
+      "queue": "default"
+    }
+  },
+  {
+    "class": "LlmEnrichmentJob",
+    "file": "app/jobs/llm_enrichment_job.rb",
+    "queue": "default",
+    "sidekiq_options": {
+      "retry": true,
+      "queue": "default"
+    }
+  },
+  {
+    "class": "TransactionSyncJob",
+    "file": "app/jobs/transaction_sync_job.rb",
+    "queue": "default",
+    "sidekiq_options": {
+      "retry": 3,
+      "queue": "default",
+      "dead": false
+    }
+  }
+]

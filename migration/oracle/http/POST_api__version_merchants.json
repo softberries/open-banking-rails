@@ -1,0 +1,146 @@
+{
+  "route": "POST /api/:version/merchants(.json)",
+  "captured_at": "2026-10-21T13:22:39.291Z",
+  "base_url": "http://127.0.0.1:3000",
+  "cases": [
+    {
+      "case": "default",
+      "actor": "main(token)",
+      "request": {
+        "method": "POST",
+        "path": "/api/v1/merchants",
+        "headers": {
+          "authorization": "Bearer obrl_oracle_main_t…",
+          "content-type": "application/json"
+        },
+        "body": {
+          "name": "Oracle API Merchant",
+          "kind": "company",
+          "default_category_id": 238
+        }
+      },
+      "response": {
+        "status": 201,
+        "duration_ms": 228,
+        "headers": {
+          "content-type": "application/json",
+          "cache-control": "max-age=0, private, must-revalidate",
+          "x-request-id": "cbdfb3b9-ace7-4736-b429-33f562d9846f",
+          "vary": "Origin",
+          "content-length": "494"
+        },
+        "body_sample": {
+          "id": 58,
+          "name": "Oracle API Merchant",
+          "slug": "oracle_api_merchant",
+          "kind": "company",
+          "source": "user",
+          "logo_url": null,
+          "notes": null,
+          "default_category_id": 238,
+          "confidence": null,
+          "model": null,
+          "approved_at": "2026-10-21T13:22:39.228Z",
+          "archived_at": null,
+          "default_category": {
+            "id": 238,
+            "name": "Oracle API Category Renamed",
+            "slug": "oracle_api_category",
+            "path": "food.oracle_api_category",
+            "kind": "expense",
+            "color": "#ff0000",
+            "icon": null,
+            "essential": false,
+            "position": 0,
+            "archived_at": null,
+            "parent_path": "food"
+          }
+        }
+      }
+    },
+    {
+      "case": "missing_name",
+      "actor": "main(token)",
+      "request": {
+        "method": "POST",
+        "path": "/api/v1/merchants",
+        "headers": {
+          "authorization": "Bearer obrl_oracle_main_t…",
+          "content-type": "application/json"
+        },
+        "body": {}
+      },
+      "response": {
+        "status": 400,
+        "duration_ms": 135,
+        "headers": {
+          "content-type": "application/json",
+          "cache-control": "no-cache",
+          "x-request-id": "021f5a76-6dba-44e0-a05e-e2a9411efbd8",
+          "vary": "Origin",
+          "content-length": "63"
+        },
+        "body_sample": {
+          "message": "Invalid parameters.",
+          "details": [
+            "name is missing"
+          ]
+        }
+      }
+    },
+    {
+      "case": "foreign_category",
+      "actor": "main(token)",
+      "request": {
+        "method": "POST",
+        "path": "/api/v1/merchants",
+        "headers": {
+          "authorization": "Bearer obrl_oracle_main_t…",
+          "content-type": "application/json"
+        },
+        "body": {
+          "name": "Oracle Foreign Cat",
+          "default_category_id": 119
+        }
+      },
+      "response": {
+        "status": 201,
+        "duration_ms": 209,
+        "headers": {
+          "content-type": "application/json",
+          "cache-control": "max-age=0, private, must-revalidate",
+          "x-request-id": "72e027f1-1399-4e0a-aa4d-acab4913eebf",
+          "vary": "Origin",
+          "content-length": "442"
+        },
+        "body_sample": {
+          "id": 59,
+          "name": "Oracle Foreign Cat",
+          "slug": "oracle_foreign_cat",
+          "kind": "company",
+          "source": "user",
+          "logo_url": null,
+          "notes": null,
+          "default_category_id": 119,
+          "confidence": null,
+          "model": null,
+          "approved_at": "2026-10-21T13:22:39.583Z",
+          "archived_at": null,
+          "default_category": {
+            "id": 119,
+            "name": "Jedzenie",
+            "slug": "food",
+            "path": "food",
+            "kind": "expense",
+            "color": "emerald",
+            "icon": "utensils",
+            "essential": false,
+            "position": 0,
+            "archived_at": null,
+            "parent_path": null
+          }
+        }
+      }
+    }
+  ]
+}

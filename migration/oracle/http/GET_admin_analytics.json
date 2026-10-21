@@ -1,0 +1,149 @@
+{
+  "route": "GET /admin/analytics(.:format)",
+  "captured_at": "2026-10-21T13:22:03.109Z",
+  "base_url": "http://127.0.0.1:3000",
+  "cases": [
+    {
+      "case": "anonymous_redirects_to_sign_in",
+      "actor": "anon",
+      "request": {
+        "method": "GET",
+        "path": "/admin/analytics",
+        "headers": {}
+      },
+      "response": {
+        "status": 302,
+        "duration_ms": 1406,
+        "headers": {
+          "location": "http://127.0.0.1:3000/admin/sign_in",
+          "content-type": "text/html; charset=utf-8",
+          "cache-control": "no-cache",
+          "x-request-id": "8b2d5cfb-8c3f-4fc8-b8f6-0f698b31553f",
+          "vary": "Origin",
+          "content-length": "0",
+          "set-cookie": [
+            "_open_banking_rails_session=<redacted>; path=/; httponly; samesite=lax"
+          ]
+        },
+        "body_sample": ""
+      }
+    },
+    {
+      "case": "legacy_browser_ua",
+      "actor": "anon",
+      "note": "allow_browser versions: :modern",
+      "request": {
+        "method": "GET",
+        "path": "/admin/analytics",
+        "headers": {}
+      },
+      "response": {
+        "status": 406,
+        "duration_ms": 135,
+        "headers": {
+          "x-frame-options": "SAMEORIGIN",
+          "x-content-type-options": "nosniff",
+          "content-type": "text/html; charset=utf-8",
+          "vary": "Accept, Origin",
+          "cache-control": "no-cache",
+          "x-request-id": "e10e45f6-8ffe-4edc-ac90-efe02723bf33",
+          "content-length": "7283"
+        },
+        "body_sample": {
+          "html_title": "Your browser is not supported (406 Not Acceptable)",
+          "flash": [],
+          "length": 7283,
+          "head": "<!doctype html> <html lang=\"en\"> <head> <title>Your browser is not supported (406 Not Acceptable)</title> <meta charset=\"utf-8\"> <meta name=\"viewport\" content=\"initial-scale=1, width=device-width\"> <meta name=\"robots\" content=\"noindex, nofollow\"> <style> *, *::before, *::after { box-sizing: border-box; } * { margin: 0; } html { font-size: 16px; } body { background: #FFF; color: #261B23; display: grid; font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Aptos, Roboto, \"Segoe UI\", \"Helvetica Neue\", Helvetica, Arial, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\"; font-size: clamp(1rem, 2.5vw, 2rem); -webkit-font-smoothing: antialiased; font-style: normal; font-weight: 400; letter-spacing: -0.0025em; line-height: 1.4; min-height: 100dvh; place-items: center; text-rendering: optimizeLegibility; -webkit-text-size-adjust: 100%; } #error-description { fill: #d30001; } #error-id { fill: #f0eff0; } @media (prefers-color-scheme: dark) { body { background: #101010; color: #e0e0e0; } #error-description { fill: #FF6161; } #error-id { fill: #2c2c2c; } } a { color: inherit; font-weight: 700; text-decoration: underline; text-underline-offset: 0.0925em; } b, strong { font-weight: 700; } i, em { font-style: italic; } main { display: grid; gap: 1em; padding: 2em; place-items: center; text-align: center; } main header { width: min(100%, 12em); } main header svg { height: auto; max-width: 100%; width: 100%; } main article { width: mi…[truncated 5066 chars]"
+        }
+      }
+    },
+    {
+      "case": "default",
+      "actor": "main(session)",
+      "request": {
+        "method": "GET",
+        "path": "/admin/analytics",
+        "headers": {}
+      },
+      "response": {
+        "status": 200,
+        "duration_ms": 843,
+        "headers": {
+          "x-frame-options": "SAMEORIGIN",
+          "x-content-type-options": "nosniff",
+          "content-type": "text/html; charset=utf-8",
+          "vary": "Accept, Origin",
+          "cache-control": "max-age=0, private, must-revalidate",
+          "x-request-id": "6d26543f-4e6b-406b-a71d-e336766172ce",
+          "content-length": "116904",
+          "set-cookie": [
+            "_open_banking_rails_session=<redacted>; path=/; httponly; samesite=lax"
+          ]
+        },
+        "body_sample": {
+          "html_title": "Analytics · Open Banking",
+          "h1": "Analytics",
+          "flash": [],
+          "length": 116797,
+          "head": "<!-- BEGIN app/views/layouts/admin.html.erb --><!DOCTYPE html> <html lang=\"en\" class=\"\"> <head> <meta charset=\"UTF-8\"> <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"> <title>Analytics · Open Banking</title> <meta name=\"csrf-param\" content=\"authenticity_token\" /> <meta name=\"csrf-token\" content=\"8VWzt4fxH4aKAbzHQJdMOWrXiyRy7IkKR7MwVhLLQF3mBzXPhjVeMpFPAEp602gREu8GLI4DRCkL5dVOxTpmXA\" /> <script> (function () { if (localStorage.getItem(\"sidebar-collapsed\") === \"true\") { document.documentElement.classList.add(\"sidebar-collapsed\"); } })(); </script> <link rel=\"icon\" href=\"/icon.svg?v=3\" type=\"image/svg+xml\"> <link rel=\"apple-touch-icon\" href=\"/icon.png\"> <link rel=\"preconnect\" href=\"https://fonts.googleapis.com\"> <link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin> <link href=\"https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap\" rel=\"stylesheet\"> <link rel=\"stylesheet\" href=\"/assets/tailwind-e94f0c0a.css\" data-turbo-track=\"reload\" /> <script type=\"importmap\" data-turbo-track=\"reload\">{ \"imports\": { \"application\": \"/assets/application-bfcdf840.js\", \"@hotwired/turbo-rails\": \"/assets/turbo.min-9fd88cd5.js\", \"@hotwired/stimulus\": \"/assets/stimulus.min-4b1e420e.js\", \"@hotwired/stimulus-loading\": \"/assets/stimulus-loading-1fc53fe7.js\", \"chart.js\": \"https://cdn.jsdelivr.net/npm/chart.js@4.5.1/+esm\", \"chartjs-plugin-datalabels\": \"https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/+esm\", \"controllers/ajax_…[truncated 107735 chars]"
+        }
+      }
+    },
+    {
+      "case": "explicit_range",
+      "actor": "main(session)",
+      "request": {
+        "method": "GET",
+        "path": "/admin/analytics?from=2026-07-13&to=2026-10-21&currency=PLN",
+        "headers": {}
+      },
+      "response": {
+        "status": 200,
+        "duration_ms": 969,
+        "headers": {
+          "x-frame-options": "SAMEORIGIN",
+          "x-content-type-options": "nosniff",
+          "content-type": "text/html; charset=utf-8",
+          "vary": "Accept, Origin",
+          "cache-control": "max-age=0, private, must-revalidate",
+          "x-request-id": "8661208c-b1bc-4e46-bc44-bf1f52fd51e0",
+          "content-length": "136049",
+          "set-cookie": [
+            "_open_banking_rails_session=<redacted>; path=/; httponly; samesite=lax"
+          ]
+        },
+        "body_sample": {
+          "html_title": "Analytics · Open Banking",
+          "h1": "Analytics",
+          "flash": [],
+          "length": 135921,
+          "head": "<!-- BEGIN app/views/layouts/admin.html.erb --><!DOCTYPE html> <html lang=\"en\" class=\"\"> <head> <meta charset=\"UTF-8\"> <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"> <title>Analytics · Open Banking</title> <meta name=\"csrf-param\" content=\"authenticity_token\" /> <meta name=\"csrf-token\" content=\"ayWl0g0kNwJNIH0Rk3UVlmiVlRLwrZ3ovaVDlFAjuuR8dyOqDOB2tlZuwZypMTG-EK0YGgxCUMvx86aMh9Kc5Q\" /> <script> (function () { if (localStorage.getItem(\"sidebar-collapsed\") === \"true\") { document.documentElement.classList.add(\"sidebar-collapsed\"); } })(); </script> <link rel=\"icon\" href=\"/icon.svg?v=3\" type=\"image/svg+xml\"> <link rel=\"apple-touch-icon\" href=\"/icon.png\"> <link rel=\"preconnect\" href=\"https://fonts.googleapis.com\"> <link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin> <link href=\"https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap\" rel=\"stylesheet\"> <link rel=\"stylesheet\" href=\"/assets/tailwind-e94f0c0a.css\" data-turbo-track=\"reload\" /> <script type=\"importmap\" data-turbo-track=\"reload\">{ \"imports\": { \"application\": \"/assets/application-bfcdf840.js\", \"@hotwired/turbo-rails\": \"/assets/turbo.min-9fd88cd5.js\", \"@hotwired/stimulus\": \"/assets/stimulus.min-4b1e420e.js\", \"@hotwired/stimulus-loading\": \"/assets/stimulus-loading-1fc53fe7.js\", \"chart.js\": \"https://cdn.jsdelivr.net/npm/chart.js@4.5.1/+esm\", \"chartjs-plugin-datalabels\": \"https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/+esm\", \"controllers/ajax_…[truncated 123889 chars]"
+        }
+      }
+    },
+    {
+      "case": "no_users_redirects_to_setup",
+      "actor": "anon",
+      "request": {
+        "method": "GET",
+        "path": "/admin/analytics",
+        "headers": {}
+      },
+      "response": {
+        "status": 302,
+        "duration_ms": 219,
+        "headers": {
+          "x-frame-options": "SAMEORIGIN",
+          "x-content-type-options": "nosniff",
+          "location": "http://127.0.0.1:3000/setup",
+          "content-type": "text/html; charset=utf-8",
+          "cache-control": "no-cache",
+          "x-request-id": "2e3afd7c-08ed-4c6f-bc35-bc343619643e",
+          "vary": "Origin",
+          "content-length": "0"
+        },
+        "body_sample": ""
+      }
+    }
+  ]
+}

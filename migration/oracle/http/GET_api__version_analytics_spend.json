@@ -1,0 +1,85 @@
+{
+  "route": "GET /api/:version/analytics/spend(.json)",
+  "captured_at": "2026-10-21T13:22:36.436Z",
+  "base_url": "http://127.0.0.1:3000",
+  "cases": [
+    {
+      "case": "default",
+      "actor": "main(token)",
+      "request": {
+        "method": "GET",
+        "path": "/api/v1/analytics/spend?from=2026-07-13&to=2026-10-21&depth=2",
+        "headers": {
+          "authorization": "Bearer obrl_oracle_main_t…"
+        }
+      },
+      "response": {
+        "status": 200,
+        "duration_ms": 229,
+        "headers": {
+          "content-type": "application/json",
+          "cache-control": "max-age=0, private, must-revalidate",
+          "x-request-id": "08c50e7a-919b-458a-990c-f9dde470d5e7",
+          "vary": "Origin",
+          "content-length": "780"
+        },
+        "body_sample": {
+          "currency": "PLN",
+          "period": {
+            "from": "2026-07-13",
+            "to": "2026-10-21",
+            "bucket": "week"
+          },
+          "total_cents": 229241,
+          "rows": [
+            {
+              "path": "health.body",
+              "slug": "health_body",
+              "name": "Ciało",
+              "amount_cents": 110000,
+              "prev_amount_cents": 0,
+              "count": 5,
+              "delta_pct": null
+            },
+            {
+              "path": "home.fixed",
+              "slug": "home_fixed",
+              "name": "Stałe",
+              "amount_cents": 78000,
+              "prev_amount_cents": 0,
+              "count": 5,
+              "delta_pct": null
+            },
+            {
+              "path": "food.cooking",
+              "slug": "food_cooking",
+              "name": "W domu",
+              "amount_cents": 30496,
+              "prev_amount_cents": 0,
+              "count": 9,
+              "delta_pct": null
+            },
+            {
+              "path": "food.eating_out",
+              "slug": "food_eating_out",
+              "name": "Na mieście",
+              "amount_cents": 6250,
+              "prev_amount_cents": 0,
+              "count": 5,
+              "delta_pct": null
+            },
+            {
+              "path": "home.variable",
+              "slug": "home_variable",
+              "name": "Zmienne",
+              "amount_cents": 4495,
+              "prev_amount_cents": 0,
+              "count": 5,
+              "delta_pct": null
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

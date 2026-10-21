@@ -1,0 +1,837 @@
+{
+  "route": "GET /api/:version/swagger_doc/:name(.:format)",
+  "captured_at": "2026-10-21T13:22:10.050Z",
+  "base_url": "http://127.0.0.1:3000",
+  "cases": [
+    {
+      "case": "default",
+      "actor": "anon",
+      "request": {
+        "method": "GET",
+        "path": "/api/v1/swagger_doc/merchants",
+        "headers": {}
+      },
+      "response": {
+        "status": 200,
+        "duration_ms": 121,
+        "headers": {
+          "content-type": "application/json",
+          "cache-control": "max-age=0, private, must-revalidate",
+          "x-request-id": "fab7d467-dc4e-4675-9ca5-76a78ab3ed6b",
+          "vary": "Origin",
+          "content-length": "9901"
+        },
+        "body_sample": {
+          "info": {
+            "title": "Open Banking Rails API",
+            "description": "Personal-finance JSON API. All endpoints require a Personal Access Token in the Authorization header.",
+            "version": "0.0.1"
+          },
+          "swagger": "2.0",
+          "produces": [
+            "application/json"
+          ],
+          "host": "127.0.0.1:3000",
+          "basePath": "/",
+          "tags": [
+            {
+              "name": "merchants",
+              "description": "Operations about merchants"
+            }
+          ],
+          "paths": {
+            "/api/v1/merchants": {
+              "get": {
+                "description": "List merchants",
+                "produces": [
+                  "application/json"
+                ],
+                "parameters": [
+                  {
+                    "in": "query",
+                    "name": "q",
+                    "description": "Name ILIKE %q%",
+                    "type": "string",
+                    "required": false
+                  },
+                  {
+                    "in": "query",
+                    "name": "source",
+                    "type": "string",
+                    "enum": [
+                      "user",
+                      "llm",
+                      "seed"
+                    ],
+                    "required": false
+                  },
+                  {
+                    "in": "query",
+                    "name": "category_id",
+                    "description": "Filter by default_category_id",
+                    "type": "integer",
+                    "format": "int32",
+                    "required": false
+                  },
+                  {
+                    "in": "query",
+                    "name": "include_archived",
+                    "type": "boolean",
+                    "default": false,
+                    "required": false
+                  },
+                  {
+                    "in": "query",
+                    "name": "page",
+                    "type": "integer",
+                    "format": "int32",
+                    "required": false
+                  },
+                  {
+                    "in": "query",
+                    "name": "limit",
+                    "type": "integer",
+                    "format": "int32",
+                    "required": false
+                  }
+                ],
+                "responses": {
+                  "200": {
+                    "description": "List merchants",
+                    "schema": {
+                      "$ref": "#/definitions/Merchant"
+                    }
+                  }
+                },
+                "tags": [
+                  "merchants"
+                ],
+                "operationId": "getApiV1Merchants"
+              },
+              "post": {
+                "description": "Create a merchant",
+                "produces": [
+                  "application/json"
+                ],
+                "consumes": [
+                  "application/json"
+                ],
+                "parameters": [
+                  {
+                    "name": "postApiV1Merchants",
+                    "in": "body",
+                    "required": true,
+                    "schema": {
+                      "$ref": "#/definitions/postApiV1Merchants"
+                    }
+                  }
+                ],
+                "responses": {
+                  "201": {
+                    "description": "Create a merchant",
+                    "schema": {
+                      "$ref": "#/definitions/Merchant"
+                    }
+                  }
+                },
+                "tags": [
+                  "merchants"
+                ],
+                "operationId": "postApiV1Merchants"
+              }
+            },
+            "/api/v1/merchants/{id}": {
+              "get": {
+                "description": "Fetch a merchant",
+                "produces": [
+                  "application/json"
+                ],
+                "parameters": [
+                  {
+                    "in": "path",
+                    "name": "id",
+                    "type": "integer",
+                    "format": "int32",
+                    "required": true
+                  }
+                ],
+                "responses": {
+                  "200": {
+                    "description": "Fetch a merchant",
+                    "schema": {
+                      "$ref": "#/definitions/Merchant"
+                    }
+                  }
+                },
+                "tags": [
+                  "merchants"
+                ],
+                "operationId": "getApiV1MerchantsId"
+              },
+              "patch": {
+                "description": "Update a merchant",
+                "produces": [
+                  "application/json"
+                ],
+                "consumes": [
+                  "application/json"
+                ],
+                "parameters": [
+                  {
+                    "in": "path",
+                    "name": "id",
+                    "type": "integer",
+                    "format": "int32",
+                    "required": true
+                  },
+                  {
+                    "name": "patchApiV1MerchantsId",
+                    "in": "body",
+                    "required": true,
+                    "schema": {
+                      "$ref": "#/definitions/patchApiV1MerchantsId"
+                    }
+                  }
+                ],
+                "responses": {
+                  "200": {
+                    "description": "Update a merchant",
+                    "schema": {
+                      "$ref": "#/definitions/Merchant"
+                    }
+                  }
+                },
+                "tags": [
+                  "merchants"
+                ],
+                "operationId": "patchApiV1MerchantsId"
+              },
+              "delete": {
+                "description": "Delete a merchant (only when no transactions reference it)",
+                "produces": [
+                  "application/json"
+                ],
+                "parameters": [
+                  {
+                    "in": "path",
+                    "name": "id",
+                    "type": "integer",
+                    "format": "int32",
+                    "required": true
+                  }
+                ],
+                "responses": {
+                  "204": {
+                    "description": "Delete a merchant (only when no transactions reference it)"
+                  }
+                },
+                "tags": [
+                  "merchants"
+                ],
+                "operationId": "deleteApiV1MerchantsId"
+              }
+            },
+            "/api/v1/merchants/{id}/archive": {
+              "post": {
+                "description": "Archive a merchant",
+                "produces": [
+                  "application/json"
+                ],
+                "consumes": [
+                  "application/json"
+                ],
+                "parameters": [
+                  {
+                    "in": "path",
+                    "name": "id",
+                    "type": "integer",
+                    "format": "int32",
+                    "required": true
+                  }
+                ],
+                "responses": {
+                  "201": {
+                    "description": "Archive a merchant",
+                    "schema": {
+                      "$ref": "#/definitions/Merchant"
+                    }
+                  }
+                },
+                "tags": [
+                  "merchants"
+                ],
+                "operationId": "postApiV1MerchantsIdArchive"
+              }
+            },
+            "/api/v1/merchants/{id}/unarchive": {
+              "post": {
+                "description": "Unarchive a merchant",
+                "produces": [
+                  "application/json"
+                ],
+                "consumes": [
+                  "application/json"
+                ],
+                "parameters": [
+                  {
+                    "in": "path",
+                    "name": "id",
+                    "type": "integer",
+                    "format": "int32",
+                    "required": true
+                  }
+                ],
+                "responses": {
+                  "201": {
+                    "description": "Unarchive a merchant",
+                    "schema": {
+                      "$ref": "#/definitions/Merchant"
+                    }
+                  }
+                },
+                "tags": [
+                  "merchants"
+                ],
+                "operationId": "postApiV1MerchantsIdUnarchive"
+              }
+            },
+            "/api/v1/merchants/{id}/approve": {
+              "post": {
+                "description": "Approve an LLM-suggested merchant (and enable its rules)",
+                "produces": [
+                  "application/json"
+                ],
+                "consumes": [
+                  "application/json"
+                ],
+                "parameters": [
+                  {
+                    "in": "path",
+                    "name": "id",
+                    "type": "integer",
+                    "format": "int32",
+                    "required": true
+                  }
+                ],
+                "responses": {
+                  "201": {
+                    "description": "Approve an LLM-suggested merchant (and enable its rules)",
+                    "schema": {
+                      "$ref": "#/definitions/Merchant"
+                    }
+                  }
+                },
+                "tags": [
+                  "merchants"
+                ],
+                "operationId": "postApiV1MerchantsIdApprove"
+              }
+            },
+            "/api/v1/merchants/{merchant_id}/rules": {
+              "get": {
+                "description": "List rules for a merchant",
+                "produces": [
+                  "application/json"
+                ],
+                "parameters": [
+                  {
+                    "in": "path",
+                    "name": "merchant_id",
+                    "type": "integer",
+                    "format": "int32",
+                    "required": true
+                  }
+                ],
+                "responses": {
+                  "200": {
+                    "description": "List rules for a merchant",
+                    "schema": {
+                      "$ref": "#/definitions/MerchantRule"
+                    }
+                  }
+                },
+                "tags": [
+                  "merchants"
+                ],
+                "operationId": "getApiV1MerchantsMerchantIdRules"
+              },
+              "post": {
+                "description": "Add a rule to a merchant",
+                "produces": [
+                  "application/json"
+                ],
+                "consumes": [
+                  "application/json"
+                ],
+                "parameters": [
+                  {
+                    "in": "path",
+                    "name": "merchant_id",
+                    "type": "integer",
+                    "format": "int32",
+                    "required": true
+                  },
+                  {
+                    "name": "postApiV1MerchantsMerchantIdRules",
+                    "in": "body",
+                    "required": true,
+                    "schema": {
+                      "$ref": "#/definitions/postApiV1MerchantsMerchantIdRules"
+                    }
+                  }
+                ],
+                "responses": {
+                  "201": {
+                    "description": "Add a rule to a merchant",
+                    "schema": {
+                      "$ref": "#/definitions/MerchantRule"
+                    }
+                  }
+                },
+                "tags": [
+                  "merchants"
+                ],
+                "operationId": "postApiV1MerchantsMerchantIdRules"
+              }
+            },
+            "/api/v1/merchants/{merchant_id}/rules/{id}": {
+              "patch": {
+                "description": "Update a rule",
+                "produces": [
+                  "application/json"
+                ],
+                "consumes": [
+                  "application/json"
+                ],
+                "parameters": [
+                  {
+                    "in": "path",
+                    "name": "merchant_id",
+                    "type": "integer",
+                    "format": "int32",
+                    "required": true
+                  },
+                  {
+                    "in": "path",
+                    "name": "id",
+                    "type": "integer",
+                    "format": "int32",
+                    "required": true
+                  },
+                  {
+                    "name": "patchApiV1MerchantsMerchantIdRulesId",
+                    "in": "body",
+                    "required": true,
+                    "schema": {
+                      "$ref": "#/definitions/patchApiV1MerchantsMerchantIdRulesId"
+                    }
+                  }
+                ],
+                "responses": {
+                  "200": {
+                    "description": "Update a rule",
+                    "schema": {
+                      "$ref": "#/definitions/MerchantRule"
+                    }
+                  }
+                },
+                "tags": [
+                  "merchants"
+                ],
+                "operationId": "patchApiV1MerchantsMerchantIdRulesId"
+              },
+              "delete": {
+                "description": "Delete a rule",
+                "produces": [
+                  "application/json"
+                ],
+                "parameters": [
+                  {
+                    "in": "path",
+                    "name": "merchant_id",
+                    "type": "integer",
+                    "format": "int32",
+                    "required": true
+                  },
+                  {
+                    "in": "path",
+                    "name": "id",
+                    "type": "integer",
+                    "format": "int32",
+                    "required": true
+                  }
+                ],
+                "responses": {
+                  "204": {
+                    "description": "Delete a rule"
+                  }
+                },
+                "tags": [
+                  "merchants"
+                ],
+                "operationId": "deleteApiV1MerchantsMerchantIdRulesId"
+              }
+            }
+          },
+          "definitions": {
+            "Merchant": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer",
+                  "format": "int32"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "slug": {
+                  "type": "string"
+                },
+                "kind": {
+                  "type": "string",
+                  "description": "company / person / unknown"
+                },
+                "source": {
+                  "type": "string",
+                  "description": "user / llm / seed"
+                },
+                "logo_url": {
+                  "type": "string"
+                },
+                "notes": {
+                  "type": "string"
+                },
+                "default_category_id": {
+                  "type": "integer",
+                  "format": "int32"
+                },
+                "confidence": {
+                  "type": "number",
+                  "format": "float"
+                },
+                "model": {
+                  "type": "string",
+                  "description": "LLM model name when source=llm"
+                },
+                "approved_at": {
+                  "type": "string"
+                },
+                "archived_at": {
+                  "type": "string"
+                },
+                "default_category": {
+                  "$ref": "#/definitions/Category"
+                }
+              },
+              "required": [
+                "id",
+                "name",
+                "slug",
+                "kind",
+                "source",
+                "logo_url",
+                "notes",
+                "default_category_id",
+                "confidence",
+                "model",
+                "approved_at",
+                "archived_at",
+                "default_category"
+              ],
+              "description": "Merchant model"
+            },
+            "Category": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer",
+                  "format": "int32"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "slug": {
+                  "type": "string"
+                },
+                "path": {
+                  "type": "string",
+                  "description": "Materialized ltree path"
+                },
+                "kind": {
+                  "type": "string",
+                  "description": "expense / income / transfer / savings / ignored"
+                },
+                "color": {
+                  "type": "string"
+                },
+                "icon": {
+                  "type": "string"
+                },
+                "essential": {
+                  "type": "boolean"
+                },
+                "position": {
+                  "type": "integer",
+                  "format": "int32"
+                },
+                "archived_at": {
+                  "type": "string",
+                  "description": "ISO 8601 or null when active"
+                },
+                "parent_path": {
+                  "type": "string",
+                  "description": "ltree path of the parent; null for top-level"
+                }
+              },
+              "required": [
+                "id",
+                "name",
+                "slug",
+                "path",
+                "kind",
+                "color",
+                "icon",
+                "essential",
+                "position",
+                "archived_at",
+                "parent_path"
+              ]
+            },
+            "postApiV1Merchants": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "slug": {
+                  "type": "string"
+                },
+                "kind": {
+                  "type": "string",
+                  "enum": [
+                    "company",
+                    "person",
+                    "unknown"
+                  ],
+                  "default": "company"
+                },
+                "default_category_id": {
+                  "type": "integer",
+                  "format": "int32"
+                },
+                "logo_url": {
+                  "type": "string"
+                },
+                "notes": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "name"
+              ],
+              "description": "Create a merchant"
+            },
+            "patchApiV1MerchantsId": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "slug": {
+                  "type": "string"
+                },
+                "kind": {
+                  "type": "string",
+                  "enum": [
+                    "company",
+                    "person",
+                    "unknown"
+                  ]
+                },
+                "default_category_id": {
+                  "type": "integer",
+                  "format": "int32"
+                },
+                "logo_url": {
+                  "type": "string"
+                },
+                "notes": {
+                  "type": "string"
+                }
+              },
+              "description": "Update a merchant"
+            },
+            "MerchantRule": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer",
+                  "format": "int32"
+                },
+                "merchant_id": {
+                  "type": "integer",
+                  "format": "int32"
+                },
+                "field": {
+                  "type": "string",
+                  "description": "title / counterparty_name / counterparty_iban"
+                },
+                "kind": {
+                  "type": "string",
+                  "description": "contains / equals / regex / starts_with / ends_with"
+                },
+                "pattern": {
+                  "type": "string"
+                },
+                "case_sensitive": {
+                  "type": "boolean"
+                },
+                "priority": {
+                  "type": "integer",
+                  "format": "int32"
+                },
+                "enabled": {
+                  "type": "boolean"
+                },
+                "source": {
+                  "type": "string",
+                  "description": "user / llm / seed"
+                },
+                "confidence": {
+                  "type": "number",
+                  "format": "float"
+                },
+                "model": {
+                  "type": "string"
+                },
+                "approved_at": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id",
+                "merchant_id",
+                "field",
+                "kind",
+                "pattern",
+                "case_sensitive",
+                "priority",
+                "enabled",
+                "source",
+                "confidence",
+                "model",
+                "approved_at"
+              ],
+              "description": "MerchantRule model"
+            },
+            "postApiV1MerchantsMerchantIdRules": {
+              "type": "object",
+              "properties": {
+                "kind": {
+                  "type": "string",
+                  "enum": [
+                    "contains",
+                    "equals",
+                    "regex",
+                    "starts_with",
+                    "ends_with"
+                  ]
+                },
+                "field": {
+                  "type": "string",
+                  "enum": [
+                    "title",
+                    "counterparty_name",
+                    "counterparty_iban"
+                  ]
+                },
+                "pattern": {
+                  "type": "string"
+                },
+                "case_sensitive": {
+                  "type": "boolean",
+                  "default": false
+                },
+                "priority": {
+                  "type": "integer",
+                  "format": "int32",
+                  "default": 0
+                },
+                "enabled": {
+                  "type": "boolean",
+                  "default": true
+                }
+              },
+              "required": [
+                "kind",
+                "field",
+                "pattern"
+              ],
+              "description": "Add a rule to a merchant"
+            },
+            "patchApiV1MerchantsMerchantIdRulesId": {
+              "type": "object",
+              "properties": {
+                "kind": {
+                  "type": "string",
+                  "enum": [
+                    "contains",
+                    "equals",
+                    "regex",
+                    "starts_with",
+                    "ends_with"
+                  ]
+                },
+                "field": {
+                  "type": "string",
+                  "enum": [
+                    "title",
+                    "counterparty_name",
+                    "counterparty_iban"
+                  ]
+                },
+                "pattern": {
+                  "type": "string"
+                },
+                "case_sensitive": {
+                  "type": "boolean"
+                },
+                "priority": {
+                  "type": "integer",
+                  "format": "int32"
+                },
+                "enabled": {
+                  "type": "boolean"
+                }
+              },
+              "description": "Update a rule"
+            }
+          }
+        }
+      }
+    },
+    {
+      "case": "unknown_name",
+      "actor": "anon",
+      "request": {
+        "method": "GET",
+        "path": "/api/v1/swagger_doc/nope",
+        "headers": {}
+      },
+      "response": {
+        "status": 400,
+        "duration_ms": 107,
+        "headers": {
+          "content-type": "application/json",
+          "cache-control": "no-cache",
+          "x-request-id": "8e760bed-ccab-41a2-a664-cfc604fbbd49",
+          "vary": "Origin",
+          "content-length": "36"
+        },
+        "body_sample": {
+          "error": "named resource not exist"
+        }
+      }
+    }
+  ]
+}

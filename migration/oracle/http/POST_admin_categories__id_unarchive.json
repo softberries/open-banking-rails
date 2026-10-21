@@ -1,0 +1,37 @@
+{
+  "route": "POST /admin/categories/:id/unarchive(.:format)",
+  "captured_at": "2026-10-21T13:23:40.081Z",
+  "base_url": "http://127.0.0.1:3000",
+  "cases": [
+    {
+      "case": "default",
+      "actor": "main(session)",
+      "request": {
+        "method": "POST",
+        "path": "/admin/categories/239/unarchive",
+        "headers": {},
+        "body": {
+          "authenticity_token": "<redacted>"
+        }
+      },
+      "response": {
+        "status": 302,
+        "duration_ms": 169,
+        "headers": {
+          "x-frame-options": "SAMEORIGIN",
+          "x-content-type-options": "nosniff",
+          "location": "http://127.0.0.1:3000/admin/categories",
+          "content-type": "text/html; charset=utf-8",
+          "cache-control": "no-cache",
+          "x-request-id": "c1044e1e-eab2-44c9-a7ba-0f47fd293c6a",
+          "vary": "Origin",
+          "content-length": "0",
+          "set-cookie": [
+            "_open_banking_rails_session=<redacted>; path=/; httponly; samesite=lax"
+          ]
+        },
+        "body_sample": ""
+      }
+    }
+  ]
+}

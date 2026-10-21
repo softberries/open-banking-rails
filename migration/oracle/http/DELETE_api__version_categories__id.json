@@ -1,0 +1,57 @@
+{
+  "route": "DELETE /api/:version/categories/:id(.json)",
+  "captured_at": "2026-10-21T13:22:55.180Z",
+  "base_url": "http://127.0.0.1:3000",
+  "cases": [
+    {
+      "case": "default",
+      "actor": "main(token)",
+      "request": {
+        "method": "DELETE",
+        "path": "/api/v1/categories/238",
+        "headers": {
+          "authorization": "Bearer obrl_oracle_main_t…"
+        }
+      },
+      "response": {
+        "status": 422,
+        "duration_ms": 181,
+        "headers": {
+          "content-type": "application/json",
+          "cache-control": "no-cache",
+          "x-request-id": "f9852b5e-7dcd-46db-9425-55d71c0178a4",
+          "vary": "Origin",
+          "content-length": "95"
+        },
+        "body_sample": {
+          "message": "Can't delete - this category is in use or has sub-categories. Archive it instead."
+        }
+      }
+    },
+    {
+      "case": "category_in_use_or_with_children",
+      "actor": "main(token)",
+      "request": {
+        "method": "DELETE",
+        "path": "/api/v1/categories/1",
+        "headers": {
+          "authorization": "Bearer obrl_oracle_main_t…"
+        }
+      },
+      "response": {
+        "status": 422,
+        "duration_ms": 167,
+        "headers": {
+          "content-type": "application/json",
+          "cache-control": "no-cache",
+          "x-request-id": "7842f473-436c-45f3-af9f-0b99d71fe937",
+          "vary": "Origin",
+          "content-length": "95"
+        },
+        "body_sample": {
+          "message": "Can't delete - this category is in use or has sub-categories. Archive it instead."
+        }
+      }
+    }
+  ]
+}

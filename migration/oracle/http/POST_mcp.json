@@ -1,0 +1,2569 @@
+{
+  "route": "POST /mcp(.:format)",
+  "captured_at": "2026-10-21T13:22:17.580Z",
+  "base_url": "http://127.0.0.1:3000",
+  "cases": [
+    {
+      "case": "no_token",
+      "actor": "anon",
+      "request": {
+        "method": "POST",
+        "path": "/mcp",
+        "headers": {
+          "accept": "application/json, text/event-stream",
+          "content-type": "application/json"
+        },
+        "body": {
+          "jsonrpc": "2.0",
+          "id": 1,
+          "method": "initialize",
+          "params": {}
+        }
+      },
+      "response": {
+        "status": 401,
+        "duration_ms": 136,
+        "headers": {
+          "x-frame-options": "SAMEORIGIN",
+          "x-content-type-options": "nosniff",
+          "content-type": "application/json; charset=utf-8",
+          "vary": "Accept, Origin",
+          "cache-control": "no-cache",
+          "x-request-id": "5f164474-3bd1-467a-9c72-491d5065ef37",
+          "content-length": "44"
+        },
+        "body_sample": {
+          "error": "Invalid or missing access token."
+        }
+      }
+    },
+    {
+      "case": "revoked_token",
+      "actor": "anon",
+      "request": {
+        "method": "POST",
+        "path": "/mcp",
+        "headers": {
+          "accept": "application/json, text/event-stream",
+          "authorization": "Bearer obrl_oracle_revoke…",
+          "content-type": "application/json"
+        },
+        "body": {
+          "jsonrpc": "2.0",
+          "id": 1,
+          "method": "tools/list"
+        }
+      },
+      "response": {
+        "status": 401,
+        "duration_ms": 114,
+        "headers": {
+          "x-frame-options": "SAMEORIGIN",
+          "x-content-type-options": "nosniff",
+          "content-type": "application/json; charset=utf-8",
+          "vary": "Accept, Origin",
+          "cache-control": "no-cache",
+          "x-request-id": "ccacdbc8-b2da-48d3-96e0-e1a69fbd8fd6",
+          "content-length": "44"
+        },
+        "body_sample": {
+          "error": "Invalid or missing access token."
+        }
+      }
+    },
+    {
+      "case": "initialize",
+      "actor": "main(token)",
+      "request": {
+        "method": "POST",
+        "path": "/mcp",
+        "headers": {
+          "accept": "application/json, text/event-stream",
+          "authorization": "Bearer obrl_oracle_main_t…",
+          "content-type": "application/json"
+        },
+        "body": {
+          "jsonrpc": "2.0",
+          "id": 1,
+          "method": "initialize",
+          "params": {
+            "protocolVersion": "2025-06-18",
+            "capabilities": {},
+            "clientInfo": {
+              "name": "oracle",
+              "version": "1"
+            }
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "duration_ms": 141,
+        "headers": {
+          "x-frame-options": "SAMEORIGIN",
+          "x-content-type-options": "nosniff",
+          "content-type": "application/json",
+          "cache-control": "max-age=0, private, must-revalidate",
+          "x-request-id": "ec54909f-f76e-4773-bed6-a2c8c7246765",
+          "vary": "Origin",
+          "content-length": "250"
+        },
+        "body_sample": {
+          "jsonrpc": "2.0",
+          "id": 1,
+          "result": {
+            "protocolVersion": "2025-06-18",
+            "capabilities": {
+              "tools": {
+                "listChanged": true
+              },
+              "prompts": {
+                "listChanged": true
+              },
+              "resources": {
+                "listChanged": true
+              },
+              "logging": {}
+            },
+            "serverInfo": {
+              "name": "open-banking-rails",
+              "version": "1.0.0"
+            }
+          }
+        }
+      }
+    },
+    {
+      "case": "tools_list",
+      "actor": "main(token)",
+      "request": {
+        "method": "POST",
+        "path": "/mcp",
+        "headers": {
+          "accept": "application/json, text/event-stream",
+          "authorization": "Bearer obrl_oracle_main_t…",
+          "content-type": "application/json"
+        },
+        "body": {
+          "jsonrpc": "2.0",
+          "id": 2,
+          "method": "tools/list"
+        }
+      },
+      "response": {
+        "status": 200,
+        "duration_ms": 138,
+        "headers": {
+          "x-frame-options": "SAMEORIGIN",
+          "x-content-type-options": "nosniff",
+          "content-type": "application/json",
+          "cache-control": "max-age=0, private, must-revalidate",
+          "x-request-id": "ede27e67-3538-4059-9c44-907ac42b197a",
+          "vary": "Origin",
+          "content-length": "10391"
+        },
+        "body_sample": {
+          "jsonrpc": "2.0",
+          "id": 2,
+          "result": {
+            "tools": [
+              {
+                "name": "cash.create_transaction",
+                "description": "Record a manual cash transaction (income or expense) for the current user.",
+                "inputSchema": {
+                  "properties": {
+                    "amount": {
+                      "type": "string",
+                      "description": "Decimal amount, e.g. '12.50'"
+                    },
+                    "currency": {
+                      "type": "string",
+                      "description": "ISO-4217, defaults to PLN"
+                    },
+                    "direction": {
+                      "type": "string",
+                      "enum": [
+                        "debit",
+                        "credit"
+                      ],
+                      "description": "Defaults to debit (expense)"
+                    },
+                    "booking_date": {
+                      "type": "string",
+                      "format": "date"
+                    },
+                    "transaction_date": {
+                      "type": "string",
+                      "format": "date"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "note": {
+                      "type": "string"
+                    },
+                    "counterparty_name": {
+                      "type": "string"
+                    },
+                    "merchant_id": {
+                      "type": "integer"
+                    },
+                    "category_id": {
+                      "type": "integer"
+                    },
+                    "payment_method": {
+                      "type": "string",
+                      "description": "cash / card / blik_p2p / transfer / other"
+                    }
+                  },
+                  "required": [
+                    "amount"
+                  ],
+                  "type": "object"
+                }
+              },
+              {
+                "name": "cash.update_transaction",
+                "description": "Update fields on an existing manual cash transaction. Currency is locked - delete and recreate to change it.",
+                "inputSchema": {
+                  "properties": {
+                    "id": {
+                      "type": "integer"
+                    },
+                    "amount": {
+                      "type": "string",
+                      "description": "Decimal, e.g. '12.50'. Omit to keep"
+                    },
+                    "direction": {
+                      "type": "string",
+                      "enum": [
+                        "debit",
+                        "credit"
+                      ]
+                    },
+                    "booking_date": {
+                      "type": "string",
+                      "format": "date"
+                    },
+                    "transaction_date": {
+                      "type": "string",
+                      "format": "date"
+                    },
+                    "title": {
+                      "type": "string",
+                      "description": "Empty string clears"
+                    },
+                    "note": {
+                      "type": "string",
+                      "description": "Empty string clears"
+                    },
+                    "counterparty_name": {
+                      "type": "string",
+                      "description": "Empty string clears"
+                    },
+                    "merchant_id": {
+                      "type": "integer"
+                    },
+                    "category_id": {
+                      "type": "integer"
+                    },
+                    "payment_method": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "id"
+                  ],
+                  "type": "object"
+                }
+              },
+              {
+                "name": "cash.delete_transaction",
+                "description": "Delete a manual cash transaction. Auto-generated rows (e.g. ATM linker) cannot be deleted here.",
+                "inputSchema": {
+                  "properties": {
+                    "id": {
+                      "type": "integer"
+                    }
+                  },
+                  "required": [
+                    "id"
+                  ],
+                  "type": "object"
+                }
+              },
+              {
+                "name": "transactions.list",
+                "description": "List ledger entries (bank + manual) with filters. Returns at most `limit` rows (default 25, max 200).",
+                "inputSchema": {
+                  "properties": {
+                    "from": {
+                      "type": "string",
+                      "format": "date",
+                      "description": "Booking date >="
+                    },
+                    "to": {
+                      "type": "string",
+                      "format": "date",
+                      "description": "Booking date <="
+                    },
+                    "direction": {
+                      "type": "string",
+                      "enum": [
+                        "credit",
+                        "debit"
+                      ]
+                    },
+                    "status": {
+                      "type": "string",
+                      "enum": [
+                        "booked",
+                        "pending"
+                      ]
+                    },
+                    "account_id": {
+                      "type": "integer"
+                    },
+                    "merchant_id": {
+                      "type": "integer"
+                    },
+                    "category_id": {
+                      "type": "integer"
+                    },
+                    "category_path": {
+                      "type": "string",
+                      "description": "ltree prefix; matches descendants"
+                    },
+                    "payment_method": {
+                      "type": "string"
+                    },
+                    "currency": {
+                      "type": "string"
+                    },
+                    "source_type": {
+                      "type": "string",
+                      "enum": [
+                        "BankTransaction",
+                        "ManualTransaction"
+                      ]
+                    },
+                    "limit": {
+                      "type": "integer",
+                      "description": "1-200, default 25"
+                    }
+                  },
+                  "type": "object"
+                }
+              },
+              {
+                "name": "transactions.get",
+                "description": "Fetch a single ledger entry by source type + id.",
+                "inputSchema": {
+                  "properties": {
+                    "source_type": {
+                      "type": "string",
+                      "enum": [
+                        "BankTransaction",
+                        "ManualTransaction"
+                      ]
+                    },
+                    "source_id": {
+                      "type": "integer"
+                    }
+                  },
+                  "required": [
+                    "source_type",
+                    "source_id"
+                  ],
+                  "type": "object"
+                }
+              },
+              {
+                "name": "transactions.classify",
+                "description": "Apply a merchant + category to a bank transaction.\nmode=only_this writes the override on this row only.\nmode=all_for_merchant sets merchant.default_category - all rows for the merchant inherit.\nmode=create_rule creates a user-source MerchantRule (rule_field/rule_kind/rule_pattern required) and rebuilds enrichment.",
+                "inputSchema": {
+                  "properties": {
+                    "bank_transaction_id": {
+                      "type": "integer"
+                    },
+                    "mode": {
+                      "type": "string",
+                      "enum": [
+                        "only_this",
+                        "all_for_merchant",
+                        "create_rule"
+                      ]
+                    },
+                    "merchant_id": {
+                      "type": "integer"
+                    },
+                    "category_id": {
+                      "type": "integer"
+                    },
+                    "rule_field": {
+                      "type": "string",
+                      "enum": [
+                        "title",
+                        "counterparty_name",
+                        "counterparty_iban"
+                      ]
+                    },
+                    "rule_kind": {
+                      "type": "string",
+                      "enum": [
+                        "contains",
+                        "equals",
+                        "regex",
+                        "starts_with",
+                        "ends_with"
+                      ]
+                    },
+                    "rule_pattern": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "bank_transaction_id",
+                    "mode"
+                  ],
+                  "type": "object"
+                }
+              },
+              {
+                "name": "categories.list",
+                "description": "List the user's categories. Hierarchy is encoded in `path` (ltree dot-separated).",
+                "inputSchema": {
+                  "properties": {
+                    "include_archived": {
+                      "type": "boolean",
+                      "description": "Default false"
+                    }
+                  },
+                  "type": "object"
+                }
+              },
+              {
+                "name": "categories.create",
+                "description": "Create a new category. parent_path is the ltree path of the parent ('food.cooking' etc.); omit for top-level.",
+                "inputSchema": {
+                  "properties": {
+                    "name": {
+                      "type": "string"
+                    },
+                    "slug": {
+                      "type": "string",
+                      "description": "Auto-generated when omitted"
+                    },
+                    "kind": {
+                      "type": "string",
+                      "enum": [
+                        "expense",
+                        "income",
+                        "transfer",
+                        "savings",
+                        "ignored"
+                      ]
+                    },
+                    "color": {
+                      "type": "string"
+                    },
+                    "icon": {
+                      "type": "string"
+                    },
+                    "position": {
+                      "type": "integer"
+                    },
+                    "essential": {
+                      "type": "boolean"
+                    },
+                    "parent_path": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "name"
+                  ],
+                  "type": "object"
+                }
+              },
+              {
+                "name": "categories.update",
+                "description": "Update / move a category. Changing parent_path rewrites paths of all descendants atomically.",
+                "inputSchema": {
+                  "properties": {
+                    "id": {
+                      "type": "integer"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "slug": {
+                      "type": "string"
+                    },
+                    "kind": {
+                      "type": "string",
+                      "enum": [
+                        "expense",
+                        "income",
+                        "transfer",
+                        "savings",
+                        "ignored"
+                      ]
+                    },
+                    "color": {
+                      "type": "string"
+                    },
+                    "icon": {
+                      "type": "string"
+                    },
+                    "position": {
+                      "type": "integer"
+                    },
+                    "essential": {
+                      "type": "boolean"
+                    },
+                    "parent_path": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "id"
+                  ],
+                  "type": "object"
+                }
+              },
+              {
+                "name": "categories.archive",
+                "description": "Archive a category - kept in storage but hidden from active lists.",
+                "inputSchema": {
+                  "properties": {
+                    "id": {
+                      "type": "integer"
+                    }
+                  },
+                  "required": [
+                    "id"
+                  ],
+                  "type": "object"
+                }
+              },
+              {
+                "name": "categories.unarchive",
+                "description": "Restore a previously archived category.",
+                "inputSchema": {
+                  "properties": {
+                    "id": {
+                      "type": "integer"
+                    }
+                  },
+                  "required": [
+                    "id"
+                  ],
+                  "type": "object"
+                }
+              },
+              {
+                "name": "merchants.list",
+                "description": "List the user's merchants. Default: active only, name ASC, max 100 rows.",
+                "inputSchema": {
+                  "properties": {
+                    "q": {
+                      "type": "string",
+                      "description": "Name ILIKE %q%"
+                    },
+                    "source": {
+                      "type": "string",
+                      "enum": [
+                        "user",
+                        "llm",
+                        "seed",
+                        "system"
+                      ]
+                    },
+                    "category_id": {
+                      "type": "integer"
+                    },
+                    "include_archived": {
+                      "type": "boolean"
+                    },
+                    "limit": {
+                      "type": "integer",
+                      "description": "1-200, default 50"
+                    }
+                  },
+                  "type": "object"
+                }
+              },
+              {
+                "name": "merchants.create",
+                "description": "Create a user-source merchant. Slug auto-generated when omitted.",
+                "inputSchema": {
+                  "properties": {
+                    "name": {
+                      "type": "string"
+                    },
+                    "slug": {
+                      "type": "string"
+                    },
+                    "kind": {
+                      "type": "string",
+                      "enum": [
+                        "company",
+                        "person",
+                        "unknown"
+                      ]
+                    },
+                    "default_category_id": {
+                      "type": "integer"
+                    },
+                    "logo_url": {
+                      "type": "string"
+                    },
+                    "notes": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "name"
+                  ],
+                  "type": "object"
+                }
+              },
+              {
+                "name": "merchants.update",
+                "description": "Update editable fields of a merchant.",
+                "inputSchema": {
+                  "properties": {
+                    "id": {
+                      "type": "integer"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "slug": {
+                      "type": "string"
+                    },
+                    "kind": {
+                      "type": "string",
+                      "enum": [
+                        "company",
+                        "person",
+                        "unknown"
+                      ]
+                    },
+                    "default_category_id": {
+                      "type": "integer"
+                    },
+                    "logo_url": {
+                      "type": "string"
+                    },
+                    "notes": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "id"
+                  ],
+                  "type": "object"
+                }
+              },
+              {
+                "name": "merchants.archive",
+                "description": "Archive a merchant - keeps history visible, hides from active selectors.",
+                "inputSchema": {
+                  "properties": {
+                    "id": {
+                      "type": "integer"
+                    }
+                  },
+                  "required": [
+                    "id"
+                  ],
+                  "type": "object"
+                }
+              },
+              {
+                "name": "merchants.unarchive",
+                "description": "Restore a previously archived merchant.",
+                "inputSchema": {
+                  "properties": {
+                    "id": {
+                      "type": "integer"
+                    }
+                  },
+                  "required": [
+                    "id"
+                  ],
+                  "type": "object"
+                }
+              },
+              {
+                "name": "merchants.approve",
+                "description": "Approve an LLM-suggested merchant. Enables its disabled rules and rebuilds enrichment for the user.",
+                "inputSchema": {
+                  "properties": {
+                    "id": {
+                      "type": "integer"
+                    }
+                  },
+                  "required": [
+                    "id"
+                  ],
+                  "type": "object"
+                }
+              },
+              {
+                "name": "bank_accounts.list",
+                "description": "List the user's bank accounts (synced from AISP) and cash wallets (manual=true).",
+                "inputSchema": {
+                  "properties": {
+                    "manual": {
+                      "type": "boolean",
+                      "description": "true → only cash wallets, false → only synced. Omit for both."
+                    }
+                  },
+                  "type": "object"
+                }
+              },
+              {
+                "name": "bank_accounts.refresh_details",
+                "description": "Pull fresh account-info from the AISP provider (name, holder, product). Live API call.",
+                "inputSchema": {
+                  "properties": {
+                    "id": {
+                      "type": "integer"
+                    }
+                  },
+                  "required": [
+                    "id"
+                  ],
+                  "type": "object"
+                }
+              },
+              {
+                "name": "bank_accounts.refresh_balances",
+                "description": "Pull fresh balances from the AISP provider. Live API call.",
+                "inputSchema": {
+                  "properties": {
+                    "id": {
+                      "type": "integer"
+                    }
+                  },
+                  "required": [
+                    "id"
+                  ],
+                  "type": "object"
+                }
+              },
+              {
+                "name": "bank_connections.list",
+                "description": "List the user's bank connections with status + validity.",
+                "inputSchema": {
+                  "properties": {
+                    "status": {
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                }
+              },
+              {
+                "name": "bank_connections.refresh",
+                "description": "Pull current status + validity for a bank connection from the provider.",
+                "inputSchema": {
+                  "properties": {
+                    "id": {
+                      "type": "integer"
+                    }
+                  },
+                  "required": [
+                    "id"
+                  ],
+                  "type": "object"
+                }
+              },
+              {
+                "name": "analytics.cash_flow",
+                "description": "Spend + income totals and a date-bucketed series for the requested period. Defaults to month-to-date.",
+                "inputSchema": {
+                  "properties": {
+                    "from": {
+                      "type": "string",
+                      "format": "date"
+                    },
+                    "to": {
+                      "type": "string",
+                      "format": "date"
+                    },
+                    "bucket": {
+                      "type": "string",
+                      "enum": [
+                        "day",
+                        "week",
+                        "month"
+                      ]
+                    },
+                    "currency": {
+                      "type": "string"
+                    },
+                    "account_ids": {
+                      "type": "array",
+                      "items": {
+                        "type": "integer"
+                      }
+                    },
+                    "under_path": {
+                      "type": "string",
+                      "description": "ltree prefix"
+                    }
+                  },
+                  "type": "object"
+                }
+              },
+              {
+                "name": "analytics.spend",
+                "description": "Spend breakdown by category path with previous-period delta. depth=1 → top-level, depth=2 → mid-level, omit for leaf rows.",
+                "inputSchema": {
+                  "properties": {
+                    "from": {
+                      "type": "string",
+                      "format": "date"
+                    },
+                    "to": {
+                      "type": "string",
+                      "format": "date"
+                    },
+                    "currency": {
+                      "type": "string"
+                    },
+                    "account_ids": {
+                      "type": "array",
+                      "items": {
+                        "type": "integer"
+                      }
+                    },
+                    "under_path": {
+                      "type": "string"
+                    },
+                    "depth": {
+                      "type": "integer"
+                    }
+                  },
+                  "type": "object"
+                }
+              },
+              {
+                "name": "analytics.top_merchants",
+                "description": "Top spend merchants for the period.",
+                "inputSchema": {
+                  "properties": {
+                    "from": {
+                      "type": "string",
+                      "format": "date"
+                    },
+                    "to": {
+                      "type": "string",
+                      "format": "date"
+                    },
+                    "currency": {
+                      "type": "string"
+                    },
+                    "account_ids": {
+                      "type": "array",
+                      "items": {
+                        "type": "integer"
+                      }
+                    },
+                    "under_path": {
+                      "type": "string"
+                    },
+                    "limit": {
+                      "type": "integer",
+                      "description": "Default 10, max 50"
+                    }
+                  },
+                  "type": "object"
+                }
+              },
+              {
+                "name": "transaction_syncs.create",
+                "description": "Queue a background transaction sync. Subject = a single bank connection (when bank_connection_id is given) or all of the user's active connections.",
+                "inputSchema": {
+                  "properties": {
+                    "bank_connection_id": {
+                      "type": "integer"
+                    },
+                    "date_from": {
+                      "type": "string",
+                      "format": "date"
+                    },
+                    "date_to": {
+                      "type": "string",
+                      "format": "date"
+                    }
+                  },
+                  "type": "object"
+                }
+              },
+              {
+                "name": "llm_enrichments.create",
+                "description": "Queue an LLM enrichment run. The user must have an LLM provider configured in Preferences.",
+                "inputSchema": {
+                  "properties": {
+                    "limit": {
+                      "type": "integer",
+                      "description": "Max distinct title groups to send to the LLM"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "case": "resources_list",
+      "actor": "main(token)",
+      "request": {
+        "method": "POST",
+        "path": "/mcp",
+        "headers": {
+          "accept": "application/json, text/event-stream",
+          "authorization": "Bearer obrl_oracle_main_t…",
+          "content-type": "application/json"
+        },
+        "body": {
+          "jsonrpc": "2.0",
+          "id": 3,
+          "method": "resources/list"
+        }
+      },
+      "response": {
+        "status": 200,
+        "duration_ms": 137,
+        "headers": {
+          "x-frame-options": "SAMEORIGIN",
+          "x-content-type-options": "nosniff",
+          "content-type": "application/json",
+          "cache-control": "max-age=0, private, must-revalidate",
+          "x-request-id": "a9a2ad18-9e8d-42d8-946f-9d5fbad5b738",
+          "vary": "Origin",
+          "content-length": "50"
+        },
+        "body_sample": {
+          "jsonrpc": "2.0",
+          "id": 3,
+          "result": {
+            "resources": []
+          }
+        }
+      }
+    },
+    {
+      "case": "unknown_method",
+      "actor": "main(token)",
+      "request": {
+        "method": "POST",
+        "path": "/mcp",
+        "headers": {
+          "accept": "application/json, text/event-stream",
+          "authorization": "Bearer obrl_oracle_main_t…",
+          "content-type": "application/json"
+        },
+        "body": {
+          "jsonrpc": "2.0",
+          "id": 4,
+          "method": "nope/nope"
+        }
+      },
+      "response": {
+        "status": 200,
+        "duration_ms": 139,
+        "headers": {
+          "x-frame-options": "SAMEORIGIN",
+          "x-content-type-options": "nosniff",
+          "content-type": "application/json",
+          "cache-control": "max-age=0, private, must-revalidate",
+          "x-request-id": "078fd4e7-2be1-43e9-b607-7efdc6b55642",
+          "vary": "Origin",
+          "content-length": "96"
+        },
+        "body_sample": {
+          "jsonrpc": "2.0",
+          "id": 4,
+          "error": {
+            "code": -32601,
+            "message": "Method not found",
+            "data": "nope/nope"
+          }
+        }
+      }
+    },
+    {
+      "case": "malformed_json",
+      "actor": "main(token)",
+      "request": {
+        "method": "POST",
+        "path": "/mcp",
+        "headers": {
+          "accept": "application/json, text/event-stream",
+          "authorization": "Bearer obrl_oracle_main_t…",
+          "content-type": "application/json"
+        },
+        "body": "{not json"
+      },
+      "response": {
+        "status": 500,
+        "duration_ms": 445,
+        "headers": {
+          "content-type": "text/html; charset=UTF-8",
+          "x-request-id": "0265c78a-6779-45a8-bde7-a71ad64dc6c2",
+          "vary": "Origin",
+          "content-length": "183966"
+        },
+        "body_sample": {
+          "html_title": "Action Controller: Exception caught",
+          "h1": "NoMethodError\n      in McpController#handle",
+          "flash": [],
+          "length": 183966,
+          "head": "<!DOCTYPE html> <html lang=\"en\"> <head> <meta charset=\"utf-8\" /> <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"> <meta name=\"turbo-visit-control\" content=\"reload\"> <title>Action Controller: Exception caught</title> <style> body { background-color: #FAFAFA; color: #333; color-scheme: light dark; supported-color-schemes: light dark; margin: 0px; } body, p, ol, ul, td { font-family: helvetica, verdana, arial, sans-serif; font-size: 13px; line-height: 18px; } pre { font-size: 11px; white-space: pre-wrap; } pre.box { border: 1px solid #EEE; padding: 10px; margin: 0px; width: 958px; } header { color: #F0F0F0; background: #C00; padding: 0.5em 1.5em; } header button { appearance: none; background-color: hsl(0 0% 0% / 0.2); border: 0; border-radius: 14px; color: white; float: right; font-weight: 500; height: 28px; padding-inline: 14px; margin: 0.35em 0; } header button:active { background-color: hsl(0 0% 0% / 0.25); } h1 { overflow-wrap: break-word; margin: 0.2em 0; line-height: 1.1em; font-size: 2em; } h2 { color: #C00; line-height: 25px; } code.traces { font-size: 11px; } .trace-container { margin-top: 10px; } code.traces .trace { display: flex; align-items: center; gap: 2px; } .edit-icon { width: 16px; height: 16px; display: flex; font-size: 13px; align-items: center; justify-content: center; text-decoration: none; } .edit-icon:hover { scale: 1.05; } .response-heading, .request-heading { margin-top: 30px; } .exception-message { padding: 8px 0; } .exception-mess…[truncated 151276 chars]"
+        }
+      }
+    },
+    {
+      "case": "tools_call:transactions.list",
+      "actor": "main(token)",
+      "request": {
+        "method": "POST",
+        "path": "/mcp",
+        "headers": {
+          "accept": "application/json, text/event-stream",
+          "authorization": "Bearer obrl_oracle_main_t…",
+          "content-type": "application/json"
+        },
+        "body": {
+          "jsonrpc": "2.0",
+          "id": 10,
+          "method": "tools/call",
+          "params": {
+            "name": "transactions.list",
+            "arguments": {}
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "duration_ms": 238,
+        "headers": {
+          "x-frame-options": "SAMEORIGIN",
+          "x-content-type-options": "nosniff",
+          "content-type": "application/json",
+          "cache-control": "max-age=0, private, must-revalidate",
+          "x-request-id": "9b7775e3-acca-49c4-b329-51898560931b",
+          "vary": "Origin",
+          "content-length": "405"
+        },
+        "body_sample": {
+          "jsonrpc": "2.0",
+          "id": 10,
+          "result": {
+            "content": [
+              {
+                "type": "text",
+                "text": "{\"count\":1,\"transactions\":[{\"source_type\":\"BankTransaction\",\"source_id\":54,\"booking_date\":\"2026-10-11\",\"direction\":\"debit\",\"amount_cents\":500,\"currency\":\"EUR\",\"title\":\"OpenAI\",\"counterparty_name\":\"Openai LLC\",\"merchant_id\":null,\"category_path\":\"\",\"payment_method\":\"card\"}]}"
+              }
+            ],
+            "isError": false
+          }
+        }
+      }
+    },
+    {
+      "case": "tools_call:transactions.get",
+      "actor": "main(token)",
+      "request": {
+        "method": "POST",
+        "path": "/mcp",
+        "headers": {
+          "accept": "application/json, text/event-stream",
+          "authorization": "Bearer obrl_oracle_main_t…",
+          "content-type": "application/json"
+        },
+        "body": {
+          "jsonrpc": "2.0",
+          "id": 10,
+          "method": "tools/call",
+          "params": {
+            "name": "transactions.get",
+            "arguments": {
+              "source_type": "BankTransaction",
+              "source_id": 1
+            }
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "duration_ms": 160,
+        "headers": {
+          "x-frame-options": "SAMEORIGIN",
+          "x-content-type-options": "nosniff",
+          "content-type": "application/json",
+          "cache-control": "max-age=0, private, must-revalidate",
+          "x-request-id": "5adc99fe-e82a-4bb3-a0a4-a786786ed92c",
+          "vary": "Origin",
+          "content-length": "544"
+        },
+        "body_sample": {
+          "jsonrpc": "2.0",
+          "id": 10,
+          "result": {
+            "content": [
+              {
+                "type": "text",
+                "text": "{\"source_type\":\"BankTransaction\",\"source_id\":1,\"booking_date\":\"2026-08-02\",\"transaction_date\":\"2026-08-02\",\"direction\":\"debit\",\"status\":\"booked\",\"amount_cents\":1999,\"currency\":\"PLN\",\"title\":\"BIEDRONKA WARSZAWA\",\"counterparty_name\":null,\"counterparty_kind\":\"unknown\",\"payment_method\":\"card\",\"merchant_id\":null,\"effective_category_id\":null,\"category_path\":\"\",\"essential\":false,\"enrichment_source\":null}"
+              }
+            ],
+            "isError": false
+          }
+        }
+      }
+    },
+    {
+      "case": "tools_call:categories.list",
+      "actor": "main(token)",
+      "request": {
+        "method": "POST",
+        "path": "/mcp",
+        "headers": {
+          "accept": "application/json, text/event-stream",
+          "authorization": "Bearer obrl_oracle_main_t…",
+          "content-type": "application/json"
+        },
+        "body": {
+          "jsonrpc": "2.0",
+          "id": 10,
+          "method": "tools/call",
+          "params": {
+            "name": "categories.list",
+            "arguments": {}
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "duration_ms": 155,
+        "headers": {
+          "x-frame-options": "SAMEORIGIN",
+          "x-content-type-options": "nosniff",
+          "content-type": "application/json",
+          "cache-control": "max-age=0, private, must-revalidate",
+          "x-request-id": "206638a8-83dd-42b6-9b79-c8a17048569e",
+          "vary": "Origin",
+          "content-length": "19746"
+        },
+        "body_sample": "{\"jsonrpc\":\"2.0\",\"id\":10,\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"{\\\"count\\\":118,\\\"categories\\\":[{\\\"id\\\":6,\\\"name\\\":\\\"Edukacja\\\",\\\"slug\\\":\\\"education\\\",\\\"path\\\":\\\"education\\\",\\\"kind\\\":\\\"expense\\\",\\\"essential\\\":false,\\\"archived_at\\\":null},{\\\"id\\\":69,\\\"name\\\":\\\"Książki\\\",\\\"slug\\\":\\\"education_books\\\",\\\"path\\\":\\\"education.books\\\",\\\"kind\\\":\\\"expense\\\",\\\"essential\\\":false,\\\"archived_at\\\":null},{\\\"id\\\":68,\\\"name\\\":\\\"Kursy i szkolenia\\\",\\\"slug\\\":\\\"education_courses\\\",\\\"path\\\":\\\"education.courses\\\",\\\"kind\\\":\\\"expense\\\",\\\"essential\\\":false,\\\"archived_at\\\":null},{\\\"id\\\":70,\\\"name\\\":\\\"Studia / czesne\\\",\\\"slug\\\":\\\"education_tuition\\\",\\\"path\\\":\\\"education.tuition\\\",\\\"kind\\\":\\\"expense\\\",\\\"essential\\\":false,\\\"archived_at\\\":null},{\\\"id\\\":1,\\\"name\\\":\\\"Jedzenie\\\",\\\"slug\\\":\\\"food\\\",\\\"path\\\":\\\"food\\\",\\\"kind\\\":\\\"expense\\\",\\\"essential\\\":false,\\\"archived_at\\\":null},{\\\"id\\\":11,\\\"name\\\":\\\"W domu\\\",\\\"slug\\\":\\\"food_cooking\\\",\\\"path\\\":\\\"food.cooking\\\",\\\"kind\\\":\\\"expense\\\",\\\"essential\\\":true,\\\"archived_at\\\":null},{\\\"id\\\":16,\\\"name\\\":\\\"Alkohol (do domu)\\\",\\\"slug\\\":\\\"food_cooking_alcohol\\\",\\\"path\\\":\\\"food.cooking.alcohol\\\",\\\"kind\\\":\\\"expense\\\",\\\"essential\\\":false,\\\"archived_at\\\":null},{\\\"id\\\":14,\\\"name\\\":\\\"Piekarnie i cukiernie\\\",\\\"slug\\\":\\\"food_cooking_bakery\\\",\\\"path\\\":\\\"food.cooking.bakery\\\",\\\"kind\\\":\\\"expense\\\",\\\"essential\\\":true,\\\"archived_at\\\":null},{\\\"id\\\":13,\\\"name\\\":\\\"Sklepy osiedlowe\\\",\\\"slug\\\":\\\"food_cooking_convenience\\\",\\\"path\\\":\\\"food.cooking.convenience\\\",\\\"kind\\\":\\\"expense\\\",\\\"essential\\\":true,\\\"archived_at\\\":null},{\\\"id\\\":15,\\\"name\\\":\\\"Sklepy specjalistyczne\\\",\\\"slug\\\":\\\"food_cooking_specialty\\\",\\\"path\\\":\\\"food.cooking.specialty\\\",\\\"kind\\\":\\\"expense\\\",\\\"essential\\\":false,\\\"archived_at\\\":null},{\\\"id\\\":12,\\\"name\\\":\\\"Supermarkety\\\",\\\"slug\\\":\\\"food_cooking_supermarket\\\",\\\"path\\\":\\\"food.cooking.supermarket\\\",\\\"kind\\\":\\\"expense\\\",\\\"essential\\\":true,\\\"archived_at\\\":null},{\\\"id\\\":17,\\\"name\\\":\\\"Na mieście\\\",\\\"slug\\\":\\\"food_eating_out\\\",\\\"path\\\":\\\"food.eating_out\\\",\\\"kind\\\":\\\"expense\\\",\\\"essential\\\":false,\\\"archived_at\\\":null},{\\\"id\\\":22,\\\"name\\\":\\\"Bar / pub / klub\\\",\\\"slug\\\":\\\"food_eating_out_bar\\\",\\\"path\\\":\\\"food.eating_out.bar\\\",\\\"kind\\\":\\\"expense\\\",\\\"essential\\\":false,\\\"archived_at\\\":null},{\\\"id\\\":20,\\\"name\\\":\\\"Kawiarnie\\\",\\\"slug\\\":\\\"food_eating_out_cafe\\\",\\\"path\\\":\\\"food.eating_out.cafe\\\",\\\"kind\\\":\\\"expense\\\",\\\"essential\\\":false,\\\"archived_at\\\":null},{\\\"id\\\":21,\\\"name\\\":\\\"Dostawa jedzenia\\\",\\\"slug\\\":\\\"food_eating_out_delivery\\\",\\\"path\\\":\\\"food.eating_out.delivery\\\",\\\"kind\\\":\\\"expense\\\",\\\"essential\\\":false,\\\"archived_at\\\":null},{\\\"id\\\":19,\\\"name\\\":\\\"Fast food / kebab\\\",\\\"slug\\\":\\\"food_eating_out_fastfood\\\",\\\"path\\\":\\\"food.eating_out.fastfood\\\",\\\"kind\\\":\\\"expense\\\",\\\"essential\\\":false,\\\"archived_at\\\":null},{\\\"id\\\":18,\\\"name\\\":\\\"Restauracje\\\",\\\"slug\\\":\\\"food_eating_out_restaurant\\\",\\\"path\\\":\\\"food.eating_out.restaurant\\\",\\\"kind\\\":\\\"expense\\\",\\\"essential\\\":false,\\\"archived_at\\\":null},{\\\"id\\\":4,\\\"name\\\":\\\"Zdrowie i ciało\\\",\\\"slug\\\":\\\"health\\\",\\\"path\\\":\\\"health\\\",\\\"kind\\\":\\\"expense\\\",\\\"essential\\\":false,\\\"archived_at\\\":null},{\\\"id\\\":48,\\\"name\\\":\\\"Ciało\\\",\\\"slug\\\":\\\"health_body\\\",\\\"path\\\":\\\"health.body\\\",\\\"kind\\\":\\\"expense\\\",\\\"essential\\\":false,\\\"archived_at\\\":null},{\\\"id\\\":50,\\\"name\\\":\\\"Kosmetyk\\\",\\\"slug\\\":\\\"health_body_beauty\\\",\\\"path\\\":\\\"health.body.beauty\\\",\\\"kind\\\":\\\"expense\\\",\\\"essential\\\":false,\\\"archived_at\\\":null},{\\\"id\\\":51,\\\"name\\\":\\\"Sport i siłownia\\\",\\\"slug\\\":\\\"health_body_fitness\\\",\\\"path\\\":\\\"health.body.fitness\\\",\\\"kind\\\":\\\"expense\\\",\\\"essential\\\":false,\\\"archived_at\\\":null},{\\\"id\\\":49,\\\"name\\\":\\\"Fryzjer\\\",\\\"slug\\\":\\\"health_body_haircut\\\",\\\"path\\\":\\\"health.body.haircut\\\",\\\"kind\\\":\\\"expense\\\",\\\"essential\\\":false,\\\"archived_at\\\":null},{\\\"id\\\":43,\\\"name\\\":\\\"Medyczne\\\",\\\"slug\\\":\\\"health_medical\\\",\\\"path\\\":\\\"health.medical\\\",\\\"kind\\\":\\\"expense\\\",\\\"essential\\\":true,\\\"archived_at\\\":null},{\\\"id\\\":46,\\\"name\\\":\\\"Stomatolog\\\",\\\"slug\\\":\\\"health_medical_dentist\\\",\\\"path\\\":\\\"health.medical.dentist\\\",\\\"kind\\\":\\\"expense\\\",\\\"essential\\\":false,\\\"archived_at\\\":null},{\\\"id\\\":45,\\\"name\\\":\\\"Lekarze\\\",\\\"slug\\\":\\\"health_medical_doctor\\\",\\\"path\\\":\\\"health.medical.doctor\\\",\\\"kind\\\":\\\"expense\\\",\\\"essential\\\":true,\\\"archived_at\\\":null},{\\\"id\\\":47,\\\"name\\\":\\\"Optyk\\\",\\\"slug\\\":\\\"health_medical_optician\\\",\\\"path\\\":\\\"health.medical.optician\\\",\\\"kind\\\":\\\"expense\\\",\\\"essential\\\":false,\\\"archived_at\\\":null},{\\\"id\\\":44,\\\"name\\\":\\\"Apteki\\\",\\\"slug\\\":\\\"health_medical_pharmacy\\\",\\\"path\\\":\\\"health.medical.pharmacy\\\",\\\"kind\\\":\\\"expense\\\",\\\"essential\\\":true,\\\"archived_at\\\":null},{\\\"id\\\":3,\\\"name\\\":\\\"Mieszkanie\\\",\\\"slug\\\":\\\"home\\\",\\\"path\\\":\\\"home\\\",\\\"kind\\\":\\\"expense\\\",\\\"essential\\\":true,\\\"archived_at\\\":null},{\\\"id\\\":35,\\\"name\\\":\\\"Stałe\\\",\\\"slug\\\":\\\"home_fixed\\\",\\\"path\\\":\\\"home.fixed\\\",\\\"kind\\\":\\\"expense\\\",\\\"essential\\\":true,\\\"archived_at\\\":null},{\\\"id\\\":36,\\\"name\\\":\\\"Czynsz / kredyt\\\",\\\"slug\\\":\\\"home_fixed_rent\\\",\\\"path\\\":\\\"home.fixed.rent\\\",\\\"kind\\\":\\\"expense\\\",\\\"essential\\\":true,\\\"archived_at\\\":null},{\\\"id\\\":38,\\\"name\\\":\\\"Internet / telefon\\\",\\\"slug\\\":\\\"home_fixed_telecom\\\",\\\"path\\\":\\\"home.fixed.telecom\\\",\\\"kind\\\":\\\"expense\\\",\\\"essential\\\":true,\\\"archived_at\\\":null},{\\\"id\\\":37,\\\"name\\\":\\\"Media (prąd / gaz)\\\",\\\"slug\\\":\\\"home_fixed_utilities\\\",\\\"path\\\":\\\"home.fixed.utilities\\\",\\\"kind\\\":\\\"expense\\\",\\\"essential\\\":true,\\\"archived_at\\\":null},{\\\"id\\\":39,\\\"name\\\":\\\"Zmienne\\\",\\\"slug\\\":\\\"home_variable\\\",\\\"path\\\":\\\"home.variable\\\",\\\"kind\\\":\\\"expense\\\",\\\"essential\\\":false,\\\"archived_at\\\":null},{\\\"id\\\":40,\\\"name\\\":\\\"Drogerie\\\",\\\"slug\\\":\\\"home_variable_drugstore\\\",\\\"path\\\":\\\"home.variable.drugstore\\\",\\\"kind\\\":\\\"expense\\\",\\\"essential\\\":true,\\\"archived_at\\\":null},{\\\"id\\\":41,\\\"name\\\":\\\"Wyposażenie\\\",\\\"slug\\\":\\\"home_variable_goods\\\",\\\"path\\\":\\\"home.variable.goods\\\",\\\"kind\\\":\\\"expense\\\",\\\"essential\\\":false,\\\"archived_at\\\":null},{\\\"id\\\":42,\\\"name\\\":\\\"Konserwacja i remonty\\\",\\\"slug\\\":\\\"home_variable_maintenance\\\",\\\"path\\\":\\\"home.variable.maintenance\\\",\\\"kind\\\":\\\"expense\\\",\\\"essential\\\":false,\\\"archived_at\\\":null},{\\\"id\\\":8,\\\"name\\\":\\\"Wpływy\\\",\\\"slug\\\":\\\"income\\\",\\\"path\\\":\\\"income\\\",\\\"kind\\\":\\\"income\\\",\\\"essential\\\":false,\\\"archived_at\\\":null},{\\\"id\\\":95,\\\"name\\\":\\\"Inne wpływy\\\",\\\"slug\\\":\\\"income_other\\\",\\\"path\\\":\\\"income.other\\\",\\\"kind\\\":\\\"income\\\",\\\"essential\\\":false,\\\"archived_at\\\":null},{\\\"id\\\":97,\\\"name\\\":\\\"Otrzymane prezenty\\\",\\\"slug\\\":\\\"income_other_gifts_in\\\",\\\"path\\\":\\\"income.other.gifts_in\\\",\\\"kind\\\":\\\"income\\\",\\\"essential\\\":false,\\\"archived_at\\\":null},{\\\"id\\\":96,\\\"name\\\":\\\"Sprzedaż rzeczy\\\",\\\"slug\\\":\\\"income_other_sale\\\",\\\"path\\\":\\\"income.other.sale\\\",\\\"kind\\\":\\\"income\\\",\\\"essential\\\":false,\\\"archived_at\\\":null},{\\\"id\\\":88,\\\"name\\\":\\\"Pasywne\\\",\\\"slug\\\":\\\"income_passive\\\",\\\"path\\\":\\\"income.passive\\\",\\\"kind\\\":\\\"income\\\",\\\"essential\\\":false,\\\"archived_at\\\":null},{\\\"id\\\":90,\\\"name\\\":\\\"Dywidendy\\\",\\\"slug\\\":\\\"income_passive_dividends\\\",\\\"path\\\":\\\"income.passive.dividends\\\",\\\"kind\\\":\\\"income\\\",\\\"essential\\\":false,\\\"archived_at\\\":null},{\\\"id\\\":89,\\\"name\\\":\\\"Odsetki\\\",\\\"slug\\\":\\\"income_passive_interest\\\",\\\"path\\\":\\\"income.passive.interest\\\",\\\"kind\\\":\\\"income\\\",\\\"essential\\\":false,\\\"archived_at\\\":null},{\\\"id\\\":91,\\\"name\\\":\\\"Najem\\\",\\\"slug\\\":\\\"income_passive_rent_in\\\",\\\"path\\\":\\\"income.passive.rent_in\\\",\\\"kind\\\":\\\"income\\\",\\\"essential\\\":false,\\\"archived_at\\\":null},{\\\"id\\\":92,\\\"name\\\":\\\"Zwroty i cashback\\\",\\\"slug\\\":\\\"income_refunds\\\",\\\"path\\\":\\\"income.refunds\\\",\\\"kind\\\":\\\"income\\\",\\\"essential\\\":false,\\\"archived_at\\\":null},{\\\"id\\\":94,\\\"name\\\":\\\"Cashback\\\",\\\"slug\\\":\\\"income_refunds_cashback\\\",\\\"path\\\":\\\"income.refunds.cashback\\\",\\\"kind\\\":\\\"income\\\",\\\"essential\\\":false,\\\"archived_at\\\":null},{\\\"id\\\":93,\\\"name\\\":\\\"Zwroty\\\",\\\"slug\\\":\\\"income_refunds_refunds\\\",\\\"path\\\":\\\"income.refunds.refunds\\\",\\\"kind\\\":\\\"income\\\",\\\"essential\\\":false,\\\"archived_at\\\":null},{\\\"id\\\":84,\\\"name\\\":\\\"Praca\\\",\\\"slug\\\":\\\"income_work\\\",\\\"path\\\":\\\"income.work\\\",\\\"kind\\\":\\\"income\\\",\\\"essential\\\":false,\\\"archived_at\\\":null},{\\\"id\\\":86,\\\"name\\\":\\\"Premie\\\",\\\"slug\\\":\\\"income_work_bonus\\\",\\\"path\\\":\\\"income.work.bonus\\\",\\\"kind\\\":\\\"income\\\",\\\"essential\\\":false,\\\"archived_at\\\":null},{\\\"id\\\":87,\\\"name\\\":\\\"Freelance / B2B\\\",\\\"slug\\\":\\\"income_work_freelance\\\",\\\"path\\\":\\\"income.work.freelance\\\",\\\"kind\\\":\\\"income\\\",\\\"essential\\\":false,\\\"archived_at\\\":null},{\\\"id\\\":85,\\\"name\\\":\\\"Wynagrodzenie\\\",\\\"slug\\\":\\\"income_work_salary\\\",\\\"path\\\":\\\"income.work.salary\\\",\\\"kind\\\":\\\"income\\\",\\\"essential\\\":false,\\\"archived_at\\\":null},{\\\"id\\\":5,\\\"name\\\":\\\"Lifestyle\\\",\\\"slug\\\":\\\"lifestyle\\\",\\\"path\\\":\\\"lifestyle\\\",\\\"kind\\\":\\\"expense\\\",\\\"essential\\\":false,\\\"archived_at\\\":null},{\\\"id\\\":52,\\\"name\\\":\\\"Rozrywka\\\",\\\"slug\\\":\\\"lifestyle_entertainment\\\",\\\"path\\\":\\\"lifestyle.entertainment\\\",\\\"kind\\\":\\\"expense\\\",\\\"essential\\\":false,\\\"archived_at\\\":null},{\\\"id\\\":54,\\\"name\\\":\\\"Bilety i wydarzenia\\\",\\\"slug\\\":\\\"lifestyle_entertainment_events\\\",\\\"path\\\":\\\"lifestyle.entertainment.events\\\",\\\"kind\\\":\\\"expense\\\",\\\"essential\\\":false,\\\"archived_at\\\":null},{\\\"id\\\":55,\\\"name\\\":\\\"Gry\\\",\\\"slug\\\":\\\"lifestyle_entertainment_games\\\",\\\"path\\\":\\\"lifestyle.entertainment.games\\\",\\\"kind\\\":\\\"expense\\\",\\\"essential\\\":false,\\\"archived_at\\\":null},{\\\"id\\\":56,\\\"name\\\":\\\"Hobby\\\",\\\"slug\\\":\\\"lifestyle_entertainment_hobbies\\\",\\\"path\\\":\\\"lifestyle.entertainment.hobbies\\\",\\\"kind\\\":\\\"expense\\\",\\\"essential\\\":false,\\\"archived_at\\\":null},{\\\"id\\\":53,\\\"name\\\":\\\"Streaming\\\",\\\"slug\\\":\\\"lifestyle_entertainment_streaming\\\",\\\"path\\\":\\\"lifestyle.entertainment.streaming\\\",\\\"kind\\\":\\\"expense\\\",\\\"essential\\\":false,\\\"archived_at\\\":null},{\\\"id\\\":65,\\\"name\\\":\\\"Prezenty i darowizny\\\",\\\"slug\\\":\\\"lifestyle_giving\\\",\\\"path\\\":\\\"lifestyle.giving\\\",\\\"kind\\\":\\\"expense\\\",\\\"essential\\\":false,\\\"archived_at\\\":null},{\\\"id\\\":67,\\\"name\\\":\\\"Darowizny\\\",\\\"slug\\\":\\\"lifestyle_giving_donations\\\",\\\"path\\\":\\\"lifestyle.giving.donations\\\",\\\"kind\\\":\\\"expense\\\",\\\"essential\\\":false,\\\"archived_at\\\":null},{\\\"id\\\":66,\\\"name\\\":\\\"Prezenty\\\",\\\"slug\\\":\\\"lifestyle_giving_gifts\\\",\\\"path\\\":\\\"lifestyle.giving.gifts\\\",\\\"kind\\\":\\\"expense\\\",\\\"essential\\\":false,\\\"archived_at\\\":null},{\\\"id\\\":57,\\\"name\\\":\\\"Zakupy\\\",\\\"slug\\\":\\\"lifestyle_shopping\\\",\\\"path\\\":\\\"lifestyle.shopping\\\",\\\"kind\\\":\\\"expense\\\",\\\"essential\\\":false,\\\"archived_at\\\":null},{\\\"id\\\":58,\\\"name\\\":\\\"Ubrania i obuwie\\\",\\\"slug\\\":\\\"lifestyle_shopping_clothing\\\",\\\"path\\\":\\\"lifestyle.shopping.clothing\\\",\\\"kind\\\":\\\"expense\\\",\\\"essential\\\":false,\\\"archived_at\\\":null},{\\\"id\\\":59,\\\"name\\\":\\\"Elektronika\\\",\\\"slug\\\":\\\"lifestyle_shopping_electronics\\\",\\\"path\\\":\\\"lifestyle.shopping.electronics\\\",\\\"kind\\\":\\\"expense\\\",\\\"essential\\\":false,\\\"archived_at\\\":null},{\\\"id\\\":60,\\\"name\\\":\\\"Inne sklepy\\\",\\\"slug\\\":\\\"lifestyle_shopping_general\\\",\\\"path\\\":\\\"lifestyle.shopping.general\\\",\\\"kind\\\":\\\"expense\\\",\\\"essential\\\":false,\\\"archived_at\\\":null},{\\\"id\\\":61,\\\"name\\\":\\\"Narzędzia cyfrowe\\\",\\\"slug\\\":\\\"lifestyle_tools\\\",\\\"path\\\":\\\"lifestyle.tools\\\",\\\"kind\\\":\\\"expense\\\",\\\"essential\\\":false,\\\"archived_at\\\":null},{\\\"id\\\":63,\\\"name\\\":\\\"Chmura / dyski\\\",\\\"slug\\\":\\\"lifestyle_tools_cloud\\\",\\\"path\\\":\\\"lifestyle.tools.cloud\\\",\\\"kind\\\":\\\"expense\\\",\\\"essential\\\":false,\\\"archived_at\\\":null},{\\\"id\\\":64,\\\"name\\\":\\\"Media i prasa\\\",\\\"slug\\\":\\\"lifestyle_tools_media\\\",\\\"path\\\":\\\"lifestyle.tools.media\\\",\\\"kind\\\":\\\"expense\\\",\\\"essential\\\":false,\\\"archived_at\\\":null},{\\\"id\\\":62,\\\"name\\\":\\\"SaaS / AI\\\",\\\"slug\\\":\\\"lifestyle_tools_saas\\\",\\\"path\\\":\\\"lifestyle.tools.saas\\\",\\\"kind\\\":\\\"expense\\\",\\\"essential\\\":false,\\\"archived_at\\\":null},{\\\"id\\\":2,\\\"name\\\":\\\"Mobilność\\\",\\\"slug\\\":\\\"mobility\\\",\\\"path\\\":\\\"mobility\\\",\\\"kind\\\":\\\"expense\\\",\\\"essential\\\":false,\\\"archived_at\\\":null},{\\\"id\\\":27,\\\"name\\\":\\\"Auto\\\",\\\"slug\\\":\\\"mobility_car\\\",\\\"path\\\":\\\"mobility.car\\\",\\\"kind\\\":\\\"expense\\\",\\\"essential\\\":true,\\\"archived_at\\\":null},{\\\"id\\\":28,\\\"name\\\":\\\"Paliwo\\\",\\\"slug\\\":\\\"mobility_car_fuel\\\",\\\"path\\\":\\\"mobility.car.fuel\\\",\\\"kind\\\":\\\"expense\\\",\\\"essential\\\":true,\\\"archived_at\\\":null},{\\\"id\\\":29,\\\"name\\\":\\\"Serwis i mycie\\\",\\\"slug\\\":\\\"mobility_car_service\\\",\\\"path\\\":\\\"mobility.car.service\\\",\\\"kind\\\":\\\"expense\\\",\\\"essential\\\":false,\\\"archived_at\\\":null},{\\\"id\\\":30,\\\"name\\\":\\\"Opłaty drogowe\\\",\\\"slug\\\":\\\"mobility_car_tolls\\\",\\\"path\\\":\\\"m…[truncated 7713 chars]"
+      }
+    },
+    {
+      "case": "tools_call:merchants.list",
+      "actor": "main(token)",
+      "request": {
+        "method": "POST",
+        "path": "/mcp",
+        "headers": {
+          "accept": "application/json, text/event-stream",
+          "authorization": "Bearer obrl_oracle_main_t…",
+          "content-type": "application/json"
+        },
+        "body": {
+          "jsonrpc": "2.0",
+          "id": 10,
+          "method": "tools/call",
+          "params": {
+            "name": "merchants.list",
+            "arguments": {}
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "duration_ms": 157,
+        "headers": {
+          "x-frame-options": "SAMEORIGIN",
+          "x-content-type-options": "nosniff",
+          "content-type": "application/json",
+          "cache-control": "max-age=0, private, must-revalidate",
+          "x-request-id": "aa6fa97f-2057-4592-97a1-bb794047be41",
+          "vary": "Origin",
+          "content-length": "369"
+        },
+        "body_sample": {
+          "jsonrpc": "2.0",
+          "id": 10,
+          "result": {
+            "content": [
+              {
+                "type": "text",
+                "text": "{\"count\":1,\"merchants\":[{\"id\":12,\"name\":\"4F (OTCF)\",\"slug\":\"otcf_4f\",\"kind\":\"company\",\"source\":\"system\",\"default_category_id\":58,\"default_category_path\":\"lifestyle.shopping.clothing\",\"archived_at\":null,\"approved_at\":\"2026-10-21T13:21:03.359Z\"}]}"
+              }
+            ],
+            "isError": false
+          }
+        }
+      }
+    },
+    {
+      "case": "tools_call:bank_accounts.list",
+      "actor": "main(token)",
+      "request": {
+        "method": "POST",
+        "path": "/mcp",
+        "headers": {
+          "accept": "application/json, text/event-stream",
+          "authorization": "Bearer obrl_oracle_main_t…",
+          "content-type": "application/json"
+        },
+        "body": {
+          "jsonrpc": "2.0",
+          "id": 10,
+          "method": "tools/call",
+          "params": {
+            "name": "bank_accounts.list",
+            "arguments": {}
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "duration_ms": 174,
+        "headers": {
+          "x-frame-options": "SAMEORIGIN",
+          "x-content-type-options": "nosniff",
+          "content-type": "application/json",
+          "cache-control": "max-age=0, private, must-revalidate",
+          "x-request-id": "ec3fa518-7534-4cfb-b344-aca0fbfa7937",
+          "vary": "Origin",
+          "content-length": "1387"
+        },
+        "body_sample": {
+          "jsonrpc": "2.0",
+          "id": 10,
+          "result": {
+            "content": [
+              {
+                "type": "text",
+                "text": "{\"count\":5,\"accounts\":[{\"id\":1,\"name\":\"MACIEJ TEST\",\"iban\":\"PL61109010140000071219812874\",\"currency\":\"PLN\",\"status\":\"active\",\"manual\":false,\"product\":\"Konto Osobiste\",\"balances_synced_at\":null,\"transactions_synced_at\":\"2026-10-21T13:21:26.633Z\",\"balances\":[]},{\"id\":2,\"name\":\"MACIEJ TEST\",\"iban\":\"PL61109010140000071219812875\",\"currency\":\"PLN\",\"status\":\"active\",\"manual\":false,\"product\":\"Konto Oszczędnościowe\",\"balances_synced_at\":null,\"transactions_synced_at\":\"2026-10-21T13:21:26.682Z\",\"balances\":[]},{\"id\":3,\"name\":\"Maciej Test\",\"iban\":\"LT123456789012345678\",\"currency\":\"EUR\",\"status\":\"active\",\"manual\":false,\"product\":\"EUR Pocket\",\"balances_synced_at\":null,\"transactions_synced_at\":\"2026-10-21T13:21:27.579Z\",\"balances\":[]},{\"id\":4,\"name\":\"Maciej Test\",\"iban\":\"LT123456789012345678\",\"currency\":\"USD\",\"status\":\"active\",\"manual\":false,\"product\":\"USD Pocket\",\"balances_synced_at\":null,\"transactions_synced_at\":\"2026-10-21T13:21:27.622Z\",\"balances\":[]},{\"id\":5,\"name\":\"Cash wallet (PLN)\",\"iban\":null,\"currency\":\"PLN\",\"status\":\"active\",\"manual\":true,\"product\":null,\"balances_synced_at\":null,\"transactions_synced_at\":null,\"balances\":[]}]}"
+              }
+            ],
+            "isError": false
+          }
+        }
+      }
+    },
+    {
+      "case": "tools_call:bank_connections.list",
+      "actor": "main(token)",
+      "request": {
+        "method": "POST",
+        "path": "/mcp",
+        "headers": {
+          "accept": "application/json, text/event-stream",
+          "authorization": "Bearer obrl_oracle_main_t…",
+          "content-type": "application/json"
+        },
+        "body": {
+          "jsonrpc": "2.0",
+          "id": 10,
+          "method": "tools/call",
+          "params": {
+            "name": "bank_connections.list",
+            "arguments": {}
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "duration_ms": 210,
+        "headers": {
+          "x-frame-options": "SAMEORIGIN",
+          "x-content-type-options": "nosniff",
+          "content-type": "application/json",
+          "cache-control": "max-age=0, private, must-revalidate",
+          "x-request-id": "6b254e47-6a38-4133-af3a-1b2c04b5dfd5",
+          "vary": "Origin",
+          "content-length": "617"
+        },
+        "body_sample": {
+          "jsonrpc": "2.0",
+          "id": 10,
+          "result": {
+            "content": [
+              {
+                "type": "text",
+                "text": "{\"count\":2,\"connections\":[{\"id\":1,\"bank_name\":\"PKO BP\",\"bank_country\":\"PL\",\"status\":\"authorized\",\"authorized_at\":\"2026-10-21T13:21:22.000Z\",\"valid_until\":\"2026-11-20T14:21:22.000Z\",\"last_synced_at\":\"2026-10-21T13:21:26.708Z\",\"last_error\":null},{\"id\":2,\"bank_name\":\"Revolut LT\",\"bank_country\":\"LT\",\"status\":\"authorized\",\"authorized_at\":\"2026-10-21T13:21:22.000Z\",\"valid_until\":\"2027-01-19T14:21:22.000Z\",\"last_synced_at\":\"2026-10-21T13:21:27.647Z\",\"last_error\":null}]}"
+              }
+            ],
+            "isError": false
+          }
+        }
+      }
+    },
+    {
+      "case": "tools_call:analytics.cash_flow",
+      "actor": "main(token)",
+      "request": {
+        "method": "POST",
+        "path": "/mcp",
+        "headers": {
+          "accept": "application/json, text/event-stream",
+          "authorization": "Bearer obrl_oracle_main_t…",
+          "content-type": "application/json"
+        },
+        "body": {
+          "jsonrpc": "2.0",
+          "id": 10,
+          "method": "tools/call",
+          "params": {
+            "name": "analytics.cash_flow",
+            "arguments": {}
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "duration_ms": 245,
+        "headers": {
+          "x-frame-options": "SAMEORIGIN",
+          "x-content-type-options": "nosniff",
+          "content-type": "application/json",
+          "cache-control": "max-age=0, private, must-revalidate",
+          "x-request-id": "3abef54d-fcdd-4fc0-8422-237fb3caae73",
+          "vary": "Origin",
+          "content-length": "1928"
+        },
+        "body_sample": {
+          "jsonrpc": "2.0",
+          "id": 10,
+          "result": {
+            "content": [
+              {
+                "type": "text",
+                "text": "{\"currency\":\"PLN\",\"period\":{\"from\":\"2026-10-01\",\"to\":\"2026-10-21\",\"bucket\":\"day\"},\"totals\":{\"spend_cents\":0,\"income_cents\":0,\"net_cents\":0},\"series\":[{\"date\":\"2026-10-01\",\"spend_cents\":0,\"income_cents\":0,\"net_cents\":0},{\"date\":\"2026-10-02\",\"spend_cents\":0,\"income_cents\":0,\"net_cents\":0},{\"date\":\"2026-10-03\",\"spend_cents\":0,\"income_cents\":0,\"net_cents\":0},{\"date\":\"2026-10-04\",\"spend_cents\":0,\"income_cents\":0,\"net_cents\":0},{\"date\":\"2026-10-05\",\"spend_cents\":0,\"income_cents\":0,\"net_cents\":0},{\"date\":\"2026-10-06\",\"spend_cents\":0,\"income_cents\":0,\"net_cents\":0},{\"date\":\"2026-10-07\",\"spend_cents\":0,\"income_cents\":0,\"net_cents\":0},{\"date\":\"2026-10-08\",\"spend_cents\":0,\"income_cents\":0,\"net_cents\":0},{\"date\":\"2026-10-09\",\"spend_cents\":0,\"income_cents\":0,\"net_cents\":0},{\"date\":\"2026-10-10\",\"spend_cents\":0,\"income_cents\":0,\"net_cents\":0},{\"date\":\"2026-10-11\",\"spend_cents\":0,\"income_cents\":0,\"net_cents\":0},{\"date\":\"2026-10-12\",\"spend_cents\":0,\"income_cents\":0,\"net_cents\":0},{\"date\":\"2026-10-13\",\"spend_cents\":0,\"income_cents\":0,\"net_cents\":0},{\"date\":\"2026-10-14\",\"spend_cents\":0,\"income_cents\":0,\"net_cents\":0},{\"date\":\"2026-10-15\",\"spend_cents\":0,\"income_cents\":0,\"net_cents\":0},{\"date\":\"2026-10-16\",\"spend_cents\":0,\"income_cents\":0,\"net_cents\":0},{\"date\":\"2026-10-17\",\"spend_cents\":0,\"income_cents\":0,\"net_cents\":0},{\"date\":\"2026-10-18\",\"spend_cents\":0,\"income_cents\":0,\"net_cents\":0},{\"date\":\"2026-10-19\",\"spend_cents\":0,\"income_cents\":0,\"net_cents\":0},{\"date\":\"2026-10-20\",\"spend_cents\":0,\"income_cents\":0,\"net_cents\":0},{\"date\":\"2026-10-21\",\"spend_cents\":0,\"income_cents\":0,\"net_cents\":0}]}"
+              }
+            ],
+            "isError": false
+          }
+        }
+      }
+    },
+    {
+      "case": "tools_call:analytics.spend",
+      "actor": "main(token)",
+      "request": {
+        "method": "POST",
+        "path": "/mcp",
+        "headers": {
+          "accept": "application/json, text/event-stream",
+          "authorization": "Bearer obrl_oracle_main_t…",
+          "content-type": "application/json"
+        },
+        "body": {
+          "jsonrpc": "2.0",
+          "id": 10,
+          "method": "tools/call",
+          "params": {
+            "name": "analytics.spend",
+            "arguments": {}
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "duration_ms": 261,
+        "headers": {
+          "x-frame-options": "SAMEORIGIN",
+          "x-content-type-options": "nosniff",
+          "content-type": "application/json",
+          "cache-control": "max-age=0, private, must-revalidate",
+          "x-request-id": "8d0b5e80-fbab-456b-a304-c687f473e7a9",
+          "vary": "Origin",
+          "content-length": "201"
+        },
+        "body_sample": {
+          "jsonrpc": "2.0",
+          "id": 10,
+          "result": {
+            "content": [
+              {
+                "type": "text",
+                "text": "{\"currency\":\"PLN\",\"period\":{\"from\":\"2026-10-01\",\"to\":\"2026-10-21\"},\"total_cents\":0,\"rows\":[]}"
+              }
+            ],
+            "isError": false
+          }
+        }
+      }
+    },
+    {
+      "case": "tools_call:analytics.top_merchants",
+      "actor": "main(token)",
+      "request": {
+        "method": "POST",
+        "path": "/mcp",
+        "headers": {
+          "accept": "application/json, text/event-stream",
+          "authorization": "Bearer obrl_oracle_main_t…",
+          "content-type": "application/json"
+        },
+        "body": {
+          "jsonrpc": "2.0",
+          "id": 10,
+          "method": "tools/call",
+          "params": {
+            "name": "analytics.top_merchants",
+            "arguments": {}
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "duration_ms": 221,
+        "headers": {
+          "x-frame-options": "SAMEORIGIN",
+          "x-content-type-options": "nosniff",
+          "content-type": "application/json",
+          "cache-control": "max-age=0, private, must-revalidate",
+          "x-request-id": "33afa75f-59bf-4621-ba8e-96b30267a98d",
+          "vary": "Origin",
+          "content-length": "183"
+        },
+        "body_sample": {
+          "jsonrpc": "2.0",
+          "id": 10,
+          "result": {
+            "content": [
+              {
+                "type": "text",
+                "text": "{\"currency\":\"PLN\",\"period\":{\"from\":\"2026-10-01\",\"to\":\"2026-10-21\"},\"rows\":[]}"
+              }
+            ],
+            "isError": false
+          }
+        }
+      }
+    },
+    {
+      "case": "tools_call:transactions.get:other_tenant",
+      "actor": "main(token)",
+      "request": {
+        "method": "POST",
+        "path": "/mcp",
+        "headers": {
+          "accept": "application/json, text/event-stream",
+          "authorization": "Bearer obrl_oracle_main_t…",
+          "content-type": "application/json"
+        },
+        "body": {
+          "jsonrpc": "2.0",
+          "id": 10,
+          "method": "tools/call",
+          "params": {
+            "name": "transactions.get",
+            "arguments": {
+              "source_type": "BankTransaction",
+              "source_id": 55
+            }
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "duration_ms": 174,
+        "headers": {
+          "x-frame-options": "SAMEORIGIN",
+          "x-content-type-options": "nosniff",
+          "content-type": "application/json",
+          "cache-control": "max-age=0, private, must-revalidate",
+          "x-request-id": "8282a4c8-2712-43ec-8fd6-16f5c63b6ed7",
+          "vary": "Origin",
+          "content-length": "118"
+        },
+        "body_sample": {
+          "jsonrpc": "2.0",
+          "id": 10,
+          "result": {
+            "content": [
+              {
+                "type": "text",
+                "text": "Error: Transaction not found."
+              }
+            ],
+            "isError": true
+          }
+        }
+      }
+    },
+    {
+      "case": "tools_call:analytics.cash_flow:invalid_enum",
+      "actor": "main(token)",
+      "request": {
+        "method": "POST",
+        "path": "/mcp",
+        "headers": {
+          "accept": "application/json, text/event-stream",
+          "authorization": "Bearer obrl_oracle_main_t…",
+          "content-type": "application/json"
+        },
+        "body": {
+          "jsonrpc": "2.0",
+          "id": 10,
+          "method": "tools/call",
+          "params": {
+            "name": "analytics.cash_flow",
+            "arguments": {
+              "bucket": "year"
+            }
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "duration_ms": 148,
+        "headers": {
+          "x-frame-options": "SAMEORIGIN",
+          "x-content-type-options": "nosniff",
+          "content-type": "application/json",
+          "cache-control": "max-age=0, private, must-revalidate",
+          "x-request-id": "dc4963ce-a42b-47ae-80f1-bd38cac4f510",
+          "vary": "Origin",
+          "content-length": "253"
+        },
+        "body_sample": {
+          "jsonrpc": "2.0",
+          "id": 10,
+          "result": {
+            "content": [
+              {
+                "type": "text",
+                "text": "Invalid arguments: The property '#/bucket' value \"year\" did not match one of the following values: day, week, month in schema 88793f23-ff47-5e38-bd03-76b1f774b349"
+              }
+            ],
+            "isError": true
+          }
+        }
+      }
+    },
+    {
+      "case": "tools_call:categories.create",
+      "actor": "main(token)",
+      "request": {
+        "method": "POST",
+        "path": "/mcp",
+        "headers": {
+          "accept": "application/json, text/event-stream",
+          "authorization": "Bearer obrl_oracle_main_t…",
+          "content-type": "application/json"
+        },
+        "body": {
+          "jsonrpc": "2.0",
+          "id": 10,
+          "method": "tools/call",
+          "params": {
+            "name": "categories.create",
+            "arguments": {
+              "name": "Oracle MCP Category"
+            }
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "duration_ms": 247,
+        "headers": {
+          "x-frame-options": "SAMEORIGIN",
+          "x-content-type-options": "nosniff",
+          "content-type": "application/json",
+          "cache-control": "max-age=0, private, must-revalidate",
+          "x-request-id": "9fba78ef-c90a-47f0-a7ec-e01c12798dbf",
+          "vary": "Origin",
+          "content-length": "222"
+        },
+        "body_sample": {
+          "jsonrpc": "2.0",
+          "id": 10,
+          "result": {
+            "content": [
+              {
+                "type": "text",
+                "text": "{\"id\":237,\"name\":\"Oracle MCP Category\",\"slug\":\"oracle_mcp_category\",\"path\":\"oracle_mcp_category\",\"kind\":\"expense\"}"
+              }
+            ],
+            "isError": false
+          }
+        }
+      }
+    },
+    {
+      "case": "tools_call:categories.create:invalid",
+      "actor": "main(token)",
+      "request": {
+        "method": "POST",
+        "path": "/mcp",
+        "headers": {
+          "accept": "application/json, text/event-stream",
+          "authorization": "Bearer obrl_oracle_main_t…",
+          "content-type": "application/json"
+        },
+        "body": {
+          "jsonrpc": "2.0",
+          "id": 10,
+          "method": "tools/call",
+          "params": {
+            "name": "categories.create",
+            "arguments": {
+              "name": ""
+            }
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "duration_ms": 251,
+        "headers": {
+          "x-frame-options": "SAMEORIGIN",
+          "x-content-type-options": "nosniff",
+          "content-type": "application/json",
+          "cache-control": "max-age=0, private, must-revalidate",
+          "x-request-id": "a1b29a30-ad58-44ce-b173-720add928d5b",
+          "vary": "Origin",
+          "content-length": "286"
+        },
+        "body_sample": {
+          "jsonrpc": "2.0",
+          "id": 10,
+          "result": {
+            "content": [
+              {
+                "type": "text",
+                "text": "Error: Name can't be blank, Slug can't be blank, Slug must be lowercase letters, digits, underscores, dashes, Path can't be blank, Path must be lowercase letters, digits, underscores, dot-separated"
+              }
+            ],
+            "isError": true
+          }
+        }
+      }
+    },
+    {
+      "case": "tools_call:merchants.create",
+      "actor": "main(token)",
+      "request": {
+        "method": "POST",
+        "path": "/mcp",
+        "headers": {
+          "accept": "application/json, text/event-stream",
+          "authorization": "Bearer obrl_oracle_main_t…",
+          "content-type": "application/json"
+        },
+        "body": {
+          "jsonrpc": "2.0",
+          "id": 10,
+          "method": "tools/call",
+          "params": {
+            "name": "merchants.create",
+            "arguments": {
+              "name": "Oracle MCP Merchant"
+            }
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "duration_ms": 202,
+        "headers": {
+          "x-frame-options": "SAMEORIGIN",
+          "x-content-type-options": "nosniff",
+          "content-type": "application/json",
+          "cache-control": "max-age=0, private, must-revalidate",
+          "x-request-id": "eca1b577-a567-448b-b530-ec7ebccf4a72",
+          "vary": "Origin",
+          "content-length": "196"
+        },
+        "body_sample": {
+          "jsonrpc": "2.0",
+          "id": 10,
+          "result": {
+            "content": [
+              {
+                "type": "text",
+                "text": "{\"id\":57,\"name\":\"Oracle MCP Merchant\",\"slug\":\"oracle_mcp_merchant\",\"default_category_id\":null}"
+              }
+            ],
+            "isError": false
+          }
+        }
+      }
+    },
+    {
+      "case": "tools_call:cash.create_transaction",
+      "actor": "main(token)",
+      "request": {
+        "method": "POST",
+        "path": "/mcp",
+        "headers": {
+          "accept": "application/json, text/event-stream",
+          "authorization": "Bearer obrl_oracle_main_t…",
+          "content-type": "application/json"
+        },
+        "body": {
+          "jsonrpc": "2.0",
+          "id": 10,
+          "method": "tools/call",
+          "params": {
+            "name": "cash.create_transaction",
+            "arguments": {
+              "amount": "12.34",
+              "currency": "PLN",
+              "direction": "debit",
+              "title": "MCP oracle cash"
+            }
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "duration_ms": 386,
+        "headers": {
+          "x-frame-options": "SAMEORIGIN",
+          "x-content-type-options": "nosniff",
+          "content-type": "application/json",
+          "cache-control": "max-age=0, private, must-revalidate",
+          "x-request-id": "09a71db6-76cb-490f-ae2b-1475f74d5882",
+          "vary": "Origin",
+          "content-length": "230"
+        },
+        "body_sample": {
+          "jsonrpc": "2.0",
+          "id": 10,
+          "result": {
+            "content": [
+              {
+                "type": "text",
+                "text": "{\"id\":25,\"amount_cents\":1234,\"currency\":\"PLN\",\"direction\":\"debit\",\"booking_date\":\"2026-10-21\",\"title\":\"MCP oracle cash\"}"
+              }
+            ],
+            "isError": false
+          }
+        }
+      }
+    },
+    {
+      "case": "tools_call:cash.create_transaction:invalid_amount",
+      "actor": "main(token)",
+      "request": {
+        "method": "POST",
+        "path": "/mcp",
+        "headers": {
+          "accept": "application/json, text/event-stream",
+          "authorization": "Bearer obrl_oracle_main_t…",
+          "content-type": "application/json"
+        },
+        "body": {
+          "jsonrpc": "2.0",
+          "id": 10,
+          "method": "tools/call",
+          "params": {
+            "name": "cash.create_transaction",
+            "arguments": {
+              "amount": "abc"
+            }
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "duration_ms": 162,
+        "headers": {
+          "x-frame-options": "SAMEORIGIN",
+          "x-content-type-options": "nosniff",
+          "content-type": "application/json",
+          "cache-control": "max-age=0, private, must-revalidate",
+          "x-request-id": "3e21c750-82c1-4e0b-81c5-50aedbb12c03",
+          "vary": "Origin",
+          "content-length": "177"
+        },
+        "body_sample": {
+          "jsonrpc": "2.0",
+          "id": 10,
+          "result": {
+            "content": [
+              {
+                "type": "text",
+                "text": "Error: Amount cents is not a number, Amount is not a number, Amount cents can't be blank"
+              }
+            ],
+            "isError": true
+          }
+        }
+      }
+    },
+    {
+      "case": "tools_call:categories.update",
+      "actor": "main(token)",
+      "request": {
+        "method": "POST",
+        "path": "/mcp",
+        "headers": {
+          "accept": "application/json, text/event-stream",
+          "authorization": "Bearer obrl_oracle_main_t…",
+          "content-type": "application/json"
+        },
+        "body": {
+          "jsonrpc": "2.0",
+          "id": 10,
+          "method": "tools/call",
+          "params": {
+            "name": "categories.update",
+            "arguments": {
+              "id": 237,
+              "name": "Oracle MCP Category 2"
+            }
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "duration_ms": 191,
+        "headers": {
+          "x-frame-options": "SAMEORIGIN",
+          "x-content-type-options": "nosniff",
+          "content-type": "application/json",
+          "cache-control": "max-age=0, private, must-revalidate",
+          "x-request-id": "f11ce5d0-704a-41c5-b03a-0421161084e0",
+          "vary": "Origin",
+          "content-length": "170"
+        },
+        "body_sample": {
+          "jsonrpc": "2.0",
+          "id": 10,
+          "result": {
+            "content": [
+              {
+                "type": "text",
+                "text": "{\"id\":237,\"name\":\"Oracle MCP Category 2\",\"path\":\"oracle_mcp_category\"}"
+              }
+            ],
+            "isError": false
+          }
+        }
+      }
+    },
+    {
+      "case": "tools_call:categories.archive",
+      "actor": "main(token)",
+      "request": {
+        "method": "POST",
+        "path": "/mcp",
+        "headers": {
+          "accept": "application/json, text/event-stream",
+          "authorization": "Bearer obrl_oracle_main_t…",
+          "content-type": "application/json"
+        },
+        "body": {
+          "jsonrpc": "2.0",
+          "id": 10,
+          "method": "tools/call",
+          "params": {
+            "name": "categories.archive",
+            "arguments": {
+              "id": 237
+            }
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "duration_ms": 191,
+        "headers": {
+          "x-frame-options": "SAMEORIGIN",
+          "x-content-type-options": "nosniff",
+          "content-type": "application/json",
+          "cache-control": "max-age=0, private, must-revalidate",
+          "x-request-id": "c63fd19c-b447-4cf8-aa32-ab77e4e3151e",
+          "vary": "Origin",
+          "content-length": "132"
+        },
+        "body_sample": {
+          "jsonrpc": "2.0",
+          "id": 10,
+          "result": {
+            "content": [
+              {
+                "type": "text",
+                "text": "Archived category 'Oracle MCP Category 2'."
+              }
+            ],
+            "isError": false
+          }
+        }
+      }
+    },
+    {
+      "case": "tools_call:categories.unarchive",
+      "actor": "main(token)",
+      "request": {
+        "method": "POST",
+        "path": "/mcp",
+        "headers": {
+          "accept": "application/json, text/event-stream",
+          "authorization": "Bearer obrl_oracle_main_t…",
+          "content-type": "application/json"
+        },
+        "body": {
+          "jsonrpc": "2.0",
+          "id": 10,
+          "method": "tools/call",
+          "params": {
+            "name": "categories.unarchive",
+            "arguments": {
+              "id": 237
+            }
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "duration_ms": 176,
+        "headers": {
+          "x-frame-options": "SAMEORIGIN",
+          "x-content-type-options": "nosniff",
+          "content-type": "application/json",
+          "cache-control": "max-age=0, private, must-revalidate",
+          "x-request-id": "aca70295-12d1-4865-af2a-7432dad921ad",
+          "vary": "Origin",
+          "content-length": "132"
+        },
+        "body_sample": {
+          "jsonrpc": "2.0",
+          "id": 10,
+          "result": {
+            "content": [
+              {
+                "type": "text",
+                "text": "Restored category 'Oracle MCP Category 2'."
+              }
+            ],
+            "isError": false
+          }
+        }
+      }
+    },
+    {
+      "case": "tools_call:merchants.update",
+      "actor": "main(token)",
+      "request": {
+        "method": "POST",
+        "path": "/mcp",
+        "headers": {
+          "accept": "application/json, text/event-stream",
+          "authorization": "Bearer obrl_oracle_main_t…",
+          "content-type": "application/json"
+        },
+        "body": {
+          "jsonrpc": "2.0",
+          "id": 10,
+          "method": "tools/call",
+          "params": {
+            "name": "merchants.update",
+            "arguments": {
+              "id": 57,
+              "notes": "updated via MCP"
+            }
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "duration_ms": 176,
+        "headers": {
+          "x-frame-options": "SAMEORIGIN",
+          "x-content-type-options": "nosniff",
+          "content-type": "application/json",
+          "cache-control": "max-age=0, private, must-revalidate",
+          "x-request-id": "d4a21eb7-a8d4-457b-882e-e67572e0c7c9",
+          "vary": "Origin",
+          "content-length": "163"
+        },
+        "body_sample": {
+          "jsonrpc": "2.0",
+          "id": 10,
+          "result": {
+            "content": [
+              {
+                "type": "text",
+                "text": "{\"id\":57,\"name\":\"Oracle MCP Merchant\",\"default_category_id\":null}"
+              }
+            ],
+            "isError": false
+          }
+        }
+      }
+    },
+    {
+      "case": "tools_call:merchants.archive",
+      "actor": "main(token)",
+      "request": {
+        "method": "POST",
+        "path": "/mcp",
+        "headers": {
+          "accept": "application/json, text/event-stream",
+          "authorization": "Bearer obrl_oracle_main_t…",
+          "content-type": "application/json"
+        },
+        "body": {
+          "jsonrpc": "2.0",
+          "id": 10,
+          "method": "tools/call",
+          "params": {
+            "name": "merchants.archive",
+            "arguments": {
+              "id": 57
+            }
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "duration_ms": 177,
+        "headers": {
+          "x-frame-options": "SAMEORIGIN",
+          "x-content-type-options": "nosniff",
+          "content-type": "application/json",
+          "cache-control": "max-age=0, private, must-revalidate",
+          "x-request-id": "108a3f9e-5263-4bbe-bf34-23e9788e71fd",
+          "vary": "Origin",
+          "content-length": "130"
+        },
+        "body_sample": {
+          "jsonrpc": "2.0",
+          "id": 10,
+          "result": {
+            "content": [
+              {
+                "type": "text",
+                "text": "Archived merchant 'Oracle MCP Merchant'."
+              }
+            ],
+            "isError": false
+          }
+        }
+      }
+    },
+    {
+      "case": "tools_call:merchants.unarchive",
+      "actor": "main(token)",
+      "request": {
+        "method": "POST",
+        "path": "/mcp",
+        "headers": {
+          "accept": "application/json, text/event-stream",
+          "authorization": "Bearer obrl_oracle_main_t…",
+          "content-type": "application/json"
+        },
+        "body": {
+          "jsonrpc": "2.0",
+          "id": 10,
+          "method": "tools/call",
+          "params": {
+            "name": "merchants.unarchive",
+            "arguments": {
+              "id": 57
+            }
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "duration_ms": 175,
+        "headers": {
+          "x-frame-options": "SAMEORIGIN",
+          "x-content-type-options": "nosniff",
+          "content-type": "application/json",
+          "cache-control": "max-age=0, private, must-revalidate",
+          "x-request-id": "c94aca60-013e-429d-b156-13efe54f71e2",
+          "vary": "Origin",
+          "content-length": "130"
+        },
+        "body_sample": {
+          "jsonrpc": "2.0",
+          "id": 10,
+          "result": {
+            "content": [
+              {
+                "type": "text",
+                "text": "Restored merchant 'Oracle MCP Merchant'."
+              }
+            ],
+            "isError": false
+          }
+        }
+      }
+    },
+    {
+      "case": "tools_call:merchants.approve",
+      "actor": "main(token)",
+      "request": {
+        "method": "POST",
+        "path": "/mcp",
+        "headers": {
+          "accept": "application/json, text/event-stream",
+          "authorization": "Bearer obrl_oracle_main_t…",
+          "content-type": "application/json"
+        },
+        "body": {
+          "jsonrpc": "2.0",
+          "id": 10,
+          "method": "tools/call",
+          "params": {
+            "name": "merchants.approve",
+            "arguments": {
+              "id": 57
+            }
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "duration_ms": 593,
+        "headers": {
+          "x-frame-options": "SAMEORIGIN",
+          "x-content-type-options": "nosniff",
+          "content-type": "application/json",
+          "cache-control": "max-age=0, private, must-revalidate",
+          "x-request-id": "960a9f6f-d176-4d94-b45d-624f79b4bd91",
+          "vary": "Origin",
+          "content-length": "163"
+        },
+        "body_sample": {
+          "jsonrpc": "2.0",
+          "id": 10,
+          "result": {
+            "content": [
+              {
+                "type": "text",
+                "text": "Approved 'Oracle MCP Merchant' and re-classified historical transactions."
+              }
+            ],
+            "isError": false
+          }
+        }
+      }
+    },
+    {
+      "case": "tools_call:cash.update_transaction",
+      "actor": "main(token)",
+      "request": {
+        "method": "POST",
+        "path": "/mcp",
+        "headers": {
+          "accept": "application/json, text/event-stream",
+          "authorization": "Bearer obrl_oracle_main_t…",
+          "content-type": "application/json"
+        },
+        "body": {
+          "jsonrpc": "2.0",
+          "id": 10,
+          "method": "tools/call",
+          "params": {
+            "name": "cash.update_transaction",
+            "arguments": {
+              "id": 25,
+              "title": "MCP oracle cash (edited)"
+            }
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "duration_ms": 263,
+        "headers": {
+          "x-frame-options": "SAMEORIGIN",
+          "x-content-type-options": "nosniff",
+          "content-type": "application/json",
+          "cache-control": "max-age=0, private, must-revalidate",
+          "x-request-id": "b2afa3f2-4e5a-4931-9853-8bad7b1944f4",
+          "vary": "Origin",
+          "content-length": "239"
+        },
+        "body_sample": {
+          "jsonrpc": "2.0",
+          "id": 10,
+          "result": {
+            "content": [
+              {
+                "type": "text",
+                "text": "{\"id\":25,\"amount_cents\":1234,\"currency\":\"PLN\",\"direction\":\"debit\",\"booking_date\":\"2026-10-21\",\"title\":\"MCP oracle cash (edited)\"}"
+              }
+            ],
+            "isError": false
+          }
+        }
+      }
+    },
+    {
+      "case": "tools_call:transactions.classify",
+      "actor": "main(token)",
+      "request": {
+        "method": "POST",
+        "path": "/mcp",
+        "headers": {
+          "accept": "application/json, text/event-stream",
+          "authorization": "Bearer obrl_oracle_main_t…",
+          "content-type": "application/json"
+        },
+        "body": {
+          "jsonrpc": "2.0",
+          "id": 10,
+          "method": "tools/call",
+          "params": {
+            "name": "transactions.classify",
+            "arguments": {
+              "bank_transaction_id": 1,
+              "mode": "only_this",
+              "merchant_id": 1,
+              "category_id": 1
+            }
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "duration_ms": 239,
+        "headers": {
+          "x-frame-options": "SAMEORIGIN",
+          "x-content-type-options": "nosniff",
+          "content-type": "application/json",
+          "cache-control": "max-age=0, private, must-revalidate",
+          "x-request-id": "7c85b1ed-a125-40bd-9ab0-f477b7e8792d",
+          "vary": "Origin",
+          "content-length": "120"
+        },
+        "body_sample": {
+          "jsonrpc": "2.0",
+          "id": 10,
+          "result": {
+            "content": [
+              {
+                "type": "text",
+                "text": "Applied: this transaction only"
+              }
+            ],
+            "isError": false
+          }
+        }
+      }
+    },
+    {
+      "case": "tools_call:bank_accounts.refresh_balances",
+      "actor": "main(token)",
+      "request": {
+        "method": "POST",
+        "path": "/mcp",
+        "headers": {
+          "accept": "application/json, text/event-stream",
+          "authorization": "Bearer obrl_oracle_main_t…",
+          "content-type": "application/json"
+        },
+        "body": {
+          "jsonrpc": "2.0",
+          "id": 10,
+          "method": "tools/call",
+          "params": {
+            "name": "bank_accounts.refresh_balances",
+            "arguments": {
+              "id": 1
+            }
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "duration_ms": 295,
+        "headers": {
+          "x-frame-options": "SAMEORIGIN",
+          "x-content-type-options": "nosniff",
+          "content-type": "application/json",
+          "cache-control": "max-age=0, private, must-revalidate",
+          "x-request-id": "064d3476-ee3f-4301-92cb-c8bdc83abd65",
+          "vary": "Origin",
+          "content-length": "116"
+        },
+        "body_sample": {
+          "jsonrpc": "2.0",
+          "id": 10,
+          "result": {
+            "content": [
+              {
+                "type": "text",
+                "text": "Balances refreshed for #1."
+              }
+            ],
+            "isError": false
+          }
+        }
+      }
+    },
+    {
+      "case": "tools_call:bank_accounts.refresh_details",
+      "actor": "main(token)",
+      "request": {
+        "method": "POST",
+        "path": "/mcp",
+        "headers": {
+          "accept": "application/json, text/event-stream",
+          "authorization": "Bearer obrl_oracle_main_t…",
+          "content-type": "application/json"
+        },
+        "body": {
+          "jsonrpc": "2.0",
+          "id": 10,
+          "method": "tools/call",
+          "params": {
+            "name": "bank_accounts.refresh_details",
+            "arguments": {
+              "id": 1
+            }
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "duration_ms": 307,
+        "headers": {
+          "x-frame-options": "SAMEORIGIN",
+          "x-content-type-options": "nosniff",
+          "content-type": "application/json",
+          "cache-control": "max-age=0, private, must-revalidate",
+          "x-request-id": "71118236-e0aa-4085-b647-1dd2eccd00c1",
+          "vary": "Origin",
+          "content-length": "123"
+        },
+        "body_sample": {
+          "jsonrpc": "2.0",
+          "id": 10,
+          "result": {
+            "content": [
+              {
+                "type": "text",
+                "text": "Account details refreshed for #1."
+              }
+            ],
+            "isError": false
+          }
+        }
+      }
+    },
+    {
+      "case": "tools_call:bank_connections.refresh",
+      "actor": "main(token)",
+      "request": {
+        "method": "POST",
+        "path": "/mcp",
+        "headers": {
+          "accept": "application/json, text/event-stream",
+          "authorization": "Bearer obrl_oracle_main_t…",
+          "content-type": "application/json"
+        },
+        "body": {
+          "jsonrpc": "2.0",
+          "id": 10,
+          "method": "tools/call",
+          "params": {
+            "name": "bank_connections.refresh",
+            "arguments": {
+              "id": 1
+            }
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "duration_ms": 223,
+        "headers": {
+          "x-frame-options": "SAMEORIGIN",
+          "x-content-type-options": "nosniff",
+          "content-type": "application/json",
+          "cache-control": "max-age=0, private, must-revalidate",
+          "x-request-id": "0492922e-32b3-446a-9818-6d0191ba608c",
+          "vary": "Origin",
+          "content-length": "143"
+        },
+        "body_sample": {
+          "jsonrpc": "2.0",
+          "id": 10,
+          "result": {
+            "content": [
+              {
+                "type": "text",
+                "text": "Refreshed: status=authorized, valid_until=2026-11-20."
+              }
+            ],
+            "isError": false
+          }
+        }
+      }
+    },
+    {
+      "case": "tools_call:transaction_syncs.create",
+      "actor": "main(token)",
+      "request": {
+        "method": "POST",
+        "path": "/mcp",
+        "headers": {
+          "accept": "application/json, text/event-stream",
+          "authorization": "Bearer obrl_oracle_main_t…",
+          "content-type": "application/json"
+        },
+        "body": {
+          "jsonrpc": "2.0",
+          "id": 10,
+          "method": "tools/call",
+          "params": {
+            "name": "transaction_syncs.create",
+            "arguments": {
+              "bank_connection_id": 1
+            }
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "duration_ms": 232,
+        "headers": {
+          "x-frame-options": "SAMEORIGIN",
+          "x-content-type-options": "nosniff",
+          "content-type": "application/json",
+          "cache-control": "max-age=0, private, must-revalidate",
+          "x-request-id": "493abfa0-0809-401c-b8ab-fda407d230fd",
+          "vary": "Origin",
+          "content-length": "179"
+        },
+        "body_sample": {
+          "jsonrpc": "2.0",
+          "id": 10,
+          "result": {
+            "content": [
+              {
+                "type": "text",
+                "text": "{\"run_id\":5,\"status\":\"queued\",\"subject_type\":\"BankConnection\",\"subject_id\":1}"
+              }
+            ],
+            "isError": false
+          }
+        }
+      }
+    },
+    {
+      "case": "tools_call:llm_enrichments.create",
+      "actor": "main(token)",
+      "request": {
+        "method": "POST",
+        "path": "/mcp",
+        "headers": {
+          "accept": "application/json, text/event-stream",
+          "authorization": "Bearer obrl_oracle_main_t…",
+          "content-type": "application/json"
+        },
+        "body": {
+          "jsonrpc": "2.0",
+          "id": 10,
+          "method": "tools/call",
+          "params": {
+            "name": "llm_enrichments.create",
+            "arguments": {
+              "limit": 5
+            }
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "duration_ms": 220,
+        "headers": {
+          "x-frame-options": "SAMEORIGIN",
+          "x-content-type-options": "nosniff",
+          "content-type": "application/json",
+          "cache-control": "max-age=0, private, must-revalidate",
+          "x-request-id": "0520debf-f96f-4ca1-84aa-12b9ac780a86",
+          "vary": "Origin",
+          "content-length": "126"
+        },
+        "body_sample": {
+          "jsonrpc": "2.0",
+          "id": 10,
+          "result": {
+            "content": [
+              {
+                "type": "text",
+                "text": "{\"run_id\":6,\"status\":\"queued\"}"
+              }
+            ],
+            "isError": false
+          }
+        }
+      }
+    },
+    {
+      "case": "tools_call:cash.delete_transaction",
+      "actor": "main(token)",
+      "request": {
+        "method": "POST",
+        "path": "/mcp",
+        "headers": {
+          "accept": "application/json, text/event-stream",
+          "authorization": "Bearer obrl_oracle_main_t…",
+          "content-type": "application/json"
+        },
+        "body": {
+          "jsonrpc": "2.0",
+          "id": 10,
+          "method": "tools/call",
+          "params": {
+            "name": "cash.delete_transaction",
+            "arguments": {
+              "id": 25
+            }
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "duration_ms": 226,
+        "headers": {
+          "x-frame-options": "SAMEORIGIN",
+          "x-content-type-options": "nosniff",
+          "content-type": "application/json",
+          "cache-control": "max-age=0, private, must-revalidate",
+          "x-request-id": "8b985665-df83-47ab-b15b-fd7c3b015879",
+          "vary": "Origin",
+          "content-length": "121"
+        },
+        "body_sample": {
+          "jsonrpc": "2.0",
+          "id": 10,
+          "result": {
+            "content": [
+              {
+                "type": "text",
+                "text": "Deleted manual transaction #25."
+              }
+            ],
+            "isError": false
+          }
+        }
+      }
+    }
+  ]
+}

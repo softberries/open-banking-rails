@@ -1,0 +1,30 @@
+{
+  "route": "GET /refresh_historical_location(.:format)",
+  "captured_at": "2026-10-21T13:22:09.489Z",
+  "base_url": "http://127.0.0.1:3000",
+  "cases": [
+    {
+      "case": "default",
+      "actor": "anon",
+      "request": {
+        "method": "GET",
+        "path": "/refresh_historical_location",
+        "headers": {}
+      },
+      "response": {
+        "status": 200,
+        "duration_ms": 126,
+        "headers": {
+          "x-frame-options": "SAMEORIGIN",
+          "x-content-type-options": "nosniff",
+          "content-type": "text/html; charset=utf-8",
+          "vary": "Accept, Origin",
+          "cache-control": "max-age=0, private, must-revalidate",
+          "x-request-id": "f14d05fb-d890-4ec7-9031-c22bbdc68aad",
+          "content-length": "13"
+        },
+        "body_sample": "Refreshing…"
+      }
+    }
+  ]
+}

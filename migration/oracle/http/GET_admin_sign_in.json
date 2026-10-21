@@ -1,0 +1,39 @@
+{
+  "route": "GET /admin/sign_in(.:format)",
+  "captured_at": "2026-10-21T13:22:04.088Z",
+  "base_url": "http://127.0.0.1:3000",
+  "cases": [
+    {
+      "case": "default",
+      "actor": "anon",
+      "request": {
+        "method": "GET",
+        "path": "/admin/sign_in",
+        "headers": {}
+      },
+      "response": {
+        "status": 200,
+        "duration_ms": 143,
+        "headers": {
+          "x-frame-options": "SAMEORIGIN",
+          "x-content-type-options": "nosniff",
+          "content-type": "text/html; charset=utf-8",
+          "vary": "Accept, Origin",
+          "cache-control": "max-age=0, private, must-revalidate",
+          "x-request-id": "97229015-2256-44f4-9aa1-4c51402bc72d",
+          "content-length": "12205",
+          "set-cookie": [
+            "_open_banking_rails_session=<redacted>; path=/; httponly; samesite=lax"
+          ]
+        },
+        "body_sample": {
+          "html_title": "Sign in",
+          "h1": "Sign in to your account",
+          "flash": [],
+          "length": 12189,
+          "head": "<!-- BEGIN app/views/layouts/admin_auth.html.erb --><!DOCTYPE html> <html lang=\"en\"> <head> <meta charset=\"UTF-8\"> <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"> <title>Sign in</title> <meta name=\"csrf-param\" content=\"authenticity_token\" /> <meta name=\"csrf-token\" content=\"lLfpOLH7jViGCDwvNp_6FV6k1DZWLNR5LuOgQ88IsxI3F7wbtfVJMo4eZm8gyCnLtHn3MxaGO6GWD3Jas48Gyw\" /> <link rel=\"icon\" href=\"/icon.svg?v=3\" type=\"image/svg+xml\"> <link rel=\"apple-touch-icon\" href=\"/icon.png\"> <link rel=\"preconnect\" href=\"https://fonts.googleapis.com\"> <link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin> <link href=\"https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap\" rel=\"stylesheet\"> <link rel=\"stylesheet\" href=\"/assets/tailwind-e94f0c0a.css\" data-turbo-track=\"reload\" /> <script type=\"importmap\" data-turbo-track=\"reload\">{ \"imports\": { \"application\": \"/assets/application-bfcdf840.js\", \"@hotwired/turbo-rails\": \"/assets/turbo.min-9fd88cd5.js\", \"@hotwired/stimulus\": \"/assets/stimulus.min-4b1e420e.js\", \"@hotwired/stimulus-loading\": \"/assets/stimulus-loading-1fc53fe7.js\", \"chart.js\": \"https://cdn.jsdelivr.net/npm/chart.js@4.5.1/+esm\", \"chartjs-plugin-datalabels\": \"https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/+esm\", \"controllers/ajax_select_controller\": \"/assets/controllers/ajax_select_controller-9f440917.js\", \"controllers/application\": \"/assets/controllers/application-3affb389.js\", \"controllers/bulk_select_control…[truncated 10044 chars]"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,573 @@
+{
+  "route": "GET /api/:version/cash_transactions(.json)",
+  "captured_at": "2026-10-21T13:22:29.529Z",
+  "base_url": "http://127.0.0.1:3000",
+  "cases": [
+    {
+      "case": "default",
+      "actor": "main(token)",
+      "request": {
+        "method": "GET",
+        "path": "/api/v1/cash_transactions",
+        "headers": {
+          "authorization": "Bearer obrl_oracle_main_t…"
+        }
+      },
+      "response": {
+        "status": 200,
+        "duration_ms": 221,
+        "headers": {
+          "content-type": "application/json",
+          "cache-control": "max-age=0, private, must-revalidate",
+          "x-request-id": "df0e40a9-7d52-48a1-8e7f-c9a77bef11d3",
+          "vary": "Origin",
+          "content-length": "9981"
+        },
+        "body_sample": {
+          "data": [
+            {
+              "id": 6,
+              "bank_account_id": 5,
+              "amount": {
+                "cents": 20000,
+                "currency": "PLN"
+              },
+              "signed_amount": {
+                "cents": 20000,
+                "currency": "PLN"
+              },
+              "direction": "credit",
+              "status": "booked",
+              "booking_date": "2026-10-01",
+              "transaction_date": "2026-10-01",
+              "title": "ATM withdrawal (PKO BP)",
+              "note": null,
+              "counterparty_name": null,
+              "counterparty_kind": "unknown",
+              "payment_method": "cash_atm_topup",
+              "source": "atm_link",
+              "linked_bank_transaction_id": 36,
+              "enrichment": {
+                "id": 6,
+                "merchant_id": null,
+                "category_id": 101,
+                "merchant_rule_id": null,
+                "source": "system_fallback",
+                "category_overridden": false,
+                "confidence": null,
+                "model": null,
+                "enriched_at": "2026-10-21T13:22:25.699Z",
+                "merchant": null,
+                "category": {
+                  "id": 101,
+                  "name": "Bankomat",
+                  "slug": "money_transfers_atm",
+                  "path": "money.transfers.atm",
+                  "kind": "transfer",
+                  "color": "gray",
+                  "icon": null,
+                  "essential": false,
+                  "position": 100,
+                  "archived_at": null,
+                  "parent_path": "money.transfers"
+                },
+                "effective_category": {
+                  "id": 101,
+                  "name": "Bankomat",
+                  "slug": "money_transfers_atm",
+                  "path": "money.transfers.atm",
+                  "kind": "transfer",
+                  "color": "gray",
+                  "icon": null,
+                  "essential": false,
+                  "position": 100,
+                  "archived_at": null,
+                  "parent_path": "money.transfers"
+                }
+              },
+              "created_at": "2026-10-21T13:21:28.484Z",
+              "updated_at": "2026-10-21T13:21:28.484Z"
+            },
+            {
+              "id": 5,
+              "bank_account_id": 5,
+              "amount": {
+                "cents": 20000,
+                "currency": "PLN"
+              },
+              "signed_amount": {
+                "cents": 20000,
+                "currency": "PLN"
+              },
+              "direction": "credit",
+              "status": "booked",
+              "booking_date": "2026-09-19",
+              "transaction_date": "2026-09-19",
+              "title": "ATM withdrawal (PKO BP)",
+              "note": null,
+              "counterparty_name": null,
+              "counterparty_kind": "unknown",
+              "payment_method": "cash_atm_topup",
+              "source": "atm_link",
+              "linked_bank_transaction_id": 35,
+              "enrichment": {
+                "id": 5,
+                "merchant_id": null,
+                "category_id": 101,
+                "merchant_rule_id": null,
+                "source": "system_fallback",
+                "category_overridden": false,
+                "confidence": null,
+                "model": null,
+                "enriched_at": "2026-10-21T13:22:25.661Z",
+                "merchant": null,
+                "category": {
+                  "id": 101,
+                  "name": "Bankomat",
+                  "slug": "money_transfers_atm",
+                  "path": "money.transfers.atm",
+                  "kind": "transfer",
+                  "color": "gray",
+                  "icon": null,
+                  "essential": false,
+                  "position": 100,
+                  "archived_at": null,
+                  "parent_path": "money.transfers"
+                },
+                "effective_category": {
+                  "id": 101,
+                  "name": "Bankomat",
+                  "slug": "money_transfers_atm",
+                  "path": "money.transfers.atm",
+                  "kind": "transfer",
+                  "color": "gray",
+                  "icon": null,
+                  "essential": false,
+                  "position": 100,
+                  "archived_at": null,
+                  "parent_path": "money.transfers"
+                }
+              },
+              "created_at": "2026-10-21T13:21:28.377Z",
+              "updated_at": "2026-10-21T13:21:28.377Z"
+            },
+            {
+              "id": 4,
+              "bank_account_id": 5,
+              "amount": {
+                "cents": 20000,
+                "currency": "PLN"
+              },
+              "signed_amount": {
+                "cents": 20000,
+                "currency": "PLN"
+              },
+              "direction": "credit",
+              "status": "booked",
+              "booking_date": "2026-09-07",
+              "transaction_date": "2026-09-07",
+              "title": "ATM withdrawal (PKO BP)",
+              "note": null,
+              "counterparty_name": null,
+              "counterparty_kind": "unknown",
+              "payment_method": "cash_atm_topup",
+              "source": "atm_link",
+              "linked_bank_transaction_id": 34,
+              "enrichment": {
+                "id": 4,
+                "merchant_id": null,
+                "category_id": 101,
+                "merchant_rule_id": null,
+                "source": "system_fallback",
+                "category_overridden": false,
+                "confidence": null,
+                "model": null,
+                "enriched_at": "2026-10-21T13:22:25.623Z",
+                "merchant": null,
+                "category": {
+                  "id": 101,
+                  "name": "Bankomat",
+                  "slug": "money_transfers_atm",
+                  "path": "money.transfers.atm",
+                  "kind": "transfer",
+                  "color": "gray",
+                  "icon": null,
+                  "essential": false,
+                  "position": 100,
+                  "archived_at": null,
+                  "parent_path": "money.transfers"
+                },
+                "effective_category": {
+                  "id": 101,
+                  "name": "Bankomat",
+                  "slug": "money_transfers_atm",
+                  "path": "money.transfers.atm",
+                  "kind": "transfer",
+                  "color": "gray",
+                  "icon": null,
+                  "essential": false,
+                  "position": 100,
+                  "archived_at": null,
+                  "parent_path": "money.transfers"
+                }
+              },
+              "created_at": "2026-10-21T13:21:28.277Z",
+              "updated_at": "2026-10-21T13:21:28.277Z"
+            },
+            {
+              "id": 3,
+              "bank_account_id": 5,
+              "amount": {
+                "cents": 20000,
+                "currency": "PLN"
+              },
+              "signed_amount": {
+                "cents": 20000,
+                "currency": "PLN"
+              },
+              "direction": "credit",
+              "status": "booked",
+              "booking_date": "2026-08-26",
+              "transaction_date": "2026-08-26",
+              "title": "ATM withdrawal (PKO BP)",
+              "note": null,
+              "counterparty_name": null,
+              "counterparty_kind": "unknown",
+              "payment_method": "cash_atm_topup",
+              "source": "atm_link",
+              "linked_bank_transaction_id": 33,
+              "enrichment": {
+                "id": 3,
+                "merchant_id": null,
+                "category_id": 101,
+                "merchant_rule_id": null,
+                "source": "system_fallback",
+                "category_overridden": false,
+                "confidence": null,
+                "model": null,
+                "enriched_at": "2026-10-21T13:22:25.585Z",
+                "merchant": null,
+                "category": {
+                  "id": 101,
+                  "name": "Bankomat",
+                  "slug": "money_transfers_atm",
+                  "path": "money.transfers.atm",
+                  "kind": "transfer",
+                  "color": "gray",
+                  "icon": null,
+                  "essential": false,
+                  "position": 100,
+                  "archived_at": null,
+                  "parent_path": "money.transfers"
+                },
+                "effective_category": {
+                  "id": 101,
+                  "name": "Bankomat",
+                  "slug": "money_transfers_atm",
+                  "path": "money.transfers.atm",
+                  "kind": "transfer",
+                  "color": "gray",
+                  "icon": null,
+                  "essential": false,
+                  "position": 100,
+                  "archived_at": null,
+                  "parent_path": "money.transfers"
+                }
+              },
+              "created_at": "2026-10-21T13:21:28.171Z",
+              "updated_at": "2026-10-21T13:21:28.171Z"
+            },
+            {
+              "id": 2,
+              "bank_account_id": 5,
+              "amount": {
+                "cents": 20000,
+                "currency": "PLN"
+              },
+              "signed_amount": {
+                "cents": 20000,
+                "currency": "PLN"
+              },
+              "direction": "credit",
+              "status": "booked",
+              "booking_date": "2026-08-14",
+              "transaction_date": "2026-08-14",
+              "title": "ATM withdrawal (PKO BP)",
+              "note": null,
+              "counterparty_name": null,
+              "counterparty_kind": "unknown",
+              "payment_method": "cash_atm_topup",
+              "source": "atm_link",
+              "linked_bank_transaction_id": 32,
+              "enrichment": {
+                "id": 2,
+                "merchant_id": null,
+                "category_id": 101,
+                "merchant_rule_id": null,
+                "source": "system_fallback",
+                "category_overridden": false,
+                "confidence": null,
+                "model": null,
+                "enriched_at": "2026-10-21T13:22:25.547Z",
+                "merchant": null,
+                "category": {
+                  "id": 101,
+                  "name": "Bankomat",
+                  "slug": "money_transfers_atm",
+                  "path": "money.transfers.atm",
+                  "kind": "transfer",
+                  "color": "gray",
+                  "icon": null,
+                  "essential": false,
+                  "position": 100,
+                  "archived_at": null,
+                  "parent_path": "money.transfers"
+                },
+                "effective_category": {
+                  "id": 101,
+                  "name": "Bankomat",
+                  "slug": "money_transfers_atm",
+                  "path": "money.transfers.atm",
+                  "kind": "transfer",
+                  "color": "gray",
+                  "icon": null,
+                  "essential": false,
+                  "position": 100,
+                  "archived_at": null,
+                  "parent_path": "money.transfers"
+                }
+              },
+              "created_at": "2026-10-21T13:21:28.065Z",
+              "updated_at": "2026-10-21T13:21:28.065Z"
+            },
+            {
+              "id": 1,
+              "bank_account_id": 5,
+              "amount": {
+                "cents": 20000,
+                "currency": "PLN"
+              },
+              "signed_amount": {
+                "cents": 20000,
+                "currency": "PLN"
+              },
+              "direction": "credit",
+              "status": "booked",
+              "booking_date": "2026-08-02",
+              "transaction_date": "2026-08-02",
+              "title": "ATM withdrawal (PKO BP)",
+              "note": null,
+              "counterparty_name": null,
+              "counterparty_kind": "unknown",
+              "payment_method": "cash_atm_topup",
+              "source": "atm_link",
+              "linked_bank_transaction_id": 31,
+              "enrichment": {
+                "id": 1,
+                "merchant_id": null,
+                "category_id": 101,
+                "merchant_rule_id": null,
+                "source": "system_fallback",
+                "category_overridden": false,
+                "confidence": null,
+                "model": null,
+                "enriched_at": "2026-10-21T13:22:25.502Z",
+                "merchant": null,
+                "category": {
+                  "id": 101,
+                  "name": "Bankomat",
+                  "slug": "money_transfers_atm",
+                  "path": "money.transfers.atm",
+                  "kind": "transfer",
+                  "color": "gray",
+                  "icon": null,
+                  "essential": false,
+                  "position": 100,
+                  "archived_at": null,
+                  "parent_path": "money.transfers"
+                },
+                "effective_category": {
+                  "id": 101,
+                  "name": "Bankomat",
+                  "slug": "money_transfers_atm",
+                  "path": "money.transfers.atm",
+                  "kind": "transfer",
+                  "color": "gray",
+                  "icon": null,
+                  "essential": false,
+                  "position": 100,
+                  "archived_at": null,
+                  "parent_path": "money.transfers"
+                }
+              },
+              "created_at": "2026-10-21T13:21:27.872Z",
+              "updated_at": "2026-10-21T13:21:27.872Z"
+            },
+            {
+              "id": 12,
+              "bank_account_id": 5,
+              "amount": {
+                "cents": 2000,
+                "currency": "PLN"
+              },
+              "signed_amount": {
+                "cents": -2000,
+                "currency": "PLN"
+              },
+              "direction": "debit",
+              "status": "booked",
+              "booking_date": "2026-07-26",
+              "transaction_date": null,
+              "title": "Parking meter",
+              "note": null,
+              "counterparty_name": null,
+              "counterparty_kind": "unknown",
+              "payment_method": "cash",
+              "source": "manual",
+              "linked_bank_transaction_id": null,
+              "enrichment": {
+                "id": 12,
+                "merchant_id": null,
+                "category_id": null,
+                "merchant_rule_id": null,
+                "source": "manual",
+                "category_overridden": false,
+                "confidence": null,
+                "model": null,
+                "enriched_at": "2026-10-21T13:21:28.903Z",
+                "merchant": null,
+                "category": null,
+                "effective_category": null
+              },
+              "created_at": "2026-10-21T13:21:28.885Z",
+              "updated_at": "2026-10-21T13:21:28.885Z"
+            },
+            {
+              "id": 11,
+              "bank_account_id": 5,
+              "amount": {
+                "cents": 1700,
+                "currency": "PLN"
+              },
+              "signed_amount": {
+                "cents": -1700,
+                "currency": "PLN"
+              },
+              "direction": "debit",
+              "status": "booked",
+              "booking_date": "2026-07-19",
+              "transaction_date": null,
+              "title": "Lottery",
+              "note": null,
+              "counterparty_name": null,
+              "counterparty_kind": "unknown",
+              "payment_method": "cash",
+              "source": "manual",
+              "linked_bank_transaction_id": null,
+              "enrichment": {
+                "id": 11,
+                "merchant_id": null,
+                "category_id": null,
+                "merchant_rule_id": null,
+                "source": "manual",
+                "category_overridden": false,
+                "confidence": null,
+                "model": null,
+                "enriched_at": "2026-10-21T13:21:28.844Z",
+                "merchant": null,
+                "category": null,
+                "effective_category": null
+              },
+              "created_at": "2026-10-21T13:21:28.826Z",
+              "updated_at": "2026-10-21T13:21:28.826Z"
+            },
+            {
+              "id": 10,
+              "bank_account_id": 5,
+              "amount": {
+                "cents": 1400,
+                "currency": "PLN"
+              },
+              "signed_amount": {
+                "cents": -1400,
+                "currency": "PLN"
+              },
+              "direction": "debit",
+              "status": "booked",
+              "booking_date": "2026-07-12",
+              "transaction_date": null,
+              "title": "Charity coin",
+              "note": null,
+              "counterparty_name": null,
+              "counterparty_kind": "unknown",
+              "payment_method": "cash",
+              "source": "manual",
+              "linked_bank_transaction_id": null,
+              "enrichment": {
+                "id": 10,
+                "merchant_id": null,
+                "category_id": null,
+                "merchant_rule_id": null,
+                "source": "manual",
+                "category_overridden": false,
+                "confidence": null,
+                "model": null,
+                "enriched_at": "2026-10-21T13:21:28.784Z",
+                "merchant": null,
+                "category": null,
+                "effective_category": null
+              },
+              "created_at": "2026-10-21T13:21:28.764Z",
+              "updated_at": "2026-10-21T13:21:28.764Z"
+            },
+            {
+              "id": 9,
+              "bank_account_id": 5,
+              "amount": {
+                "cents": 1100,
+                "currency": "PLN"
+              },
+              "signed_amount": {
+                "cents": -1100,
+                "currency": "PLN"
+              },
+              "direction": "debit",
+              "status": "booked",
+              "booking_date": "2026-07-05",
+              "transaction_date": null,
+              "title": "Newspaper",
+              "note": null,
+              "counterparty_name": null,
+              "counterparty_kind": "unknown",
+              "payment_method": "cash",
+              "source": "manual",
+              "linked_bank_transaction_id": null,
+              "enrichment": {
+                "id": 9,
+                "merchant_id": null,
+                "category_id": null,
+                "merchant_rule_id": null,
+                "source": "manual",
+                "category_overridden": false,
+                "confidence": null,
+                "model": null,
+                "enriched_at": "2026-10-21T13:21:28.729Z",
+                "merchant": null,
+                "category": null,
+                "effective_category": null
+              },
+              "created_at": "2026-10-21T13:21:28.707Z",
+              "updated_at": "2026-10-21T13:21:28.707Z"
+            }
+          ],
+          "pagination": {
+            "page": 1,
+            "limit": 10,
+            "count": 12,
+            "pages": 2
+          }
+        }
+      }
+    }
+  ]
+}

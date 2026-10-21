@@ -1,0 +1,140 @@
+{
+  "route": "POST /api/:version/transaction_syncs(.json)",
+  "captured_at": "2026-10-21T13:22:50.971Z",
+  "base_url": "http://127.0.0.1:3000",
+  "cases": [
+    {
+      "case": "default",
+      "actor": "main(token)",
+      "request": {
+        "method": "POST",
+        "path": "/api/v1/transaction_syncs",
+        "headers": {
+          "authorization": "Bearer obrl_oracle_main_t…",
+          "content-type": "application/json"
+        },
+        "body": {
+          "bank_connection_id": 1,
+          "date_from": "2026-07-13",
+          "date_to": "2026-10-21"
+        }
+      },
+      "response": {
+        "status": 201,
+        "duration_ms": 198,
+        "headers": {
+          "content-type": "application/json",
+          "cache-control": "max-age=0, private, must-revalidate",
+          "x-request-id": "9574cdf6-e0d0-4cf4-bd6e-03d686f02512",
+          "vary": "Origin",
+          "content-length": "301"
+        },
+        "body_sample": {
+          "id": 7,
+          "kind": "transaction_sync",
+          "status": "queued",
+          "trigger": "manual",
+          "params": {
+            "date_from": "2026-07-13",
+            "date_to": "2026-10-21"
+          },
+          "summary": {},
+          "error": null,
+          "scheduled_for": null,
+          "started_at": null,
+          "finished_at": null,
+          "subject_type": "BankConnection",
+          "subject_id": 1,
+          "created_at": "2026-10-21T13:22:50.936Z"
+        }
+      }
+    },
+    {
+      "case": "date_to_before_from",
+      "actor": "main(token)",
+      "request": {
+        "method": "POST",
+        "path": "/api/v1/transaction_syncs",
+        "headers": {
+          "authorization": "Bearer obrl_oracle_main_t…",
+          "content-type": "application/json"
+        },
+        "body": {
+          "bank_connection_id": 1,
+          "date_from": "2026-10-21",
+          "date_to": "2026-07-13"
+        }
+      },
+      "response": {
+        "status": 201,
+        "duration_ms": 200,
+        "headers": {
+          "content-type": "application/json",
+          "cache-control": "max-age=0, private, must-revalidate",
+          "x-request-id": "6f6f5ee5-b514-4264-800c-c2e5860a360f",
+          "vary": "Origin",
+          "content-length": "301"
+        },
+        "body_sample": {
+          "id": 8,
+          "kind": "transaction_sync",
+          "status": "queued",
+          "trigger": "manual",
+          "params": {
+            "date_from": "2026-10-21",
+            "date_to": "2026-07-13"
+          },
+          "summary": {},
+          "error": null,
+          "scheduled_for": null,
+          "started_at": null,
+          "finished_at": null,
+          "subject_type": "BankConnection",
+          "subject_id": 1,
+          "created_at": "2026-10-21T13:22:51.138Z"
+        }
+      }
+    },
+    {
+      "case": "other_tenant_connection",
+      "actor": "main(token)",
+      "request": {
+        "method": "POST",
+        "path": "/api/v1/transaction_syncs",
+        "headers": {
+          "authorization": "Bearer obrl_oracle_main_t…",
+          "content-type": "application/json"
+        },
+        "body": {
+          "bank_connection_id": 3
+        }
+      },
+      "response": {
+        "status": 201,
+        "duration_ms": 205,
+        "headers": {
+          "content-type": "application/json",
+          "cache-control": "max-age=0, private, must-revalidate",
+          "x-request-id": "81ac3cff-2ba6-4ccf-98ca-0267e18d15ca",
+          "vary": "Origin",
+          "content-length": "244"
+        },
+        "body_sample": {
+          "id": 9,
+          "kind": "transaction_sync",
+          "status": "queued",
+          "trigger": "manual",
+          "params": {},
+          "summary": {},
+          "error": null,
+          "scheduled_for": null,
+          "started_at": null,
+          "finished_at": null,
+          "subject_type": "User",
+          "subject_id": 1,
+          "created_at": "2026-10-21T13:22:51.339Z"
+        }
+      }
+    }
+  ]
+}

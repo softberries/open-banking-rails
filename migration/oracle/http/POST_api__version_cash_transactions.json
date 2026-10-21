@@ -1,0 +1,210 @@
+{
+  "route": "POST /api/:version/cash_transactions(.json)",
+  "captured_at": "2026-10-21T13:22:46.730Z",
+  "base_url": "http://127.0.0.1:3000",
+  "cases": [
+    {
+      "case": "default",
+      "actor": "main(token)",
+      "request": {
+        "method": "POST",
+        "path": "/api/v1/cash_transactions",
+        "headers": {
+          "authorization": "Bearer obrl_oracle_main_t…",
+          "content-type": "application/json"
+        },
+        "body": {
+          "amount": "25.50",
+          "currency": "PLN",
+          "direction": "debit",
+          "title": "Oracle API cash",
+          "booking_date": "2026-01-10"
+        }
+      },
+      "response": {
+        "status": 201,
+        "duration_ms": 241,
+        "headers": {
+          "content-type": "application/json",
+          "cache-control": "max-age=0, private, must-revalidate",
+          "x-request-id": "67f926e0-eb04-4a2c-8d6b-790969c25655",
+          "vary": "Origin",
+          "content-length": "719"
+        },
+        "body_sample": {
+          "id": 26,
+          "bank_account_id": 5,
+          "amount": {
+            "cents": 2550,
+            "currency": "PLN"
+          },
+          "signed_amount": {
+            "cents": -2550,
+            "currency": "PLN"
+          },
+          "direction": "debit",
+          "status": "booked",
+          "booking_date": "2026-01-10",
+          "transaction_date": null,
+          "title": "Oracle API cash",
+          "note": null,
+          "counterparty_name": null,
+          "counterparty_kind": "unknown",
+          "payment_method": "cash",
+          "source": "manual",
+          "linked_bank_transaction_id": null,
+          "enrichment": {
+            "id": 65,
+            "merchant_id": null,
+            "category_id": null,
+            "merchant_rule_id": null,
+            "source": "manual",
+            "category_overridden": false,
+            "confidence": null,
+            "model": null,
+            "enriched_at": "2026-10-21T13:22:46.688Z",
+            "merchant": null,
+            "category": null,
+            "effective_category": null
+          },
+          "created_at": "2026-10-21T13:22:46.659Z",
+          "updated_at": "2026-10-21T13:22:46.659Z"
+        }
+      }
+    },
+    {
+      "case": "invalid_amount",
+      "actor": "main(token)",
+      "request": {
+        "method": "POST",
+        "path": "/api/v1/cash_transactions",
+        "headers": {
+          "authorization": "Bearer obrl_oracle_main_t…",
+          "content-type": "application/json"
+        },
+        "body": {
+          "amount": "12,3x"
+        }
+      },
+      "response": {
+        "status": 422,
+        "duration_ms": 169,
+        "headers": {
+          "content-type": "application/json",
+          "cache-control": "no-cache",
+          "x-request-id": "659addc4-2e89-4241-b96b-9d01953558c6",
+          "vary": "Origin",
+          "content-length": "193"
+        },
+        "body_sample": {
+          "message": "Amount cents is not a number, Amount is not a number, Amount cents can't be blank",
+          "details": [
+            "Amount cents is not a number",
+            "Amount is not a number",
+            "Amount cents can't be blank"
+          ]
+        }
+      }
+    },
+    {
+      "case": "missing_amount",
+      "actor": "main(token)",
+      "request": {
+        "method": "POST",
+        "path": "/api/v1/cash_transactions",
+        "headers": {
+          "authorization": "Bearer obrl_oracle_main_t…",
+          "content-type": "application/json"
+        },
+        "body": {
+          "title": "x"
+        }
+      },
+      "response": {
+        "status": 400,
+        "duration_ms": 132,
+        "headers": {
+          "content-type": "application/json",
+          "cache-control": "no-cache",
+          "x-request-id": "bf60c385-c54b-4daf-ba76-1b7bb89ccc69",
+          "vary": "Origin",
+          "content-length": "65"
+        },
+        "body_sample": {
+          "message": "Invalid parameters.",
+          "details": [
+            "amount is missing"
+          ]
+        }
+      }
+    },
+    {
+      "case": "currency_eur_lowercase",
+      "actor": "main(token)",
+      "request": {
+        "method": "POST",
+        "path": "/api/v1/cash_transactions",
+        "headers": {
+          "authorization": "Bearer obrl_oracle_main_t…",
+          "content-type": "application/json"
+        },
+        "body": {
+          "amount": "1.005",
+          "currency": "eur",
+          "direction": "credit",
+          "title": "Oracle rounding probe"
+        }
+      },
+      "response": {
+        "status": 201,
+        "duration_ms": 293,
+        "headers": {
+          "content-type": "application/json",
+          "cache-control": "max-age=0, private, must-revalidate",
+          "x-request-id": "dceb509e-1bcf-41c0-b81b-dd72674b3e30",
+          "vary": "Origin",
+          "content-length": "724"
+        },
+        "body_sample": {
+          "id": 27,
+          "bank_account_id": 11,
+          "amount": {
+            "cents": 101,
+            "currency": "EUR"
+          },
+          "signed_amount": {
+            "cents": 101,
+            "currency": "EUR"
+          },
+          "direction": "credit",
+          "status": "booked",
+          "booking_date": "2026-10-21",
+          "transaction_date": null,
+          "title": "Oracle rounding probe",
+          "note": null,
+          "counterparty_name": null,
+          "counterparty_kind": "unknown",
+          "payment_method": "cash",
+          "source": "manual",
+          "linked_bank_transaction_id": null,
+          "enrichment": {
+            "id": 66,
+            "merchant_id": null,
+            "category_id": null,
+            "merchant_rule_id": null,
+            "source": "manual",
+            "category_overridden": false,
+            "confidence": null,
+            "model": null,
+            "enriched_at": "2026-10-21T13:22:47.280Z",
+            "merchant": null,
+            "category": null,
+            "effective_category": null
+          },
+          "created_at": "2026-10-21T13:22:47.249Z",
+          "updated_at": "2026-10-21T13:22:47.249Z"
+        }
+      }
+    }
+  ]
+}

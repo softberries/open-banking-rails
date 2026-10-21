@@ -1,0 +1,114 @@
+{
+  "route": "POST /setup(.:format)",
+  "captured_at": "2026-10-21T13:22:03.944Z",
+  "base_url": "http://127.0.0.1:3000",
+  "cases": [
+    {
+      "case": "users_exist",
+      "actor": "anon",
+      "request": {
+        "method": "POST",
+        "path": "/setup",
+        "headers": {},
+        "body": {
+          "authenticity_token": "<redacted>",
+          "user[name]": "X",
+          "user[email]": "x@example.com",
+          "user[password]": "<redacted>",
+          "user[password_confirmation]": "<redacted>"
+        }
+      },
+      "response": {
+        "status": 302,
+        "duration_ms": 137,
+        "headers": {
+          "x-frame-options": "SAMEORIGIN",
+          "x-content-type-options": "nosniff",
+          "location": "http://127.0.0.1:3000/admin/sign_in",
+          "content-type": "text/html; charset=utf-8",
+          "cache-control": "no-cache",
+          "x-request-id": "6c76edf1-bd95-43c1-ab36-841fb172af1f",
+          "vary": "Origin",
+          "content-length": "0",
+          "set-cookie": [
+            "_open_banking_rails_session=<redacted>; path=/; httponly; samesite=lax"
+          ]
+        },
+        "body_sample": ""
+      }
+    },
+    {
+      "case": "no_users_invalid",
+      "actor": "anon",
+      "request": {
+        "method": "POST",
+        "path": "/setup",
+        "headers": {},
+        "body": {
+          "authenticity_token": "<redacted>",
+          "user[name]": "",
+          "user[email]": "bad",
+          "user[password]": "<redacted>",
+          "user[password_confirmation]": "<redacted>"
+        }
+      },
+      "response": {
+        "status": 422,
+        "duration_ms": 483,
+        "headers": {
+          "x-frame-options": "SAMEORIGIN",
+          "x-content-type-options": "nosniff",
+          "content-type": "text/html; charset=utf-8",
+          "vary": "Accept, Origin",
+          "cache-control": "no-cache",
+          "x-request-id": "e306d719-e399-4555-bbe1-d0e39e06233d",
+          "content-length": "15407",
+          "set-cookie": [
+            "_open_banking_rails_session=<redacted>; path=/; httponly; samesite=lax"
+          ]
+        },
+        "body_sample": {
+          "html_title": "Create your account",
+          "h1": "Create your admin account",
+          "flash": [],
+          "length": 15375,
+          "head": "<!-- BEGIN app/views/layouts/admin_auth.html.erb --><!DOCTYPE html> <html lang=\"en\"> <head> <meta charset=\"UTF-8\"> <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"> <title>Create your account</title> <meta name=\"csrf-param\" content=\"authenticity_token\" /> <meta name=\"csrf-token\" content=\"zZ4whwOIoQ8wj5OrS7wb6izkl47B8MUz1XD8veaAIL91Ti8ZR6tcmxJCjbAoRXLSHAOWwFXi5XMjNDejDt0reg\" /> <link rel=\"icon\" href=\"/icon.svg?v=3\" type=\"image/svg+xml\"> <link rel=\"apple-touch-icon\" href=\"/icon.png\"> <link rel=\"preconnect\" href=\"https://fonts.googleapis.com\"> <link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin> <link href=\"https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap\" rel=\"stylesheet\"> <link rel=\"stylesheet\" href=\"/assets/tailwind-e94f0c0a.css\" data-turbo-track=\"reload\" /> <script type=\"importmap\" data-turbo-track=\"reload\">{ \"imports\": { \"application\": \"/assets/application-bfcdf840.js\", \"@hotwired/turbo-rails\": \"/assets/turbo.min-9fd88cd5.js\", \"@hotwired/stimulus\": \"/assets/stimulus.min-4b1e420e.js\", \"@hotwired/stimulus-loading\": \"/assets/stimulus-loading-1fc53fe7.js\", \"chart.js\": \"https://cdn.jsdelivr.net/npm/chart.js@4.5.1/+esm\", \"chartjs-plugin-datalabels\": \"https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/+esm\", \"controllers/ajax_select_controller\": \"/assets/controllers/ajax_select_controller-9f440917.js\", \"controllers/application\": \"/assets/controllers/application-3affb389.js\", \"controllers/bulk_se…[truncated 13046 chars]"
+        }
+      }
+    },
+    {
+      "case": "no_users_valid",
+      "actor": "anon",
+      "request": {
+        "method": "POST",
+        "path": "/setup",
+        "headers": {},
+        "body": {
+          "authenticity_token": "<redacted>",
+          "user[name]": "First Admin",
+          "user[email]": "first@example.com",
+          "user[password]": "<redacted>",
+          "user[password_confirmation]": "<redacted>"
+        }
+      },
+      "response": {
+        "status": 302,
+        "duration_ms": 15600,
+        "headers": {
+          "x-frame-options": "SAMEORIGIN",
+          "x-content-type-options": "nosniff",
+          "location": "http://127.0.0.1:3000/admin",
+          "content-type": "text/html; charset=utf-8",
+          "cache-control": "no-cache",
+          "x-request-id": "8623022b-acbb-4824-bda8-bad4aca64fdf",
+          "vary": "Origin",
+          "content-length": "0",
+          "set-cookie": [
+            "_open_banking_rails_session=<redacted>; path=/; httponly; samesite=lax"
+          ]
+        },
+        "body_sample": ""
+      }
+    }
+  ]
+}

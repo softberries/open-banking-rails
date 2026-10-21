@@ -1,0 +1,120 @@
+{
+  "route": "GET /api/:version/bank_transactions(.json)",
+  "captured_at": "2026-10-21T13:22:30.193Z",
+  "base_url": "http://127.0.0.1:3000",
+  "cases": [
+    {
+      "case": "default",
+      "actor": "main(token)",
+      "request": {
+        "method": "GET",
+        "path": "/api/v1/bank_transactions?limit=3",
+        "headers": {
+          "authorization": "Bearer obrl_oracle_main_t…"
+        }
+      },
+      "response": {
+        "status": 200,
+        "duration_ms": 283,
+        "headers": {
+          "content-type": "application/json",
+          "cache-control": "max-age=0, private, must-revalidate",
+          "x-request-id": "ac3d353a-4d6e-47b8-b9dd-16da1d76fe7f",
+          "vary": "Origin",
+          "content-length": "1607"
+        },
+        "body_sample": {
+          "data": [
+            {
+              "id": 54,
+              "external_id": "fake-tx-54",
+              "bank_account_id": 3,
+              "amount": {
+                "cents": 500,
+                "currency": "EUR"
+              },
+              "signed_amount": {
+                "cents": -500,
+                "currency": "EUR"
+              },
+              "direction": "debit",
+              "status": "booked",
+              "booking_date": "2026-10-11",
+              "value_date": "2026-10-11",
+              "transaction_date": "2026-10-11",
+              "title": "OpenAI",
+              "counterparty_name": "Openai LLC",
+              "counterparty_iban": null,
+              "counterparty_kind": "external",
+              "payment_method": "card",
+              "type_hint": null,
+              "bank_transaction_code": null,
+              "fetched_at": "2026-10-21T13:21:26.876Z",
+              "enrichment": null
+            },
+            {
+              "id": 53,
+              "external_id": "fake-tx-53",
+              "bank_account_id": 3,
+              "amount": {
+                "cents": 1499,
+                "currency": "EUR"
+              },
+              "signed_amount": {
+                "cents": -1499,
+                "currency": "EUR"
+              },
+              "direction": "debit",
+              "status": "booked",
+              "booking_date": "2026-10-06",
+              "value_date": "2026-10-06",
+              "transaction_date": "2026-10-06",
+              "title": "Netflix",
+              "counterparty_name": "Netflix Intl.",
+              "counterparty_iban": null,
+              "counterparty_kind": "external",
+              "payment_method": "card",
+              "type_hint": null,
+              "bank_transaction_code": null,
+              "fetched_at": "2026-10-21T13:21:26.876Z",
+              "enrichment": null
+            },
+            {
+              "id": 39,
+              "external_id": "fake-tx-39",
+              "bank_account_id": 1,
+              "amount": {
+                "cents": 650000,
+                "currency": "PLN"
+              },
+              "signed_amount": {
+                "cents": 650000,
+                "currency": "PLN"
+              },
+              "direction": "credit",
+              "status": "booked",
+              "booking_date": "2026-10-02",
+              "value_date": "2026-10-02",
+              "transaction_date": "2026-10-02",
+              "title": "WYNAGRODZENIE",
+              "counterparty_name": "Some Company sp. z o.o.",
+              "counterparty_iban": null,
+              "counterparty_kind": "external",
+              "payment_method": "card",
+              "type_hint": null,
+              "bank_transaction_code": null,
+              "fetched_at": "2026-10-21T13:21:23.027Z",
+              "enrichment": null
+            }
+          ],
+          "pagination": {
+            "page": 1,
+            "limit": 3,
+            "count": 54,
+            "pages": 18
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "route": "GET /admin(.:format)",
+  "captured_at": "2026-10-21T13:22:01.703Z",
+  "base_url": "http://127.0.0.1:3000",
+  "cases": [
+    {
+      "case": "default",
+      "actor": "anon",
+      "request": {
+        "method": "GET",
+        "path": "/admin",
+        "headers": {}
+      },
+      "response": {
+        "status": 301,
+        "duration_ms": 121,
+        "headers": {
+          "location": "http://127.0.0.1:3000/admin/analytics",
+          "content-type": "text/html; charset=UTF-8",
+          "cache-control": "no-cache",
+          "x-request-id": "4a0bdadc-bba8-4af6-b0d6-1d737e6efc2f",
+          "vary": "Origin",
+          "content-length": "0"
+        },
+        "body_sample": ""
+      }
+    },
+    {
+      "case": "default",
+      "actor": "main(session)",
+      "request": {
+        "method": "GET",
+        "path": "/admin",
+        "headers": {}
+      },
+      "response": {
+        "status": 301,
+        "duration_ms": 110,
+        "headers": {
+          "location": "http://127.0.0.1:3000/admin/analytics",
+          "content-type": "text/html; charset=UTF-8",
+          "cache-control": "no-cache",
+          "x-request-id": "7268c304-5563-423e-9f6d-49e024203d64",
+          "vary": "Origin",
+          "content-length": "0"
+        },
+        "body_sample": ""
+      }
+    }
+  ]
+}

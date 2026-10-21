@@ -1,0 +1,2 @@
+SHA: cd3bf6054b54e7eb84fd4405919c70e41dfa2794
+repo: https://github.com/softberries/open-banking-rails

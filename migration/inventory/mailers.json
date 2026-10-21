@@ -1,0 +1,16 @@
+[
+  {
+    "class": "Devise::Mailer",
+    "actions": [
+      "unlock_instructions",
+      "reset_password_instructions",
+      "password_change",
+      "email_changed",
+      "confirmation_instructions"
+    ]
+  },
+  {
+    "class": "ApplicationMailer",
+    "actions": []
+  }
+]

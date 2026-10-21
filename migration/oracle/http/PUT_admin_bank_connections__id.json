@@ -1,0 +1,43 @@
+{
+  "route": "PUT /admin/bank_connections/:id(.:format)",
+  "captured_at": "2026-10-21T13:24:03.632Z",
+  "base_url": "http://127.0.0.1:3000",
+  "cases": [
+    {
+      "case": "invalid_status",
+      "actor": "main(session)",
+      "request": {
+        "method": "PUT",
+        "path": "/admin/bank_connections/1",
+        "headers": {},
+        "body": {
+          "authenticity_token": "<redacted>",
+          "bank_connection[status]": "BOGUS"
+        }
+      },
+      "response": {
+        "status": 422,
+        "duration_ms": 184,
+        "headers": {
+          "x-frame-options": "SAMEORIGIN",
+          "x-content-type-options": "nosniff",
+          "content-type": "text/html; charset=utf-8",
+          "vary": "Accept, Origin",
+          "cache-control": "no-cache",
+          "x-request-id": "018cf8b9-0a27-4b8c-aea3-a9a55dcd656e",
+          "content-length": "76290",
+          "set-cookie": [
+            "_open_banking_rails_session=<redacted>; path=/; httponly; samesite=lax"
+          ]
+        },
+        "body_sample": {
+          "html_title": "Edit connection · Open Banking",
+          "h1": "Edit connection",
+          "flash": [],
+          "length": 76287,
+          "head": "<!-- BEGIN app/views/layouts/admin.html.erb --><!DOCTYPE html> <html lang=\"en\" class=\"\"> <head> <meta charset=\"UTF-8\"> <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"> <title>Edit connection · Open Banking</title> <meta name=\"csrf-param\" content=\"authenticity_token\" /> <meta name=\"csrf-token\" content=\"Aa8_ervO_dkrqj4QLSjxfwhHkm4SHYIlTjieQk2nPy8W_bkCugq8bTDkgp0XbNVXcH8fZu7yTwYCbntamlYZLg\" /> <script> (function () { if (localStorage.getItem(\"sidebar-collapsed\") === \"true\") { document.documentElement.classList.add(\"sidebar-collapsed\"); } })(); </script> <link rel=\"icon\" href=\"/icon.svg?v=3\" type=\"image/svg+xml\"> <link rel=\"apple-touch-icon\" href=\"/icon.png\"> <link rel=\"preconnect\" href=\"https://fonts.googleapis.com\"> <link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin> <link href=\"https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap\" rel=\"stylesheet\"> <link rel=\"stylesheet\" href=\"/assets/tailwind-e94f0c0a.css\" data-turbo-track=\"reload\" /> <script type=\"importmap\" data-turbo-track=\"reload\">{ \"imports\": { \"application\": \"/assets/application-bfcdf840.js\", \"@hotwired/turbo-rails\": \"/assets/turbo.min-9fd88cd5.js\", \"@hotwired/stimulus\": \"/assets/stimulus.min-4b1e420e.js\", \"@hotwired/stimulus-loading\": \"/assets/stimulus-loading-1fc53fe7.js\", \"chart.js\": \"https://cdn.jsdelivr.net/npm/chart.js@4.5.1/+esm\", \"chartjs-plugin-datalabels\": \"https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/+esm\", \"controllers…[truncated 70788 chars]"
+        }
+      }
+    }
+  ]
+}

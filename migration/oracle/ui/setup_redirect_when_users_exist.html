@@ -1,0 +1,206 @@
+<!DOCTYPE html><html lang="en"><head><style type="text/css">.turbo-progress-bar {
+  position: fixed;
+  display: block;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: #0076ff;
+  z-index: 2147483647;
+  transition:
+    width 300ms ease-out,
+    opacity 150ms 150ms ease-in;
+  transform: translate3d(0, 0, 0);
+}
+</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign in</title>
+    <meta name="csrf-param" content="authenticity_token">
+<meta name="csrf-token" content="HLIMmIehAPxxvGjV-gBDzzT5SN_GHq5VmVq1LL0ScIP6oMsa7T9YCAXTcLO0m8s2FBL2gKjp3jIjYoEAA50ptw">
+    
+    <link rel="icon" href="/icon.svg?v=3" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/icon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/tailwind-e94f0c0a.css" data-turbo-track="reload">
+    <script type="importmap" data-turbo-track="reload">{
+  "imports": {
+    "application": "/assets/application-bfcdf840.js",
+    "@hotwired/turbo-rails": "/assets/turbo.min-9fd88cd5.js",
+    "@hotwired/stimulus": "/assets/stimulus.min-4b1e420e.js",
+    "@hotwired/stimulus-loading": "/assets/stimulus-loading-1fc53fe7.js",
+    "chart.js": "https://cdn.jsdelivr.net/npm/chart.js@4.5.1/+esm",
+    "chartjs-plugin-datalabels": "https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/+esm",
+    "controllers/ajax_select_controller": "/assets/controllers/ajax_select_controller-9f440917.js",
+    "controllers/application": "/assets/controllers/application-3affb389.js",
+    "controllers/bulk_select_controller": "/assets/controllers/bulk_select_controller-e1aaa8af.js",
+    "controllers/chart_controller": "/assets/controllers/chart_controller-52554f38.js",
+    "controllers/clipboard_controller": "/assets/controllers/clipboard_controller-ce3baddb.js",
+    "controllers/command_palette_controller": "/assets/controllers/command_palette_controller-aef5f798.js",
+    "controllers/dismissible_controller": "/assets/controllers/dismissible_controller-30eb3eef.js",
+    "controllers/dropdown_controller": "/assets/controllers/dropdown_controller-491311a4.js",
+    "controllers/file_upload_controller": "/assets/controllers/file_upload_controller-9f0bcede.js",
+    "controllers/filter_panel_controller": "/assets/controllers/filter_panel_controller-2060fad7.js",
+    "controllers": "/assets/controllers/index-ee64e1f1.js",
+    "controllers/llm_provider_controller": "/assets/controllers/llm_provider_controller-442bebb5.js",
+    "controllers/modal_controller": "/assets/controllers/modal_controller-652872f0.js",
+    "controllers/multi_select_controller": "/assets/controllers/multi_select_controller-dd69068d.js",
+    "controllers/preference_toggle_controller": "/assets/controllers/preference_toggle_controller-faf6d534.js",
+    "controllers/propagation_controller": "/assets/controllers/propagation_controller-9d52220e.js",
+    "controllers/searchable_select_controller": "/assets/controllers/searchable_select_controller-52005179.js",
+    "controllers/sensitive_mask_controller": "/assets/controllers/sensitive_mask_controller-99bddd4c.js",
+    "controllers/sidebar_controller": "/assets/controllers/sidebar_controller-33046b9a.js",
+    "controllers/sidebar_item_controller": "/assets/controllers/sidebar_item_controller-0ad8ac39.js",
+    "controllers/tabs_controller": "/assets/controllers/tabs_controller-6136e3f3.js",
+    "controllers/tags_input_controller": "/assets/controllers/tags_input_controller-3378f308.js",
+    "controllers/toggle_controller": "/assets/controllers/toggle_controller-46cb788c.js"
+  }
+}</script>
+<link rel="modulepreload" href="/assets/application-bfcdf840.js">
+<link rel="modulepreload" href="/assets/turbo.min-9fd88cd5.js">
+<link rel="modulepreload" href="/assets/stimulus.min-4b1e420e.js">
+<link rel="modulepreload" href="/assets/stimulus-loading-1fc53fe7.js">
+<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/chart.js@4.5.1/+esm">
+<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/+esm">
+<link rel="modulepreload" href="/assets/controllers/ajax_select_controller-9f440917.js">
+<link rel="modulepreload" href="/assets/controllers/application-3affb389.js">
+<link rel="modulepreload" href="/assets/controllers/bulk_select_controller-e1aaa8af.js">
+<link rel="modulepreload" href="/assets/controllers/chart_controller-52554f38.js">
+<link rel="modulepreload" href="/assets/controllers/clipboard_controller-ce3baddb.js">
+<link rel="modulepreload" href="/assets/controllers/command_palette_controller-aef5f798.js">
+<link rel="modulepreload" href="/assets/controllers/dismissible_controller-30eb3eef.js">
+<link rel="modulepreload" href="/assets/controllers/dropdown_controller-491311a4.js">
+<link rel="modulepreload" href="/assets/controllers/file_upload_controller-9f0bcede.js">
+<link rel="modulepreload" href="/assets/controllers/filter_panel_controller-2060fad7.js">
+<link rel="modulepreload" href="/assets/controllers/index-ee64e1f1.js">
+<link rel="modulepreload" href="/assets/controllers/llm_provider_controller-442bebb5.js">
+<link rel="modulepreload" href="/assets/controllers/modal_controller-652872f0.js">
+<link rel="modulepreload" href="/assets/controllers/multi_select_controller-dd69068d.js">
+<link rel="modulepreload" href="/assets/controllers/preference_toggle_controller-faf6d534.js">
+<link rel="modulepreload" href="/assets/controllers/propagation_controller-9d52220e.js">
+<link rel="modulepreload" href="/assets/controllers/searchable_select_controller-52005179.js">
+<link rel="modulepreload" href="/assets/controllers/sensitive_mask_controller-99bddd4c.js">
+<link rel="modulepreload" href="/assets/controllers/sidebar_controller-33046b9a.js">
+<link rel="modulepreload" href="/assets/controllers/sidebar_item_controller-0ad8ac39.js">
+<link rel="modulepreload" href="/assets/controllers/tabs_controller-6136e3f3.js">
+<link rel="modulepreload" href="/assets/controllers/tags_input_controller-3378f308.js">
+<link rel="modulepreload" href="/assets/controllers/toggle_controller-46cb788c.js">
+<script type="module">import "application"</script>
+  </head>
+
+  <body>
+    <div class="min-h-screen flex flex-col bg-background">
+      <main class="flex flex-1 items-center justify-center px-4 py-10 sm:py-16">
+        <div class="w-full max-w-md">
+          <div class="mb-8 flex flex-col items-center gap-3">
+            <div class="h-12 w-12 rounded-xl bg-success text-success-foreground flex items-center justify-center shadow-sm">
+              <!-- BEGIN app/views/admin/shared/icons/_logo_mark.html.erb
+--><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="h-6 w-6">
+  <rect x="3" y="5" width="16" height="3.5" rx="1"></rect>
+  <rect x="3" y="10.25" width="12" height="3.5" rx="1" opacity="0.85"></rect>
+  <rect x="3" y="15.5" width="8" height="3.5" rx="1" opacity="0.7"></rect>
+</svg>
+<!-- END app/views/admin/shared/icons/_logo_mark.html.erb -->
+            </div>
+            <div class="text-center">
+              <p class="text-base font-bold text-foreground leading-tight">Open Banking</p>
+              <p class="text-xs font-normal text-muted-foreground">Personal finances</p>
+            </div>
+          </div>
+
+          <!-- BEGIN app/views/admin/shared/_auth_flash.html.erb
+--><!-- END app/views/admin/shared/_auth_flash.html.erb -->
+
+          <div class="admin-section">
+            <!-- BEGIN app/views/admin/sessions/new.html.erb
+-->
+<div class="mb-6">
+  <h1 class="text-xl font-semibold text-foreground">Sign in to your account</h1>
+  <p class="mt-1 text-sm text-muted-foreground">Enter your credentials to access the admin panel.</p>
+</div>
+
+<form class="space-y-5" action="/admin/sign_in" accept-charset="UTF-8" method="post"><input type="hidden" name="authenticity_token" value="vCjq9clm6F_pNUiHQ4dQSrW_Jei7Zvq0dnmc_YvFzKNCHLbETsk8xRtVp7mAUWgf7Ja2wytx9Uhi4SuWsbVmXw" style="">
+  <!-- BEGIN app/views/admin/shared/form/_email_field.html.erb
+--><!-- BEGIN app/views/admin/shared/form/_form_group.html.erb
+--><div>
+  <label class="block text-sm font-medium text-foreground mb-1.5">
+    Email address
+      <span class="text-destructive ml-0.5">*</span>
+  </label>
+  
+  <div class="relative">
+    <span class="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground text-sm">@</span>
+    <input placeholder="you@example.com" class="form-input pl-9" autofocus="autofocus" autocomplete="email" type="email" value="" name="user[email]" id="user_email" style="">
+  </div>
+
+</div>
+<!-- END app/views/admin/shared/form/_form_group.html.erb --><!-- END app/views/admin/shared/form/_email_field.html.erb -->
+
+  <!-- BEGIN app/views/admin/shared/form/_password_field.html.erb
+--><!-- BEGIN app/views/admin/shared/form/_form_group.html.erb
+--><div>
+  <label class="block text-sm font-medium text-foreground mb-1.5">
+    Password
+      <span class="text-destructive ml-0.5">*</span>
+  </label>
+  
+  <div class="relative" data-controller="toggle">
+    <input placeholder="••••••••" data-toggle-target="field" class="form-input pr-10" autocomplete="current-password" type="password" name="user[password]" id="user_password" style="">
+    <button type="button" data-action="click-&gt;toggle#switch" class="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors">
+      <span data-toggle-target="show">
+        <!-- BEGIN app/views/admin/shared/icons/_eye.html.erb
+--><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4">
+  <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path>
+  <circle cx="12" cy="12" r="3"></circle>
+</svg>
+<!-- END app/views/admin/shared/icons/_eye.html.erb -->
+      </span>
+      <span data-toggle-target="hide" class="hidden">
+        <!-- BEGIN app/views/admin/shared/icons/_eye_off.html.erb
+--><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4">
+  <path d="M9.88 9.88a3 3 0 1 0 4.24 4.24"></path>
+  <path d="M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68"></path>
+  <path d="M6.61 6.61A13.526 13.526 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61"></path>
+  <line x1="2" x2="22" y1="2" y2="22"></line>
+</svg>
+<!-- END app/views/admin/shared/icons/_eye_off.html.erb -->
+      </span>
+    </button>
+  </div>
+
+</div>
+<!-- END app/views/admin/shared/form/_form_group.html.erb --><!-- END app/views/admin/shared/form/_password_field.html.erb -->
+
+    <div class="flex items-center justify-between">
+      <!-- BEGIN app/views/admin/shared/form/_checkbox.html.erb
+--><div>
+  <label class="flex items-center gap-2 cursor-pointer">
+    <input name="user[remember_me]" type="hidden" value="0" style=""><input class="rounded border-input h-4 w-4 text-primary focus:ring-primary/20" type="checkbox" value="1" name="user[remember_me]" id="user_remember_me" style="">
+    <span class="text-sm font-medium text-foreground">Remember me</span>
+  </label>
+</div>
+<!-- END app/views/admin/shared/form/_checkbox.html.erb -->
+
+        <a class="text-sm font-medium text-primary hover:text-primary/80 transition-colors" href="/admin/password/new">Forgot password?</a>
+    </div>
+
+  <!-- BEGIN app/views/admin/shared/components/_button.html.erb
+-->  <button type="submit" class="inline-flex items-center justify-center gap-2 rounded-lg font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:opacity-50 cursor-pointer bg-primary text-primary-foreground hover:bg-primary/90 h-11 px-6 py-2.5 text-sm w-full">Sign in</button>
+<!-- END app/views/admin/shared/components/_button.html.erb -->
+</form><!-- END app/views/admin/sessions/new.html.erb -->
+          </div>
+
+          <p class="mt-6 text-center text-xs text-muted-foreground">
+            © 2026 Open Banking Rails
+            ·
+            Personal Edition
+            ·
+            vdev
+          </p>
+        </div>
+      </main>
+    </div>
+  
+
+</body></html>

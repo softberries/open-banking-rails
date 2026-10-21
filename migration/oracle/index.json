@@ -1,0 +1,1781 @@
+{
+ "DELETE /admin/bank_connections/:id": [
+  {
+   "file": "oracle/http/DELETE_admin_bank_connections__id.json",
+   "cases": [
+    "other_tenant_id -> 404",
+    "own_connection -> 302"
+   ]
+  }
+ ],
+ "DELETE /admin/cash_transactions/:id": [
+  {
+   "file": "oracle/http/DELETE_admin_cash_transactions__id.json",
+   "cases": [
+    "default -> 302"
+   ]
+  }
+ ],
+ "DELETE /admin/categories/:id": [
+  {
+   "file": "oracle/http/DELETE_admin_categories__id.json",
+   "cases": [
+    "other_tenant_id -> 404",
+    "default -> 302"
+   ]
+  }
+ ],
+ "DELETE /admin/merchants/:id": [
+  {
+   "file": "oracle/http/DELETE_admin_merchants__id.json",
+   "cases": [
+    "default -> 302"
+   ]
+  }
+ ],
+ "DELETE /admin/merchants/:merchant_id/merchant_rules/:id": [
+  {
+   "file": "oracle/http/DELETE_admin_merchants__merchant_id_merchant_rules__id.json",
+   "cases": [
+    "default -> 302"
+   ]
+  }
+ ],
+ "DELETE /admin/settings/preferences/api_tokens/:id": [
+  {
+   "file": "oracle/http/DELETE_admin_settings_preferences_api_tokens__id.json",
+   "cases": [
+    "first_delete_revokes -> 302",
+    "second_delete_destroys_revoked -> 302"
+   ]
+  }
+ ],
+ "DELETE /admin/sign_out": [
+  {
+   "file": "oracle/http/DELETE_admin_sign_out.json",
+   "cases": [
+    "not_signed_in -> 401",
+    "signed_in -> 204"
+   ]
+  }
+ ],
+ "DELETE /admin/tpp_credentials/:id": [
+  {
+   "file": "oracle/http/DELETE_admin_tpp_credentials__id.json",
+   "cases": [
+    "default -> 302"
+   ]
+  }
+ ],
+ "DELETE /api/v1/bank_connections/:id": [
+  {
+   "file": "oracle/http/DELETE_api__version_bank_connections__id.json",
+   "cases": [
+    "default -> 200",
+    "other_tenant_id -> 404"
+   ]
+  }
+ ],
+ "DELETE /api/v1/cash_transactions/:id": [
+  {
+   "file": "oracle/http/DELETE_api__version_cash_transactions__id.json",
+   "cases": [
+    "default -> 204",
+    "other_tenant_id -> 404"
+   ]
+  }
+ ],
+ "DELETE /api/v1/categories/:id": [
+  {
+   "file": "oracle/http/DELETE_api__version_categories__id.json",
+   "cases": [
+    "default -> 422",
+    "category_in_use_or_with_children -> 422"
+   ]
+  }
+ ],
+ "DELETE /api/v1/merchants/:id": [
+  {
+   "file": "oracle/http/DELETE_api__version_merchants__id.json",
+   "cases": [
+    "default -> 422"
+   ]
+  }
+ ],
+ "DELETE /api/v1/merchants/:merchant_id/rules/:id": [
+  {
+   "file": "oracle/http/DELETE_api__version_merchants__merchant_id_rules__id.json",
+   "cases": [
+    "default -> 204"
+   ]
+  }
+ ],
+ "DELETE /api/v1/tpp_credentials/:id": [
+  {
+   "file": "oracle/http/DELETE_api__version_tpp_credentials__id.json",
+   "cases": [
+    "default -> 204"
+   ]
+  }
+ ],
+ "DELETE /mcp": [
+  {
+   "file": "oracle/http/DELETE_mcp.json",
+   "cases": [
+    "default -> 200"
+   ]
+  }
+ ],
+ "GET /admin": [
+  {
+   "file": "oracle/http/GET_admin.json",
+   "cases": [
+    "default -> 301",
+    "default -> 301"
+   ]
+  }
+ ],
+ "GET /admin/analytics": [
+  {
+   "file": "oracle/http/GET_admin_analytics.json",
+   "cases": [
+    "anonymous_redirects_to_sign_in -> 302",
+    "legacy_browser_ua -> 406",
+    "default -> 200",
+    "explicit_range -> 200",
+    "no_users_redirects_to_setup -> 302"
+   ]
+  }
+ ],
+ "GET /admin/analytics/categories/:slug": [
+  {
+   "file": "oracle/http/GET_admin_analytics_categories__slug.json",
+   "cases": [
+    "default -> 200",
+    "unknown_slug -> 404"
+   ]
+  }
+ ],
+ "GET /admin/analytics/merchants/:slug": [
+  {
+   "file": "oracle/http/GET_admin_analytics_merchants__slug.json",
+   "cases": [
+    "default -> 200"
+   ]
+  }
+ ],
+ "GET /admin/bank_accounts": [
+  {
+   "file": "oracle/http/GET_admin_bank_accounts.json",
+   "cases": [
+    "default -> 200"
+   ]
+  }
+ ],
+ "GET /admin/bank_accounts/:id": [
+  {
+   "file": "oracle/http/GET_admin_bank_accounts__id.json",
+   "cases": [
+    "default -> 200"
+   ]
+  }
+ ],
+ "GET /admin/bank_connections": [
+  {
+   "file": "oracle/http/GET_admin_bank_connections.json",
+   "cases": [
+    "default -> 200"
+   ]
+  }
+ ],
+ "GET /admin/bank_connections/:bank_connection_id/sync_schedule/edit": [
+  {
+   "file": "oracle/http/GET_admin_bank_connections__bank_connection_id_sync_schedule_edit.json",
+   "cases": [
+    "default -> 200"
+   ]
+  }
+ ],
+ "GET /admin/bank_connections/:id": [
+  {
+   "file": "oracle/http/GET_admin_bank_connections__id.json",
+   "cases": [
+    "default -> 200",
+    "other_tenant_id -> 404"
+   ]
+  }
+ ],
+ "GET /admin/bank_connections/:id/edit": [
+  {
+   "file": "oracle/http/GET_admin_bank_connections__id_edit.json",
+   "cases": [
+    "default -> 200"
+   ]
+  }
+ ],
+ "GET /admin/bank_connections/new": [
+  {
+   "file": "oracle/http/GET_admin_bank_connections_new.json",
+   "cases": [
+    "default -> 200",
+    "with_aspsp -> 200"
+   ]
+  }
+ ],
+ "GET /admin/bank_transactions": [
+  {
+   "file": "oracle/http/GET_admin_bank_transactions.json",
+   "cases": [
+    "default -> 200",
+    "filtered -> 200"
+   ]
+  }
+ ],
+ "GET /admin/bank_transactions/:id": [
+  {
+   "file": "oracle/http/GET_admin_bank_transactions__id.json",
+   "cases": [
+    "default -> 200",
+    "other_tenant_id -> 404"
+   ]
+  }
+ ],
+ "GET /admin/cash_transactions": [
+  {
+   "file": "oracle/http/GET_admin_cash_transactions.json",
+   "cases": [
+    "default -> 200"
+   ]
+  }
+ ],
+ "GET /admin/cash_transactions/:id": [
+  {
+   "file": "oracle/http/GET_admin_cash_transactions__id.json",
+   "cases": [
+    "default -> 302",
+    "other_tenant_id -> 404"
+   ]
+  }
+ ],
+ "GET /admin/cash_transactions/:id/edit": [
+  {
+   "file": "oracle/http/GET_admin_cash_transactions__id_edit.json",
+   "cases": [
+    "default -> 200"
+   ]
+  }
+ ],
+ "GET /admin/cash_transactions/new": [
+  {
+   "file": "oracle/http/GET_admin_cash_transactions_new.json",
+   "cases": [
+    "default -> 200",
+    "credit -> 200"
+   ]
+  }
+ ],
+ "GET /admin/categories": [
+  {
+   "file": "oracle/http/GET_admin_categories.json",
+   "cases": [
+    "default -> 200"
+   ]
+  }
+ ],
+ "GET /admin/categories/:id/edit": [
+  {
+   "file": "oracle/http/GET_admin_categories__id_edit.json",
+   "cases": [
+    "default -> 200",
+    "other_tenant_id -> 404"
+   ]
+  }
+ ],
+ "GET /admin/categories/new": [
+  {
+   "file": "oracle/http/GET_admin_categories_new.json",
+   "cases": [
+    "default -> 200"
+   ]
+  }
+ ],
+ "GET /admin/debug": [
+  {
+   "file": "oracle/http/GET_admin_debug.json",
+   "cases": [
+    "default -> 200"
+   ]
+  }
+ ],
+ "GET /admin/debug/argument_error": [
+  {
+   "file": "oracle/http/GET_admin_debug_argument_error.json",
+   "cases": [
+    "default -> 500"
+   ]
+  }
+ ],
+ "GET /admin/debug/nested_error": [
+  {
+   "file": "oracle/http/GET_admin_debug_nested_error.json",
+   "cases": [
+    "default -> 500"
+   ]
+  }
+ ],
+ "GET /admin/debug/runtime_error": [
+  {
+   "file": "oracle/http/GET_admin_debug_runtime_error.json",
+   "cases": [
+    "default -> 500"
+   ]
+  }
+ ],
+ "GET /admin/debug/zero_division": [
+  {
+   "file": "oracle/http/GET_admin_debug_zero_division.json",
+   "cases": [
+    "default -> 500"
+   ]
+  }
+ ],
+ "GET /admin/does-not-exist": [
+  {
+   "file": "oracle/http/GET_admin_does-not-exist.json",
+   "cases": [
+    "unknown_route_404 -> 404"
+   ]
+  }
+ ],
+ "GET /admin/llm_enrichments": [
+  {
+   "file": "oracle/http/GET_admin_llm_enrichments.json",
+   "cases": [
+    "default -> 200"
+   ]
+  }
+ ],
+ "GET /admin/llm_enrichments/:id": [
+  {
+   "file": "oracle/http/GET_admin_llm_enrichments__id.json",
+   "cases": [
+    "default -> 200"
+   ]
+  }
+ ],
+ "GET /admin/matching_engine": [
+  {
+   "file": "oracle/http/GET_admin_matching_engine.json",
+   "cases": [
+    "default -> 200"
+   ]
+  }
+ ],
+ "GET /admin/merchants": [
+  {
+   "file": "oracle/http/GET_admin_merchants.json",
+   "cases": [
+    "default -> 200",
+    "filtered -> 200"
+   ]
+  }
+ ],
+ "GET /admin/merchants/:id": [
+  {
+   "file": "oracle/http/GET_admin_merchants__id.json",
+   "cases": [
+    "default -> 200",
+    "other_tenant_id -> 404"
+   ]
+  }
+ ],
+ "GET /admin/merchants/:id/edit": [
+  {
+   "file": "oracle/http/GET_admin_merchants__id_edit.json",
+   "cases": [
+    "default -> 200"
+   ]
+  }
+ ],
+ "GET /admin/merchants/new": [
+  {
+   "file": "oracle/http/GET_admin_merchants_new.json",
+   "cases": [
+    "default -> 200"
+   ]
+  }
+ ],
+ "GET /admin/password/edit": [
+  {
+   "file": "oracle/http/GET_admin_password_edit.json",
+   "cases": [
+    "no_token -> 302",
+    "bogus_token -> 200"
+   ]
+  }
+ ],
+ "GET /admin/password/new": [
+  {
+   "file": "oracle/http/GET_admin_password_new.json",
+   "cases": [
+    "default -> 200"
+   ]
+  }
+ ],
+ "GET /admin/settings": [
+  {
+   "file": "oracle/http/GET_admin_settings.json",
+   "cases": [
+    "default -> 301"
+   ]
+  }
+ ],
+ "GET /admin/settings/preferences": [
+  {
+   "file": "oracle/http/GET_admin_settings_preferences.json",
+   "cases": [
+    "default -> 301"
+   ]
+  }
+ ],
+ "GET /admin/settings/preferences/api_tokens": [
+  {
+   "file": "oracle/http/GET_admin_settings_preferences_api_tokens.json",
+   "cases": [
+    "default -> 200"
+   ]
+  }
+ ],
+ "GET /admin/settings/preferences/app": [
+  {
+   "file": "oracle/http/GET_admin_settings_preferences_app.json",
+   "cases": [
+    "default -> 200"
+   ]
+  }
+ ],
+ "GET /admin/settings/preferences/data_exchange": [
+  {
+   "file": "oracle/http/GET_admin_settings_preferences_data_exchange.json",
+   "cases": [
+    "default -> 200"
+   ]
+  }
+ ],
+ "GET /admin/settings/preferences/llm": [
+  {
+   "file": "oracle/http/GET_admin_settings_preferences_llm.json",
+   "cases": [
+    "default -> 200"
+   ]
+  }
+ ],
+ "GET /admin/settings/preferences/profile": [
+  {
+   "file": "oracle/http/GET_admin_settings_preferences_profile.json",
+   "cases": [
+    "default -> 200"
+   ]
+  }
+ ],
+ "GET /admin/sign_in": [
+  {
+   "file": "oracle/http/GET_admin_sign_in.json",
+   "cases": [
+    "default -> 200"
+   ]
+  }
+ ],
+ "GET /admin/styleguide": [
+  {
+   "file": "oracle/http/GET_admin_styleguide.json",
+   "cases": [
+    "default -> 200"
+   ]
+  }
+ ],
+ "GET /admin/tpp_credentials": [
+  {
+   "file": "oracle/http/GET_admin_tpp_credentials.json",
+   "cases": [
+    "default -> 200"
+   ]
+  }
+ ],
+ "GET /admin/tpp_credentials/:id": [
+  {
+   "file": "oracle/http/GET_admin_tpp_credentials__id.json",
+   "cases": [
+    "default -> 200",
+    "other_tenant_id -> 404"
+   ]
+  }
+ ],
+ "GET /admin/tpp_credentials/:id/edit": [
+  {
+   "file": "oracle/http/GET_admin_tpp_credentials__id_edit.json",
+   "cases": [
+    "default -> 200"
+   ]
+  }
+ ],
+ "GET /admin/tpp_credentials/new": [
+  {
+   "file": "oracle/http/GET_admin_tpp_credentials_new.json",
+   "cases": [
+    "default -> 200"
+   ]
+  }
+ ],
+ "GET /admin/transaction_syncs": [
+  {
+   "file": "oracle/http/GET_admin_transaction_syncs.json",
+   "cases": [
+    "default -> 200"
+   ]
+  }
+ ],
+ "GET /admin/transaction_syncs/:id": [
+  {
+   "file": "oracle/http/GET_admin_transaction_syncs__id.json",
+   "cases": [
+    "default -> 200"
+   ]
+  }
+ ],
+ "GET /admin/transaction_syncs/new": [
+  {
+   "file": "oracle/http/GET_admin_transaction_syncs_new.json",
+   "cases": [
+    "default -> 200"
+   ]
+  }
+ ],
+ "GET /admin/versions": [
+  {
+   "file": "oracle/http/GET_admin_versions.json",
+   "cases": [
+    "default -> 200",
+    "other_tenant_sees_all_versions -> 200"
+   ]
+  }
+ ],
+ "GET /admin/versions/:id": [
+  {
+   "file": "oracle/http/GET_admin_versions__id.json",
+   "cases": [
+    "default -> 200",
+    "other_tenant_reads_main_version -> 200"
+   ]
+  }
+ ],
+ "GET /api/v1/analytics/cash_flow": [
+  {
+   "file": "oracle/http/GET_api__version_analytics_cash_flow.json",
+   "cases": [
+    "default -> 200",
+    "explicit_range -> 200",
+    "invalid_bucket -> 400",
+    "from_after_to -> 500"
+   ]
+  }
+ ],
+ "GET /api/v1/analytics/categories/:slug": [
+  {
+   "file": "oracle/http/GET_api__version_analytics_categories__slug.json",
+   "cases": [
+    "default -> 200",
+    "unknown_slug -> 404"
+   ]
+  }
+ ],
+ "GET /api/v1/analytics/merchants/:slug": [
+  {
+   "file": "oracle/http/GET_api__version_analytics_merchants__slug.json",
+   "cases": [
+    "default -> 200",
+    "unknown_slug -> 404"
+   ]
+  }
+ ],
+ "GET /api/v1/analytics/spend": [
+  {
+   "file": "oracle/http/GET_api__version_analytics_spend.json",
+   "cases": [
+    "default -> 200"
+   ]
+  }
+ ],
+ "GET /api/v1/analytics/top_merchants": [
+  {
+   "file": "oracle/http/GET_api__version_analytics_top_merchants.json",
+   "cases": [
+    "default -> 200"
+   ]
+  }
+ ],
+ "GET /api/v1/bank_accounts": [
+  {
+   "file": "oracle/http/GET_api__version_bank_accounts.json",
+   "cases": [
+    "default -> 200",
+    "manual_only -> 200"
+   ]
+  }
+ ],
+ "GET /api/v1/bank_accounts/:id": [
+  {
+   "file": "oracle/http/GET_api__version_bank_accounts__id.json",
+   "cases": [
+    "default -> 200"
+   ]
+  }
+ ],
+ "GET /api/v1/bank_connections": [
+  {
+   "file": "oracle/http/GET_api__version_bank_connections.json",
+   "cases": [
+    "default -> 200",
+    "status_filter_authorized -> 200"
+   ]
+  }
+ ],
+ "GET /api/v1/bank_connections/:id": [
+  {
+   "file": "oracle/http/GET_api__version_bank_connections__id.json",
+   "cases": [
+    "default -> 200",
+    "other_tenant_id -> 404"
+   ]
+  }
+ ],
+ "GET /api/v1/bank_transactions": [
+  {
+   "file": "oracle/http/GET_api__version_bank_transactions.json",
+   "cases": [
+    "default -> 200"
+   ]
+  }
+ ],
+ "GET /api/v1/bank_transactions/:id": [
+  {
+   "file": "oracle/http/GET_api__version_bank_transactions__id.json",
+   "cases": [
+    "default -> 200",
+    "other_tenant_id -> 404"
+   ]
+  }
+ ],
+ "GET /api/v1/cash_transactions": [
+  {
+   "file": "oracle/http/GET_api__version_cash_transactions.json",
+   "cases": [
+    "default -> 200"
+   ]
+  }
+ ],
+ "GET /api/v1/cash_transactions/:id": [
+  {
+   "file": "oracle/http/GET_api__version_cash_transactions__id.json",
+   "cases": [
+    "default -> 200",
+    "other_tenant_id -> 404"
+   ]
+  }
+ ],
+ "GET /api/v1/categories": [
+  {
+   "file": "oracle/http/GET_api__version_categories.json",
+   "cases": [
+    "default -> 200",
+    "include_archived -> 200"
+   ]
+  }
+ ],
+ "GET /api/v1/categories/:id": [
+  {
+   "file": "oracle/http/GET_api__version_categories__id.json",
+   "cases": [
+    "default -> 200",
+    "other_tenant_id -> 404",
+    "non_integer_id -> 404"
+   ]
+  }
+ ],
+ "GET /api/:version/docs": [
+  {
+   "file": "oracle/http/GET_api__version_docs.json",
+   "cases": [
+    "default -> 302",
+    "unknown_version -> 302"
+   ]
+  }
+ ],
+ "GET /api/v1/llm_enrichments": [
+  {
+   "file": "oracle/http/GET_api__version_llm_enrichments.json",
+   "cases": [
+    "default -> 200"
+   ]
+  }
+ ],
+ "GET /api/v1/llm_enrichments/:id": [
+  {
+   "file": "oracle/http/GET_api__version_llm_enrichments__id.json",
+   "cases": [
+    "default -> 200",
+    "not_found -> 404"
+   ]
+  }
+ ],
+ "GET /api/v1/merchants": [
+  {
+   "file": "oracle/http/GET_api__version_merchants.json",
+   "cases": [
+    "unknown_api_path_404 -> 404",
+    "no_token -> 401",
+    "invalid_token -> 401",
+    "revoked_token -> 401",
+    "cors_preflight_like_origin -> 200",
+    "default -> 200",
+    "filtered -> 200",
+    "invalid_enum -> 400"
+   ]
+  }
+ ],
+ "GET /api/v1/merchants/:id": [
+  {
+   "file": "oracle/http/GET_api__version_merchants__id.json",
+   "cases": [
+    "default -> 200",
+    "other_tenant_id -> 404"
+   ]
+  }
+ ],
+ "GET /api/v1/merchants/:merchant_id/rules": [
+  {
+   "file": "oracle/http/GET_api__version_merchants__merchant_id_rules.json",
+   "cases": [
+    "default -> 200"
+   ]
+  }
+ ],
+ "GET /api/v1/swagger_doc": [
+  {
+   "file": "oracle/http/GET_api__version_swagger_doc.json",
+   "cases": [
+    "default -> 200"
+   ]
+  }
+ ],
+ "GET /api/v1/swagger_doc/:name": [
+  {
+   "file": "oracle/http/GET_api__version_swagger_doc__name.json",
+   "cases": [
+    "default -> 200",
+    "unknown_name -> 400"
+   ]
+  }
+ ],
+ "GET /api/v1/tpp_credentials": [
+  {
+   "file": "oracle/http/GET_api__version_tpp_credentials.json",
+   "cases": [
+    "default -> 200"
+   ]
+  }
+ ],
+ "GET /api/v1/tpp_credentials/:id": [
+  {
+   "file": "oracle/http/GET_api__version_tpp_credentials__id.json",
+   "cases": [
+    "default -> 200",
+    "other_tenant_id -> 404"
+   ]
+  }
+ ],
+ "GET /api/v1/transaction_syncs": [
+  {
+   "file": "oracle/http/GET_api__version_transaction_syncs.json",
+   "cases": [
+    "default -> 200"
+   ]
+  }
+ ],
+ "GET /api/v1/transaction_syncs/:id": [
+  {
+   "file": "oracle/http/GET_api__version_transaction_syncs__id.json",
+   "cases": [
+    "default -> 200"
+   ]
+  }
+ ],
+ "GET /api/v1/transactions": [
+  {
+   "file": "oracle/http/GET_api__version_transactions.json",
+   "cases": [
+    "default -> 200",
+    "filtered_paged -> 200",
+    "invalid_params -> 400",
+    "limit_above_max -> 200"
+   ]
+  }
+ ],
+ "GET /api/v1/transactions/:source_type/:source_id": [
+  {
+   "file": "oracle/http/GET_api__version_transactions__source_type__source_id.json",
+   "cases": [
+    "default -> 200",
+    "manual -> 200",
+    "other_tenant_id -> 404",
+    "invalid_source_type -> 400"
+   ]
+  }
+ ],
+ "GET /callback": [
+  {
+   "file": "oracle/http/GET_callback.json",
+   "cases": [
+    "anonymous_no_params -> 302",
+    "bank_error_param -> 302",
+    "invalid_state -> 302",
+    "missing_state -> 302"
+   ]
+  }
+ ],
+ "GET /mcp": [
+  {
+   "file": "oracle/http/GET_mcp.json",
+   "cases": [
+    "default -> 405"
+   ]
+  }
+ ],
+ "GET /rails/action_mailbox/mandrill/inbound_emails": [
+  {
+   "file": "oracle/http/GET_rails_action_mailbox_mandrill_inbound_emails.json",
+   "cases": [
+    "default -> 404"
+   ]
+  }
+ ],
+ "GET /rails/active_storage/blobs/:signed_id/*filename": [
+  {
+   "file": "oracle/http/GET_rails_active_storage_blobs__signed_id__filename.json",
+   "cases": [
+    "bogus_signed_id -> 404"
+   ]
+  }
+ ],
+ "GET /rails/active_storage/blobs/proxy/:signed_id/*filename": [
+  {
+   "file": "oracle/http/GET_rails_active_storage_blobs_proxy__signed_id__filename.json",
+   "cases": [
+    "bogus_signed_id -> 404"
+   ]
+  }
+ ],
+ "GET /rails/active_storage/blobs/redirect/:signed_id/*filename": [
+  {
+   "file": "oracle/http/GET_rails_active_storage_blobs_redirect__signed_id__filename.json",
+   "cases": [
+    "bogus_signed_id -> 404"
+   ]
+  }
+ ],
+ "GET /rails/active_storage/disk/:encoded_key/*filename": [
+  {
+   "file": "oracle/http/GET_rails_active_storage_disk__encoded_key__filename.json",
+   "cases": [
+    "bogus_signed_id -> 404"
+   ]
+  }
+ ],
+ "GET /rails/active_storage/representations/:signed_blob_id/:variation_key/*filename": [
+  {
+   "file": "oracle/http/GET_rails_active_storage_representations__signed_blob_id__variation_key__filename.json",
+   "cases": [
+    "bogus_signed_id -> 404"
+   ]
+  }
+ ],
+ "GET /rails/active_storage/representations/proxy/:signed_blob_id/:variation_key/*filename": [
+  {
+   "file": "oracle/http/GET_rails_active_storage_representations_proxy__signed_blob_id__variation_key__filename.json",
+   "cases": [
+    "bogus_signed_id -> 404"
+   ]
+  }
+ ],
+ "GET /rails/active_storage/representations/redirect/:signed_blob_id/:variation_key/*filename": [
+  {
+   "file": "oracle/http/GET_rails_active_storage_representations_redirect__signed_blob_id__variation_key__filename.json",
+   "cases": [
+    "bogus_signed_id -> 404"
+   ]
+  }
+ ],
+ "GET /rails/conductor/action_mailbox/inbound_emails": [
+  {
+   "file": "oracle/http/GET_rails_conductor_action_mailbox_inbound_emails.json",
+   "cases": [
+    "default -> 500"
+   ]
+  }
+ ],
+ "GET /rails/conductor/action_mailbox/inbound_emails/:id": [
+  {
+   "file": "oracle/http/GET_rails_conductor_action_mailbox_inbound_emails__id.json",
+   "cases": [
+    "default -> 500"
+   ]
+  }
+ ],
+ "GET /rails/conductor/action_mailbox/inbound_emails/new": [
+  {
+   "file": "oracle/http/GET_rails_conductor_action_mailbox_inbound_emails_new.json",
+   "cases": [
+    "default -> 200"
+   ]
+  }
+ ],
+ "GET /rails/conductor/action_mailbox/inbound_emails/sources/new": [
+  {
+   "file": "oracle/http/GET_rails_conductor_action_mailbox_inbound_emails_sources_new.json",
+   "cases": [
+    "default -> 200"
+   ]
+  }
+ ],
+ "GET /recede_historical_location": [
+  {
+   "file": "oracle/http/GET_recede_historical_location.json",
+   "cases": [
+    "default -> 200"
+   ]
+  }
+ ],
+ "GET /refresh_historical_location": [
+  {
+   "file": "oracle/http/GET_refresh_historical_location.json",
+   "cases": [
+    "default -> 200"
+   ]
+  }
+ ],
+ "GET /resume_historical_location": [
+  {
+   "file": "oracle/http/GET_resume_historical_location.json",
+   "cases": [
+    "default -> 200"
+   ]
+  }
+ ],
+ "GET /": [
+  {
+   "file": "oracle/http/GET_root.json",
+   "cases": [
+    "default -> 301"
+   ]
+  }
+ ],
+ "GET /setup": [
+  {
+   "file": "oracle/http/GET_setup.json",
+   "cases": [
+    "users_exist -> 302",
+    "no_users -> 200"
+   ]
+  }
+ ],
+ "MOUNT /sidekiq": [
+  {
+   "file": "oracle/http/GET_sidekiq.json",
+   "cases": [
+    "anonymous -> 302",
+    "authenticated -> 200"
+   ]
+  }
+ ],
+ "GET /up": [
+  {
+   "file": "oracle/http/GET_up.json",
+   "cases": [
+    "default -> 200"
+   ]
+  }
+ ],
+ "OPTIONS /api/v1/merchants": [
+  {
+   "file": "oracle/http/OPTIONS_api__version_merchants.json",
+   "cases": [
+    "cors_preflight -> 200"
+   ]
+  }
+ ],
+ "PATCH /admin/bank_connections/:bank_connection_id/sync_schedule": [
+  {
+   "file": "oracle/http/PATCH_admin_bank_connections__bank_connection_id_sync_schedule.json",
+   "cases": [
+    "default -> 302"
+   ]
+  }
+ ],
+ "PATCH /admin/bank_connections/:id": [
+  {
+   "file": "oracle/http/PATCH_admin_bank_connections__id.json",
+   "cases": [
+    "default -> 422"
+   ]
+  }
+ ],
+ "PATCH /admin/bank_transactions/:bank_transaction_id/enrichment": [
+  {
+   "file": "oracle/http/PATCH_admin_bank_transactions__bank_transaction_id_enrichment.json",
+   "cases": [
+    "default -> 302"
+   ]
+  }
+ ],
+ "PATCH /admin/cash_transactions/:id": [
+  {
+   "file": "oracle/http/PATCH_admin_cash_transactions__id.json",
+   "cases": [
+    "default -> 302"
+   ]
+  }
+ ],
+ "PATCH /admin/categories/:id": [
+  {
+   "file": "oracle/http/PATCH_admin_categories__id.json",
+   "cases": [
+    "default -> 302"
+   ]
+  }
+ ],
+ "PATCH /admin/merchants/:id": [
+  {
+   "file": "oracle/http/PATCH_admin_merchants__id.json",
+   "cases": [
+    "default -> 302",
+    "other_tenant_id -> 404"
+   ]
+  }
+ ],
+ "PATCH /admin/merchants/:merchant_id/merchant_rules/:id": [
+  {
+   "file": "oracle/http/PATCH_admin_merchants__merchant_id_merchant_rules__id.json",
+   "cases": [
+    "default -> 302"
+   ]
+  }
+ ],
+ "PATCH /admin/password": [
+  {
+   "file": "oracle/http/PATCH_admin_password.json",
+   "cases": [
+    "bogus_token -> 422"
+   ]
+  }
+ ],
+ "PATCH /admin/settings/preferences/app": [
+  {
+   "file": "oracle/http/PATCH_admin_settings_preferences_app.json",
+   "cases": [
+    "default -> 302"
+   ]
+  }
+ ],
+ "PATCH /admin/settings/preferences/llm": [
+  {
+   "file": "oracle/http/PATCH_admin_settings_preferences_llm.json",
+   "cases": [
+    "default -> 302",
+    "invalid_provider -> 500"
+   ]
+  }
+ ],
+ "PATCH /admin/settings/preferences/password": [
+  {
+   "file": "oracle/http/PATCH_admin_settings_preferences_password.json",
+   "cases": [
+    "wrong_current_password -> 422",
+    "too_short -> 422"
+   ]
+  }
+ ],
+ "PATCH /admin/settings/preferences/profile": [
+  {
+   "file": "oracle/http/PATCH_admin_settings_preferences_profile.json",
+   "cases": [
+    "default -> 302",
+    "invalid_blank_name -> 422"
+   ]
+  }
+ ],
+ "PATCH /admin/tpp_credentials/:id": [
+  {
+   "file": "oracle/http/PATCH_admin_tpp_credentials__id.json",
+   "cases": [
+    "default -> 302"
+   ]
+  }
+ ],
+ "PATCH /api/v1/bank_connections/:id": [
+  {
+   "file": "oracle/http/PATCH_api__version_bank_connections__id.json",
+   "cases": [
+    "invalid_status -> 422"
+   ]
+  }
+ ],
+ "PATCH /api/v1/cash_transactions/:id": [
+  {
+   "file": "oracle/http/PATCH_api__version_cash_transactions__id.json",
+   "cases": [
+    "default -> 200",
+    "invalid_direction -> 400"
+   ]
+  }
+ ],
+ "PATCH /api/v1/categories/:id": [
+  {
+   "file": "oracle/http/PATCH_api__version_categories__id.json",
+   "cases": [
+    "default -> 200",
+    "invalid_kind -> 400",
+    "other_tenant_id -> 404"
+   ]
+  }
+ ],
+ "PATCH /api/v1/merchants/:id": [
+  {
+   "file": "oracle/http/PATCH_api__version_merchants__id.json",
+   "cases": [
+    "default -> 200"
+   ]
+  }
+ ],
+ "PATCH /api/v1/merchants/:merchant_id/rules/:id": [
+  {
+   "file": "oracle/http/PATCH_api__version_merchants__merchant_id_rules__id.json",
+   "cases": [
+    "default -> 200"
+   ]
+  }
+ ],
+ "PATCH /api/v1/tpp_credentials/:id": [
+  {
+   "file": "oracle/http/PATCH_api__version_tpp_credentials__id.json",
+   "cases": [
+    "default -> 200"
+   ]
+  }
+ ],
+ "POST /admin/bank_accounts/:id/refresh_balances": [
+  {
+   "file": "oracle/http/POST_admin_bank_accounts__id_refresh_balances.json",
+   "cases": [
+    "default -> 302"
+   ]
+  }
+ ],
+ "POST /admin/bank_accounts/:id/refresh_details": [
+  {
+   "file": "oracle/http/POST_admin_bank_accounts__id_refresh_details.json",
+   "cases": [
+    "default -> 302"
+   ]
+  }
+ ],
+ "POST /admin/bank_connections": [
+  {
+   "file": "oracle/http/POST_admin_bank_connections.json",
+   "cases": [
+    "default -> 303",
+    "invalid_blank_aspsp -> 204"
+   ]
+  }
+ ],
+ "POST /admin/bank_connections/:id/reauth": [
+  {
+   "file": "oracle/http/POST_admin_bank_connections__id_reauth.json",
+   "cases": [
+    "default -> 302"
+   ]
+  }
+ ],
+ "POST /admin/bank_connections/:id/refresh": [
+  {
+   "file": "oracle/http/POST_admin_bank_connections__id_refresh.json",
+   "cases": [
+    "default -> 302"
+   ]
+  }
+ ],
+ "POST /admin/cash_transactions": [
+  {
+   "file": "oracle/http/POST_admin_cash_transactions.json",
+   "cases": [
+    "default -> 302",
+    "invalid_amount -> 422"
+   ]
+  }
+ ],
+ "POST /admin/categories": [
+  {
+   "file": "oracle/http/POST_admin_categories.json",
+   "cases": [
+    "default -> 302",
+    "invalid_blank_name -> 422",
+    "missing_csrf_token -> 422"
+   ]
+  }
+ ],
+ "POST /admin/categories/:id/archive": [
+  {
+   "file": "oracle/http/POST_admin_categories__id_archive.json",
+   "cases": [
+    "default -> 302"
+   ]
+  }
+ ],
+ "POST /admin/categories/:id/unarchive": [
+  {
+   "file": "oracle/http/POST_admin_categories__id_unarchive.json",
+   "cases": [
+    "default -> 302"
+   ]
+  }
+ ],
+ "POST /admin/debug/enqueue_failing_job": [
+  {
+   "file": "oracle/http/POST_admin_debug_enqueue_failing_job.json",
+   "cases": [
+    "default -> 204"
+   ]
+  }
+ ],
+ "POST /admin/llm_enrichments": [
+  {
+   "file": "oracle/http/POST_admin_llm_enrichments.json",
+   "cases": [
+    "default -> 302"
+   ]
+  }
+ ],
+ "POST /admin/merchants": [
+  {
+   "file": "oracle/http/POST_admin_merchants.json",
+   "cases": [
+    "default -> 302",
+    "invalid_blank_name -> 422"
+   ]
+  }
+ ],
+ "POST /admin/merchants/:id/approve": [
+  {
+   "file": "oracle/http/POST_admin_merchants__id_approve.json",
+   "cases": [
+    "default -> 302"
+   ]
+  }
+ ],
+ "POST /admin/merchants/:id/archive": [
+  {
+   "file": "oracle/http/POST_admin_merchants__id_archive.json",
+   "cases": [
+    "default -> 302"
+   ]
+  }
+ ],
+ "POST /admin/merchants/:id/unarchive": [
+  {
+   "file": "oracle/http/POST_admin_merchants__id_unarchive.json",
+   "cases": [
+    "default -> 302"
+   ]
+  }
+ ],
+ "POST /admin/merchants/:merchant_id/merchant_rules": [
+  {
+   "file": "oracle/http/POST_admin_merchants__merchant_id_merchant_rules.json",
+   "cases": [
+    "default -> 302",
+    "invalid_regex -> 302"
+   ]
+  }
+ ],
+ "POST /admin/onboarding/seed_taxonomy": [
+  {
+   "file": "oracle/http/POST_admin_onboarding_seed_taxonomy.json",
+   "cases": [
+    "default -> 302"
+   ]
+  }
+ ],
+ "POST /admin/password": [
+  {
+   "file": "oracle/http/POST_admin_password.json",
+   "cases": [
+    "unknown_email -> 422",
+    "known_email -> 303"
+   ]
+  }
+ ],
+ "POST /admin/settings/preferences/api_tokens": [
+  {
+   "file": "oracle/http/POST_admin_settings_preferences_api_tokens.json",
+   "cases": [
+    "default -> 302",
+    "invalid_blank_name -> 422"
+   ]
+  }
+ ],
+ "POST /admin/settings/preferences/data_exchange/export": [
+  {
+   "file": "oracle/http/POST_admin_settings_preferences_data_exchange_export.json",
+   "cases": [
+    "default -> 200",
+    "blank_passphrase -> 302"
+   ]
+  }
+ ],
+ "POST /admin/settings/preferences/data_exchange/import": [
+  {
+   "file": "oracle/http/POST_admin_settings_preferences_data_exchange_import.json",
+   "cases": [
+    "missing_bundle -> 302",
+    "garbage_bundle -> 302"
+   ]
+  }
+ ],
+ "POST /admin/settings/preferences/llm/test": [
+  {
+   "file": "oracle/http/POST_admin_settings_preferences_llm_test.json",
+   "cases": [
+    "default -> 302"
+   ]
+  }
+ ],
+ "POST /admin/sign_in": [
+  {
+   "file": "oracle/http/POST_admin_sign_in.json",
+   "cases": [
+    "wrong_password -> 422",
+    "missing_csrf_token -> 422",
+    "valid_credentials -> 303"
+   ]
+  }
+ ],
+ "POST /admin/tpp_credentials": [
+  {
+   "file": "oracle/http/POST_admin_tpp_credentials.json",
+   "cases": [
+    "default -> 302",
+    "invalid_blank_name -> 422"
+   ]
+  }
+ ],
+ "POST /admin/tpp_credentials/:id/make_primary": [
+  {
+   "file": "oracle/http/POST_admin_tpp_credentials__id_make_primary.json",
+   "cases": [
+    "default -> 302"
+   ]
+  }
+ ],
+ "POST /admin/tpp_credentials/:id/test_connection": [
+  {
+   "file": "oracle/http/POST_admin_tpp_credentials__id_test_connection.json",
+   "cases": [
+    "default -> 302"
+   ]
+  }
+ ],
+ "POST /admin/transaction_syncs": [
+  {
+   "file": "oracle/http/POST_admin_transaction_syncs.json",
+   "cases": [
+    "default -> 302",
+    "missing_connection -> 302"
+   ]
+  }
+ ],
+ "POST /api/v1/bank_accounts/:id/refresh_balances": [
+  {
+   "file": "oracle/http/POST_api__version_bank_accounts__id_refresh_balances.json",
+   "cases": [
+    "default -> 201"
+   ]
+  }
+ ],
+ "POST /api/v1/bank_accounts/:id/refresh_details": [
+  {
+   "file": "oracle/http/POST_api__version_bank_accounts__id_refresh_details.json",
+   "cases": [
+    "default -> 201"
+   ]
+  }
+ ],
+ "POST /api/v1/bank_connections/:id/refresh": [
+  {
+   "file": "oracle/http/POST_api__version_bank_connections__id_refresh.json",
+   "cases": [
+    "default -> 201"
+   ]
+  }
+ ],
+ "POST /api/v1/bank_transactions/:bank_transaction_id/classification": [
+  {
+   "file": "oracle/http/POST_api__version_bank_transactions__bank_transaction_id_classification.json",
+   "cases": [
+    "default -> 201",
+    "create_rule_missing_pattern -> 422",
+    "invalid_mode -> 400"
+   ]
+  }
+ ],
+ "POST /api/v1/cash_transactions": [
+  {
+   "file": "oracle/http/POST_api__version_cash_transactions.json",
+   "cases": [
+    "default -> 201",
+    "invalid_amount -> 422",
+    "missing_amount -> 400",
+    "currency_eur_lowercase -> 201"
+   ]
+  }
+ ],
+ "POST /api/v1/categories": [
+  {
+   "file": "oracle/http/POST_api__version_categories.json",
+   "cases": [
+    "default -> 201",
+    "missing_name -> 400",
+    "duplicate_slug -> 422"
+   ]
+  }
+ ],
+ "POST /api/v1/categories/:id/archive": [
+  {
+   "file": "oracle/http/POST_api__version_categories__id_archive.json",
+   "cases": [
+    "default -> 201"
+   ]
+  }
+ ],
+ "POST /api/v1/categories/:id/unarchive": [
+  {
+   "file": "oracle/http/POST_api__version_categories__id_unarchive.json",
+   "cases": [
+    "default -> 201"
+   ]
+  }
+ ],
+ "POST /api/v1/llm_enrichments": [
+  {
+   "file": "oracle/http/POST_api__version_llm_enrichments.json",
+   "cases": [
+    "default -> 201",
+    "invalid_limit -> 400"
+   ]
+  }
+ ],
+ "POST /api/v1/merchants": [
+  {
+   "file": "oracle/http/POST_api__version_merchants.json",
+   "cases": [
+    "default -> 201",
+    "missing_name -> 400",
+    "foreign_category -> 201"
+   ]
+  }
+ ],
+ "POST /api/v1/merchants/:id/approve": [
+  {
+   "file": "oracle/http/POST_api__version_merchants__id_approve.json",
+   "cases": [
+    "default -> 201"
+   ]
+  }
+ ],
+ "POST /api/v1/merchants/:id/archive": [
+  {
+   "file": "oracle/http/POST_api__version_merchants__id_archive.json",
+   "cases": [
+    "default -> 201"
+   ]
+  }
+ ],
+ "POST /api/v1/merchants/:id/unarchive": [
+  {
+   "file": "oracle/http/POST_api__version_merchants__id_unarchive.json",
+   "cases": [
+    "default -> 201"
+   ]
+  }
+ ],
+ "POST /api/v1/merchants/:merchant_id/rules": [
+  {
+   "file": "oracle/http/POST_api__version_merchants__merchant_id_rules.json",
+   "cases": [
+    "default -> 201",
+    "invalid_regex -> 422",
+    "missing_required -> 400"
+   ]
+  }
+ ],
+ "POST /api/v1/tpp_credentials": [
+  {
+   "file": "oracle/http/POST_api__version_tpp_credentials.json",
+   "cases": [
+    "default -> 201",
+    "invalid_environment -> 422"
+   ]
+  }
+ ],
+ "POST /api/v1/tpp_credentials/:id/make_primary": [
+  {
+   "file": "oracle/http/POST_api__version_tpp_credentials__id_make_primary.json",
+   "cases": [
+    "default -> 201",
+    "restore_primary -> 201"
+   ]
+  }
+ ],
+ "POST /api/v1/tpp_credentials/:id/test_connection": [
+  {
+   "file": "oracle/http/POST_api__version_tpp_credentials__id_test_connection.json",
+   "cases": [
+    "default -> 201",
+    "incomplete_credential -> 201"
+   ]
+  }
+ ],
+ "POST /api/v1/transaction_syncs": [
+  {
+   "file": "oracle/http/POST_api__version_transaction_syncs.json",
+   "cases": [
+    "default -> 201",
+    "date_to_before_from -> 201",
+    "other_tenant_connection -> 201"
+   ]
+  }
+ ],
+ "POST /mcp": [
+  {
+   "file": "oracle/http/POST_mcp.json",
+   "cases": [
+    "no_token -> 401",
+    "revoked_token -> 401",
+    "initialize -> 200",
+    "tools_list -> 200",
+    "resources_list -> 200",
+    "unknown_method -> 200",
+    "malformed_json -> 500",
+    "tools_call:transactions.list -> 200",
+    "tools_call:transactions.get -> 200",
+    "tools_call:categories.list -> 200",
+    "tools_call:merchants.list -> 200",
+    "tools_call:bank_accounts.list -> 200",
+    "tools_call:bank_connections.list -> 200",
+    "tools_call:analytics.cash_flow -> 200",
+    "tools_call:analytics.spend -> 200",
+    "tools_call:analytics.top_merchants -> 200",
+    "tools_call:transactions.get:other_tenant -> 200",
+    "tools_call:analytics.cash_flow:invalid_enum -> 200",
+    "tools_call:categories.create -> 200",
+    "tools_call:categories.create:invalid -> 200",
+    "tools_call:merchants.create -> 200",
+    "tools_call:cash.create_transaction -> 200",
+    "tools_call:cash.create_transaction:invalid_amount -> 200",
+    "tools_call:categories.update -> 200",
+    "tools_call:categories.archive -> 200",
+    "tools_call:categories.unarchive -> 200",
+    "tools_call:merchants.update -> 200",
+    "tools_call:merchants.archive -> 200",
+    "tools_call:merchants.unarchive -> 200",
+    "tools_call:merchants.approve -> 200",
+    "tools_call:cash.update_transaction -> 200",
+    "tools_call:transactions.classify -> 200",
+    "tools_call:bank_accounts.refresh_balances -> 200",
+    "tools_call:bank_accounts.refresh_details -> 200",
+    "tools_call:bank_connections.refresh -> 200",
+    "tools_call:transaction_syncs.create -> 200",
+    "tools_call:llm_enrichments.create -> 200",
+    "tools_call:cash.delete_transaction -> 200"
+   ]
+  }
+ ],
+ "POST /rails/action_mailbox/mailgun/inbound_emails/mime": [
+  {
+   "file": "oracle/http/POST_rails_action_mailbox_mailgun_inbound_emails_mime.json",
+   "cases": [
+    "default -> 404"
+   ]
+  }
+ ],
+ "POST /rails/action_mailbox/mandrill/inbound_emails": [
+  {
+   "file": "oracle/http/POST_rails_action_mailbox_mandrill_inbound_emails.json",
+   "cases": [
+    "default -> 404"
+   ]
+  }
+ ],
+ "POST /rails/action_mailbox/postmark/inbound_emails": [
+  {
+   "file": "oracle/http/POST_rails_action_mailbox_postmark_inbound_emails.json",
+   "cases": [
+    "default -> 404"
+   ]
+  }
+ ],
+ "POST /rails/action_mailbox/relay/inbound_emails": [
+  {
+   "file": "oracle/http/POST_rails_action_mailbox_relay_inbound_emails.json",
+   "cases": [
+    "default -> 404"
+   ]
+  }
+ ],
+ "POST /rails/action_mailbox/sendgrid/inbound_emails": [
+  {
+   "file": "oracle/http/POST_rails_action_mailbox_sendgrid_inbound_emails.json",
+   "cases": [
+    "default -> 404"
+   ]
+  }
+ ],
+ "POST /rails/active_storage/direct_uploads": [
+  {
+   "file": "oracle/http/POST_rails_active_storage_direct_uploads.json",
+   "cases": [
+    "no_csrf -> 422"
+   ]
+  }
+ ],
+ "POST /rails/conductor/action_mailbox/:inbound_email_id/incinerate": [
+  {
+   "file": "oracle/http/POST_rails_conductor_action_mailbox__inbound_email_id_incinerate.json",
+   "cases": [
+    "no_csrf -> 422"
+   ]
+  }
+ ],
+ "POST /rails/conductor/action_mailbox/:inbound_email_id/reroute": [
+  {
+   "file": "oracle/http/POST_rails_conductor_action_mailbox__inbound_email_id_reroute.json",
+   "cases": [
+    "no_csrf -> 422"
+   ]
+  }
+ ],
+ "POST /rails/conductor/action_mailbox/inbound_emails": [
+  {
+   "file": "oracle/http/POST_rails_conductor_action_mailbox_inbound_emails.json",
+   "cases": [
+    "no_csrf -> 422"
+   ]
+  }
+ ],
+ "POST /rails/conductor/action_mailbox/inbound_emails/sources": [
+  {
+   "file": "oracle/http/POST_rails_conductor_action_mailbox_inbound_emails_sources.json",
+   "cases": [
+    "no_csrf -> 422"
+   ]
+  }
+ ],
+ "POST /setup": [
+  {
+   "file": "oracle/http/POST_setup.json",
+   "cases": [
+    "users_exist -> 302",
+    "no_users_invalid -> 422",
+    "no_users_valid -> 302"
+   ]
+  }
+ ],
+ "PUT /admin/bank_connections/:bank_connection_id/sync_schedule": [
+  {
+   "file": "oracle/http/PUT_admin_bank_connections__bank_connection_id_sync_schedule.json",
+   "cases": [
+    "invalid -> 422"
+   ]
+  }
+ ],
+ "PUT /admin/bank_connections/:id": [
+  {
+   "file": "oracle/http/PUT_admin_bank_connections__id.json",
+   "cases": [
+    "invalid_status -> 422"
+   ]
+  }
+ ],
+ "PUT /admin/bank_transactions/:bank_transaction_id/enrichment": [
+  {
+   "file": "oracle/http/PUT_admin_bank_transactions__bank_transaction_id_enrichment.json",
+   "cases": [
+    "create_rule_missing_fields -> 302"
+   ]
+  }
+ ],
+ "PUT /admin/cash_transactions/:id": [
+  {
+   "file": "oracle/http/PUT_admin_cash_transactions__id.json",
+   "cases": [
+    "invalid_amount -> 422"
+   ]
+  }
+ ],
+ "PUT /admin/categories/:id": [
+  {
+   "file": "oracle/http/PUT_admin_categories__id.json",
+   "cases": [
+    "invalid_kind -> 422"
+   ]
+  }
+ ],
+ "PUT /admin/merchants/:id": [
+  {
+   "file": "oracle/http/PUT_admin_merchants__id.json",
+   "cases": [
+    "invalid_blank_name -> 422"
+   ]
+  }
+ ],
+ "PUT /admin/merchants/:merchant_id/merchant_rules/:id": [
+  {
+   "file": "oracle/http/PUT_admin_merchants__merchant_id_merchant_rules__id.json",
+   "cases": [
+    "invalid_blank_pattern -> 302"
+   ]
+  }
+ ],
+ "PUT /admin/password": [
+  {
+   "file": "oracle/http/PUT_admin_password.json",
+   "cases": [
+    "bogus_token -> 422"
+   ]
+  }
+ ],
+ "PUT /admin/tpp_credentials/:id": [
+  {
+   "file": "oracle/http/PUT_admin_tpp_credentials__id.json",
+   "cases": [
+    "invalid_environment -> 422"
+   ]
+  }
+ ],
+ "PUT /rails/active_storage/disk/:encoded_token": [
+  {
+   "file": "oracle/http/PUT_rails_active_storage_disk__encoded_token.json",
+   "cases": [
+    "bogus_token -> 404"
+   ]
+  }
+ ]
+}

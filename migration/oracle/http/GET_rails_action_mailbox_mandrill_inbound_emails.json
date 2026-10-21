@@ -1,0 +1,30 @@
+{
+  "route": "GET /rails/action_mailbox/mandrill/inbound_emails(.:format)",
+  "captured_at": "2026-10-21T13:22:11.293Z",
+  "base_url": "http://127.0.0.1:3000",
+  "cases": [
+    {
+      "case": "default",
+      "actor": "anon",
+      "request": {
+        "method": "GET",
+        "path": "/rails/action_mailbox/mandrill/inbound_emails",
+        "headers": {}
+      },
+      "response": {
+        "status": 404,
+        "duration_ms": 123,
+        "headers": {
+          "x-frame-options": "SAMEORIGIN",
+          "x-content-type-options": "nosniff",
+          "content-type": "text/html",
+          "cache-control": "no-cache",
+          "x-request-id": "1e97de1e-e6b9-42f5-8246-70f21d490f66",
+          "vary": "Origin",
+          "content-length": "0"
+        },
+        "body_sample": ""
+      }
+    }
+  ]
+}

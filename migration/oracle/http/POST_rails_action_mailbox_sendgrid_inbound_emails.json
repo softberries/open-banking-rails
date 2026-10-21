@@ -1,0 +1,33 @@
+{
+  "route": "POST /rails/action_mailbox/sendgrid/inbound_emails(.:format)",
+  "captured_at": "2026-10-21T13:22:11.014Z",
+  "base_url": "http://127.0.0.1:3000",
+  "cases": [
+    {
+      "case": "default",
+      "actor": "anon",
+      "request": {
+        "method": "POST",
+        "path": "/rails/action_mailbox/sendgrid/inbound_emails",
+        "headers": {
+          "content-type": "message/rfc822"
+        },
+        "body": "x"
+      },
+      "response": {
+        "status": 404,
+        "duration_ms": 140,
+        "headers": {
+          "x-frame-options": "SAMEORIGIN",
+          "x-content-type-options": "nosniff",
+          "content-type": "text/html",
+          "cache-control": "no-cache",
+          "x-request-id": "35d0cbb1-4464-4e17-abe1-156a59a02766",
+          "vary": "Origin",
+          "content-length": "0"
+        },
+        "body_sample": ""
+      }
+    }
+  ]
+}

@@ -1,0 +1,1062 @@
+{
+ "app/controllers/admin/analytics/base_controller.rb": {
+  "relevant": 7,
+  "covered": 7,
+  "pct": 100.0
+ },
+ "app/controllers/admin/analytics/categories_controller.rb": {
+  "relevant": 22,
+  "covered": 20,
+  "pct": 90.9
+ },
+ "app/controllers/admin/analytics/dashboard_controller.rb": {
+  "relevant": 45,
+  "covered": 43,
+  "pct": 95.6
+ },
+ "app/controllers/admin/analytics/merchants_controller.rb": {
+  "relevant": 19,
+  "covered": 19,
+  "pct": 100.0
+ },
+ "app/controllers/admin/bank_accounts_controller.rb": {
+  "relevant": 18,
+  "covered": 16,
+  "pct": 88.9
+ },
+ "app/controllers/admin/bank_connections_controller.rb": {
+  "relevant": 53,
+  "covered": 46,
+  "pct": 86.8
+ },
+ "app/controllers/admin/bank_transactions_controller.rb": {
+  "relevant": 27,
+  "covered": 19,
+  "pct": 70.4
+ },
+ "app/controllers/admin/base_controller.rb": {
+  "relevant": 20,
+  "covered": 20,
+  "pct": 100.0
+ },
+ "app/controllers/admin/cash_transactions_controller.rb": {
+  "relevant": 70,
+  "covered": 68,
+  "pct": 97.1
+ },
+ "app/controllers/admin/categories_controller.rb": {
+  "relevant": 40,
+  "covered": 40,
+  "pct": 100.0
+ },
+ "app/controllers/admin/llm_enrichments_controller.rb": {
+  "relevant": 29,
+  "covered": 29,
+  "pct": 100.0
+ },
+ "app/controllers/admin/matching_engine_controller.rb": {
+  "relevant": 18,
+  "covered": 18,
+  "pct": 100.0
+ },
+ "app/controllers/admin/merchant_rules_controller.rb": {
+  "relevant": 24,
+  "covered": 23,
+  "pct": 95.8
+ },
+ "app/controllers/admin/merchants_controller.rb": {
+  "relevant": 57,
+  "covered": 51,
+  "pct": 89.5
+ },
+ "app/controllers/admin/onboarding_controller.rb": {
+  "relevant": 7,
+  "covered": 7,
+  "pct": 100.0
+ },
+ "app/controllers/admin/passwords_controller.rb": {
+  "relevant": 3,
+  "covered": 3,
+  "pct": 100.0
+ },
+ "app/controllers/admin/sessions_controller.rb": {
+  "relevant": 3,
+  "covered": 3,
+  "pct": 100.0
+ },
+ "app/controllers/admin/settings/api_tokens_controller.rb": {
+  "relevant": 24,
+  "covered": 24,
+  "pct": 100.0
+ },
+ "app/controllers/admin/settings/base_controller.rb": {
+  "relevant": 3,
+  "covered": 3,
+  "pct": 100.0
+ },
+ "app/controllers/admin/settings/data_exchange_controller.rb": {
+  "relevant": 22,
+  "covered": 22,
+  "pct": 100.0
+ },
+ "app/controllers/admin/settings/preferences_controller.rb": {
+  "relevant": 60,
+  "covered": 56,
+  "pct": 93.3
+ },
+ "app/controllers/admin/styleguide_controller.rb": {
+  "relevant": 3,
+  "covered": 3,
+  "pct": 100.0
+ },
+ "app/controllers/admin/sync_schedules_controller.rb": {
+  "relevant": 17,
+  "covered": 17,
+  "pct": 100.0
+ },
+ "app/controllers/admin/tpp_credentials_controller.rb": {
+  "relevant": 37,
+  "covered": 34,
+  "pct": 91.9
+ },
+ "app/controllers/admin/transaction_enrichments_controller.rb": {
+  "relevant": 9,
+  "covered": 9,
+  "pct": 100.0
+ },
+ "app/controllers/admin/transaction_syncs_controller.rb": {
+  "relevant": 24,
+  "covered": 24,
+  "pct": 100.0
+ },
+ "app/controllers/admin/versions_controller.rb": {
+  "relevant": 6,
+  "covered": 6,
+  "pct": 100.0
+ },
+ "app/controllers/application_controller.rb": {
+  "relevant": 10,
+  "covered": 10,
+  "pct": 100.0
+ },
+ "app/controllers/mcp_controller.rb": {
+  "relevant": 16,
+  "covered": 16,
+  "pct": 100.0
+ },
+ "app/controllers/oauth_callbacks_controller.rb": {
+  "relevant": 16,
+  "covered": 16,
+  "pct": 100.0
+ },
+ "app/controllers/setup_controller.rb": {
+  "relevant": 19,
+  "covered": 19,
+  "pct": 100.0
+ },
+ "app/forms/bank_connection_request_form.rb": {
+  "relevant": 11,
+  "covered": 11,
+  "pct": 100.0
+ },
+ "app/helpers/admin/base_helper.rb": {
+  "relevant": 78,
+  "covered": 69,
+  "pct": 88.5
+ },
+ "app/helpers/admin/enrichment_helper.rb": {
+  "relevant": 21,
+  "covered": 17,
+  "pct": 81.0
+ },
+ "app/helpers/admin/hide_private_helper.rb": {
+  "relevant": 10,
+  "covered": 10,
+  "pct": 100.0
+ },
+ "app/helpers/admin/preference_toggle_helper.rb": {
+  "relevant": 12,
+  "covered": 12,
+  "pct": 100.0
+ },
+ "app/helpers/admin/privacy_helper.rb": {
+  "relevant": 25,
+  "covered": 22,
+  "pct": 88.0
+ },
+ "app/helpers/application_helper.rb": {
+  "relevant": 1,
+  "covered": 1,
+  "pct": 100.0
+ },
+ "app/jobs/application_job.rb": {
+  "relevant": 1,
+  "covered": 1,
+  "pct": 100.0
+ },
+ "app/jobs/auto_sync/dispatcher_job.rb": {
+  "relevant": 6,
+  "covered": 6,
+  "pct": 100.0
+ },
+ "app/jobs/llm_enrichment_job.rb": {
+  "relevant": 27,
+  "covered": 25,
+  "pct": 92.6
+ },
+ "app/jobs/transaction_sync_job.rb": {
+  "relevant": 67,
+  "covered": 47,
+  "pct": 70.1
+ },
+ "app/mailers/application_mailer.rb": {
+  "relevant": 4,
+  "covered": 0,
+  "pct": 0.0
+ },
+ "app/models/application_record.rb": {
+  "relevant": 2,
+  "covered": 2,
+  "pct": 100.0
+ },
+ "app/models/bank_account.rb": {
+  "relevant": 53,
+  "covered": 52,
+  "pct": 98.1
+ },
+ "app/models/bank_connection.rb": {
+  "relevant": 39,
+  "covered": 37,
+  "pct": 94.9
+ },
+ "app/models/bank_transaction.rb": {
+  "relevant": 35,
+  "covered": 35,
+  "pct": 100.0
+ },
+ "app/models/category.rb": {
+  "relevant": 60,
+  "covered": 57,
+  "pct": 95.0
+ },
+ "app/models/concerns/ledger_entry_concern.rb": {
+  "relevant": 8,
+  "covered": 8,
+  "pct": 100.0
+ },
+ "app/models/ledger_entry.rb": {
+  "relevant": 32,
+  "covered": 32,
+  "pct": 100.0
+ },
+ "app/models/llm_setting.rb": {
+  "relevant": 32,
+  "covered": 30,
+  "pct": 93.8
+ },
+ "app/models/manual_transaction.rb": {
+  "relevant": 48,
+  "covered": 46,
+  "pct": 95.8
+ },
+ "app/models/merchant.rb": {
+  "relevant": 32,
+  "covered": 31,
+  "pct": 96.9
+ },
+ "app/models/merchant_rule.rb": {
+  "relevant": 37,
+  "covered": 36,
+  "pct": 97.3
+ },
+ "app/models/operation_run.rb": {
+  "relevant": 61,
+  "covered": 59,
+  "pct": 96.7
+ },
+ "app/models/personal_access_token.rb": {
+  "relevant": 16,
+  "covered": 16,
+  "pct": 100.0
+ },
+ "app/models/styleguide_demo.rb": {
+  "relevant": 6,
+  "covered": 6,
+  "pct": 100.0
+ },
+ "app/models/sync_schedule.rb": {
+  "relevant": 12,
+  "covered": 12,
+  "pct": 100.0
+ },
+ "app/models/tpp_credential.rb": {
+  "relevant": 50,
+  "covered": 49,
+  "pct": 98.0
+ },
+ "app/models/transaction_enrichment.rb": {
+  "relevant": 24,
+  "covered": 24,
+  "pct": 100.0
+ },
+ "app/models/user.rb": {
+  "relevant": 45,
+  "covered": 45,
+  "pct": 100.0
+ },
+ "app/models/user_hidden_category.rb": {
+  "relevant": 4,
+  "covered": 4,
+  "pct": 100.0
+ },
+ "app/services/analytics/account_breakdown.rb": {
+  "relevant": 12,
+  "covered": 12,
+  "pct": 100.0
+ },
+ "app/services/analytics/cash_flow.rb": {
+  "relevant": 21,
+  "covered": 21,
+  "pct": 100.0
+ },
+ "app/services/analytics/facet_breakdown.rb": {
+  "relevant": 13,
+  "covered": 13,
+  "pct": 100.0
+ },
+ "app/services/analytics/filter.rb": {
+  "relevant": 102,
+  "covered": 93,
+  "pct": 91.2
+ },
+ "app/services/analytics/period.rb": {
+  "relevant": 37,
+  "covered": 37,
+  "pct": 100.0
+ },
+ "app/services/analytics/spend_breakdown.rb": {
+  "relevant": 53,
+  "covered": 46,
+  "pct": 86.8
+ },
+ "app/services/analytics/top_merchants.rb": {
+  "relevant": 11,
+  "covered": 11,
+  "pct": 100.0
+ },
+ "app/services/analytics/top_movers.rb": {
+  "relevant": 16,
+  "covered": 16,
+  "pct": 100.0
+ },
+ "app/services/auth/personal_access_token_authenticator.rb": {
+  "relevant": 16,
+  "covered": 16,
+  "pct": 100.0
+ },
+ "app/services/auth/personal_access_token_issuer.rb": {
+  "relevant": 18,
+  "covered": 18,
+  "pct": 100.0
+ },
+ "app/services/auto_sync/circuit_breaker.rb": {
+  "relevant": 26,
+  "covered": 26,
+  "pct": 100.0
+ },
+ "app/services/auto_sync/dispatcher.rb": {
+  "relevant": 40,
+  "covered": 40,
+  "pct": 100.0
+ },
+ "app/services/auto_sync/next_run_calculator.rb": {
+  "relevant": 27,
+  "covered": 27,
+  "pct": 100.0
+ },
+ "app/services/auto_sync/schedule_upserter.rb": {
+  "relevant": 37,
+  "covered": 35,
+  "pct": 94.6
+ },
+ "app/services/banking/counterparty_resolver.rb": {
+  "relevant": 26,
+  "covered": 26,
+  "pct": 100.0
+ },
+ "app/services/cash/atm_withdrawal_linker.rb": {
+  "relevant": 26,
+  "covered": 25,
+  "pct": 96.2
+ },
+ "app/services/cash/tracking.rb": {
+  "relevant": 16,
+  "covered": 16,
+  "pct": 100.0
+ },
+ "app/services/cash/transaction_creator.rb": {
+  "relevant": 46,
+  "covered": 44,
+  "pct": 95.7
+ },
+ "app/services/cash/transaction_updater.rb": {
+  "relevant": 43,
+  "covered": 39,
+  "pct": 90.7
+ },
+ "app/services/cash/wallet_resolver.rb": {
+  "relevant": 24,
+  "covered": 24,
+  "pct": 100.0
+ },
+ "app/services/categories/creator.rb": {
+  "relevant": 30,
+  "covered": 30,
+  "pct": 100.0
+ },
+ "app/services/categories/mover.rb": {
+  "relevant": 27,
+  "covered": 26,
+  "pct": 96.3
+ },
+ "app/services/data_exchange/bundle.rb": {
+  "relevant": 43,
+  "covered": 40,
+  "pct": 93.0
+ },
+ "app/services/data_exchange/bundle_cipher.rb": {
+  "relevant": 53,
+  "covered": 53,
+  "pct": 100.0
+ },
+ "app/services/data_exchange/operations/base.rb": {
+  "relevant": 7,
+  "covered": 7,
+  "pct": 100.0
+ },
+ "app/services/data_exchange/operations/export.rb": {
+  "relevant": 55,
+  "covered": 53,
+  "pct": 96.4
+ },
+ "app/services/data_exchange/operations/import.rb": {
+  "relevant": 64,
+  "covered": 62,
+  "pct": 96.9
+ },
+ "app/services/data_exchange/ref_map.rb": {
+  "relevant": 12,
+  "covered": 11,
+  "pct": 91.7
+ },
+ "app/services/data_exchange/registry.rb": {
+  "relevant": 30,
+  "covered": 29,
+  "pct": 96.7
+ },
+ "app/services/data_exchange/resources/bank_account_resource.rb": {
+  "relevant": 20,
+  "covered": 18,
+  "pct": 90.0
+ },
+ "app/services/data_exchange/resources/bank_connection_resource.rb": {
+  "relevant": 20,
+  "covered": 18,
+  "pct": 90.0
+ },
+ "app/services/data_exchange/resources/base.rb": {
+  "relevant": 78,
+  "covered": 64,
+  "pct": 82.1
+ },
+ "app/services/data_exchange/resources/tpp_credential_resource.rb": {
+  "relevant": 13,
+  "covered": 12,
+  "pct": 92.3
+ },
+ "app/services/data_exchange/result.rb": {
+  "relevant": 12,
+  "covered": 10,
+  "pct": 83.3
+ },
+ "app/services/enable_banking/api/base.rb": {
+  "relevant": 8,
+  "covered": 8,
+  "pct": 100.0
+ },
+ "app/services/enable_banking/api/close_session.rb": {
+  "relevant": 8,
+  "covered": 8,
+  "pct": 100.0
+ },
+ "app/services/enable_banking/api/create_session.rb": {
+  "relevant": 8,
+  "covered": 8,
+  "pct": 100.0
+ },
+ "app/services/enable_banking/api/get_account_balances.rb": {
+  "relevant": 8,
+  "covered": 8,
+  "pct": 100.0
+ },
+ "app/services/enable_banking/api/get_account_details.rb": {
+  "relevant": 8,
+  "covered": 8,
+  "pct": 100.0
+ },
+ "app/services/enable_banking/api/get_account_transactions.rb": {
+  "relevant": 34,
+  "covered": 34,
+  "pct": 100.0
+ },
+ "app/services/enable_banking/api/get_application.rb": {
+  "relevant": 7,
+  "covered": 7,
+  "pct": 100.0
+ },
+ "app/services/enable_banking/api/get_session.rb": {
+  "relevant": 8,
+  "covered": 8,
+  "pct": 100.0
+ },
+ "app/services/enable_banking/api/list_aspsps.rb": {
+  "relevant": 10,
+  "covered": 10,
+  "pct": 100.0
+ },
+ "app/services/enable_banking/api/start_auth.rb": {
+  "relevant": 21,
+  "covered": 21,
+  "pct": 100.0
+ },
+ "app/services/enable_banking/backfill_window.rb": {
+  "relevant": 8,
+  "covered": 8,
+  "pct": 100.0
+ },
+ "app/services/enable_banking/client.rb": {
+  "relevant": 42,
+  "covered": 40,
+  "pct": 95.2
+ },
+ "app/services/enable_banking/error.rb": {
+  "relevant": 3,
+  "covered": 3,
+  "pct": 100.0
+ },
+ "app/services/enable_banking/jwt_signer.rb": {
+  "relevant": 16,
+  "covered": 16,
+  "pct": 100.0
+ },
+ "app/services/enable_banking/operations/base.rb": {
+  "relevant": 8,
+  "covered": 7,
+  "pct": 87.5
+ },
+ "app/services/enable_banking/operations/close_connection.rb": {
+  "relevant": 14,
+  "covered": 13,
+  "pct": 92.9
+ },
+ "app/services/enable_banking/operations/create_connection.rb": {
+  "relevant": 40,
+  "covered": 39,
+  "pct": 97.5
+ },
+ "app/services/enable_banking/operations/refresh_account_balances.rb": {
+  "relevant": 11,
+  "covered": 11,
+  "pct": 100.0
+ },
+ "app/services/enable_banking/operations/refresh_account_details.rb": {
+  "relevant": 13,
+  "covered": 13,
+  "pct": 100.0
+ },
+ "app/services/enable_banking/operations/refresh_connection.rb": {
+  "relevant": 18,
+  "covered": 18,
+  "pct": 100.0
+ },
+ "app/services/enable_banking/operations/start_auth.rb": {
+  "relevant": 17,
+  "covered": 17,
+  "pct": 100.0
+ },
+ "app/services/enable_banking/operations/sync_account_transactions.rb": {
+  "relevant": 52,
+  "covered": 51,
+  "pct": 98.1
+ },
+ "app/services/enable_banking/operations/sync_connection_transactions.rb": {
+  "relevant": 21,
+  "covered": 21,
+  "pct": 100.0
+ },
+ "app/services/enable_banking/operations/sync_user_transactions.rb": {
+  "relevant": 24,
+  "covered": 0,
+  "pct": 0.0
+ },
+ "app/services/enable_banking/operations/verify_credential.rb": {
+  "relevant": 41,
+  "covered": 41,
+  "pct": 100.0
+ },
+ "app/services/enable_banking/payment_method_inferer.rb": {
+  "relevant": 37,
+  "covered": 37,
+  "pct": 100.0
+ },
+ "app/services/enable_banking/result.rb": {
+  "relevant": 10,
+  "covered": 9,
+  "pct": 90.0
+ },
+ "app/services/enable_banking/state.rb": {
+  "relevant": 16,
+  "covered": 15,
+  "pct": 93.8
+ },
+ "app/services/enable_banking/transaction_normalizer.rb": {
+  "relevant": 47,
+  "covered": 47,
+  "pct": 100.0
+ },
+ "app/services/enrichment/classification_applier.rb": {
+  "relevant": 57,
+  "covered": 56,
+  "pct": 98.2
+ },
+ "app/services/enrichment/own_account_merchant_syncer.rb": {
+  "relevant": 44,
+  "covered": 42,
+  "pct": 95.5
+ },
+ "app/services/enrichment/title_normalizer.rb": {
+  "relevant": 24,
+  "covered": 24,
+  "pct": 100.0
+ },
+ "app/services/enrichment/transaction_enricher.rb": {
+  "relevant": 71,
+  "covered": 71,
+  "pct": 100.0
+ },
+ "app/services/llm/client.rb": {
+  "relevant": 21,
+  "covered": 12,
+  "pct": 57.1
+ },
+ "app/services/llm/clients/gemini.rb": {
+  "relevant": 25,
+  "covered": 0,
+  "pct": 0.0
+ },
+ "app/services/llm/clients/openai.rb": {
+  "relevant": 28,
+  "covered": 24,
+  "pct": 85.7
+ },
+ "app/services/llm/connection_test_runner.rb": {
+  "relevant": 26,
+  "covered": 26,
+  "pct": 100.0
+ },
+ "app/services/llm/enrichable_query.rb": {
+  "relevant": 25,
+  "covered": 24,
+  "pct": 96.0
+ },
+ "app/services/llm/enrichment_runner.rb": {
+  "relevant": 100,
+  "covered": 85,
+  "pct": 85.0
+ },
+ "app/services/llm/merchant_suggester.rb": {
+  "relevant": 44,
+  "covered": 41,
+  "pct": 93.2
+ },
+ "app/services/llm/providers.rb": {
+  "relevant": 11,
+  "covered": 11,
+  "pct": 100.0
+ },
+ "app/services/llm_enrichments/queuer.rb": {
+  "relevant": 21,
+  "covered": 20,
+  "pct": 95.2
+ },
+ "app/services/merchant_rules/creator.rb": {
+  "relevant": 16,
+  "covered": 15,
+  "pct": 93.8
+ },
+ "app/services/merchant_rules/destroyer.rb": {
+  "relevant": 11,
+  "covered": 11,
+  "pct": 100.0
+ },
+ "app/services/merchant_rules/updater.rb": {
+  "relevant": 15,
+  "covered": 15,
+  "pct": 100.0
+ },
+ "app/services/merchants/approver.rb": {
+  "relevant": 14,
+  "covered": 14,
+  "pct": 100.0
+ },
+ "app/services/merchants/creator.rb": {
+  "relevant": 24,
+  "covered": 20,
+  "pct": 83.3
+ },
+ "app/services/operation_run_finalizer.rb": {
+  "relevant": 22,
+  "covered": 22,
+  "pct": 100.0
+ },
+ "app/services/seeders/categories.rb": {
+  "relevant": 13,
+  "covered": 13,
+  "pct": 100.0
+ },
+ "app/services/seeders/merchant_rules.rb": {
+  "relevant": 31,
+  "covered": 31,
+  "pct": 100.0
+ },
+ "app/services/seeders/showcase.rb": {
+  "relevant": 143,
+  "covered": 140,
+  "pct": 97.9
+ },
+ "app/services/transaction_syncs/queuer.rb": {
+  "relevant": 22,
+  "covered": 21,
+  "pct": 95.5
+ },
+ "lib/api/api.rb": {
+  "relevant": 42,
+  "covered": 39,
+  "pct": 92.9
+ },
+ "lib/api/entities/bank_account.rb": {
+  "relevant": 22,
+  "covered": 18,
+  "pct": 81.8
+ },
+ "lib/api/entities/bank_connection.rb": {
+  "relevant": 17,
+  "covered": 17,
+  "pct": 100.0
+ },
+ "lib/api/entities/bank_transaction.rb": {
+  "relevant": 23,
+  "covered": 23,
+  "pct": 100.0
+ },
+ "lib/api/entities/category.rb": {
+  "relevant": 16,
+  "covered": 16,
+  "pct": 100.0
+ },
+ "lib/api/entities/ledger_entry.rb": {
+  "relevant": 23,
+  "covered": 23,
+  "pct": 100.0
+ },
+ "lib/api/entities/manual_transaction.rb": {
+  "relevant": 22,
+  "covered": 22,
+  "pct": 100.0
+ },
+ "lib/api/entities/merchant.rb": {
+  "relevant": 15,
+  "covered": 15,
+  "pct": 100.0
+ },
+ "lib/api/entities/merchant_rule.rb": {
+  "relevant": 14,
+  "covered": 14,
+  "pct": 100.0
+ },
+ "lib/api/entities/money.rb": {
+  "relevant": 8,
+  "covered": 8,
+  "pct": 100.0
+ },
+ "lib/api/entities/operation_run.rb": {
+  "relevant": 15,
+  "covered": 15,
+  "pct": 100.0
+ },
+ "lib/api/entities/pagination.rb": {
+  "relevant": 8,
+  "covered": 0,
+  "pct": 0.0
+ },
+ "lib/api/entities/tpp_credential.rb": {
+  "relevant": 12,
+  "covered": 12,
+  "pct": 100.0
+ },
+ "lib/api/entities/transaction_enrichment.rb": {
+  "relevant": 15,
+  "covered": 15,
+  "pct": 100.0
+ },
+ "lib/api/helpers/auth_helper.rb": {
+  "relevant": 13,
+  "covered": 13,
+  "pct": 100.0
+ },
+ "lib/api/helpers/error_helper.rb": {
+  "relevant": 10,
+  "covered": 5,
+  "pct": 50.0
+ },
+ "lib/api/helpers/pagy_helper.rb": {
+  "relevant": 10,
+  "covered": 10,
+  "pct": 100.0
+ },
+ "lib/api/resources/analytics/cash_flow.rb": {
+  "relevant": 19,
+  "covered": 19,
+  "pct": 100.0
+ },
+ "lib/api/resources/analytics/categories.rb": {
+  "relevant": 24,
+  "covered": 21,
+  "pct": 87.5
+ },
+ "lib/api/resources/analytics/merchants.rb": {
+  "relevant": 27,
+  "covered": 27,
+  "pct": 100.0
+ },
+ "lib/api/resources/analytics/spend.rb": {
+  "relevant": 19,
+  "covered": 18,
+  "pct": 94.7
+ },
+ "lib/api/resources/analytics/top_merchants.rb": {
+  "relevant": 19,
+  "covered": 17,
+  "pct": 89.5
+ },
+ "lib/api/resources/bank_accounts.rb": {
+  "relevant": 40,
+  "covered": 38,
+  "pct": 95.0
+ },
+ "lib/api/resources/bank_connections.rb": {
+  "relevant": 47,
+  "covered": 46,
+  "pct": 97.9
+ },
+ "lib/api/resources/bank_transactions.rb": {
+  "relevant": 36,
+  "covered": 31,
+  "pct": 86.1
+ },
+ "lib/api/resources/cash_transactions.rb": {
+  "relevant": 77,
+  "covered": 76,
+  "pct": 98.7
+ },
+ "lib/api/resources/categories.rb": {
+  "relevant": 76,
+  "covered": 71,
+  "pct": 93.4
+ },
+ "lib/api/resources/llm_enrichments.rb": {
+  "relevant": 34,
+  "covered": 32,
+  "pct": 94.1
+ },
+ "lib/api/resources/merchant_rules.rb": {
+  "relevant": 51,
+  "covered": 49,
+  "pct": 96.1
+ },
+ "lib/api/resources/merchants.rb": {
+  "relevant": 84,
+  "covered": 74,
+  "pct": 88.1
+ },
+ "lib/api/resources/tpp_credentials.rb": {
+  "relevant": 74,
+  "covered": 66,
+  "pct": 89.2
+ },
+ "lib/api/resources/transaction_enrichments.rb": {
+  "relevant": 22,
+  "covered": 22,
+  "pct": 100.0
+ },
+ "lib/api/resources/transaction_syncs.rb": {
+  "relevant": 35,
+  "covered": 33,
+  "pct": 94.3
+ },
+ "lib/api/resources/transactions.rb": {
+  "relevant": 46,
+  "covered": 46,
+  "pct": 100.0
+ },
+ "lib/mcp/application_resource.rb": {
+  "relevant": 4,
+  "covered": 0,
+  "pct": 0.0
+ },
+ "lib/mcp/application_tool.rb": {
+  "relevant": 15,
+  "covered": 15,
+  "pct": 100.0
+ },
+ "lib/mcp/server_builder.rb": {
+  "relevant": 10,
+  "covered": 10,
+  "pct": 100.0
+ },
+ "lib/mcp/tools/analytics/cash_flow.rb": {
+  "relevant": 14,
+  "covered": 14,
+  "pct": 100.0
+ },
+ "lib/mcp/tools/analytics/spend.rb": {
+  "relevant": 13,
+  "covered": 8,
+  "pct": 61.5
+ },
+ "lib/mcp/tools/analytics/top_merchants.rb": {
+  "relevant": 14,
+  "covered": 8,
+  "pct": 57.1
+ },
+ "lib/mcp/tools/bank_accounts/list.rb": {
+  "relevant": 18,
+  "covered": 8,
+  "pct": 44.4
+ },
+ "lib/mcp/tools/bank_accounts/refresh_balances.rb": {
+  "relevant": 14,
+  "covered": 13,
+  "pct": 92.9
+ },
+ "lib/mcp/tools/bank_accounts/refresh_details.rb": {
+  "relevant": 14,
+  "covered": 8,
+  "pct": 57.1
+ },
+ "lib/mcp/tools/bank_connections/list.rb": {
+  "relevant": 14,
+  "covered": 8,
+  "pct": 57.1
+ },
+ "lib/mcp/tools/bank_connections/refresh.rb": {
+  "relevant": 14,
+  "covered": 13,
+  "pct": 92.9
+ },
+ "lib/mcp/tools/cash/create_transaction.rb": {
+  "relevant": 13,
+  "covered": 13,
+  "pct": 100.0
+ },
+ "lib/mcp/tools/cash/delete_transaction.rb": {
+  "relevant": 14,
+  "covered": 8,
+  "pct": 57.1
+ },
+ "lib/mcp/tools/cash/update_transaction.rb": {
+  "relevant": 16,
+  "covered": 8,
+  "pct": 50.0
+ },
+ "lib/mcp/tools/categories/archive.rb": {
+  "relevant": 13,
+  "covered": 8,
+  "pct": 61.5
+ },
+ "lib/mcp/tools/categories/create.rb": {
+  "relevant": 13,
+  "covered": 13,
+  "pct": 100.0
+ },
+ "lib/mcp/tools/categories/list.rb": {
+  "relevant": 13,
+  "covered": 8,
+  "pct": 61.5
+ },
+ "lib/mcp/tools/categories/unarchive.rb": {
+  "relevant": 13,
+  "covered": 8,
+  "pct": 61.5
+ },
+ "lib/mcp/tools/categories/update.rb": {
+  "relevant": 15,
+  "covered": 8,
+  "pct": 53.3
+ },
+ "lib/mcp/tools/merchants/approve.rb": {
+  "relevant": 13,
+  "covered": 13,
+  "pct": 100.0
+ },
+ "lib/mcp/tools/merchants/archive.rb": {
+  "relevant": 13,
+  "covered": 8,
+  "pct": 61.5
+ },
+ "lib/mcp/tools/merchants/create.rb": {
+  "relevant": 12,
+  "covered": 8,
+  "pct": 66.7
+ },
+ "lib/mcp/tools/merchants/list.rb": {
+  "relevant": 19,
+  "covered": 8,
+  "pct": 42.1
+ },
+ "lib/mcp/tools/merchants/unarchive.rb": {
+  "relevant": 13,
+  "covered": 8,
+  "pct": 61.5
+ },
+ "lib/mcp/tools/merchants/update.rb": {
+  "relevant": 14,
+  "covered": 8,
+  "pct": 57.1
+ },
+ "lib/mcp/tools/operations/queue_llm_enrichment.rb": {
+  "relevant": 11,
+  "covered": 8,
+  "pct": 72.7
+ },
+ "lib/mcp/tools/operations/queue_transaction_sync.rb": {
+  "relevant": 12,
+  "covered": 12,
+  "pct": 100.0
+ },
+ "lib/mcp/tools/transactions/classify.rb": {
+  "relevant": 16,
+  "covered": 8,
+  "pct": 50.0
+ },
+ "lib/mcp/tools/transactions/get.rb": {
+  "relevant": 12,
+  "covered": 11,
+  "pct": 91.7
+ },
+ "lib/mcp/tools/transactions/list.rb": {
+  "relevant": 26,
+  "covered": 26,
+  "pct": 100.0
+ }
+}

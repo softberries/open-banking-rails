@@ -1,0 +1,81 @@
+{
+  "route": "GET /api/:version/merchants/:id(.json)",
+  "captured_at": "2026-10-21T13:22:32.602Z",
+  "base_url": "http://127.0.0.1:3000",
+  "cases": [
+    {
+      "case": "default",
+      "actor": "main(token)",
+      "request": {
+        "method": "GET",
+        "path": "/api/v1/merchants/1",
+        "headers": {
+          "authorization": "Bearer obrl_oracle_main_t…"
+        }
+      },
+      "response": {
+        "status": 200,
+        "duration_ms": 181,
+        "headers": {
+          "content-type": "application/json",
+          "cache-control": "max-age=0, private, must-revalidate",
+          "x-request-id": "417a7f5b-c9c1-437c-ba42-7a87e4da35d4",
+          "vary": "Origin",
+          "content-length": "471"
+        },
+        "body_sample": {
+          "id": 1,
+          "name": "Biedronka",
+          "slug": "biedronka",
+          "kind": "company",
+          "source": "system",
+          "logo_url": null,
+          "notes": null,
+          "default_category_id": 12,
+          "confidence": null,
+          "model": null,
+          "approved_at": "2026-10-21T13:21:02.277Z",
+          "archived_at": null,
+          "default_category": {
+            "id": 12,
+            "name": "Supermarkety",
+            "slug": "food_cooking_supermarket",
+            "path": "food.cooking.supermarket",
+            "kind": "expense",
+            "color": "emerald",
+            "icon": null,
+            "essential": true,
+            "position": 11,
+            "archived_at": null,
+            "parent_path": "food.cooking"
+          }
+        }
+      }
+    },
+    {
+      "case": "other_tenant_id",
+      "actor": "main(token)",
+      "request": {
+        "method": "GET",
+        "path": "/api/v1/merchants/29",
+        "headers": {
+          "authorization": "Bearer obrl_oracle_main_t…"
+        }
+      },
+      "response": {
+        "status": 404,
+        "duration_ms": 174,
+        "headers": {
+          "content-type": "application/json",
+          "cache-control": "no-cache",
+          "x-request-id": "860ae762-06d3-4333-9fc6-1f05d617cad7",
+          "vary": "Origin",
+          "content-length": "88"
+        },
+        "body_sample": {
+          "message": "Couldn't find Merchant with 'id'=29 [WHERE \"merchants\".\"user_id\" = $1]"
+        }
+      }
+    }
+  ]
+}

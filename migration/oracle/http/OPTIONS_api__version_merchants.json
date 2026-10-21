@@ -1,0 +1,30 @@
+{
+  "route": "OPTIONS /api/:version/merchants(.json)",
+  "captured_at": "2026-10-21T13:22:17.444Z",
+  "base_url": "http://127.0.0.1:3000",
+  "cases": [
+    {
+      "case": "cors_preflight",
+      "actor": "anon",
+      "request": {
+        "method": "OPTIONS",
+        "path": "/api/v1/merchants",
+        "headers": {
+          "origin": "https://evil.example",
+          "access-control-request-method": "GET",
+          "access-control-request-headers": "authorization"
+        }
+      },
+      "response": {
+        "status": 200,
+        "duration_ms": 3,
+        "headers": {
+          "access-control-allow-origin": "*",
+          "access-control-allow-methods": "GET, POST, PUT, PATCH, DELETE, OPTIONS, HEAD",
+          "content-length": "0"
+        },
+        "body_sample": ""
+      }
+    }
+  ]
+}

@@ -1,0 +1,773 @@
+{
+  "route": "GET /api/:version/merchants(.json)",
+  "captured_at": "2026-10-21T13:22:10.602Z",
+  "base_url": "http://127.0.0.1:3000",
+  "cases": [
+    {
+      "case": "unknown_api_path_404",
+      "actor": "anon",
+      "note": "not a merchants call: shows Grape 404 for an unmatched path",
+      "request": {
+        "method": "GET",
+        "path": "/api/v1/nope",
+        "headers": {}
+      },
+      "response": {
+        "status": 404,
+        "duration_ms": 443,
+        "headers": {
+          "content-type": "text/html; charset=UTF-8",
+          "x-request-id": "1fb6ad31-48d4-4e79-aa5d-875fd5e03b0c",
+          "vary": "Origin",
+          "content-length": "185335"
+        },
+        "body_sample": {
+          "html_title": "Action Controller: Exception caught",
+          "h1": "Routing Error",
+          "flash": [],
+          "length": 185335,
+          "head": "<!DOCTYPE html> <html lang=\"en\"> <head> <meta charset=\"utf-8\" /> <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"> <meta name=\"turbo-visit-control\" content=\"reload\"> <title>Action Controller: Exception caught</title> <style> body { background-color: #FAFAFA; color: #333; color-scheme: light dark; supported-color-schemes: light dark; margin: 0px; } body, p, ol, ul, td { font-family: helvetica, verdana, arial, sans-serif; font-size: 13px; line-height: 18px; } pre { font-size: 11px; white-space: pre-wrap; } pre.box { border: 1px solid #EEE; padding: 10px; margin: 0px; width: 958px; } header { color: #F0F0F0; background: #C00; padding: 0.5em 1.5em; } header button { appearance: none; background-color: hsl(0 0% 0% / 0.2); border: 0; border-radius: 14px; color: white; float: right; font-weight: 500; height: 28px; padding-inline: 14px; margin: 0.35em 0; } header button:active { background-color: hsl(0 0% 0% / 0.25); } h1 { overflow-wrap: break-word; margin: 0.2em 0; line-height: 1.1em; font-size: 2em; } h2 { color: #C00; line-height: 25px; } code.traces { font-size: 11px; } .trace-container { margin-top: 10px; } code.traces .trace { display: flex; align-items: center; gap: 2px; } .edit-icon { width: 16px; height: 16px; display: flex; font-size: 13px; align-items: center; justify-content: center; text-decoration: none; } .edit-icon:hover { scale: 1.05; } .response-heading, .request-heading { margin-top: 30px; } .exception-message { padding: 8px 0; } .exception-mess…[truncated 166885 chars]"
+        }
+      }
+    },
+    {
+      "case": "no_token",
+      "actor": "anon",
+      "request": {
+        "method": "GET",
+        "path": "/api/v1/merchants",
+        "headers": {}
+      },
+      "response": {
+        "status": 401,
+        "duration_ms": 110,
+        "headers": {
+          "content-type": "application/json",
+          "cache-control": "no-cache",
+          "x-request-id": "df82ed37-00d1-4191-b7fc-a8e40ac09238",
+          "vary": "Origin",
+          "content-length": "46"
+        },
+        "body_sample": {
+          "message": "Invalid or missing access token."
+        }
+      }
+    },
+    {
+      "case": "invalid_token",
+      "actor": "anon",
+      "request": {
+        "method": "GET",
+        "path": "/api/v1/merchants",
+        "headers": {
+          "authorization": "Bearer obrl_not_a_real_token"
+        }
+      },
+      "response": {
+        "status": 401,
+        "duration_ms": 130,
+        "headers": {
+          "content-type": "application/json",
+          "cache-control": "no-cache",
+          "x-request-id": "86310ced-7490-4b1d-b0aa-bdf3cab36ae8",
+          "vary": "Origin",
+          "content-length": "46"
+        },
+        "body_sample": {
+          "message": "Invalid or missing access token."
+        }
+      }
+    },
+    {
+      "case": "revoked_token",
+      "actor": "anon",
+      "request": {
+        "method": "GET",
+        "path": "/api/v1/merchants",
+        "headers": {
+          "authorization": "Bearer obrl_oracle_revoke…"
+        }
+      },
+      "response": {
+        "status": 401,
+        "duration_ms": 115,
+        "headers": {
+          "content-type": "application/json",
+          "cache-control": "no-cache",
+          "x-request-id": "9081b590-bfc5-42a9-bd18-a39d22e0890c",
+          "vary": "Origin",
+          "content-length": "46"
+        },
+        "body_sample": {
+          "message": "Invalid or missing access token."
+        }
+      }
+    },
+    {
+      "case": "cors_preflight_like_origin",
+      "actor": "main(token)",
+      "request": {
+        "method": "GET",
+        "path": "/api/v1/merchants",
+        "headers": {
+          "authorization": "Bearer obrl_oracle_main_t…",
+          "origin": "https://evil.example"
+        }
+      },
+      "response": {
+        "status": 200,
+        "duration_ms": 403,
+        "headers": {
+          "access-control-allow-origin": "*",
+          "access-control-allow-methods": "GET, POST, PUT, PATCH, DELETE, OPTIONS, HEAD",
+          "content-type": "application/json",
+          "cache-control": "max-age=0, private, must-revalidate",
+          "x-request-id": "1f65ffed-8076-44ac-b364-58b22a578de0",
+          "vary": "Origin",
+          "content-length": "4940"
+        },
+        "body_sample": {
+          "data": [
+            {
+              "id": 12,
+              "name": "4F (OTCF)",
+              "slug": "otcf_4f",
+              "kind": "company",
+              "source": "system",
+              "logo_url": null,
+              "notes": null,
+              "default_category_id": 58,
+              "confidence": null,
+              "model": null,
+              "approved_at": "2026-10-21T13:21:03.359Z",
+              "archived_at": null,
+              "default_category": {
+                "id": 58,
+                "name": "Ubrania i obuwie",
+                "slug": "lifestyle_shopping_clothing",
+                "path": "lifestyle.shopping.clothing",
+                "kind": "expense",
+                "color": "violet",
+                "icon": null,
+                "essential": false,
+                "position": 57,
+                "archived_at": null,
+                "parent_path": "lifestyle.shopping"
+              }
+            },
+            {
+              "id": 26,
+              "name": "ATM",
+              "slug": "atm_withdrawal",
+              "kind": "other",
+              "source": "system",
+              "logo_url": null,
+              "notes": "Auto-generated. Cash withdrawals from any ATM. Cash::AtmWithdrawalLinker pairs each withdrawal with a topup in the user's cash wallet when track_cash is on.",
+              "default_category_id": 101,
+              "confidence": null,
+              "model": null,
+              "approved_at": "2026-10-21T13:21:04.586Z",
+              "archived_at": null,
+              "default_category": {
+                "id": 101,
+                "name": "Bankomat",
+                "slug": "money_transfers_atm",
+                "path": "money.transfers.atm",
+                "kind": "transfer",
+                "color": "gray",
+                "icon": null,
+                "essential": false,
+                "position": 100,
+                "archived_at": null,
+                "parent_path": "money.transfers"
+              }
+            },
+            {
+              "id": 18,
+              "name": "Al Capone",
+              "slug": "alcapone",
+              "kind": "company",
+              "source": "system",
+              "logo_url": null,
+              "notes": null,
+              "default_category_id": 16,
+              "confidence": null,
+              "model": null,
+              "approved_at": "2026-10-21T13:21:03.874Z",
+              "archived_at": null,
+              "default_category": {
+                "id": 16,
+                "name": "Alkohol (do domu)",
+                "slug": "food_cooking_alcohol",
+                "path": "food.cooking.alcohol",
+                "kind": "expense",
+                "color": "emerald",
+                "icon": null,
+                "essential": false,
+                "position": 15,
+                "archived_at": null,
+                "parent_path": "food.cooking"
+              }
+            },
+            {
+              "id": 20,
+              "name": "AllegroPay",
+              "slug": "allegropay",
+              "kind": "company",
+              "source": "system",
+              "logo_url": null,
+              "notes": null,
+              "default_category_id": 60,
+              "confidence": null,
+              "model": null,
+              "approved_at": "2026-10-21T13:21:04.043Z",
+              "archived_at": null,
+              "default_category": {
+                "id": 60,
+                "name": "Inne sklepy",
+                "slug": "lifestyle_shopping_general",
+                "path": "lifestyle.shopping.general",
+                "kind": "expense",
+                "color": "violet",
+                "icon": null,
+                "essential": false,
+                "position": 59,
+                "archived_at": null,
+                "parent_path": "lifestyle.shopping"
+              }
+            },
+            {
+              "id": 23,
+              "name": "Anthropic",
+              "slug": "anthropic",
+              "kind": "company",
+              "source": "system",
+              "logo_url": null,
+              "notes": null,
+              "default_category_id": 62,
+              "confidence": null,
+              "model": null,
+              "approved_at": "2026-10-21T13:21:04.319Z",
+              "archived_at": null,
+              "default_category": {
+                "id": 62,
+                "name": "SaaS / AI",
+                "slug": "lifestyle_tools_saas",
+                "path": "lifestyle.tools.saas",
+                "kind": "expense",
+                "color": "violet",
+                "icon": null,
+                "essential": false,
+                "position": 61,
+                "archived_at": null,
+                "parent_path": "lifestyle.tools"
+              }
+            },
+            {
+              "id": 4,
+              "name": "Auchan",
+              "slug": "auchan",
+              "kind": "company",
+              "source": "system",
+              "logo_url": null,
+              "notes": null,
+              "default_category_id": 12,
+              "confidence": null,
+              "model": null,
+              "approved_at": "2026-10-21T13:21:02.636Z",
+              "archived_at": null,
+              "default_category": {
+                "id": 12,
+                "name": "Supermarkety",
+                "slug": "food_cooking_supermarket",
+                "path": "food.cooking.supermarket",
+                "kind": "expense",
+                "color": "emerald",
+                "icon": null,
+                "essential": true,
+                "position": 11,
+                "archived_at": null,
+                "parent_path": "food.cooking"
+              }
+            },
+            {
+              "id": 1,
+              "name": "Biedronka",
+              "slug": "biedronka",
+              "kind": "company",
+              "source": "system",
+              "logo_url": null,
+              "notes": null,
+              "default_category_id": 12,
+              "confidence": null,
+              "model": null,
+              "approved_at": "2026-10-21T13:21:02.277Z",
+              "archived_at": null,
+              "default_category": {
+                "id": 12,
+                "name": "Supermarkety",
+                "slug": "food_cooking_supermarket",
+                "path": "food.cooking.supermarket",
+                "kind": "expense",
+                "color": "emerald",
+                "icon": null,
+                "essential": true,
+                "position": 11,
+                "archived_at": null,
+                "parent_path": "food.cooking"
+              }
+            },
+            {
+              "id": 21,
+              "name": "Claude.ai",
+              "slug": "claude_ai",
+              "kind": "company",
+              "source": "system",
+              "logo_url": null,
+              "notes": null,
+              "default_category_id": 62,
+              "confidence": null,
+              "model": null,
+              "approved_at": "2026-10-21T13:21:04.131Z",
+              "archived_at": null,
+              "default_category": {
+                "id": 62,
+                "name": "SaaS / AI",
+                "slug": "lifestyle_tools_saas",
+                "path": "lifestyle.tools.saas",
+                "kind": "expense",
+                "color": "violet",
+                "icon": null,
+                "essential": false,
+                "position": 61,
+                "archived_at": null,
+                "parent_path": "lifestyle.tools"
+              }
+            },
+            {
+              "id": 14,
+              "name": "DOZ Apteka",
+              "slug": "doz_apteka",
+              "kind": "company",
+              "source": "system",
+              "logo_url": null,
+              "notes": null,
+              "default_category_id": 44,
+              "confidence": null,
+              "model": null,
+              "approved_at": "2026-10-21T13:21:03.537Z",
+              "archived_at": null,
+              "default_category": {
+                "id": 44,
+                "name": "Apteki",
+                "slug": "health_medical_pharmacy",
+                "path": "health.medical.pharmacy",
+                "kind": "expense",
+                "color": "rose",
+                "icon": null,
+                "essential": true,
+                "position": 43,
+                "archived_at": null,
+                "parent_path": "health.medical"
+              }
+            },
+            {
+              "id": 15,
+              "name": "Dara Kebab",
+              "slug": "dara_kebab",
+              "kind": "company",
+              "source": "system",
+              "logo_url": null,
+              "notes": null,
+              "default_category_id": 19,
+              "confidence": null,
+              "model": null,
+              "approved_at": "2026-10-21T13:21:03.627Z",
+              "archived_at": null,
+              "default_category": {
+                "id": 19,
+                "name": "Fast food / kebab",
+                "slug": "food_eating_out_fastfood",
+                "path": "food.eating_out.fastfood",
+                "kind": "expense",
+                "color": "emerald",
+                "icon": null,
+                "essential": false,
+                "position": 18,
+                "archived_at": null,
+                "parent_path": "food.eating_out"
+              }
+            }
+          ],
+          "pagination": {
+            "page": 1,
+            "limit": 10,
+            "count": 28,
+            "pages": 3
+          }
+        }
+      }
+    },
+    {
+      "case": "default",
+      "actor": "main(token)",
+      "request": {
+        "method": "GET",
+        "path": "/api/v1/merchants",
+        "headers": {
+          "authorization": "Bearer obrl_oracle_main_t…"
+        }
+      },
+      "response": {
+        "status": 200,
+        "duration_ms": 232,
+        "headers": {
+          "content-type": "application/json",
+          "cache-control": "max-age=0, private, must-revalidate",
+          "x-request-id": "33af8a4c-6e97-4e04-99a5-e363276b086d",
+          "vary": "Origin",
+          "content-length": "4940"
+        },
+        "body_sample": {
+          "data": [
+            {
+              "id": 12,
+              "name": "4F (OTCF)",
+              "slug": "otcf_4f",
+              "kind": "company",
+              "source": "system",
+              "logo_url": null,
+              "notes": null,
+              "default_category_id": 58,
+              "confidence": null,
+              "model": null,
+              "approved_at": "2026-10-21T13:21:03.359Z",
+              "archived_at": null,
+              "default_category": {
+                "id": 58,
+                "name": "Ubrania i obuwie",
+                "slug": "lifestyle_shopping_clothing",
+                "path": "lifestyle.shopping.clothing",
+                "kind": "expense",
+                "color": "violet",
+                "icon": null,
+                "essential": false,
+                "position": 57,
+                "archived_at": null,
+                "parent_path": "lifestyle.shopping"
+              }
+            },
+            {
+              "id": 26,
+              "name": "ATM",
+              "slug": "atm_withdrawal",
+              "kind": "other",
+              "source": "system",
+              "logo_url": null,
+              "notes": "Auto-generated. Cash withdrawals from any ATM. Cash::AtmWithdrawalLinker pairs each withdrawal with a topup in the user's cash wallet when track_cash is on.",
+              "default_category_id": 101,
+              "confidence": null,
+              "model": null,
+              "approved_at": "2026-10-21T13:21:04.586Z",
+              "archived_at": null,
+              "default_category": {
+                "id": 101,
+                "name": "Bankomat",
+                "slug": "money_transfers_atm",
+                "path": "money.transfers.atm",
+                "kind": "transfer",
+                "color": "gray",
+                "icon": null,
+                "essential": false,
+                "position": 100,
+                "archived_at": null,
+                "parent_path": "money.transfers"
+              }
+            },
+            {
+              "id": 18,
+              "name": "Al Capone",
+              "slug": "alcapone",
+              "kind": "company",
+              "source": "system",
+              "logo_url": null,
+              "notes": null,
+              "default_category_id": 16,
+              "confidence": null,
+              "model": null,
+              "approved_at": "2026-10-21T13:21:03.874Z",
+              "archived_at": null,
+              "default_category": {
+                "id": 16,
+                "name": "Alkohol (do domu)",
+                "slug": "food_cooking_alcohol",
+                "path": "food.cooking.alcohol",
+                "kind": "expense",
+                "color": "emerald",
+                "icon": null,
+                "essential": false,
+                "position": 15,
+                "archived_at": null,
+                "parent_path": "food.cooking"
+              }
+            },
+            {
+              "id": 20,
+              "name": "AllegroPay",
+              "slug": "allegropay",
+              "kind": "company",
+              "source": "system",
+              "logo_url": null,
+              "notes": null,
+              "default_category_id": 60,
+              "confidence": null,
+              "model": null,
+              "approved_at": "2026-10-21T13:21:04.043Z",
+              "archived_at": null,
+              "default_category": {
+                "id": 60,
+                "name": "Inne sklepy",
+                "slug": "lifestyle_shopping_general",
+                "path": "lifestyle.shopping.general",
+                "kind": "expense",
+                "color": "violet",
+                "icon": null,
+                "essential": false,
+                "position": 59,
+                "archived_at": null,
+                "parent_path": "lifestyle.shopping"
+              }
+            },
+            {
+              "id": 23,
+              "name": "Anthropic",
+              "slug": "anthropic",
+              "kind": "company",
+              "source": "system",
+              "logo_url": null,
+              "notes": null,
+              "default_category_id": 62,
+              "confidence": null,
+              "model": null,
+              "approved_at": "2026-10-21T13:21:04.319Z",
+              "archived_at": null,
+              "default_category": {
+                "id": 62,
+                "name": "SaaS / AI",
+                "slug": "lifestyle_tools_saas",
+                "path": "lifestyle.tools.saas",
+                "kind": "expense",
+                "color": "violet",
+                "icon": null,
+                "essential": false,
+                "position": 61,
+                "archived_at": null,
+                "parent_path": "lifestyle.tools"
+              }
+            },
+            {
+              "id": 4,
+              "name": "Auchan",
+              "slug": "auchan",
+              "kind": "company",
+              "source": "system",
+              "logo_url": null,
+              "notes": null,
+              "default_category_id": 12,
+              "confidence": null,
+              "model": null,
+              "approved_at": "2026-10-21T13:21:02.636Z",
+              "archived_at": null,
+              "default_category": {
+                "id": 12,
+                "name": "Supermarkety",
+                "slug": "food_cooking_supermarket",
+                "path": "food.cooking.supermarket",
+                "kind": "expense",
+                "color": "emerald",
+                "icon": null,
+                "essential": true,
+                "position": 11,
+                "archived_at": null,
+                "parent_path": "food.cooking"
+              }
+            },
+            {
+              "id": 1,
+              "name": "Biedronka",
+              "slug": "biedronka",
+              "kind": "company",
+              "source": "system",
+              "logo_url": null,
+              "notes": null,
+              "default_category_id": 12,
+              "confidence": null,
+              "model": null,
+              "approved_at": "2026-10-21T13:21:02.277Z",
+              "archived_at": null,
+              "default_category": {
+                "id": 12,
+                "name": "Supermarkety",
+                "slug": "food_cooking_supermarket",
+                "path": "food.cooking.supermarket",
+                "kind": "expense",
+                "color": "emerald",
+                "icon": null,
+                "essential": true,
+                "position": 11,
+                "archived_at": null,
+                "parent_path": "food.cooking"
+              }
+            },
+            {
+              "id": 21,
+              "name": "Claude.ai",
+              "slug": "claude_ai",
+              "kind": "company",
+              "source": "system",
+              "logo_url": null,
+              "notes": null,
+              "default_category_id": 62,
+              "confidence": null,
+              "model": null,
+              "approved_at": "2026-10-21T13:21:04.131Z",
+              "archived_at": null,
+              "default_category": {
+                "id": 62,
+                "name": "SaaS / AI",
+                "slug": "lifestyle_tools_saas",
+                "path": "lifestyle.tools.saas",
+                "kind": "expense",
+                "color": "violet",
+                "icon": null,
+                "essential": false,
+                "position": 61,
+                "archived_at": null,
+                "parent_path": "lifestyle.tools"
+              }
+            },
+            {
+              "id": 14,
+              "name": "DOZ Apteka",
+              "slug": "doz_apteka",
+              "kind": "company",
+              "source": "system",
+              "logo_url": null,
+              "notes": null,
+              "default_category_id": 44,
+              "confidence": null,
+              "model": null,
+              "approved_at": "2026-10-21T13:21:03.537Z",
+              "archived_at": null,
+              "default_category": {
+                "id": 44,
+                "name": "Apteki",
+                "slug": "health_medical_pharmacy",
+                "path": "health.medical.pharmacy",
+                "kind": "expense",
+                "color": "rose",
+                "icon": null,
+                "essential": true,
+                "position": 43,
+                "archived_at": null,
+                "parent_path": "health.medical"
+              }
+            },
+            {
+              "id": 15,
+              "name": "Dara Kebab",
+              "slug": "dara_kebab",
+              "kind": "company",
+              "source": "system",
+              "logo_url": null,
+              "notes": null,
+              "default_category_id": 19,
+              "confidence": null,
+              "model": null,
+              "approved_at": "2026-10-21T13:21:03.627Z",
+              "archived_at": null,
+              "default_category": {
+                "id": 19,
+                "name": "Fast food / kebab",
+                "slug": "food_eating_out_fastfood",
+                "path": "food.eating_out.fastfood",
+                "kind": "expense",
+                "color": "emerald",
+                "icon": null,
+                "essential": false,
+                "position": 18,
+                "archived_at": null,
+                "parent_path": "food.eating_out"
+              }
+            }
+          ],
+          "pagination": {
+            "page": 1,
+            "limit": 10,
+            "count": 29,
+            "pages": 3
+          }
+        }
+      }
+    },
+    {
+      "case": "filtered",
+      "actor": "main(token)",
+      "request": {
+        "method": "GET",
+        "path": "/api/v1/merchants?q=bied&source=seed",
+        "headers": {
+          "authorization": "Bearer obrl_oracle_main_t…"
+        }
+      },
+      "response": {
+        "status": 200,
+        "duration_ms": 198,
+        "headers": {
+          "content-type": "application/json",
+          "cache-control": "max-age=0, private, must-revalidate",
+          "x-request-id": "58ea8c9a-23cf-4c80-8099-3c9f6332e096",
+          "vary": "Origin",
+          "content-length": "66"
+        },
+        "body_sample": {
+          "data": [],
+          "pagination": {
+            "page": 1,
+            "limit": 10,
+            "count": 0,
+            "pages": 1
+          }
+        }
+      }
+    },
+    {
+      "case": "invalid_enum",
+      "actor": "main(token)",
+      "request": {
+        "method": "GET",
+        "path": "/api/v1/merchants?source=martian",
+        "headers": {
+          "authorization": "Bearer obrl_oracle_main_t…"
+        }
+      },
+      "response": {
+        "status": 400,
+        "duration_ms": 187,
+        "headers": {
+          "content-type": "application/json",
+          "cache-control": "no-cache",
+          "x-request-id": "1b81d98f-a2d2-45a6-ba8c-2ef073b67926",
+          "vary": "Origin",
+          "content-length": "82"
+        },
+        "body_sample": {
+          "message": "Invalid parameters.",
+          "details": [
+            "source does not have a valid value"
+          ]
+        }
+      }
+    }
+  ]
+}

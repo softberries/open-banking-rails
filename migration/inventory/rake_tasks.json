@@ -1,0 +1,37 @@
+[
+  {
+    "name": "banking:backfill_counterparty_kind",
+    "comment": null,
+    "file": "lib/tasks/banking.rake"
+  },
+  {
+    "name": "banking:backfill_payment_methods",
+    "comment": null,
+    "file": "lib/tasks/banking.rake"
+  },
+  {
+    "name": "banking:diagnose_duplicate_accounts",
+    "comment": null,
+    "file": "lib/tasks/duplicate_bank_accounts.rake"
+  },
+  {
+    "name": "banking:finish_auth",
+    "comment": null,
+    "file": "lib/tasks/eb_auth.rake"
+  },
+  {
+    "name": "banking:merge_duplicate_accounts",
+    "comment": null,
+    "file": "lib/tasks/duplicate_bank_accounts.rake"
+  },
+  {
+    "name": "banking:start_auth",
+    "comment": null,
+    "file": "lib/tasks/eb_auth.rake"
+  },
+  {
+    "name": "cash:backfill_atm_links",
+    "comment": null,
+    "file": "lib/tasks/cash.rake"
+  }
+]

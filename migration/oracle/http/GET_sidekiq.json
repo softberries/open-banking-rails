@@ -1,0 +1,63 @@
+{
+  "route": "GET /sidekiq",
+  "captured_at": "2026-10-21T13:22:09.069Z",
+  "base_url": "http://127.0.0.1:3000",
+  "cases": [
+    {
+      "case": "anonymous",
+      "actor": "anon",
+      "request": {
+        "method": "GET",
+        "path": "/sidekiq",
+        "headers": {}
+      },
+      "response": {
+        "status": 302,
+        "duration_ms": 115,
+        "headers": {
+          "location": "http://127.0.0.1:3000/admin/sign_in",
+          "content-type": "text/html; charset=utf-8",
+          "cache-control": "no-cache",
+          "x-request-id": "1ce1b0df-17cd-4cea-a2b2-f2641e69e162",
+          "vary": "Origin",
+          "content-length": "0",
+          "set-cookie": [
+            "_open_banking_rails_session=<redacted>; path=/; httponly; samesite=lax"
+          ]
+        },
+        "body_sample": ""
+      }
+    },
+    {
+      "case": "authenticated",
+      "actor": "main(session)",
+      "request": {
+        "method": "GET",
+        "path": "/sidekiq",
+        "headers": {}
+      },
+      "response": {
+        "status": 200,
+        "duration_ms": 262,
+        "headers": {
+          "content-type": "text/html",
+          "cache-control": "private, no-store",
+          "content-security-policy": "default-src 'self' https: http:; child-src 'self'; connect-src 'self' https: http: wss: ws:; font-src 'self' https: http:; frame-src 'self'; img-src 'self' https: http: data:; manifest-src 'self'; media-src 'self'; object-src 'none'; script-src 'self' 'nonce-MFgoOyY/qVQWgyL+gUwiww=='; style-src 'self' https: http: 'unsafe-inline'; worker-src 'self'; base-uri 'self'",
+          "x-content-type-options": "nosniff",
+          "x-request-id": "344852d2-0c0d-4dc5-aac7-9f7de931c93b",
+          "vary": "Origin",
+          "content-length": "13381",
+          "set-cookie": [
+            "_open_banking_rails_session=<redacted>; path=/; httponly; samesite=lax"
+          ]
+        },
+        "body_sample": {
+          "html_title": "[DEVELOPMENT] Sidekiq",
+          "flash": [],
+          "length": 13381,
+          "head": "<!doctype html> <html dir=\"ltr\"> <head> <title>[DEVELOPMENT] Sidekiq</title> <meta charset=\"utf-8\" /> <meta name=\"viewport\" content=\"width=device-width,initial-scale=1.0\" /> <link href=\"/sidekiq/stylesheets/bootstrap.css\" media=\"screen\" rel=\"stylesheet\" type=\"text/css\" nonce=\"MFgoOyY/qVQWgyL+gUwiww==\" /> <link href=\"/sidekiq/stylesheets/application.css\" media=\"screen\" rel=\"stylesheet\" type=\"text/css\" nonce=\"MFgoOyY/qVQWgyL+gUwiww==\" /> <link href=\"/sidekiq/stylesheets/application-dark.css\" media=\"screen and (prefers-color-scheme: dark)\" rel=\"stylesheet\" type=\"text/css\" nonce=\"MFgoOyY/qVQWgyL+gUwiww==\" /> <link rel=\"apple-touch-icon\" href=\"/sidekiq/images/apple-touch-icon.png\"> <link rel=\"shortcut icon\" type=\"image/ico\" href=\"/sidekiq/images/favicon.ico\" /> <script type=\"text/javascript\" src=\"/sidekiq/javascripts/application.js\" nonce=\"MFgoOyY/qVQWgyL+gUwiww==\"></script> <meta name=\"google\" content=\"notranslate\" /> </head> <body class=\"admin\" data-locale=\"en\"> <div class=\"navbar navbar-default navbar-fixed-top\"> <div class=\"container-fluid\"> <div class=\"navbar-header\" data-navbar=\"static\"> <button type=\"button\" class=\"navbar-toggle collapsed\" data-toggle=\"navbar-menu\" data-target=\"#navbar-menu\"> <span class=\"icon-bar\"></span> <span class=\"icon-bar\"></span> <span class=\"icon-bar\"></span> </button> <div class=\"navbar-toggle collapsed navbar-livereload\"> </div> <a class=\"navbar-brand\" href=\"/sidekiq/\"> Sidekiq <span class=\"status\"> <i class=\"status-sprite status-active\"></i> acti…[truncated 8045 chars]"
+        }
+      }
+    }
+  ]
+}

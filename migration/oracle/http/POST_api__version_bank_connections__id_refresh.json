@@ -1,0 +1,46 @@
+{
+  "route": "POST /api/:version/bank_connections/:id/refresh(.json)",
+  "captured_at": "2026-10-21T13:22:49.273Z",
+  "base_url": "http://127.0.0.1:3000",
+  "cases": [
+    {
+      "case": "default",
+      "actor": "main(token)",
+      "request": {
+        "method": "POST",
+        "path": "/api/v1/bank_connections/1/refresh",
+        "headers": {
+          "authorization": "Bearer obrl_oracle_main_t…"
+        }
+      },
+      "response": {
+        "status": 201,
+        "duration_ms": 233,
+        "headers": {
+          "content-type": "application/json",
+          "cache-control": "max-age=0, private, must-revalidate",
+          "x-request-id": "fa08bc9b-7b65-45ee-b514-ce25a3a452ca",
+          "vary": "Origin",
+          "content-length": "398"
+        },
+        "body_sample": {
+          "id": 1,
+          "bank_name": "PKO BP",
+          "bank_slug": "pko_bp",
+          "bank_country": "PL",
+          "psu_type": "personal",
+          "status": "authorized",
+          "authorized_at": "2026-10-21T13:21:22.000Z",
+          "valid_until": "2026-11-20T13:21:55.000Z",
+          "last_refreshed_at": "2026-10-21T13:22:49.214Z",
+          "last_synced_at": "2026-10-21T13:22:30.441Z",
+          "access_balances": true,
+          "access_transactions": true,
+          "replaces_id": null,
+          "tpp_credential_id": 1,
+          "last_error": null
+        }
+      }
+    }
+  ]
+}
