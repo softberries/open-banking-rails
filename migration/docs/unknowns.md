@@ -42,7 +42,7 @@ hardening (U-223, U-507, U-808, U-812, U-813, U-219, U-519, U-819, U-313, U-520)
 - **Who/what can resolve:** migration lead / architecture owner.
 - **Human question?** yes (migration choice)
 - **Proposed default:** Spring Boot 3 + Kotlin, jOOQ (or Spring JDBC) + Flyway, JobRunr, server-rendered templates keeping Hotwire JS.
-- **Resolution:** Resolved by D-001 (Spring Boot 3 + JPA/Hibernate + Flyway + Spring Security + JobRunr).
+- **Resolution:** Resolved by D-001 (Spring Boot 3 + JPA/Hibernate + Flyway + Spring Security + JobRunr). **Update 2026-10-22:** `CLAUDE.md` now fixes the target stack (decisions.md ID-7); it agrees with D-001/D-004 and narrows the template engine to JTE.
 
 ### U-002 Oracle environment deviates from the brief: no Docker daemon
 - **What is unclear:** Nothing functional — recorded for reproducibility. Docker was unavailable (`tcp://localhost:2375` refused, no socket, no sudo). Postgres 17.11 (zonky embedded binaries) and Redis 7.4.2 (built from source) were run in user space on 127.0.0.1:5432/6379 instead.
@@ -50,7 +50,7 @@ hardening (U-223, U-507, U-808, U-812, U-813, U-219, U-519, U-819, U-313, U-520)
 - **Who/what can resolve:** n/a (environment). Re-running `oracle.sh` with Docker-provided services should give identical results.
 - **Human question?** no
 - **Proposed default:** keep as documented.
-- **Resolution:** No decision needed (investigation environment).
+- **Resolution:** No decision needed. **Verified 2026-10-22:** a re-run with Docker `postgres:17` (17.11) and `redis:7` reproduced the inventory exactly, the spec suite (825 examples / 0 failures, `../inventory/specs_run_docker.json`) and every oracle status code (205 files / 344 cases, 0 mismatches, `../oracle/reproducibility_2026-10-22.json`). The environment deviation has no effect on the specification.
 
 ### U-003 Oracle ran in RAILS_ENV=development, not test
 - **What is unclear:** Brief says RAILS_ENV=test unless the README says otherwise. The test environment disables CSRF (`config/environments/test.rb: allow_forgery_protection = false`), uses the `test` ActionCable adapter and `:null_store`, which would hide real behaviour. The inventory and spec run used test; the HTTP/UI oracle used development (CSRF on, Redis cable, real Sidekiq worker). Side effects of development mode visible in the samples: detailed exception pages for 500s (production renders `public/500.html`), Bullet footer, `annotate_rendered_view_with_filenames` HTML comments, dev-only `/admin/debug*` routes.

@@ -135,43 +135,47 @@ flowchart LR
 
 ## Gem → JVM library mapping
 
-There was no project-level target-stack definition (no project `CLAUDE.md`; no earlier Ruby→Kotlin decisions in Context Fabric — see
-[decisions.md](decisions.md#inherited-decisions)). The stack was decided in Phase 4: **D-001 Spring Boot 3 + Kotlin, Spring Data JPA/Hibernate +
-Flyway, Spring Security, JobRunr**; UI per **D-004** (server-rendered templates + existing Hotwire/Stimulus JS); framework scope per **D-006**.
-"proposed" = recommended library within the decided stack, not yet confirmed by a decision.
+The target stack is **fixed** by the migration's shared rules (`CLAUDE.md` → "Target stack", added after the first investigation run; recorded as
+ID-7 in [decisions.md](decisions.md#inherited-decisions)): Kotlin on JVM 21, Spring Boot 3.x, Spring Web MVC, Spring Data JPA (Hibernate), Flyway,
+Jackson Kotlin module, Spring Security, JTE templates reusing the Ruby CSS/JS and Hotwire/Stimulus behaviour, JUnit 5 + Kotest assertions + MockK,
+Testcontainers (PostgreSQL, Redis), Gradle Kotlin DSL + version catalog + wrapper, ktlint, package-by-feature. It agrees with the Phase 4 decisions
+**D-001** (JPA + Flyway + Spring Security; adds JobRunr for jobs, which the fixed stack leaves open) and **D-004** (server-rendered UI keeping Hotwire),
+and framework scope per **D-006**. "target stack" = fixed by CLAUDE.md; "proposed" = recommended library within that stack, not yet confirmed;
+"needs decision" = the fixed stack does not name a library and no decision exists yet.
 
 | Gem (runtime) | Role in this app | Kotlin / JVM equivalent | Status |
 |---|---|---|---|
 | rails (actionpack, activerecord, activejob, actionmailer, actioncable, activestorage, actionmailbox, actiontext) | web framework, ORM, jobs, mail, websockets; ActiveStorage/ActionMailbox/ActionText are loaded but **unused** (no tables) | Spring Boot 3 (Spring MVC); ActionMailbox/ActiveStorage/ActionText not ported | **decided (D-001, D-006)** |
-| puma | HTTP server | embedded Tomcat (Spring Boot default) | decided (D-001) |
-| pg | Postgres driver | PostgreSQL JDBC (`org.postgresql:postgresql`) | proposed |
-| ActiveRecord models + scopes | ORM | Spring Data JPA/Hibernate; `ledger_entries` as `@Immutable` entity, ltree via custom type/native queries, jsonb via `@JdbcTypeCode(SqlTypes.JSON)` | **decided (D-001)** |
+| puma | HTTP server | embedded Tomcat (Spring Boot / Spring Web MVC default) | **target stack** |
+| pg | Postgres driver | PostgreSQL JDBC (`org.postgresql:postgresql`) | **target stack** (PostgreSQL) |
+| ActiveRecord models + scopes | ORM | Spring Data JPA/Hibernate; `ledger_entries` as `@Immutable` entity, ltree via custom type/native queries, jsonb via `@JdbcTypeCode(SqlTypes.JSON)` | **target stack**, D-001 |
 | schema.rb / migrations / scenic | schema + versioned view | Flyway, `V1__baseline` from final schema.rb + view v04, `baselineOnMigrate` for existing DBs | **decided (D-001, D-005)** |
 | devise | session auth, password reset e-mails, bcrypt | Spring Security (form login, `BCryptPasswordEncoder` compatible with Devise bcrypt hashes, remember-me 2 weeks) | **decided (D-001, D-005)** |
-| (custom PAT) | Bearer tokens, SHA-256 digest | Spring Security bearer filter / Ktor `Authentication` bearer | proposed |
-| grape, grape-entity | REST API + DTOs | Spring MVC `@RestController` + Kotlin data classes (Jackson) | **decided (D-001)** |
+| (custom PAT) | Bearer tokens, SHA-256 digest | Spring Security bearer-token filter (custom `AuthenticationProvider`, SHA-256 digest lookup) | **target stack** (Spring Security) |
+| grape, grape-entity | REST API + DTOs | Spring Web MVC `@RestController` + Kotlin data classes (Jackson Kotlin module) | **target stack** |
 | grape-swagger, grape-swagger-entity | OpenAPI 2 doc + Swagger UI | springdoc-openapi (OpenAPI 3) + Swagger UI at `/api/v1/docs` | **decided (D-006)** |
-| mcp | MCP server over Streamable HTTP | MCP Kotlin SDK (`io.modelcontextprotocol:kotlin-sdk`) or Spring AI MCP server | needs decision |
-| turbo-rails, stimulus-rails, importmap-rails, tailwindcss-rails, propshaft | server-rendered UI with Hotwire | JTE or Thymeleaf templates; Hotwire Turbo/Stimulus JS, Tailwind CSS, importmap pins reused verbatim | **decided (D-004)** (template engine: proposed JTE) |
+| mcp | MCP server over Streamable HTTP | hand-written JSON-RPC 2.0 endpoint in a Spring Web MVC controller (no MCP library) | **decided (D-019)** |
+| turbo-rails, stimulus-rails, importmap-rails, tailwindcss-rails, propshaft | server-rendered UI with Hotwire | **JTE** templates; Hotwire Turbo/Stimulus JS, Tailwind CSS, importmap pins reused verbatim | **target stack**, D-004 |
 | money-rails | money type, cents + currency, formatting | JavaMoney (Moneta) or `Long` cents + `java.util.Currency` value class | proposed |
-| ransack | search/sort params on index pages | Spring Data Specifications / jOOQ dynamic conditions; keep `q[...]` param contract only if URLs must stay stable | needs decision |
+| ransack | search/sort params on index pages | Spring Data JPA `Specification`s built from the same `q[...]` / `q[s]` params (D-004 keeps URLs and form field names, so the param contract stays) | **target stack** + D-004 (param whitelist per page in 40-ui.md) |
 | pagy | offset pagination | Spring Data `Pageable` / manual limit-offset | proposed |
 | paper_trail | audit log table `versions` | Hibernate Envers or explicit audit table writes | proposed |
 | gutentag | tagging (unused at runtime, 0 rows) | not ported | **decided (D-006)** |
-| sidekiq, sidekiq-cron, connection_pool, redis | job queue, retries, cron, Sidekiq Web UI | JobRunr (Postgres-backed: retries, recurring jobs, dashboard behind auth); Redis not required | **decided (D-001, D-006)** |
+| sidekiq, sidekiq-cron, connection_pool, redis | job queue, retries, cron, Sidekiq Web UI | JobRunr (Postgres-backed: retries, recurring jobs, dashboard behind auth) — the fixed stack names no job library, D-001 chose JobRunr. Redis is in the fixed stack (Testcontainers Redis) but JobRunr does not need it; the Ruby app's only Redis uses are Sidekiq and the ActionCable adapter (no application code calls `Rails.cache`, production cache store unset — `config/environments/production.rb:50`, 60-async-and-integrations.md), so Redis is only needed for multi-instance Turbo Stream fan-out [I] | **decided (D-001, D-006)** |
 | ActionCable + Turbo Streams | live progress | Turbo Stream HTML fragments over SSE (`<turbo-stream-source>`) or Spring WebSocket | **decided (D-004)** |
 | faraday | HTTP client | Spring `RestClient` | decided (D-001) |
 | jwt | RS256 JWT for Enable Banking | Nimbus JOSE + JWT or jjwt | proposed |
-| ruby_llm | multi-provider LLM client with structured output | Spring AI or LangChain4j (OpenAI/Gemini/Anthropic, JSON schema output) | needs decision |
+| ruby_llm | multi-provider LLM client with structured output | own thin per-provider adapters (OpenAI/Gemini/Anthropic) over Spring `RestClient` behind an `LlmClient` interface + in-memory fake | **decided (D-020)** |
 | rack-cors | CORS | framework CORS config | proposed |
 | lograge | single-line JSON request logs | Logback + logstash-logback-encoder | proposed (standard: structured request logging) |
 | opentelemetry-* | traces, logs, metrics via OTLP | OpenTelemetry Java agent / Spring Boot OTel starter, OTLP exporters | proposed (project standard) |
 | image_processing | ActiveStorage variants (unused) | not ported | **decided (D-006)** |
 | bootsnap, tzinfo-data | boot cache, tz data | n/a (JVM has tzdb) | n/a |
 | dotenv-rails (dev/test) | `.env` loading | Spring profiles / env | n/a |
-| rspec-rails, factory_bot, faker, shoulda-matchers, webmock, capybara, rspec-sidekiq, database_cleaner, simplecov | tests | JUnit 5 + Kotest, Testcontainers (Postgres), WireMock, Playwright for Java, kotlin-faker, Kover; oracle samples as parity fixtures | proposed |
-| brakeman, bundler-audit, rubocop | static analysis | detekt, ktlint, OWASP dependency-check / Dependabot | proposed |
+| rspec-rails, factory_bot, faker, shoulda-matchers, webmock, capybara, rspec-sidekiq, database_cleaner, simplecov | tests | **JUnit 5 + Kotest assertions + MockK + Testcontainers (PostgreSQL, Redis)** (target stack); WireMock, Playwright for Java, kotlin-faker, Kover (proposed); oracle samples as parity fixtures | target stack / proposed |
+| brakeman, bundler-audit, rubocop | static analysis | **ktlint** (target stack); detekt, OWASP dependency-check / Dependabot (proposed) | target stack / proposed |
 | bullet, web-console, annotaterb, debug | dev tooling | n/a | n/a |
+| bundler / Gemfile | build + dependency management | Gradle Kotlin DSL with a version catalog (`gradle/libs.versions.toml`) and the Gradle wrapper | **target stack** |
 
 The full resolved gem list is in `../inventory/gems.txt`.
 

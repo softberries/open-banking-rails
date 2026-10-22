@@ -10,7 +10,11 @@ Prior knowledge gathered in Phase 0 (2026-10-21):
 - **Context Fabric search** (project `ruby-to-kotlin-migration-demo`): `wiki_find` exact search `kotlin|ruby→kotlin|spring|ktor` across all
   wiki pages and raw sources → **no matches**; meaning search "ruby to kotlin migration decisions conventions" → only Rails-internal pages
   (service objects, testing, database operations, AI insights); `repo_insights` and `architecture` → no migration guidance.
-  **Result: no earlier Ruby→Kotlin decisions exist.** There is no `agents_md` tool in this Context Fabric deployment; the project
+  **Result: no earlier Ruby→Kotlin decisions exist.**
+- **Re-check 2026-10-22 (resume run):** `wiki_find` exact `ruby→kotlin|ruby->kotlin|Kotlin|JobRunr|parity` (ignore case) → no wiki matches;
+  meaning search "behaviour parity policy" → only Rails-internal pages; `repo_insights(open-banking-rails)` team memory now lists this
+  investigation's earlier facts (scope rules, Tailwind/encryption-key gotchas) — recorded as ID-8. New since the first run: the fixed target
+  stack in `CLAUDE.md` (ID-7). The parity-policy rule queued in the first run was stored (ID-9). There is no `agents_md` tool in this Context Fabric deployment; the project
   AGENTS.md at `/project-workspace/wiki/AGENTS.md` was read instead. There is also no project-level `CLAUDE.md` defining a target stack.
 
 | ID | Inherited decision | Source | Applies to this migration |
@@ -21,13 +25,16 @@ Prior knowledge gathered in Phase 0 (2026-10-21):
 | ID-4 | **Structured request logging** (Lograge in Ruby) | project AGENTS.md "Observability & logging" | Yes — Kotlin equivalent: one structured JSON log line per request (e.g. logstash-logback-encoder) with the same fields as `config/initializers/lograge.rb` |
 | ID-5 | **OpenTelemetry** with OTLP exporters for traces, logs and metrics, automatic instrumentation, logger correlation | same | Yes — OTel Java agent or Spring Boot OTel starter; same `OTEL_*` env contract (70-security-and-config.md) |
 | ID-6 | Repo conventions (thin controllers, verb-named services with Input/Result, adapters around every external API, in-memory fakes for tests, English-only UI copy) | repo `AGENTS.md`, `docs/adr/*` | As design intent only: the Kotlin rebuild must preserve **behaviour**; structure may follow Kotlin idioms. The adapter + fake pattern is recommended to keep the oracle comparable |
+| ID-7 | **Fixed target stack** (shared migration rules, `CLAUDE.md` → "Target stack", present from the 2026-10-22 run on): Kotlin/JVM 21, Spring Boot 3.x, Spring Web MVC, Spring Data JPA (Hibernate), Flyway, Jackson Kotlin module, Spring Security, JTE (reusing Ruby CSS/JS and Hotwire/Stimulus), JUnit 5 + Kotest assertions + MockK, Testcontainers (PostgreSQL, Redis), Gradle Kotlin DSL + version catalog + wrapper, ktlint, package-by-feature; parity with Ruby specs + `oracle/` is the definition of done | `CLAUDE.md` | Yes — supersedes U-001's premise. Consistent with D-001 (JPA/Flyway/Spring Security) and D-004 (server-rendered + Hotwire); D-004's "JTE/Thymeleaf" narrows to **JTE**; JobRunr (D-001) is an addition the fixed stack leaves open, not a substitution. Gem table in 00-overview.md updated |
+| ID-8 | **[ruby→kotlin] scope rules already in Context Fabric team memory**: documentation-only features are not ported (tracked as future features); unused Rails engines/routes/dev debug routes not ported, Sidekiq Web → job-runner dashboard behind auth, grape-swagger → OpenAPI 3 at the same URL | `/project-workspace/wiki/AGENTS.md` "What others reported"; `repo_insights` | Yes — identical to D-014 and D-006 (these were stored from this investigation's first run) |
+| ID-9 | **[ruby→kotlin] parity policy** (preserve valid-input behaviour; fix tenant-isolation defects and 500s on invalid input; other deviations need a recorded decision + test) | Context Fabric `remember` id `334aa226…` (2026-10-22, from D-002) | Yes — D-002 |
 
 ## Decisions taken in this investigation
 
-Asked via `ask_user` on 2026-10-21. **→ CF** = also a general Ruby→Kotlin rule for Context Fabric (queued in
-[pending-context-fabric.md](pending-context-fabric.md) because the Context Fabric server's authorisation expired during the session).
+Asked via `ask_user` on 2026-10-21. **→ CF** = also a general Ruby→Kotlin rule for Context Fabric (first queued because the Context Fabric server's authorisation expired; all **→ CF** rules are stored as of 2026-10-22 — ID-8, ID-9).
 
 ### D-001 Target stack (round 1, Q1)
+- **Note (2026-10-22):** superseded in its framing by the fixed target stack (ID-7), with which the answer agrees; JobRunr remains this service's job-runner choice.
 - **Question:** No target stack was defined. Which stack should the Kotlin service use?
 - **Options offered:** (1) Spring Boot 3 + jOOQ/JDBC + Flyway + Spring Security + JobRunr *(recommended)*; (2) Spring Boot 3 + Spring Data JPA/Hibernate + Flyway + Spring Security + JobRunr; (3) Ktor + Exposed; (4) other.
 - **Answer:** **(2) Spring Boot 3 + Kotlin, Spring Data JPA/Hibernate + Flyway, Spring Security, JobRunr.**
@@ -58,6 +65,7 @@ Asked via `ask_user` on 2026-10-21. **→ CF** = also a general Ruby→Kotlin ru
   remains a separate decision.
 
 ### D-004 UI approach (round 1, Q4)
+- **Note (2026-10-22):** the fixed target stack (ID-7) selects **JTE** as the template engine; the rest of this decision stands.
 - **Question:** How should the Kotlin service deliver the admin UI?
 - **Answer:** **Server-rendered templates in Kotlin (e.g. JTE/Thymeleaf) keeping the existing Hotwire/Stimulus JS, Tailwind CSS and URLs;
   Turbo Streams via WebSocket/SSE.**
@@ -159,6 +167,22 @@ Asked via `ask_user` on 2026-10-21. **→ CF** = also a general Ruby→Kotlin ru
 ### D-018 Inverted date windows (round 3, Q6)
 - **Answer:** **Reject** manual sync requests with `date_to` < `date_from` with a validation error (API 400 `Invalid parameters.` / admin alert), consistent with analytics (D-002).
 - **Consequences:** deviation from Ruby (U-210, U-805): oracle cases `date_to_before_from → 201` become 400 in Kotlin; test required.
+
+### D-019 MCP server library (resume run 2026-10-22, Q1)
+- **Question:** Which library implements `POST /mcp` (Streamable HTTP, stateless, 27 tools, PAT bearer auth; Ruby `mcp` gem 0.15.0, `app/controllers/mcp_controller.rb`)? Fixed stack names none.
+- **Options offered:** (A) hand-written JSON-RPC 2.0 endpoint in a Spring MVC controller *(recommended)*; (B) MCP Kotlin SDK; (C) Spring AI MCP server; (D) Kotlin team decides.
+- **Answer:** **(A) Hand-written JSON-RPC 2.0 endpoint in a Spring MVC controller; tool schemas ported from `inventory/mcp_tools.json`.**
+- **Consequences:** the Kotlin team owns the envelope (`initialize`, `tools/list`, `tools/call`, notifications → 202/empty as in the oracle) and
+  must reproduce the MCP samples in `oracle/http/{POST,GET,DELETE}_mcp.json`, with the D-002/D-011 deviations X-10, X-20, X-26. No MCP library dependency.
+  Service-specific (not stored in Context Fabric).
+
+### D-020 LLM client library (resume run 2026-10-22, Q2)
+- **Question:** What replaces `ruby_llm` 1.15.0 behind the `Llm::Client` registry (OpenAI, Gemini, Anthropic; structured JSON output)?
+- **Options offered:** (A) thin per-provider adapters over Spring `RestClient` behind an `LlmClient` interface + in-memory fake *(recommended)*; (B) Spring AI; (C) LangChain4j; (D) Kotlin team decides.
+- **Answer:** **(A) Own thin adapters per provider over Spring RestClient behind an `LlmClient` interface, with an in-memory fake for tests.**
+- **Consequences:** request payloads (model, prompt, JSON schema, temperature) and response parsing — including the Gemini Hash-vs-JSON-string
+  quirk — are ported 1:1 from `app/services/llm/**` (BR-2xx, D-010); WireMock contract tests per provider; the fake mirrors
+  `spec/support` fake semantics. Service-specific (not stored in Context Fabric).
 
 ## Deviation register — where the Kotlin expectation differs from the Ruby oracle
 

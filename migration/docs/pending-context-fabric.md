@@ -1,12 +1,12 @@
-# Facts queued for Context Fabric `remember` (server auth expired mid-session)
+# Context Fabric facts — status (project `ruby-to-kotlin-migration-demo`)
 
-Re-submit these with `remember` (project `ruby-to-kotlin-migration-demo`) once the context-fabric MCP server is re-authorised.
+The first run (2026-10-21) queued these facts here because the Context Fabric server's authorisation expired. Status after the resume run (2026-10-22):
 
-| kind | repo | paths | text |
+| kind | scope | fact (short) | status |
 |---|---|---|---|
-| gotcha | open-banking-rails | spec/rails_helper.rb, config/initializers/active_record_encryption.rb | In a fresh open-banking-rails checkout, run `bin/rails tailwindcss:build` before `bundle exec rspec`, otherwise ~174 request/system specs fail with "The asset 'tailwind.css' was not found in the load path". Specs also need ACTIVE_RECORD_ENCRYPTION_* keys set (any `openssl rand -hex 32` values) and Postgres on POSTGRES_HOST/PORT; the full suite (825 examples) takes about 20 minutes. |
-| convention | (project-wide) | – | [ruby→kotlin] Parity policy: the Kotlin rebuild preserves all Ruby behaviour for valid input, but fixes security/tenant-isolation defects and crashes (HTTP 500) on invalid input; any other deviation from Ruby behaviour needs an explicit recorded decision, and every fix is logged as a decision and covered by a test. |
-| convention | (project-wide) | – | [ruby→kotlin] Unused Rails framework engines and their default routes (ActionMailbox ingresses/Conductor, ActiveStorage, ActionText, Turbo Native history routes), unused gems' tables and dev-only debug routes are not ported to Kotlin; the Sidekiq Web UI is replaced by the Kotlin job runner's own dashboard behind authentication, and grape-swagger docs are replaced by OpenAPI 3 served at the same docs URL. |
-| convention | (project-wide) | – | [ruby→kotlin] Migration scope is what exists in the Ruby code at the migrated commit: features described only in ADRs, READMEs or wikis but not implemented are not ported; they are tracked as future features instead. |
-| gotcha | (project-wide) | – | In the ruby-service-investigator sandbox there is no Docker daemon (DOCKER_HOST tcp://localhost:2375 refuses, no sudo): run Postgres 17 from Maven Central `io.zonky.test.postgres:embedded-postgres-binaries-linux-amd64:17.x` (unzip jar, untar .txz, initdb/pg_ctl on 127.0.0.1:5432) and Redis 7 built from source (`make` works, gcc present). |
-| gotcha | (project-wide) | – | For Playwright in the investigator sandbox use npm `playwright-core@1.63.0`: it matches the preinstalled `/opt/ms-playwright/chromium_headless_shell-1243` (PLAYWRIGHT_BROWSERS_PATH); other versions look for a different browser revision and fail to launch. |
+| gotcha | open-banking-rails | build Tailwind (`bin/rails tailwindcss:build`) before `bundle exec rspec`; specs need `ACTIVE_RECORD_ENCRYPTION_*` keys + Postgres; 825 examples | already in team memory (`repo_insights`) |
+| convention | project-wide | [ruby→kotlin] parity policy (D-002) | **stored 2026-10-22** (id `334aa226…`) |
+| convention | project-wide | [ruby→kotlin] unused Rails engines / dev routes not ported; Sidekiq Web → job-runner dashboard; grape-swagger → OpenAPI 3 (D-006) | already in team memory (AGENTS.md) |
+| convention | project-wide | [ruby→kotlin] documentation-only features are out of scope (D-014) | already in team memory (AGENTS.md) |
+| gotcha | project-wide | "no Docker daemon in the investigator sandbox" | **out of date** — on 2026-10-22 the Docker sidecar at `$DOCKER_HOST` worked; corrected fact stored |
+| gotcha | project-wide | Playwright: use npm `playwright-core@1.63.0` to match `/opt/ms-playwright/chromium_headless_shell-1243` | **stored 2026-10-22** (re-verified by the Docker oracle re-run) |

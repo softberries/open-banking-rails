@@ -14,3 +14,13 @@
 | `oracle_index.py` | builds `oracle/index.json` (route key → sample file + case statuses) |
 
 Run: `timeout 2700 ./oracle.sh` (expects the repo at `/workspace/ruby-service-investigator/src`).
+
+## Resume run 2026-10-22 (Docker)
+- Services: `docker run -d --name obr-pg -e POSTGRES_PASSWORD=postgres -p 127.0.0.1:5432:5432 postgres:17` and
+  `docker run -d --name obr-redis -p 127.0.0.1:6379:6379 redis:7` (the repo's docker-compose is not used).
+- `oracle.sh` now uses `docker exec obr-pg psql` / `docker exec obr-redis redis-cli` (wrapper at `$W/runtime/redis-cli`) and honours
+  `ORACLE_OUT` (scratch output dir). Layout expected under `$W`: `scripts/oracle_seed.rb`, `oracle/{capture.mjs,zz_oracle_fakes.rb,test_key.pem}`
+  with `npm i playwright-core@1.63.0` in `$W/oracle`. `test_key.pem` is any RSA key: `openssl genrsa -out test_key.pem 2048`.
+- Results: inventory identical (models.json after normalising Ruby object addresses; env.txt differs only by its hand-added section);
+  specs 825 examples / 0 failures in 650 s (`inventory/specs_run_docker.json`); oracle 205 files / 344 cases with identical case names and
+  status codes (`oracle/reproducibility_2026-10-22.json`).

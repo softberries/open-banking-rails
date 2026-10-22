@@ -4,7 +4,7 @@
 set -euo pipefail
 W=/workspace/ruby-service-investigator
 SRC=$W/src
-OUT=/project-workspace/migrations/open-banking-rails/oracle
+OUT=${ORACLE_OUT:-/project-workspace/migrations/open-banking-rails/oracle}
 PIDFILE=$SRC/tmp/pids/oracle-server.pid
 SKPID=$SRC/tmp/pids/oracle-sidekiq.pid
 INIT=$SRC/config/initializers/zz_oracle_fakes.rb
@@ -56,7 +56,7 @@ cd "$SRC"
 bin/rails runner 'require "json"; OperationRun.order(:id).each { |r| puts r.attributes.to_json }' 2>/dev/null | grep '^{' > "$OUT/operation_runs_after_capture.jsonl" || true
 
 echo "[oracle] first-run setup capture (truncate users)"
-PGPASSWORD=$POSTGRES_PASSWORD psql -h $POSTGRES_HOST -U $POSTGRES_USER open_banking_rails_development -q -c "TRUNCATE users RESTART IDENTITY CASCADE"
+docker exec obr-pg psql -U postgres open_banking_rails_development -q -c "TRUNCATE users RESTART IDENTITY CASCADE"
 cd $W/oracle
 node capture.mjs http://127.0.0.1:3000 $W/oracle_fixture.json "$OUT" setup
 cp $W/oracle-server.log "$OUT/server.log.txt" 2>/dev/null || true

@@ -1,0 +1,7 @@
+{
+ "run": "2026-10-22 oracle.sh re-run against Docker postgres:17 (17.11) + redis:7, same commit cd3bf60, scratch output compared with stored oracle/http",
+ "files_compared": 205,
+ "cases_compared": 344,
+ "status_mismatches": [],
+ "case_name_mismatches": []
+}

@@ -16,6 +16,7 @@
 |---|---|---|
 | Examples (dry run = real run) | 825 in 99 spec files (12 of them instantiated from the 2 shared-example groups in `spec/support/**`) | `../inventory/specs.json`, `../inventory/specs_run.json` **[V]** |
 | Result of the real run | **825 examples, 0 failures, 0 pending**, 1185.5 s (≈ 19.8 min), random seed 4274, RSpec 3.13.6 | `../inventory/specs_run.json` `summary` **[V]** |
+| Second real run (2026-10-22, Docker `postgres:17` + `redis:7`) | **825 examples, 0 failures, 0 pending**, 650.0 s, random seed 47797, line coverage 92.05 %; same 825 example ids and descriptions as the dry run | `../inventory/specs_run_docker.json` **[V]** |
 | First run without CSS build | 825 examples, **174 failures**, all `The asset 'tailwind.css' was not found in the load path.` (environmental) | `../inventory/specs_run_without_tailwind_build.json` **[V]** |
 | Line coverage (SimpleCov) | **92.05 %** = 5023/5457 = 92.047% over 212 files (SimpleCov's own `coverage/.last_run.json` reports `92.04`) | `../inventory/coverage_by_file.json`, `../inventory/coverage_last_run.json` **[V]** |
 | Business rules with ≥ 1 spec | 190 of 225 covered, 4 partial, **31 untested** | section 3 **[V]** (inverted "Covered by" lines) |
